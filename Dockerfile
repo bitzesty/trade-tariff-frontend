@@ -1,21 +1,23 @@
-# Base off the ubuntu 14.04 release, rbenv and ruby 2.1.2
-# https://registry.hub.docker.com/u/rusllonrails/ubuntu_1404_rbenv_ruby_2/
-FROM rusllonrails/ubuntu_1404_rbenv_ruby_2
+FROM macool/baseimage-rbenv-docker:latest
 
-# Create rbenv gemset and install bundler
-RUN /bin/bash -l -c "echo 'gem: --no-rdoc --no-ri' >> ~/.gemrc"
-RUN /bin/bash -l -c "gem install bundler --no-ri --no-rdoc && rbenv rehash"
-RUN /bin/bash -l -c "gem update rubygems"
-RUN /bin/bash -l -c "rbenv gemset create 2.1.2 trade-tariff-frontend"
-RUN /bin/bash -l -c "echo -e 'trade-tariff-frontend' >.rbenv-gemsets"
+# Install ruby and gems
+RUN rbenv install 2.1.2
+RUN rbenv global 2.1.2
 
-ADD Gemfile Gemfile
-ADD Gemfile.lock Gemfile.lock
-RUN /bin/bash -l -c "bundle install"
+RUN echo 'gem: --no-rdoc --no-ri' >> ~/.gemrc
 
-RUN mkdir /trade-tariff-frontend
+RUN gem install bundler
+RUN rbenv rehash
+
+# set $HOME
+RUN echo "/root" > /etc/container_environment/HOME
+
+# Clean up when done
+RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+# let's copy and bundle frontend
 ADD . /trade-tariff-frontend
-WORKDIR /trade-tariff-frontend
+RUN bundle install
 
-RUN /bin/bash -l -c "cp ~/.rbenv-gemsets .rbenv-gemsets"
-RUN /bin/bash -l -c "bundle install"
+# and workdir
+ONBUILD WORKDIR /trade-tariff-frontend
