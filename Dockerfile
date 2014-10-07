@@ -17,10 +17,9 @@ RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # let's copy and bundle frontend
 ADD . /trade-tariff-frontend
-RUN bundle install
-
 # and workdir
-ONBUILD WORKDIR /trade-tariff-frontend
+WORKDIR /trade-tariff-frontend
+RUN bundle install
 
 # script that will update backend's IP
 RUN mkdir -p /etc/my_init.d
