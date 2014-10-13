@@ -1,7 +1,6 @@
 source "https://rubygems.org"
-source "https://BnrJb6FZyzspBboNJzYZ@gem.fury.io/govuk/"
 
-gem "rails", "3.2.19"
+gem "rails", "4.1.6"
 
 gem "yajl-ruby"
 gem "multi_json"
@@ -19,6 +18,8 @@ gem "unicorn", "~> 4.6.3"
 gem "ci_reporter"
 gem "logstasher", '0.4.8'
 gem "airbrake", "3.1.16"
+gem "sprockets", "2.11.0"
+
 
 group :development, :test do
   gem "pry-rails"
@@ -45,10 +46,10 @@ group :test do
 end
 
 group :assets do
-  gem "coffee-rails", "~> 3.2.1"
-  gem "govuk_frontend_toolkit", "0.32.2"
+  gem "coffee-rails"
+  gem "govuk_frontend_toolkit", "1.6.0"
   gem "jquery-rails"
-  gem "sass-rails", "~> 3.2.3"
+  gem "sass-rails", "~> 4.0.3"
   gem "therubyracer", "0.12.0"
   gem "uglifier", ">= 1.0.3"
 end
