@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-gem "rails", "~> 4.1.8"
+gem "rails", "4.1.6"
 
 gem "yajl-ruby"
 gem "multi_json"
@@ -18,13 +18,8 @@ gem "unicorn", "~> 4.6.3"
 gem "ci_reporter_rspec"
 gem "logstasher", '0.4.8'
 gem "airbrake", "3.1.16"
+gem "sprockets", "2.11.0"
 
-gem "coffee-rails"
-gem "govuk_frontend_toolkit", "1.6.0"
-gem "jquery-rails", "~> 2.1.3"
-gem "sass-rails", "~> 4.0.3"
-gem "therubyracer", "0.12.0"
-gem "uglifier", ">= 1.0.3"
 
 group :development, :test do
   gem "pry-rails"
