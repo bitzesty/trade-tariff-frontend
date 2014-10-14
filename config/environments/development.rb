@@ -26,4 +26,6 @@ TradeTariffFrontend::Application.configure do
 
   # Host for Trade Tariff API endpoint
   config.api_host = ENV["TARIFF_API_HOST"] || "http://tariff-api.dev.gov.uk:3018"
+
+  config.eager_load = false
 end
