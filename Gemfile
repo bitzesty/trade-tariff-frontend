@@ -20,6 +20,12 @@ gem "logstasher", '0.4.8'
 gem "airbrake", "3.1.16"
 gem "sprockets", "2.11.0"
 
+gem "coffee-rails"
+gem "govuk_frontend_toolkit", "1.6.0"
+gem "jquery-rails"
+gem "sass-rails", "~> 4.0.3"
+gem "therubyracer", "0.12.0"
+gem "uglifier", ">= 1.0.3"
 
 group :development, :test do
   gem "pry-rails"
