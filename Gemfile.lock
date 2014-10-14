@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/getsentry/raven-ruby.git
+  revision: bd026531c390a7fbc71980871a7951bc0f2d737f
+  specs:
+    sentry-raven (0.10.1)
+      faraday (>= 0.7.6)
+      uuidtools
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -29,9 +37,6 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
     addressable (2.3.6)
-    airbrake (3.1.16)
-      builder
-      multi_json
     arel (5.0.1.20140414130214)
     brakeman (1.7.1)
       activesupport
@@ -78,6 +83,8 @@ GEM
     factory_girl_rails (4.4.1)
       factory_girl (~> 4.4.0)
       railties (>= 3.0.0)
+    faraday (0.9.0)
+      multipart-post (>= 1.2, < 3)
     fastercsv (1.5.5)
     forgery (0.6.0)
     gds-api-adapters (8.2.1)
@@ -120,6 +127,7 @@ GEM
     minitest (5.4.2)
     multi_json (1.10.1)
     multi_xml (0.5.5)
+    multipart-post (2.0.0)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (2.9.1)
@@ -241,6 +249,7 @@ GEM
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
+    uuidtools (2.1.5)
     vcr (2.9.3)
     webmock (1.11.0)
       addressable (>= 2.2.7)
@@ -255,7 +264,6 @@ PLATFORMS
 
 DEPENDENCIES
   addressable
-  airbrake (= 3.1.16)
   brakeman (~> 1.7.0)
   capistrano
   capybara (~> 2.4.1)
@@ -273,6 +281,8 @@ DEPENDENCIES
   pry-rails
   rails (= 4.1.6)
   rspec-rails
+  sass-rails (~> 4.0.3)
+  sentry-raven!
   shoulda-matchers
   simplecov (~> 0.6.4)
   simplecov-rcov (~> 0.2.3)

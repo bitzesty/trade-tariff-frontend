@@ -17,7 +17,7 @@ gem "unicorn", "~> 4.6.3"
 
 gem "ci_reporter_rspec"
 gem "logstasher", '0.4.8'
-gem "airbrake", "3.1.16"
+gem "sentry-raven", git: "https://github.com/getsentry/raven-ruby.git"
 gem "sprockets", "2.11.0"
 
 gem "coffee-rails"
