@@ -78,8 +78,7 @@ class ApplicationController < ActionController::Base
   end
 
   def load_artefact
-    # Can only load artifact if content_api is running
-    unless Rails.env.development?
+    if !Rails.env.development? && !Rails.env.docker? #remove me once I rebuild my vm
       @artefact = content_api.artefact(APP_SLUG)
       set_slimmer_artefact(@artefact)
     end
