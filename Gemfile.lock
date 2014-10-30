@@ -63,6 +63,9 @@ GEM
       xpath (~> 2.0)
     ci_reporter (2.0.0)
       builder (>= 2.1.2)
+    ci_reporter_rspec (1.0.0)
+      ci_reporter (~> 2.0)
+      rspec (>= 2.14, < 4)
     cliver (0.3.2)
     coderay (1.1.0)
     coffee-rails (4.1.0)
@@ -87,7 +90,7 @@ GEM
       multipart-post (>= 1.2, < 3)
     fastercsv (1.5.5)
     forgery (0.6.0)
-    gds-api-adapters (8.2.1)
+    gds-api-adapters (14.4.0)
       link_header
       lrucache (~> 0.1.1)
       null_logger
@@ -137,8 +140,7 @@ GEM
     net-ssh (2.9.1)
     nokogiri (1.5.11)
     null_logger (0.0.1)
-    phantomjs (1.9.7.1)
-    plek (1.3.1)
+    plek (1.8.1)
     poltergeist (1.5.1)
       capybara (~> 2.1)
       cliver (~> 0.3.1)
@@ -151,6 +153,8 @@ GEM
     pry-rails (0.3.2)
       pry (>= 0.9.10)
     rack (1.5.2)
+    rack-cache (1.2)
+      rack (>= 0.4)
     rack-test (0.6.2)
       rack (>= 1.0)
     rails (4.1.6)
@@ -176,6 +180,10 @@ GEM
     rest-client (1.6.8)
       mime-types (~> 1.16)
       rdoc (>= 2.4.2)
+    rspec (3.1.0)
+      rspec-core (~> 3.1.0)
+      rspec-expectations (~> 3.1.0)
+      rspec-mocks (~> 3.1.0)
     rspec-core (3.1.7)
       rspec-support (~> 3.1.0)
     rspec-expectations (3.1.2)
@@ -271,8 +279,8 @@ DEPENDENCIES
   addressable
   brakeman (~> 1.7.0)
   capistrano
-  capybara
-  ci_reporter
+  capybara (~> 2.4.1)
+  ci_reporter_rspec
   coffee-rails
   factory_girl_rails
   forgery
@@ -281,7 +289,7 @@ DEPENDENCIES
   govuk_frontend_toolkit (= 1.6.0)
   hashie
   httparty
-  jquery-rails (~> 2.1.3)
+  jquery-rails
   logstasher (= 0.4.8)
   multi_json
   plek (~> 1.8.1)
@@ -294,7 +302,7 @@ DEPENDENCIES
   shoulda-matchers
   simplecov (~> 0.6.4)
   simplecov-rcov (~> 0.2.3)
-  slimmer (= 3.25.0)
+  slimmer (~> 4.2.2)
   sprockets (= 2.11.0)
   therubyracer (= 0.12.0)
   timecop
