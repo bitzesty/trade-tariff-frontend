@@ -16,9 +16,6 @@ RUN rbenv rehash
 # set $HOME
 RUN echo "/root" > /etc/container_environment/HOME
 
-# Clean up when done
-RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-
 # let's copy and bundle frontend
 ADD . /trade-tariff-frontend
 # and workdir
