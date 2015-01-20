@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-gem "rails", "4.1.6"
+gem "rails", "~> 4.1.8"
 
 gem "yajl-ruby"
 gem "multi_json"
@@ -9,8 +9,8 @@ gem "hashie"
 gem "govspeak", "1.2.3"
 
 gem "gds-api-adapters", "14.4.0"
+gem "govuk_template", "0.12.0"
 gem "plek", "~> 1.8.1"
-gem "slimmer", "~> 5.0.1"
 gem "addressable"
 
 gem "unicorn", "~> 4.6.3"
@@ -21,14 +21,15 @@ gem "sentry-raven", git: "https://github.com/getsentry/raven-ruby.git"
 gem "sprockets", "2.11.0"
 
 gem "coffee-rails"
-gem "govuk_frontend_toolkit", "1.6.0"
-gem "jquery-rails"
-gem "sass-rails", "~> 4.0.3"
+gem "govuk_frontend_toolkit", "3.1.0"
+gem "jquery-rails", "~> 2.1.3"
+gem "sass-rails", "~> 4.0.5"
 gem "therubyracer", "0.12.0"
 gem "uglifier", ">= 1.0.3"
 
 group :development, :test do
   gem "pry-rails"
+  gem "bundler-audit"
 end
 
 group :development do
@@ -36,7 +37,7 @@ group :development do
 end
 
 group :test do
-  gem "brakeman", "~> 1.7.0"
+  gem "brakeman", "~> 3.0.0", require: false
   gem "webmock", "~> 1.11.0"
   gem "factory_girl_rails"
   gem "forgery"
