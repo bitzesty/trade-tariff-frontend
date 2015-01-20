@@ -75,7 +75,7 @@ class ApplicationController < ActionController::Base
 
   def load_artefact
     # Can only load artifact if content_api is running
-    unless Rails.env.development?
+    if Rails.env.production?
       @artefact = GovukArtefact.new(content_api.artefact(APP_SLUG))
     end
   end
