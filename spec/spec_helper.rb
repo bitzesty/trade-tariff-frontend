@@ -3,7 +3,7 @@ ENV["RAILS_ENV"] ||= 'test'
 require 'simplecov'
 require 'simplecov-rcov'
 
-SimpleCov.start 'rails'
+SimpleCov.start 'rails' unless ENV["NO_COVERAGE"]
 SimpleCov.formatter = SimpleCov::Formatter::RcovFormatter
 
 require File.expand_path("../../config/environment", __FILE__)

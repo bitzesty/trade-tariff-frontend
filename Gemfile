@@ -34,6 +34,7 @@ end
 
 group :development do
   gem "capistrano", "~> 3.4"
+  gem 'guard-rspec', require: false
 end
 
 group :test do
