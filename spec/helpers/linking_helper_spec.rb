@@ -14,6 +14,7 @@ describe LinkingHelper, type: :helper do
       context "with valid links" do
         it "returns heading links" do
           expect(apply_links("heading 1234")).to eq "heading #{number_to_heading_link(1234)}"
+          expect(apply_links("Heading 1234")).to eq "Heading #{number_to_heading_link(1234)}"
         end
 
         it "replaces all the links" do
@@ -21,29 +22,20 @@ describe LinkingHelper, type: :helper do
             eq "heading #{number_to_heading_link(1)} heading #{number_to_heading_link(2)}"
         end
 
-        it "replaces links between commas" do
+        it "replaces links using connectors" do
           expect(apply_links("heading 1, 2")).to \
             eq "heading #{number_to_heading_link(1)}, #{number_to_heading_link(2)}"
-        end
-
-        it "replaces links using 'or'" do
           expect(apply_links("heading 1 or 2")).to \
             eq "heading #{number_to_heading_link(1)} or #{number_to_heading_link(2)}"
-        end
-
-        it "replaces links using 'and'" do
           expect(apply_links("heading 1 and 2")).to \
             eq "heading #{number_to_heading_link(1)} and #{number_to_heading_link(2)}"
         end
 
-        it "stops after '.'" do
-          expect(apply_links("heading 1. 2")).to \
-            eq "heading #{number_to_heading_link(1)}. 2"
-        end
-
-        it "stops after any other word" do
+        it "stops after any other word or symbol" do
           expect(apply_links("heading 1 stop 2")).to \
             eq "heading #{number_to_heading_link(1)} stop 2"
+          expect(apply_links("heading 1. 2")).to \
+            eq "heading #{number_to_heading_link(1)}. 2"
         end
       end
 
@@ -56,11 +48,55 @@ describe LinkingHelper, type: :helper do
         end
       end
     end
+
+    context "with subheading" do
+      context "with valid links" do
+        it "returns heading links" do
+          expect(apply_links("subheading 1234 50")).to eq "subheading #{number_to_heading_link('1234 50', 1234)}"
+        end
+        it "works with connectors" do
+          expect(apply_links("subheading 1234 50, 1234 80")).to \
+          eq "subheading #{number_to_heading_link('1234 50', 1234)}, #{number_to_heading_link('1234 80', 1234)}"
+        end
+
+        it "stops after any other word or symbol" do
+          expect(apply_links("subheading 1 2 stop 2 3")).to \
+            eq "subheading #{number_to_heading_link('1 2', 1)} stop 2 3"
+          expect(apply_links("subheading 1 2. 2 3")).to \
+            eq "subheading #{number_to_heading_link('1 2', 1)}. 2 3"
+        end
+      end
+
+      context "with invalid link" do
+        it "does not add any link" do
+          should_not_change "subheading 1234. 50"
+        end
+      end
+    end
+
+    context "with chapter" do
+      context "with valid link" do
+        it "returns chapter links" do
+          expect(apply_links("Chapter 50")).to eq "#{chapter_link(50)}"
+        end
+      end
+      context "with invalid link" do
+        it "does not add any link" do
+          should_not_change "chapter. 50"
+        end
+      end
+    end
   end
 
   describe "number_to_heading_link" do
     it "generates a link" do
       expect(number_to_heading_link(1234)).to match /a href.*#{heading_path(1234)}.*1234/
+    end
+  end
+
+  describe "chapter_link" do
+    it "generates a link" do
+      expect(chapter_link(1234)).to match /a href.*#{chapter_path(1234)}.*Chapter 1234/
     end
   end
 
