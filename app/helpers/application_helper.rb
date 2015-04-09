@@ -1,6 +1,7 @@
 module ApplicationHelper
   def govspeak(text)
-    Govspeak::Document.new(text).to_sanitized_html.html_safe
+    text = Govspeak::Document.new(text).to_sanitized_html
+    apply_links(text).html_safe
   end
 
   def a_z_index(letter = 'a')

@@ -2,6 +2,11 @@ require 'spec_helper'
 
 describe ApplicationHelper, type: :helper do
   describe '#govspeak' do
+    it "calls linker" do
+      helper.should_receive(:apply_links).and_return('bye')
+      expect(helper.govspeak("hello")).to eq "bye"
+    end
+
     context 'string without HTML code' do
       let(:string) { '**hello**' }
 
