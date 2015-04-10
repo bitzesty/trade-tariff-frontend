@@ -1,5 +1,8 @@
 module LinkingHelper
-  CONNECTORS = ['and', 'or', ',']
+  require 'strscan'
+  CONNECTORS = ['and', 'or', ',', '']
+  SUBSECTION_SEPARATOR = [' ']
+  CHAPTER_SEPARATOR = [' ']
 
   def apply_links text
     LinkParser.new.execute(text)
@@ -20,23 +23,30 @@ module LinkingHelper
 
     def execute(text)
       self.output = Array.new
-      @position = 0
-      @parts = text.gsub(/([\.,\);])/, ' \1').gsub('(', '( ').split(" ")
       strategy = NilParserState.new
 
-      while @position < @parts.count
+      @word = true
+      @parts = StringScanner.new(text)
+      self.next
+      self.next if current.nil? # if starts with a symbol
+      while !current.nil?
         strategy = strategy.process(self)
       end
 
-      output.join(" ").gsub(/ ([\.,\);])/, '\1').gsub('( ', '(')
+      output.join
     end
 
     def next
-      @position += 1
+      if @word
+        @current = @parts.scan(/\w+/)
+      else
+        @current = @parts.scan(/\W+/)
+      end
+      @word = !@word
     end
 
     def current
-      @parts[@position]
+      @current
     end
   end
 
@@ -74,7 +84,7 @@ module LinkingHelper
         parser.output << number_to_heading_link(parser.current)
         parser.next
         return self
-      elsif CONNECTORS.include? parser.current
+      elsif CONNECTORS.include? parser.current.strip
         parser.output << parser.current
         parser.next
         return self
@@ -89,15 +99,18 @@ module LinkingHelper
       if numeric? parser.current
         heading = parser.current
         parser.next
-        if numeric? parser.current
-          parser.output << number_to_heading_link("#{heading} #{parser.current}", heading)
+        middle = parser.current
+        parser.next
+        if SUBSECTION_SEPARATOR.include?(middle) && numeric?(parser.current)
+          parser.output << number_to_heading_link("#{heading}#{middle}#{parser.current}", heading)
           parser.next
           return self
         else
           parser.output << heading
+          parser.output << middle
           return NilParserState.new
         end
-      elsif CONNECTORS.include? parser.current
+      elsif CONNECTORS.include? parser.current.strip
         parser.output << parser.current
         parser.next
         return self
@@ -109,10 +122,14 @@ module LinkingHelper
 
   class ChapterParserState < ParserState
     def process parser
-      if numeric? parser.current
+      middle = parser.current
+      parser.next
+      if CHAPTER_SEPARATOR.include?(middle) && numeric?(parser.current)
         parser.output.pop
         parser.output << chapter_link(parser.current)
         parser.next
+      else
+        parser.output << middle
       end
       return NilParserState.new
     end
