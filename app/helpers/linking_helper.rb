@@ -1,6 +1,6 @@
 module LinkingHelper
   require 'strscan'
-  CONNECTORS = ['and', 'or', ',', '']
+  CONNECTORS = ['and', 'or', 'to', ',', '']
   SUBSECTION_SEPARATOR = [' ']
   CHAPTER_SEPARATOR = [' ']
 
@@ -8,12 +8,12 @@ module LinkingHelper
     LinkParser.new.execute(text)
   end
 
-  def number_to_heading_link text, id=text
+  def number_to_heading_link text, id = text
     link_to(text, heading_path(id))
   end
 
   def chapter_link id
-    link_to("Chapter #{id}", chapter_path(id))
+    link_to(id, chapter_path(id))
   end
 
   private
@@ -66,15 +66,10 @@ module LinkingHelper
       parser.output << parser.current
       parser.next
 
-      if token.downcase == 'heading'
-        return HeadingParserState.new
-      elsif token.downcase == 'subheading'
-        return SubheadingParserState.new
-      elsif token.downcase == 'chapter'
-        return ChapterParserState.new
-      else
-        return self
-      end
+      new_state = STATES[token.downcase.singularize]
+
+      return new_state unless new_state.nil?
+      return self
     end
   end
 
@@ -122,16 +117,23 @@ module LinkingHelper
 
   class ChapterParserState < ParserState
     def process parser
-      middle = parser.current
-      parser.next
-      if CHAPTER_SEPARATOR.include?(middle) && numeric?(parser.current)
-        parser.output.pop
+      if numeric? parser.current
         parser.output << chapter_link(parser.current)
         parser.next
+        return self
+      elsif CONNECTORS.include? parser.current.strip
+        parser.output << parser.current
+        parser.next
+        return self
       else
-        parser.output << middle
+        return NilParserState.new
       end
-      return NilParserState.new
     end
   end
+
+  STATES = {
+    'heading' => HeadingParserState.new,
+    'subheading' => SubheadingParserState.new,
+    'chapter' => ChapterParserState.new
+  }
 end

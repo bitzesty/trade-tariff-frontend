@@ -21,6 +21,10 @@ describe LinkingHelper, type: :helper do
           expect(apply_links("(heading 1234)")).to eq "(heading #{number_to_heading_link(1234)})"
         end
 
+        it "works with plural" do
+          expect(apply_links("headings 1234")).to eq "headings #{number_to_heading_link(1234)}"
+        end
+
         it "works with semicolon" do
           expect(apply_links("heading 1234;")).to eq "heading #{number_to_heading_link(1234)};"
         end
@@ -81,8 +85,8 @@ describe LinkingHelper, type: :helper do
         end
       end
 
-      context "with invalid link" do
-        it "does not add any link" do
+      context "with only 1 number" do
+        it "does not add link for 4 digits" do
           should_not_change "subheading 1234. 50"
         end
       end
@@ -91,9 +95,16 @@ describe LinkingHelper, type: :helper do
     context "with chapter" do
       context "with valid link" do
         it "returns chapter links" do
-          expect(apply_links("Chapter 50")).to eq "#{chapter_link(50)}"
+          expect(apply_links("Chapter 50")).to eq "Chapter #{chapter_link(50)}"
         end
       end
+
+      context "with connectors" do
+        it "links every number" do
+          expect(apply_links("Chapters 50 and 51")).to eq "Chapters #{chapter_link(50)} and #{chapter_link(51)}"
+        end
+      end
+
       context "with invalid link" do
         it "does not add any link" do
           should_not_change "chapter. 50"
@@ -110,7 +121,7 @@ describe LinkingHelper, type: :helper do
 
   describe "chapter_link" do
     it "generates a link" do
-      expect(chapter_link(1234)).to match /a href.*#{chapter_path(1234)}.*Chapter 1234/
+      expect(chapter_link(1234)).to match /a href.*#{chapter_path(1234)}.*1234/
     end
   end
 
