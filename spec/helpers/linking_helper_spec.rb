@@ -17,6 +17,10 @@ describe LinkingHelper, type: :helper do
           expect(apply_links("Heading 1234")).to eq "Heading #{number_to_heading_link(1234)}"
         end
 
+        it "works with parentheses" do
+          expect(apply_links("(heading 1234)")).to eq "(heading #{number_to_heading_link(1234)})"
+        end
+
         it "replaces all the links" do
           expect(apply_links("heading 1 heading 2")).to \
             eq "heading #{number_to_heading_link(1)} heading #{number_to_heading_link(2)}"

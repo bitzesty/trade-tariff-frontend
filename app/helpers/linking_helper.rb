@@ -21,14 +21,14 @@ module LinkingHelper
     def execute(text)
       self.output = Array.new
       @position = 0
-      @parts = text.gsub(/([\.,])/, ' \1').split(" ")
+      @parts = text.gsub(/([\.,\)])/, ' \1').gsub('(', '( ').split(" ")
       strategy = NilParserState.new
 
       while @position < @parts.count
         strategy = strategy.process(self)
       end
 
-      output.join(" ").gsub(/ ([\.,])/, '\1')
+      output.join(" ").gsub(/ ([\.,\)])/, '\1').gsub('( ', '(')
     end
 
     def next
