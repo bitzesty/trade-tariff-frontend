@@ -86,8 +86,16 @@ describe LinkingHelper, type: :helper do
       end
 
       context "with only 1 number" do
-        it "does not add link for 4 digits" do
-          should_not_change "subheading 1234. 50"
+        it "adds a header with the first 4 digits" do
+          expect(apply_links("subheading 123456")).to \
+            eq "subheading #{number_to_heading_link('123456', 1234)}"
+          expect(apply_links("subheading 12")).to \
+            eq "subheading #{number_to_heading_link(12)}"
+        end
+
+        it "stops after a period" do
+          expect(apply_links("subheading 1234. 56")).to \
+            eq "subheading #{number_to_heading_link(1234)}. 56"
         end
       end
     end

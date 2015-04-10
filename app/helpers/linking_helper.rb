@@ -101,7 +101,7 @@ module LinkingHelper
           parser.next
           return self
         else
-          parser.output << heading
+          parser.output << number_to_heading_link(heading, heading.to_s[0..3])
           parser.output << middle
           return NilParserState.new
         end
