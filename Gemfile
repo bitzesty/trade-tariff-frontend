@@ -33,6 +33,7 @@ end
 
 group :development do
   gem "capistrano", "~> 3.4"
+  gem "foreman"
 end
 
 group :test do
