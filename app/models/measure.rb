@@ -18,16 +18,9 @@ class Measure
   has_many :footnotes
 
   def relevant_for_country?(country_code)
-    return true if country_code.blank?
-    ( ( geographical_area.id == country_code ||
-        geographical_area.children_geographical_areas.map(&:id).include?(country_code)
-      ) && !excludes_geographical_area?(country_code)
-    ) ||
-    ( national? && !excludes_geographical_area?(country_code) )
-  end
-
-  def excludes_geographical_area?(country_code)
-    excluded_countries.map(&:geographical_area_id).include?(country_code)
+    return false if excluded_countries.map(&:geographical_area_id).include?(country_code)
+    return true if country_code.blank? || national? || geographical_area.id == country_code
+    geographical_area.children_geographical_areas.map(&:id).include?(country_code)
   end
 
   def excluded_country_list
