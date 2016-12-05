@@ -6,6 +6,8 @@ class Measure
   attr_accessor :id, :origin, :effective_start_date, :effective_end_date,
                 :import, :vat, :excise
 
+  DEFAULT_GEOGRAPHICAL_AREA_ID = "1011" #ERGA OMNES
+
   has_one :geographical_area
   has_one :legal_act
   has_one :measure_type
@@ -19,7 +21,9 @@ class Measure
 
   def relevant_for_country?(country_code)
     return false if excluded_countries.map(&:geographical_area_id).include?(country_code)
-    return true if country_code.blank? || national? || geographical_area.id == country_code
+    return true if geographical_area.id == DEFAULT_GEOGRAPHICAL_AREA_ID && national?
+    return true if country_code.blank? || geographical_area.id == country_code
+
     geographical_area.children_geographical_areas.map(&:id).include?(country_code)
   end
 
