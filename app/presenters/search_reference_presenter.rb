@@ -10,7 +10,7 @@ class SearchReferencePresenter
   end
 
   def link
-    "/#{APP_SLUG}/#{referenced_class.tableize}/#{referenced_id}"
+    "/#{referenced_class.tableize}/#{referenced_id}"
   end
 
   private
