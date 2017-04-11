@@ -6,7 +6,7 @@ describe 'GET to #index - getting heading change feed', type: :request do
   describe 'no request format supplied' do
     before do
       VCR.use_cassette("headings_changes#index") do
-        get "/trade-tariff/headings/0101/changes"
+        get "/headings/0101/changes"
       end
     end
 

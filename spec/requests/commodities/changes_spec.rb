@@ -6,7 +6,7 @@ describe 'GET to #index - getting commodity change feed', type: :request do
   describe 'no request format supplied' do
     before do
       VCR.use_cassette("commodities_changes#index") do
-        get "/trade-tariff/commodities/0101210000/changes"
+        get "/commodities/0101210000/changes"
       end
     end
 

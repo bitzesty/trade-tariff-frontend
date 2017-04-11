@@ -19,7 +19,7 @@ describe 'Commodity page', type: :request do
       context 'requested with json format' do
         it 'renders direct API response' do
           VCR.use_cassette('commodities#show_0101300000_api_json_format') do
-            get "/trade-tariff/commodities/0101300000.json"
+            get "/commodities/0101300000.json"
 
             json = JSON.parse(response.body)
 
@@ -32,7 +32,7 @@ describe 'Commodity page', type: :request do
       context 'requested with json HTTP Accept header' do
         it 'renders direct API response' do
           VCR.use_cassette('commodities#show_0101300000_api_json_content_type') do
-            get "/trade-tariff/commodities/0101300000", {}, { 'HTTP_ACCEPT' => 'application/json' }
+            get "/commodities/0101300000", {}, { 'HTTP_ACCEPT' => 'application/json' }
 
             json = JSON.parse(response.body)
 

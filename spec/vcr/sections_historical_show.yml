@@ -45,7 +45,7 @@ http_interactions:
         except where the context otherwise requires, includes a reference to the young
         of that genus or species.\n2. Except where the context otherwise requires,
         throughout the nomenclature any reference to `dried'' products also covers
-        products which have been dehydrated, evaporated or freeze-dried.","_response_info":{"links":[{"rel":"self","href":"/trade-tariff/sections/1?as_of=2014-04-15"},{"rel":"sections","href":"/trade-tariff/sections"}]},"chapters":[{"description":"LIVE
+        products which have been dehydrated, evaporated or freeze-dried.","_response_info":{"links":[{"rel":"self","href":"/sections/1?as_of=2014-04-15"},{"rel":"sections","href":"/sections"}]},"chapters":[{"description":"LIVE
         ANIMALS","goods_nomenclature_item_id":"0100000000","goods_nomenclature_sid":27623,"headings_from":"0101","headings_to":"0106","formatted_description":"Live
         animals","chapter_note_id":331},{"description":"MEAT AND EDIBLE MEAT OFFAL","goods_nomenclature_item_id":"0200000000","goods_nomenclature_sid":27809,"headings_from":"0201","headings_to":"0210","formatted_description":"Meat
         and edible meat offal","chapter_note_id":332},{"description":"FISH AND CRUSTACEANS,

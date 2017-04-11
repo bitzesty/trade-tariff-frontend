@@ -178,11 +178,11 @@ describe SearchController, "GET to #search", type: :controller do
 
     describe 'returns search suggestion in ATOM 1.0 format' do
       specify 'includes link to current page (self link)' do
-        expect(response.body).to include 'trade-tariff/search.atom'
+        expect(response.body).to include '/search.atom'
       end
 
       specify 'includes link to opensearch.xml file (search link)' do
-        expect(response.body).to include 'trade-tariff/opensearch.xml'
+        expect(response.body).to include '/opensearch.xml'
       end
 
       specify 'includes commodity descriptions' do
@@ -190,7 +190,7 @@ describe SearchController, "GET to #search", type: :controller do
       end
 
       specify 'includes links to commodity pages' do
-        expect(response.body).to include 'trade-tariff/commodities/0206809100'
+        expect(response.body).to include '/commodities/0206809100'
       end
     end
   end
