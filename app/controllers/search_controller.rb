@@ -1,6 +1,8 @@
 require 'addressable/uri'
 
 class SearchController < ApplicationController
+  helper_method :search_params
+
   def search
     @results = @search.perform
 
@@ -38,5 +40,11 @@ class SearchController < ApplicationController
 
       format.atom
     end
+  end
+
+  private
+
+  def search_params
+    params.except(:authenticity_token, :_method, :controller, :action)
   end
 end

@@ -43,5 +43,5 @@
   <% end %>
 </article>
 <script type="application/javascript">
-  window.history.pushState({},"", "<%= url_for params.except(:authenticity_token, :_method, :controller, :action) %>".replace(/&amp;/g, '&'));
+  window.history.pushState({},"", "<%= url_for(search_params) %>".replace(/&amp;/g, '&'));
 </script>
