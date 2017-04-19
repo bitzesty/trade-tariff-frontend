@@ -42,3 +42,6 @@
     </div>
   <% end %>
 </article>
+<script type="application/javascript">
+  window.history.pushState({},"", "<%= url_for params.except(:authenticity_token, :_method, :controller, :action) %>".replace(/&amp;/g, '&'));
+</script>
