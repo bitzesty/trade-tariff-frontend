@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe GeographicalAreasController, "GET to #index", type: :controller, vcr: { cassette_name: "geographical_areas#countries" } do
+describe GeographicalAreasController, "GET to #index", type: :controller, vcr: { cassette_name: "geographical_areas#countries", allow_playback_repeats: true } do
   let!(:areas) { GeographicalArea.all }
   let!(:area) { areas[0] }
   let!(:query) { area.long_description.to_s }
