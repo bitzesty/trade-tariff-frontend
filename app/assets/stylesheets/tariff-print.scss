@@ -31,3 +31,6 @@ article dd ul a {
 	left:auto;
 	display:block;
 }
+a.print-link-without-description:after {
+	content: "";
+}
