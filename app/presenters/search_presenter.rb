@@ -5,6 +5,6 @@ class SearchPresenter
   end
 
   def as_json(opts = {})
-    [@search.t, @search_results.as_json(opts)]
+    [@search.q, @search_results.as_json(opts)]
   end
 end
