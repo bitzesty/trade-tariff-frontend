@@ -3,7 +3,7 @@ require 'api_entity'
 class Search
   include ApiEntity
 
-  attr_accessor :t,       # search text query
+  attr_accessor :q,       # search text query
                 :country, # search country
                 :day,
                 :month,
@@ -13,23 +13,19 @@ class Search
   delegate :today?, to: :date
 
   def perform
-    response = self.class.post("/search", body: { t: t, as_of: date.to_s(:db) })
+    response = self.class.post('/search', body: { q: q, as_of: date.to_s(:db) })
 
     raise ApiEntity::Error if response.code == 500
 
     Outcome.new(response)
   end
 
-  def t=(t)
-    @t = t.to_s.gsub(/(\[|\])/,'')
-  end
-
-  def q
-    'trade_tariff'
+  def q=(term)
+    @q = term.to_s.gsub(/(\[|\])/, '')
   end
 
   def countries
-    return [ geographical_area ].compact
+    [ geographical_area ].compact
   end
 
   def geographical_area
@@ -59,7 +55,7 @@ class Search
   end
 
   def contains_search_term?
-    t.present?
+    q.present?
   end
 
   def query_attributes
@@ -69,10 +65,10 @@ class Search
   end
 
   def to_s
-    t
+    q
   end
 
   def id
-    t
+    q
   end
 end

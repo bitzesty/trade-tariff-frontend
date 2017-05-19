@@ -38,12 +38,11 @@
         <div class="search-header js-search-header">
           <div class="searchfield form-group">
             <fieldset class="search-input">
-              <%= f.hidden_field :q, name: 'q' %>
-              <%= f.label :t, "Search the tariff", class: 'form-label' %>
-              <%= f.text_field :t, required: false,
+              <%= f.label :q, "Search the tariff", class: 'form-label' %>
+              <%= f.text_field :q, required: false,
                           size: 21,
                           placeholder: "Enter the name of the goods or commodity code",
-                          name: 't',
+                          name: 'q',
                           class: 'form-control'  %>
             </fieldset>
             <fieldset class="search-submit">
