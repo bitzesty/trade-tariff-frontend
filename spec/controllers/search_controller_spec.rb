@@ -9,13 +9,13 @@ describe SearchController, "GET to #search", type: :controller do
         let(:query) { "01" }
 
         before(:each) do
-          get :search, { t: query }
+          get :search, { q: query }
         end
 
         it { should respond_with(:redirect) }
         it { expect(assigns(:search)).to be_a(Search) }
         it 'assigns search attribute' do
-          expect(assigns[:search].t).to eq query
+          expect(assigns[:search].q).to eq query
         end
       end
 
@@ -23,13 +23,13 @@ describe SearchController, "GET to #search", type: :controller do
         let(:query) { "horses" }
 
         before(:each) do
-          get :search, { t: query }
+          get :search, { q: query }
         end
 
         it { should respond_with(:success) }
         it { expect(assigns(:search)).to be_a(Search) }
         it 'assigns search attribute' do
-          expect(assigns[:search].t).to eq query
+          expect(assigns[:search].q).to eq query
         end
       end
 
@@ -39,13 +39,13 @@ describe SearchController, "GET to #search", type: :controller do
         let(:query) { " !such string should not exist in the database! " }
 
         before(:each) do
-          get :search, { t: query }
+          get :search, { q: query }
         end
 
         it { should respond_with(:success) }
         it { expect(assigns(:search)).to be_a(Search) }
         it 'assigns search attribute' do
-          expect(assigns[:search].t).to eq query
+          expect(assigns[:search].q).to eq query
         end
         it "should display no results" do
           expect(response.body).to match /no results/
@@ -146,7 +146,7 @@ describe SearchController, "GET to #search", type: :controller do
     let(:query) { "horses" }
 
     before(:each) do
-      get :search, { t: query, format: :json }
+      get :search, { q: query, format: :json }
     end
 
     let(:body) { JSON.parse(response.body) }
@@ -173,7 +173,7 @@ describe SearchController, "GET to #search", type: :controller do
     let(:query) { "horses" }
 
     before(:each) do
-      get :search, { t: query, format: :atom }
+      get :search, { q: query, format: :atom }
     end
 
     describe 'returns search suggestion in ATOM 1.0 format' do
