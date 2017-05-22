@@ -3,10 +3,7 @@ version: v1.7.0
 # ignores vulnerabilities until expiry date; change duration by modifying expiry date
 ignore:
   SNYK-RUBY-NOKOGIRI-20299:
-    - '* > capybara@2.13.0':
+    - '*':
         reason: None given
         expires: '2017-06-09T16:51:15.238Z'
-    - '* > govspeak@3.6.2':
-        reason: None given
-        expires: '2017-06-10T16:48:01.357Z'
 patch: {}
