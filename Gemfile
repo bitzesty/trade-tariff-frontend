@@ -9,7 +9,7 @@ gem "httparty", "~> 0.13"
 gem "hashie", "~> 3.4"
 gem "govspeak", "~> 3.6", ">= 3.6.2"
 
-gem "govuk_template", "~> 0.18", ">= 0.18.0"
+gem "govuk_template", "0.20.0"
 gem "addressable", "~> 2.3"
 
 gem "coffee-rails", "~> 4.1", ">= 4.1.0"
