@@ -9,4 +9,7 @@ ignore:
     - '* > govspeak@3.6.2':
         reason: None given
         expires: '2017-06-10T16:48:01.357Z'
+    - '* > coffee-rails@4.1.0':
+        reason: None given
+        expires: '2017-06-21T12:14:17.669Z'
 patch: {}
