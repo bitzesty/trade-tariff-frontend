@@ -70,7 +70,7 @@ describe Commodity do
     end
   end
 
-  describe '.by_code', vcr: { cassette_name: "commodities#codes" } do
+  describe '.by_code', vcr: { cassette_name: 'commodities#codes', allow_playback_repeats: true  } do
     it 'invokes .cached_commodities method' do
       expect(described_class).to receive(:cached_commodities) { [] }
       described_class.by_code('123')

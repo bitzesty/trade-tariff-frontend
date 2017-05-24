@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe CommoditiesController, type: :controller do
-  describe "GET to #codes", vcr: { cassette_name: "commodities#codes" } do
+  describe "GET to #codes", vcr: { cassette_name: 'commodities#codes', allow_playback_repeats: true } do
     let!(:codes) { Commodity.all }
     let!(:code) { codes[0] }
     let!(:query) { code.code.to_s }
