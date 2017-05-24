@@ -39,7 +39,8 @@
           <div class="searchfield form-group">
             <fieldset class="search-input">
               <%= f.label :q, "Search the tariff", class: 'form-label' %>
-              <%= f.text_field :q, required: false,
+              <%= f.select :q, [f.object.q], { name: 'q', selected: f.object.q }, class: 'js-commodity-picker-select form-control' %>
+              <%#= f.text_field :q, required: false,
                           size: 21,
                           placeholder: "Enter the name of the goods or commodity code",
                           name: 'q',

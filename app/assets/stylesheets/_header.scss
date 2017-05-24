@@ -2,13 +2,29 @@
   .searchfield {
     position: relative;
   }
-  input {
+  input, .select2-selection {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
     width: 100%;
     padding: 0 0 0 10px;
     height: 50px;
+  }
+  .select2-selection {
+    .select2-selection__placeholder, .select2-selection__rendered {
+      width: 100%;
+      padding: 0;
+      line-height: 50px;
+    }
+    .select2-selection__placeholder {
+      height: 50px;
+    }
+    .select2-selection__rendered {
+      height: 49px;
+    }
+    .select2-selection__arrow {
+      display: none;
+    }
   }
   .search-submit {
     position: absolute;

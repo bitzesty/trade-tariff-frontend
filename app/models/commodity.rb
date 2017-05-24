@@ -6,6 +6,8 @@ class Commodity < GoodsNomenclature
   include Models::Changeable
   include Models::Declarable
 
+  collection_path '/commodities/codes'
+
   attr_accessor :parent_sid
 
   has_one :heading
@@ -13,6 +15,22 @@ class Commodity < GoodsNomenclature
 
   delegate :goods_nomenclature_item_id, :display_short_code, to: :heading, prefix: true
   alias :short_code :goods_nomenclature_item_id
+
+
+  def self.cached_commodities
+    Rails.cache.fetch(
+      'cached_commodities',
+      expires_in: 24.hours
+    ) do
+      all
+    end
+  end
+
+  def self.by_code(code)
+    cached_commodities.select do |commodity|
+      commodity.code =~ /^#{code}/i
+    end
+  end
 
   def substring=(substring)
     @substring ||= substring.to_i
