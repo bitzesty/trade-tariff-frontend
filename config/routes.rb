@@ -8,6 +8,7 @@ TradeTariffFrontend::Application.routes.draw do
     get "terms", to: "pages#terms"
     get "cookies", to: "pages#cookies"
     get "geographical_areas", to: "geographical_areas#index", as: :geographical_areas
+    get "commodity_codes", to: "commodities#codes", as: :commodity_codes
     match "/search", to: "search#search", as: :perform_search, via: [:get, :post]
     match "a-z-index/:letter", to: "search_references#show",
           via: :get,
