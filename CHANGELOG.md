@@ -1,5 +1,28 @@
 # Change Log
 
+## [May, 27, 2017]
+
+Maintained at now at the Bit Zesty repo - not the alphagov one.
+
+### Added
+- Commodity code search complete
+- Snyk
+- Sentry (Error tracking)
+- New Relic
+- Select2 for geographical area search
+- Custom footer
+- maintance page
+- Robots.txt
+
+### Changed
+- Travis to CircleCI
+- Google analytics account change
+- Updated designs
+- Moved some configuration into environment variables
+
+### Removed
+- GDS report a problem, will replace with another form
+
 ## [August 05, 2016]
 
 ### Added
