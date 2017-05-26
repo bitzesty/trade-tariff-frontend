@@ -10,12 +10,13 @@ describe 'Search page', type: :request do
       it 'should redirect user to exact match page' do
         VCR.use_cassette('tariff_updates#index') do
           VCR.use_cassette('geographical_areas#countries') do
-            visit sections_path
+            visit sections_path(q: '0101210000')
 
             VCR.use_cassette('chapters#show') do
               VCR.use_cassette('search#search_exact') do
                 within("#new_search") do
-                  fill_in 't', with: '0101210000'
+                  # fill_in 'q', with: '0101210000'
+                  # select2('0101210000', css: ".js-commodity-picker-select")
                   click_button 'Search'
                 end
 
@@ -32,11 +33,11 @@ describe 'Search page', type: :request do
       it 'returns result list' do
         VCR.use_cassette('tariff_updates#index') do
           VCR.use_cassette('geographical_areas#countries') do
-            visit sections_path
+            visit sections_path(q: 'horses')
 
             VCR.use_cassette('search#fuzzy_match') do
               within("#new_search") do
-                fill_in 't', with: 'horses'
+                # fill_in 'q', with: 'horses'
                 click_button 'Search'
               end
 
@@ -51,10 +52,10 @@ describe 'Search page', type: :request do
       it 'should display no results message' do
         VCR.use_cassette('tariff_updates#index') do
           VCR.use_cassette('geographical_areas#countries') do
-            visit sections_path
+            visit sections_path(q: "!!!!!!!!!!!!")
 
             within("#new_search") do
-              fill_in 't', with: " !such string should not exist in the database! "
+              # fill_in 'q', with: " !such string should not exist in the database! "
               click_button 'Search'
             end
 
@@ -68,10 +69,10 @@ describe 'Search page', type: :request do
       it "Display section when matching" do
         VCR.use_cassette('tariff_updates#index') do
           VCR.use_cassette('geographical_areas#countries') do
-            visit sections_path
+            visit sections_path(q: "synonym 1")
             VCR.use_cassette("search#duplicate_results") do
               within("#new_search") do
-                fill_in "t", with: "synonym 1"
+                # fill_in "q", with: "synonym 1"
                 click_button "Search"
               end
               expect(page).to have_content("Section I")

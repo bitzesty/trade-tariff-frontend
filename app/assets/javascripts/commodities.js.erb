@@ -554,6 +554,23 @@
               url: '<%= Rails.application.routes.url_helpers.geographical_areas_path(format: :json) %>'
             }
           });
+          $('.js-commodity-picker-select').select2({
+            width: '100%',
+            minimumInputLength: 2,
+            placeholder: 'Enter the name of the goods or commodity code',
+            ajax: {
+              delay: 300,
+              url: '<%= Rails.application.routes.url_helpers.commodity_codes_path(format: :json) %>'
+            },
+            tags: true,
+            createTag: function (params) {
+              return {
+                id: params.term,
+                text: params.term,
+                newOption: true
+              }
+            }
+          });
         }
       },
       /**
