@@ -1,12 +1,12 @@
 # Change Log
 
-## [May, 27, 2917]
+## [May, 27, 2017]
 
 Maintained at now at the Bit Zesty repo - not the alphagov one.
 
 ### Added
 - Commodity code search complete
-- Snky
+- Snyk
 - Sentry (Error tracking)
 - New Relic
 - Select2 for geographical area search
