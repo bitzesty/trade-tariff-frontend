@@ -7,24 +7,24 @@ gem "yajl-ruby", "~> 1.2", require: "yajl"
 gem "multi_json", "~> 1.11"
 gem "httparty", "~> 0.13"
 gem "hashie", "~> 3.4"
-gem "govspeak", "~> 3.6"
+gem "govspeak", "~> 3.6", ">= 3.6.2"
 
-gem "govuk_template", "~> 0.18"
+gem "govuk_template", "0.20.0"
 gem "addressable", "~> 2.3"
 
-gem "coffee-rails", "~> 4.1"
-gem "govuk_frontend_toolkit", "~> 4.18"
+gem "coffee-rails", "~> 4.1", ">= 4.1.0"
+gem "govuk_frontend_toolkit", "~> 4.18", ">= 4.18.4"
 gem 'govuk_elements_rails', '~> 1.2', '>= 1.2.2'
 gem "jquery-rails", "~> 3.1.3"
 gem 'jquery-migrate-rails'
 gem "sass-rails", "~> 5.0.6"
 gem "uglifier", "~> 2.7"
-gem "responders", "~> 2.1"
+gem "responders", "~> 2.1", ">= 2.1.0"
 gem "bootscale", "~> 0.5", require: false
 
 # Logging
 gem "logstash-event"
-gem "lograge"
+gem "lograge", ">= 0.3.6"
 
 # Web Server
 gem "puma"
@@ -35,11 +35,11 @@ gem "dalli", "~> 2.7"
 gem "connection_pool", "~> 2.2"
 
 group :development do
-  gem "web-console"
+  gem "web-console", ">= 3.3.0"
 end
 
 group :development, :test do
-  gem "quiet_assets"
+  gem "quiet_assets", ">= 1.1.0"
   gem "pry-rails"
 end
 

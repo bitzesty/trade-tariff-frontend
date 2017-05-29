@@ -473,7 +473,7 @@
           });
 
           $controlForm.on('click', 'a.reset-country-picker', function (e) {
-             $(this).parents('form:first').find('select').val('');
+            $(this).parents('form:first').find('select').val('');
             $(this).parents('form:first').submit();
             return false;
           });
@@ -515,7 +515,7 @@
                 $descriptionLink = $description.find('>a');
 
             if (!$descriptionLink.length) {
-              $descriptionLink = $description.find('>h1 a')
+              $descriptionLink = $description.find('>h1 a');
               if (!$descriptionLink.length) { return; }
             }
 
@@ -525,7 +525,7 @@
             $this.on('click', function () {
               // clear classes in case content is cached with pjax
               $(this).removeClass('hover');
-              $descriptionLink.removeClass('hover')
+              $descriptionLink.removeClass('hover');
               GOVUK.tariff.utils.triggerClick.call($descriptionLink[0]);
             });
 
@@ -553,6 +553,25 @@
               delay: 300,
               url: '<%= Rails.application.routes.url_helpers.geographical_areas_path(format: :json) %>'
             }
+          });
+          $('.js-commodity-picker-select').select2({
+            width: '100%',
+            minimumInputLength: 2,
+            placeholder: 'Enter the name of the goods or commodity code',
+            ajax: {
+              delay: 300,
+              url: '<%= Rails.application.routes.url_helpers.commodity_codes_path(format: :json) %>'
+            },
+            tags: true,
+            createTag: function (params) {
+              return {
+                id: params.term,
+                text: params.term,
+                newOption: true
+              }
+            }
+          }).on('change', function(e) {
+            $(this).parents('form:first').submit();
           });
         }
       },
@@ -641,7 +660,7 @@
           this.searchHighlight.initialize();
           this.countryPicker.initialize();
           this.breadcrumbs.initialize();
-      },
+      }
   };
 
 }());

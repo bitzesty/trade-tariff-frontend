@@ -25,4 +25,8 @@ Rails.application.config.assets.precompile += %w{
   tariff.css
   tariff-print.css
   gov.uk_logotype_crown.svg
+  apple-touch-icon.png
+  apple-touch-icon-180x180.png
+  apple-touch-icon-167x167.png
+  apple-touch-icon-152x152.png
 }

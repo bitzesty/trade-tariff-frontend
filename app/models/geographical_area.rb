@@ -3,7 +3,7 @@ require 'api_entity'
 class GeographicalArea
   include ApiEntity
 
-  collection_path "/geographical_areas/countries"
+  collection_path '/geographical_areas/countries'
 
   attr_accessor :id, :description, :geographical_area_id
 
@@ -18,7 +18,7 @@ class GeographicalArea
 
   def self.cached_countries
     Rails.cache.fetch(
-      "cached_countries",
+      'cached_countries',
       expires_in: 24.hours
     ) do
       countries
