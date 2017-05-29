@@ -473,7 +473,7 @@
           });
 
           $controlForm.on('click', 'a.reset-country-picker', function (e) {
-             $(this).parents('form:first').find('select').val('');
+            $(this).parents('form:first').find('select').val('');
             $(this).parents('form:first').submit();
             return false;
           });
@@ -515,7 +515,7 @@
                 $descriptionLink = $description.find('>a');
 
             if (!$descriptionLink.length) {
-              $descriptionLink = $description.find('>h1 a')
+              $descriptionLink = $description.find('>h1 a');
               if (!$descriptionLink.length) { return; }
             }
 
@@ -525,7 +525,7 @@
             $this.on('click', function () {
               // clear classes in case content is cached with pjax
               $(this).removeClass('hover');
-              $descriptionLink.removeClass('hover')
+              $descriptionLink.removeClass('hover');
               GOVUK.tariff.utils.triggerClick.call($descriptionLink[0]);
             });
 
@@ -570,6 +570,8 @@
                 newOption: true
               }
             }
+          }).on('change', function(e) {
+            $(this).parents('form:first').submit();
           });
         }
       },
@@ -658,7 +660,7 @@
           this.searchHighlight.initialize();
           this.countryPicker.initialize();
           this.breadcrumbs.initialize();
-      },
+      }
   };
 
 }());
