@@ -13,9 +13,12 @@ class SearchController < ApplicationController
             back_url = Addressable::URI.parse(request.referer)
             back_url.query_values ||= {}
             back_url.query_values = back_url.query_values.merge(@search.query_attributes)
+            if @search.date.today?
+              back_url.query_values = back_url.query_values.except('year', 'month', 'day')
+            end
             return_to = back_url.to_s
           else
-            return_to = sections_path
+            return_to = sections_url
           end
 
           anchor = if params.dig(:search, :anchor).present?

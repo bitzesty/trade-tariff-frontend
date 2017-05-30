@@ -417,6 +417,21 @@
                 $controlForm.on('click', 'a.submit', function(e) {
                   $controlForm.closest('form').submit();
                 });
+
+                $('form').submit(function () {
+                  var today = new Date();
+                  var fday = $('#tariff_date_day'),
+                      fmonth = $('#tariff_date_month'),
+                      fyear = $('#tariff_date_year');
+                  if (today.getDate().toString() == fday.val() &&
+                      (today.getMonth() + 1).toString() == fmonth.val() &&
+                      today.getFullYear().toString() == fyear.val()) {
+                    fday.attr("disabled", "disabled");
+                    fmonth.attr("disabled", "disabled");
+                    fyear.attr("disabled", "disabled");
+                  }
+                  return true;
+                });
             }
           },
           responsivePlaceholder: {
