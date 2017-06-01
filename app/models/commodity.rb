@@ -6,6 +6,7 @@ class Commodity < GoodsNomenclature
   include Models::Changeable
   include Models::Declarable
 
+  # TODO: remove after suggestions deploy
   collection_path '/commodities/codes'
 
   attr_accessor :parent_sid
@@ -16,7 +17,7 @@ class Commodity < GoodsNomenclature
   delegate :goods_nomenclature_item_id, :display_short_code, to: :heading, prefix: true
   alias :short_code :goods_nomenclature_item_id
 
-
+  # TODO: remove after suggestions deploy
   def self.cached_commodities
     Rails.cache.fetch(
       'cached_commodities',
@@ -25,7 +26,7 @@ class Commodity < GoodsNomenclature
       all
     end
   end
-
+  # TODO: remove after suggestions deploy
   def self.by_code(code)
     cached_commodities.select do |commodity|
       commodity.code =~ /^#{code}/i
