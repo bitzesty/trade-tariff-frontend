@@ -207,3 +207,39 @@ describe SearchController, "GET to #search", type: :controller do
     end
   end
 end
+
+describe SearchController, "GET to #codes", type: :controller do
+  describe "GET to #suggestions", vcr: { cassette_name: 'search#suggestions', allow_playback_repeats: true } do
+    let!(:suggestions) { SearchSuggestion.all }
+    let!(:suggestion) { suggestions[0] }
+    let!(:query) { suggestion.value.to_s }
+
+    context 'with term param' do
+      before(:each) do
+        get :suggestions, { term: query, format: :json }
+      end
+
+      let(:body) { JSON.parse(response.body) }
+
+      specify 'returns an Array' do
+        expect(body['results']).to be_kind_of(Array)
+      end
+
+      specify 'includes search results' do
+        expect(body['results']).to include({'id' => suggestion.value, 'text' => suggestion.value})
+      end
+    end
+
+    context 'without term param' do
+      before(:each) do
+        get :suggestions, { format: :json }
+      end
+
+      let(:body) { JSON.parse(response.body) }
+
+      specify 'returns an Array' do
+        expect(body['results']).to be_kind_of(Array)
+      end
+    end
+  end
+end

@@ -16,4 +16,9 @@ module TradeTariffFrontend
   def production?
     ENV["GOVUK_APP_DOMAIN"] == "tariff-frontend-production.cloudapps.digital"
   end
+
+  # Number of suggestions returned to select2
+  def suggestions_count
+    10
+  end
 end
