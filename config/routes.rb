@@ -8,8 +8,11 @@ TradeTariffFrontend::Application.routes.draw do
     get "terms", to: "pages#terms"
     get "cookies", to: "pages#cookies"
     get "geographical_areas", to: "geographical_areas#index", as: :geographical_areas
+    # TODO: remove after suggestions deploy
     get "commodity_codes", to: "commodities#codes", as: :commodity_codes
+
     match "/search", to: "search#search", as: :perform_search, via: [:get, :post]
+    get "search_suggestions", to: "search#suggestions", as: :search_suggestions
     match "a-z-index/:letter", to: "search_references#show",
           via: :get,
           as: :a_z_index,

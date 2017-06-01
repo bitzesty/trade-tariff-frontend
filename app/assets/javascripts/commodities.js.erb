@@ -575,7 +575,7 @@
             placeholder: 'Enter the name of the goods or commodity code',
             ajax: {
               delay: 300,
-              url: '<%= Rails.application.routes.url_helpers.commodity_codes_path(format: :json) %>'
+              url: '<%= Rails.application.routes.url_helpers.search_suggestions_path(format: :json) %>'
             },
             tags: true,
             createTag: function (params) {
