@@ -75,6 +75,24 @@ describe SearchController, "GET to #search", type: :controller do
           it { should redirect_to(chapter_path("01", year: year, month: month, day: day)) }
         end
 
+        context 'valid date params provided for today' do
+          let(:today) { Date.today }
+
+          before(:each) do
+            @request.env['HTTP_REFERER'] = "/#{APP_SLUG}/chapters/01"
+
+            post :search, {
+              year: today.year,
+              month: today.month,
+              day: today.day
+            }
+          end
+
+          it { should respond_with(:redirect) }
+          it { expect(assigns(:search)).to be_a(Search) }
+          it { should redirect_to(chapter_path("01") + '?') }
+        end
+
         context 'valid date time param(as_of) provided' do
           let(:year)    { Forgery(:date).year }
           let(:month)   { Forgery(:date).month(numerical: true) }
