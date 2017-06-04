@@ -94,10 +94,7 @@ describe CommoditiesController, type: :controller do
       it 'redirects to actual version of the commodity page' do
         expect(response.status).to eq 302
         expect(response.location).to eq commodity_url(
-                                            id: commodity_id.first(10),
-                                            year: 2013,
-                                            month: 11,
-                                            day: 11
+                                            id: commodity_id.first(10)
                                         )
       end
     end
