@@ -100,3 +100,8 @@ section, article {
     padding: 0.60em 2em 0.45em 0.67em;
   }
 }
+
+.visible-print {
+  display: none;
+  visibility: hidden;
+}
