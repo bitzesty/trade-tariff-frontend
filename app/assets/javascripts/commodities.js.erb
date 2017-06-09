@@ -580,8 +580,8 @@
             tags: true,
             createTag: function (params) {
               return {
-                id: params.term,
-                text: params.term,
+                id: params.term.toLowerCase(),
+                text: params.term.toLowerCase(),
                 newOption: true
               }
             }
