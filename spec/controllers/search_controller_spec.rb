@@ -75,6 +75,24 @@ describe SearchController, "GET to #search", type: :controller do
           it { should redirect_to(chapter_path("01", year: year, month: month, day: day)) }
         end
 
+        context 'valid date params provided for today' do
+          let(:today) { Date.today }
+
+          before(:each) do
+            @request.env['HTTP_REFERER'] = "/#{APP_SLUG}/chapters/01"
+
+            post :search, {
+              year: today.year,
+              month: today.month,
+              day: today.day
+            }
+          end
+
+          it { should respond_with(:redirect) }
+          it { expect(assigns(:search)).to be_a(Search) }
+          it { should redirect_to(chapter_path("01") + '?') }
+        end
+
         context 'valid date time param(as_of) provided' do
           let(:year)    { Forgery(:date).year }
           let(:month)   { Forgery(:date).month(numerical: true) }
@@ -204,6 +222,42 @@ describe SearchController, "GET to #search", type: :controller do
     context "historical" do
       before { historical_request :search }
       it { should_include_robots_tag! }
+    end
+  end
+end
+
+describe SearchController, "GET to #codes", type: :controller do
+  describe "GET to #suggestions", vcr: { cassette_name: 'search#suggestions', allow_playback_repeats: true } do
+    let!(:suggestions) { SearchSuggestion.all }
+    let!(:suggestion) { suggestions[0] }
+    let!(:query) { suggestion.value.to_s }
+
+    context 'with term param' do
+      before(:each) do
+        get :suggestions, { term: query, format: :json }
+      end
+
+      let(:body) { JSON.parse(response.body) }
+
+      specify 'returns an Array' do
+        expect(body['results']).to be_kind_of(Array)
+      end
+
+      specify 'includes search results' do
+        expect(body['results']).to include({'id' => suggestion.value, 'text' => suggestion.value})
+      end
+    end
+
+    context 'without term param' do
+      before(:each) do
+        get :suggestions, { format: :json }
+      end
+
+      let(:body) { JSON.parse(response.body) }
+
+      specify 'returns an Array' do
+        expect(body['results']).to be_kind_of(Array)
+      end
     end
   end
 end

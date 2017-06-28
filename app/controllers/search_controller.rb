@@ -42,4 +42,12 @@ class SearchController < ApplicationController
       format.atom
     end
   end
+
+  def suggestions
+    search_term = Regexp.escape(params[:term].to_s)
+    start_with = SearchSuggestion.start_with(search_term).sort_by(&:value)
+    results = start_with.map{ |s| { id: s.value, text: s.value } }
+
+    render json: { results: results }
+  end
 end

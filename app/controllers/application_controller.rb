@@ -29,10 +29,14 @@ class ApplicationController < ActionController::Base
   end
 
   def url_options
-    search_invoked? ? { year: search_query.date.year,
-                        month: search_query.date.month,
-                        day: search_query.date.day,
-                        country: search_query.country }.merge(super) : super
+    return super unless search_invoked?
+    return { country: search_query.country }.merge(super) if search_query.date.today?
+    {
+      year: search_query.date.year,
+      month: search_query.date.month,
+      day: search_query.date.day,
+      country: search_query.country
+    }.merge(super)
   end
 
   private
