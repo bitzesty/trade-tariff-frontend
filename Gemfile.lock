@@ -63,6 +63,10 @@ GEM
     debug_inspector (0.0.3)
     diff-lcs (1.3)
     docile (1.1.5)
+    dotenv (2.2.1)
+    dotenv-rails (2.2.1)
+      dotenv (= 2.2.1)
+      railties (>= 3.2, < 5.2)
     erubis (2.7.0)
     execjs (2.7.0)
     factory_girl (4.8.0)
@@ -258,6 +262,7 @@ DEPENDENCIES
   coffee-rails (~> 4.1, >= 4.1.0)
   connection_pool (~> 2.2)
   dalli (~> 2.7)
+  dotenv-rails
   factory_girl_rails (~> 4.8.0)
   forgery
   govspeak (~> 3.6, >= 3.6.2)

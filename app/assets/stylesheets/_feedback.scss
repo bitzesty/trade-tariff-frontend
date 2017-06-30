@@ -1,0 +1,20 @@
+.feedback-form {
+  h1 {
+    margin-top: 20px;
+  }
+
+  .form-hint {
+    margin-bottom: 20px;
+    width: 75%;
+  }
+
+  textarea {
+    width: 75%;
+    display: block;
+  }
+
+  input[type='text'] {
+    width: 50%;
+    display: block;
+  }
+}
