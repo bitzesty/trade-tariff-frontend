@@ -1,10 +1,6 @@
 <p>Hello,</p>
 
-<p>You received new feedback message:</p>
-
-<p>
-  <%= @message %>
-</p>
+<p><%= @message %></p>
 
 <% if @name || @email %>
   <p>Contact details: <%= [@name, @email].compact.join(', ') %></p>

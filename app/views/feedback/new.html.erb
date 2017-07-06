@@ -1,10 +1,11 @@
 <%= form_tag feedback_path, class: 'feedback-form' do %>
   <h1 class="heading-large">Send your feedback</h1>
 
-  <span class="form-hint">
+  <p class="form-hint">
     Don't include any personal information. This form is for submitting feedback. If you have a question
-    related to classifying a good then please contact HMRC.
-  </span>
+    related to classifying a good then
+    <%= link_to 'please contact HMRC', 'https://www.gov.uk/government/organisations/hm-revenue-customs/contact/vat-enquiries', target: '_blank' %>.
+  </p>
 
   <fieldset>
     <div class="form-group">
