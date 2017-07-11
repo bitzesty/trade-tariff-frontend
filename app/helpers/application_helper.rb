@@ -12,6 +12,7 @@ module ApplicationHelper
   end
 
   def breadcrumbs
+    return nil if controller_name == 'feedback'
     crumbs = [
       content_tag(:li, link_to( 'Home', '/' )),
       content_tag(:li, link_to( 'Business and self-employed', 'https://www.gov.uk/browse/business' )),

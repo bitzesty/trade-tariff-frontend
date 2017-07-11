@@ -21,4 +21,13 @@ module TradeTariffFrontend
   def suggestions_count
     10
   end
+
+  # Email of the user who receives all info/error notifications, feedback
+  def from_email
+    ENV["TARIFF_FROM_EMAIL"]
+  end
+
+  def to_email
+    ENV["TARIFF_TO_EMAIL"]
+  end
 end
