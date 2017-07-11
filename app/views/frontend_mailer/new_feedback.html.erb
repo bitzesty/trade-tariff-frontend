@@ -1,0 +1,7 @@
+<p>Hello,</p>
+
+<p><%= @message %></p>
+
+<% if @name || @email %>
+  <p>Contact details: <%= [@name, @email].compact.join(', ') %></p>
+<% end %>

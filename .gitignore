@@ -21,3 +21,4 @@ spec/reports
 cf-ssh.yml
 .ruby-gemset
 .idea/*
+.env
