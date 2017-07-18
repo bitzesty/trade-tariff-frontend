@@ -1,11 +1,4 @@
 class CommoditiesController < GoodsNomenclaturesController
-  # TODO: remove after suggestions deploy
-  def codes
-    results = commodities_by_code.map{ |commodity| { id: commodity.code, text: commodity.code } }
-
-    render json: { results: results }
-  end
-
   def show
     @commodity = CommodityPresenter.new(Commodity.find(params[:id], query_params))
     @heading = @commodity.heading

@@ -1,40 +1,6 @@
 require 'spec_helper'
 
 describe CommoditiesController, type: :controller do
-  describe "GET to #codes", vcr: { cassette_name: 'commodities#codes', allow_playback_repeats: true } do
-    let!(:codes) { Commodity.all }
-    let!(:code) { codes[0] }
-    let!(:query) { code.code.to_s }
-
-    context 'with term param' do
-      before(:each) do
-        get :codes, { term: query, format: :json }
-      end
-
-      let(:body) { JSON.parse(response.body) }
-
-      specify 'returns an Array' do
-        expect(body['results']).to be_kind_of(Array)
-      end
-
-      specify 'includes search results' do
-        expect(body['results']).to include({'id' => code.code, 'text' => code.code})
-      end
-    end
-
-    context 'without term param' do
-      before(:each) do
-        get :codes, { format: :json }
-      end
-
-      let(:body) { JSON.parse(response.body) }
-
-      specify 'returns an Array' do
-        expect(body['results']).to be_kind_of(Array)
-      end
-    end
-  end
-
   describe "GET to #show" do
     context 'existing commodity id provided', vcr: { cassette_name: "commodities#show" } do
       let!(:commodity)   { Commodity.new(attributes_for :commodity) }

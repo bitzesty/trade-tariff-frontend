@@ -56,29 +56,4 @@ describe Commodity do
       expect(commodity.to_param).to eq commodity.code
     end
   end
-
-  describe '.all', vcr: { cassette_name: "commodities#codes" }  do
-    let(:commodities) { Commodity.all }
-
-    it 'fetches commodities from the API' do
-      expect(commodities).to be_kind_of Array
-      expect(commodities).to_not be_blank
-    end
-
-    it 'sorts commodities by code' do
-      expect(commodities.first.code).to be < commodities.last.code
-    end
-  end
-
-  describe '.by_code', vcr: { cassette_name: 'commodities#codes', allow_playback_repeats: true  } do
-    it 'invokes .cached_commodities method' do
-      expect(described_class).to receive(:cached_commodities) { [] }
-      described_class.by_code('123')
-    end
-
-    it 'returns commodities filtered by code' do
-      codes = Commodity.all
-      expect(described_class.by_code(codes[0].code.first(4)).map(&:code)).to include(codes[0].code)
-    end
-  end
 end
