@@ -5,8 +5,14 @@ class FeedbackController < ApplicationController
   end
 
   def create
-    FrontendMailer.new_feedback(params[:message], params[:name], params[:email]).deliver
+    FrontendMailer.new_feedback(params[:message], params[:name], params[:email]).deliver_now
 
-    redirect_to action: :new
+    respond_to do |format|
+      format.html { redirect_to action: :thanks }
+      format.json { head :ok }
+    end
+  end
+
+  def thanks
   end
 end

@@ -12,6 +12,7 @@ TradeTariffFrontend::Application.routes.draw do
     get "commodity_codes", to: "commodities#codes", as: :commodity_codes
     get 'feedback', to: 'feedback#new'
     post 'feedback', to: 'feedback#create'
+    get 'feedback/thanks', to: 'feedback#thanks'
 
     match "/search", to: "search#search", as: :perform_search, via: [:get, :post]
     get "search_suggestions", to: "search#suggestions", as: :search_suggestions
