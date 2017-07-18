@@ -8,8 +8,6 @@ TradeTariffFrontend::Application.routes.draw do
     get "terms", to: "pages#terms"
     get "cookies", to: "pages#cookies"
     get "geographical_areas", to: "geographical_areas#index", as: :geographical_areas
-    # TODO: remove after suggestions deploy
-    get "commodity_codes", to: "commodities#codes", as: :commodity_codes
     get 'feedback', to: 'feedback#new'
     post 'feedback', to: 'feedback#create'
     get 'feedback/thanks', to: 'feedback#thanks'
