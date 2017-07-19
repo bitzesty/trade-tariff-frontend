@@ -34,13 +34,19 @@ gem "rack-timeout", "~> 0.4"
 gem "dalli", "~> 2.7"
 gem "connection_pool", "~> 2.2"
 
+# AWS
+gem "aws-sdk", "~> 2"
+gem "aws-sdk-rails", ">= 1.0.1"
+
 group :development do
   gem "web-console", ">= 3.3.0"
+  gem "letter_opener"
 end
 
 group :development, :test do
   gem "quiet_assets", ">= 1.1.0"
   gem "pry-rails"
+  gem "dotenv-rails"
 end
 
 group :test do

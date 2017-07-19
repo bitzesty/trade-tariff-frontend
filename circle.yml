@@ -10,7 +10,7 @@ dependencies:
     - cf -v
     - curl -v -L -o autopilot https://github.com/contraband/autopilot/releases/download/0.0.3/autopilot-linux
     - chmod +x autopilot
-    - yes | cf install-plugin autopilot
+    - yes | cf install-plugin -f autopilot
 deployment:
   dev:
     branch: master
