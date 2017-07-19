@@ -12,7 +12,8 @@
           type: "POST",
           url: $(this).attr('action'),
           data: data,
-          dataType: "JSON"
+          dataType: "jsonp",
+          contentType: "application/json"
       }).success(function(json){
           form[0].reset();
           $('<h1 class="heading-large thanks">Thanks you for your feedback</h1>')
