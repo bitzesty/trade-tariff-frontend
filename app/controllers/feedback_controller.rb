@@ -7,9 +7,10 @@ class FeedbackController < ApplicationController
   def create
     FrontendMailer.new_feedback(params[:message], params[:name], params[:email]).deliver_now
 
-    respond_to do |format|
-      format.html { redirect_to action: :thanks }
-      format.json { head :ok }
+    if request.xhr?
+      head :ok
+    else
+      redirect_to action: :thanks
     end
   end
 
