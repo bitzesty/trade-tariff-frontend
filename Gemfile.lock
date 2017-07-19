@@ -119,6 +119,10 @@ GEM
       thor (>= 0.14, < 2.0)
     json (1.8.6)
     kramdown (1.10.0)
+    launchy (2.4.3)
+      addressable (~> 2.3)
+    letter_opener (1.4.1)
+      launchy (~> 2.2)
     lograge (0.5.1)
       actionpack (>= 4, < 5.2)
       activesupport (>= 4, < 5.2)
@@ -287,6 +291,7 @@ DEPENDENCIES
   httparty (~> 0.13)
   jquery-migrate-rails
   jquery-rails (~> 3.1.3)
+  letter_opener
   lograge (>= 0.3.6)
   logstash-event
   multi_json (~> 1.11)
