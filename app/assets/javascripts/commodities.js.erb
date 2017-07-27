@@ -398,6 +398,13 @@
               namespace.toggledControl.initialize(element);
             });
 
+            $('form').on('click', 'button[type=submit]', function(e) {
+              var val = $('#q').find('option[data-select2-tag=true]').val();
+              $('.js-commodity-picker-select').val(val).trigger('change');
+
+              this.closest('form').submit();
+            });
+
             this.responsivePlaceholder.initialize();
           },
           toggledControl: {
