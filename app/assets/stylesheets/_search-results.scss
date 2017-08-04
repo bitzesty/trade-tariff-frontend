@@ -51,3 +51,39 @@
     }
   }
 }
+
+.search-results {
+  .results-subset {
+    &.cas-result {
+      li:nth-child(2n) {
+        & > div {
+          background-color: white;
+        }
+      }
+
+      .heading {
+        padding: 0.5em 16px;
+
+        .chapter-code {
+          float: left;
+        }
+
+        .heading-code {
+          margin-left: 0;
+        }
+
+        a {
+          margin-left: 78px;
+        }
+      }
+
+      .chapter {
+        margin: 0;
+      }
+
+      .commodity {
+        margin: 0;
+      }
+    }
+  }
+}

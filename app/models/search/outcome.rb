@@ -20,7 +20,8 @@ class Search
 
     def any?
       (goods_nomenclature_match.present? && goods_nomenclature_match.any?) ||
-      (reference_match.present? && reference_match.any?)
+      (reference_match.present? && reference_match.any?) ||
+      (cas_number_match.present? && cas_number_match.any?)
     end
 
     def goods_nomenclature_match
@@ -31,12 +32,20 @@ class Search
       @reference_match || ReferenceMatch::BLANK_RESULT
     end
 
+    def cas_number_match
+      @cas_number_match || CasNumberMatch::BLANK_RESULT
+    end
+
     def goods_nomenclature_match=(entries)
       @goods_nomenclature_match ||= GoodsNomenclatureMatch.new(entries)
     end
 
     def reference_match=(entries)
       @reference_match ||= ReferenceMatch.new(entries)
+    end
+
+    def cas_number_match=(entries)
+      @cas_number_match ||= CasNumberMatch.new(entries)
     end
 
     def all_reference_matches
@@ -53,7 +62,7 @@ class Search
     end
 
     def gn_headings_without_duplicates
-      goods_nomenclature_match.resulting_headings.delete_if { |gh| reference_match.headings.select { |rh| rh.code == gh.code }.any? }
+      goods_nomenclature_match.resulting_headings.to_a.delete_if { |gh| reference_match.headings.select { |rh| rh.code == gh.code }.any? }
     end
 
     def matches_by_chapter(chapters, headings)
