@@ -15,7 +15,7 @@ gem "addressable", "~> 2.3"
 gem "coffee-rails", "~> 4.2.2", ">= 4.1.0"
 gem "govuk_frontend_toolkit", "~> 4.18", ">= 4.18.4"
 gem 'govuk_elements_rails', '~> 1.2', '>= 1.2.2'
-gem "jquery-rails", "~> 4.0.5"
+gem "jquery-rails", "~> 4.2.2"
 gem 'jquery-migrate-rails'
 gem "sass-rails", "~> 5.0.6"
 gem "uglifier", "~> 2.7"
@@ -44,7 +44,7 @@ group :development do
 end
 
 group :development, :test do
-  gem "quiet_assets", ">= 1.1.0"
+  # gem "quiet_assets", ">= 1.1.0"
   gem "pry-rails"
   gem "dotenv-rails"
 end
