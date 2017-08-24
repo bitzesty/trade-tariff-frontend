@@ -56,7 +56,7 @@ class ApplicationController < ActionController::Base
   end
 
   def search_query
-    @search ||= Search.new(params)
+    @search ||= Search.new(params.permit!.to_h)
   end
 
   def set_layout
