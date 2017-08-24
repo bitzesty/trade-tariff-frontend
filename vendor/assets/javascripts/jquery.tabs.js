@@ -101,7 +101,7 @@ jQuery.fn.tabs = function(settings){
 					.show();
 
 			}
-		};			
+		}
 
 			
 		tabsNav.find('a')
@@ -120,9 +120,9 @@ jQuery.fn.tabs = function(settings){
 		function selectTabFromHash(hash){
 			var currHash = hash || window.location.hash;
 			if(currHash.indexOf("#") == 0){
-        currHash = currHash.split("#")[1];
-      }
-			var hashedTab = tabsNav.find('a[href$=#'+ currHash +']');
+               currHash = currHash.split("#")[1];
+            }
+			var hashedTab = tabsNav.find('a[href$=\\#'+ currHash +']');
 		    if( hashedTab.size() > 0){
 		    	selectTab(hashedTab,true);	
 		    }
@@ -157,7 +157,5 @@ jQuery.fn.tabs = function(settings){
 		if(o.alwaysScrollToTop){
 			$(window)[0].scrollTo(0,0);
 		}
-		
-
 	});
 };
