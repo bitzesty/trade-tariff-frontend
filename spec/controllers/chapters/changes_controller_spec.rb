@@ -5,7 +5,7 @@ describe Chapters::ChangesController, "GET to #index", type: :controller do
 
   describe 'chapter is valid at given date', vcr: { cassette_name: "chapters_changes#index" } do
     before(:each) do
-      get :index, chapter_id: chapter.short_code, format: :atom
+      get :index, params: { chapter_id: chapter.short_code }, format: :atom
     end
 
     it { should respond_with(:success) }
@@ -15,7 +15,7 @@ describe Chapters::ChangesController, "GET to #index", type: :controller do
 
   describe 'chapter has no changes at given date', vcr: { cassette_name: "chapters_changes#index_0100000000_1972-01-01" } do
     before(:each) do
-      get :index, chapter_id: chapter.short_code, as_of: Date.new(1972,1,1), format: :atom
+      get :index, params: { chapter_id: chapter.short_code, as_of: Date.new(1972,1,1) }, format: :atom
     end
 
     it { should respond_with(:success) }
@@ -29,7 +29,7 @@ describe Chapters::ChangesController, "GET to #index", type: :controller do
 
   describe 'chapter is not valid at given date', vcr: { cassette_name: "chapters_changes#index_0100000000_1970-01-01" } do
     before(:each) do
-      get :index, chapter_id: chapter.short_code, as_of: Date.new(1970,1,1), format: :atom
+      get :index, params: { chapter_id: chapter.short_code, as_of: Date.new(1970,1,1) }, format: :atom
     end
 
     it { should respond_with(:not_found) }

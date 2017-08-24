@@ -2,7 +2,7 @@ require "api_entity"
 
 class HealthcheckController < ActionController::Base
   rescue_from ApiEntity::Error do |e|
-    render text: '', status: :error
+    render plain: '', status: :error
   end
 
   def check

@@ -10,7 +10,7 @@ describe SearchReferencesController, 'GET to #show', type: :controller do
   end
 
   before {
-    get :show, letter: 'm'
+    get :show, params: { letter: 'm' }
   }
 
   it 'renders links to relevant headings' do

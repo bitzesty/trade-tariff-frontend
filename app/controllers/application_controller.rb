@@ -4,28 +4,28 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   include TradeTariffFrontend::ViewContext::Controller
 
-  before_filter :set_last_updated
-  before_filter :set_cache
-  before_filter :search_query
-  before_filter :maintenance_mode_if_active
-  before_filter :bots_no_index_if_historical
+  before_action :set_last_updated
+  before_action :set_cache
+  before_action :search_query
+  before_action :maintenance_mode_if_active
+  before_action :bots_no_index_if_historical
 
   layout :set_layout
 
   rescue_from Errno::ECONNREFUSED do |e|
-    render text: '', status: :error
+    render plain: '', status: :error
   end
 
   rescue_from ApiEntity::NotFound do ||
-    render text: '404', status: 404
+    render plain: '404', status: 404
   end
 
   rescue_from ApiEntity::Error do |e|
-    render text: '', status: :error
+    render plain: '', status: :error
   end
 
   rescue_from URI::InvalidURIError do |e|
-    render text: '404', status: 404
+    render plain: '404', status: 404
   end
 
   def url_options

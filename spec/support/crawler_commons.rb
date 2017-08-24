@@ -8,7 +8,7 @@ module CrawlerCommons
   end
 
   def historical_request(action, options={})
-    def_options = {month: 1, year: 2008, day: 1}
-    get action, def_options.merge(options)
+    def_options = { month: 1, year: 2008, day: 1 }
+    get action, params: def_options.merge(options)
   end
 end

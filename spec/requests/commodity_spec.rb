@@ -32,7 +32,7 @@ describe 'Commodity page', type: :request do
       context 'requested with json HTTP Accept header' do
         it 'renders direct API response' do
           VCR.use_cassette('commodities#show_0101300000_api_json_content_type') do
-            get "/trade-tariff/commodities/0101300000", {}, { 'HTTP_ACCEPT' => 'application/json' }
+            get "/trade-tariff/commodities/0101300000", headers: { 'HTTP_ACCEPT' => 'application/json' }
 
             json = JSON.parse(response.body)
 
@@ -64,7 +64,7 @@ describe 'Commodity page', type: :request do
           visit commodity_path("0101300000", country: "AD")
 
           within("#import table.measures") do
-            expect(page).to     have_content 'Andorra'
+            expect(page).to have_content 'Andorra'
           end
 
           within("#import table.measures") do
@@ -96,7 +96,7 @@ describe 'Commodity page', type: :request do
           visit commodity_path("2208909110")
 
           within("#import") do
-            expect(page).to     have_content 'l alc. 100%'
+            expect(page).to have_content 'l alc. 100%'
           end
         end
       end
