@@ -4,7 +4,7 @@ module TradeTariffFrontend
       extend ActiveSupport::Concern
 
       included do
-        before_filter do |controller|
+        before_action do |controller|
           TradeTariffFrontend::Presenter.view_context = controller.view_context
         end
       end

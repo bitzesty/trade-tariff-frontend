@@ -5,7 +5,7 @@ describe HeadingsController, "GET to #show", type: :controller do
     let!(:heading)     { Heading.new(attributes_for :heading) }
 
     before(:each) do
-      get :show, id: heading.to_param
+      get :show, params: { id: heading.to_param }
     end
 
     it { should respond_with(:success) }
@@ -17,7 +17,7 @@ describe HeadingsController, "GET to #show", type: :controller do
     let(:heading_id) { '010111' } # heading 0101 does exist
 
     before(:each) do
-      get :show, id: heading_id
+      get :show, params: { id: heading_id }
     end
 
     it 'redirects to heading page (strips exceeding heading id characters)' do
@@ -30,7 +30,7 @@ describe HeadingsController, "GET to #show", type: :controller do
     let(:heading_id) { '0110' } # heading 0110 does not exist
 
     before(:each) do
-      get :show, id: heading_id
+      get :show, params: { id: heading_id }
     end
 
     it 'redirects to sections index page as fallback' do

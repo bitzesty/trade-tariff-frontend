@@ -9,7 +9,7 @@ describe SearchController, "GET to #search", type: :controller do
         let(:query) { "01" }
 
         before(:each) do
-          get :search, { q: query }
+          get :search, params: { q: query }
         end
 
         it { should respond_with(:redirect) }
@@ -23,7 +23,7 @@ describe SearchController, "GET to #search", type: :controller do
         let(:query) { "horses" }
 
         before(:each) do
-          get :search, { q: query }
+          get :search, params: { q: query }
         end
 
         it { should respond_with(:success) }
@@ -39,7 +39,7 @@ describe SearchController, "GET to #search", type: :controller do
         let(:query) { " !such string should not exist in the database! " }
 
         before(:each) do
-          get :search, { q: query }
+          get :search, params: { q: query }
         end
 
         it { should respond_with(:success) }
@@ -63,7 +63,7 @@ describe SearchController, "GET to #search", type: :controller do
           before(:each) do
             @request.env['HTTP_REFERER'] = "/#{APP_SLUG}/chapters/01"
 
-            post :search, {
+            post :search, params: {
               year: year,
               month: month,
               day: day
@@ -81,7 +81,7 @@ describe SearchController, "GET to #search", type: :controller do
           before(:each) do
             @request.env['HTTP_REFERER'] = "/#{APP_SLUG}/chapters/01"
 
-            post :search, {
+            post :search, params: {
               year: today.year,
               month: today.month,
               day: today.day
@@ -101,7 +101,7 @@ describe SearchController, "GET to #search", type: :controller do
           before(:each) do
             @request.env['HTTP_REFERER'] = "/#{APP_SLUG}/chapters/01"
 
-            post :search, {
+            post :search, params: {
               as_of: "#{year}-#{month}-#{day}"
             }
           end
@@ -114,7 +114,7 @@ describe SearchController, "GET to #search", type: :controller do
         context 'invalid date param provided' do
           context 'date param is a string' do
             before(:each) do
-              post :search, date: "2012-10-1"
+              post :search, params: { date: "2012-10-1" }
             end
 
             it { should respond_with(:redirect) }
@@ -127,10 +127,10 @@ describe SearchController, "GET to #search", type: :controller do
             let(:month)   { Forgery(:date).month(numerical: true) }
 
             before(:each) do
-              post :search, date: {
+              post :search, params: { date: {
                 year: year,
                 month: month,
-              }
+              } }
             end
 
             it { should respond_with(:redirect) }
@@ -144,11 +144,11 @@ describe SearchController, "GET to #search", type: :controller do
             let(:day)     { 'er' }
 
             before(:each) do
-              post :search, date: {
+              post :search, params: { date: {
                 year: year,
                 month: month,
                 day: day
-              }
+              } }
             end
 
             it { should respond_with(:redirect) }
@@ -164,7 +164,7 @@ describe SearchController, "GET to #search", type: :controller do
     let(:query) { "horses" }
 
     before(:each) do
-      get :search, { q: query, format: :json }
+      get :search, params: { q: query }, format: :json
     end
 
     let(:body) { JSON.parse(response.body) }
@@ -191,7 +191,7 @@ describe SearchController, "GET to #search", type: :controller do
     let(:query) { "horses" }
 
     before(:each) do
-      get :search, { q: query, format: :atom }
+      get :search, params: { q: query }, format: :atom
     end
 
     describe 'returns search suggestion in ATOM 1.0 format' do
@@ -234,7 +234,7 @@ describe SearchController, "GET to #codes", type: :controller do
 
     context 'with term param' do
       before(:each) do
-        get :suggestions, { term: query, format: :json }
+        get :suggestions, params: { term: query }, format: :json
       end
 
       let(:body) { JSON.parse(response.body) }
@@ -250,7 +250,7 @@ describe SearchController, "GET to #codes", type: :controller do
 
     context 'without term param' do
       before(:each) do
-        get :suggestions, { format: :json }
+        get :suggestions, format: :json
       end
 
       let(:body) { JSON.parse(response.body) }
