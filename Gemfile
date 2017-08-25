@@ -44,7 +44,6 @@ group :development do
 end
 
 group :development, :test do
-  # gem "quiet_assets", ">= 1.1.0"
   gem "pry-rails"
   gem "dotenv-rails"
 end
