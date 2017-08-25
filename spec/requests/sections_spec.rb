@@ -31,7 +31,7 @@ describe 'Sections Index page', type: :request do
     context 'requested with json HTTP Accept header' do
       it 'renders direct API response' do
         VCR.use_cassette('sections#index_api_json_content_type') do
-          get "/trade-tariff/sections", {}, { 'HTTP_ACCEPT' => 'application/json' }
+          get "/trade-tariff/sections", headers: { 'HTTP_ACCEPT' => 'application/json' }
 
           json = JSON.parse(response.body)
 
@@ -75,7 +75,7 @@ describe 'Section page', type: :request do
     context 'requested with json HTTP Accept header' do
       it 'renders direct API response' do
         VCR.use_cassette('sections#show_1_api_json_content_type') do
-          get "/trade-tariff/sections/1", {}, { 'HTTP_ACCEPT' => 'application/json' }
+          get "/trade-tariff/sections/1", headers: { 'HTTP_ACCEPT' => 'application/json' }
 
           json = JSON.parse(response.body)
 

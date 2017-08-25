@@ -4,7 +4,7 @@ describe ApplicationController, type: :controller do
   describe "behaviour for all subclasses" do
     controller do
       def index
-        render :text => "Jabberwocky"
+        render plain: "Jabberwocky"
       end
     end
 

@@ -8,7 +8,7 @@ describe ChaptersController, "GET to #show", type: :controller do
     let!(:actual_date) { Date.today.to_s(:dashed) }
 
     before(:each) do
-      get :show, id: chapter.to_param
+      get :show, params: { id: chapter.to_param }
     end
 
     it { should respond_with(:success) }
@@ -20,7 +20,7 @@ describe ChaptersController, "GET to #show", type: :controller do
     let(:chapter_id) { '011' } # chapter 0101 actually exists
 
     before(:each) do
-      get :show, id: chapter_id
+      get :show, params: { id: chapter_id }
     end
 
     it 'redirects to chapter page (strips exceeding chapter id characters)' do
@@ -33,7 +33,7 @@ describe ChaptersController, "GET to #show", type: :controller do
     let(:chapter_id) { 'bb' }
 
     before(:each) do
-      get :show, id: chapter_id
+      get :show, params: { id: chapter_id }
     end
 
     it 'redirects to sections index page as fallback' do
