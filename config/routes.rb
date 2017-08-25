@@ -1,6 +1,6 @@
 require 'trade_tariff_frontend'
 
-TradeTariffFrontend::Application.routes.draw do
+Rails.application.routes.draw do
   scope path: "#{APP_SLUG}" do
     get "/", to: redirect("https://www.gov.uk/trade-tariff", status: 302)
     get "healthcheck", to: "healthcheck#check"

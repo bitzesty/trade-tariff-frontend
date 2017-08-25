@@ -1,10 +1,12 @@
-TradeTariffFrontend::Application.configure do
+Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
   config.cache_classes = false
+
+  # Do not eager load code on boot.
   config.eager_load = false
 
   # Log error messages when you accidentally call methods on nil.
@@ -24,6 +26,12 @@ TradeTariffFrontend::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
   config.assets.raise_runtime_errors = true
+
+  # Suppress logger output for asset requests.
+  config.assets.quiet = true
+
+  # Raises error for missing translations
+  # config.action_view.raise_on_missing_translations = true
 
   # Host for Trade Tariff API endpoint
   config.api_host = ENV["TARIFF_API_HOST"] || "http://tariff-api.dev.gov.uk"
