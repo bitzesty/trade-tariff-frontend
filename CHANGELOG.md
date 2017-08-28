@@ -1,6 +1,32 @@
 # Change Log
 
-## [May, 27, 2017]
+## [August 28, 2017]
+
+### Added
+- Set `default_url_options`
+- Search suggestions
+- Tweaking print styles
+- Feedback form
+- `aws-sdk` and `aws-sdk-rails`
+
+### Changed
+- Search term from `params[:search][:q]` to `params[:q]`
+- Not include day, month and year params if they are today
+- Stop using select2 for date select 
+- Used form_tag instead of form_for for searching
+- Downcase search term
+- Enabled search green button
+- `Rails` upgraded to 5.1.3, `coffee-rails`  to 4.2.2, `jquery-rails` to 4.2.2
+
+### Removed
+- `commodity_codes` endpoint
+- `quiet_assets` gem
+- ActionDispatch::ParamsParser::DEFAULT_PARSERS was deprecated and `remove_parsers.rb` initializer was removed
+
+[August 28, 2017]: https://github.com/bitzesty/trade-tariff-frontend/compare/a72e3a4...9c2d125
+
+
+## [May 27, 2017]
 
 Maintained at now at the Bit Zesty repo - not the alphagov one.
 
@@ -22,6 +48,8 @@ Maintained at now at the Bit Zesty repo - not the alphagov one.
 
 ### Removed
 - GDS report a problem, will replace with another form
+
+[May 27, 2017]: https://github.com/bitzesty/trade-tariff-frontend/compare/ac8b487...b120373
 
 ## [August 05, 2016]
 
