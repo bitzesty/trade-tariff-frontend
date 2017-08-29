@@ -16,7 +16,8 @@
 - Used form_tag instead of form_for for searching
 - Downcase search term
 - Enabled search green button
-- `Rails` upgraded to 5.1.3, `coffee-rails`  to 4.2.2, `jquery-rails` to 4.2.2
+- `Rails` upgraded to 5.1.3, `coffee-rails` to 4.2.2, `jquery-rails` to 4.2.2
+- Update `ruby` version to `2.4.1`.
 
 ### Removed
 - `commodity_codes` endpoint
