@@ -161,7 +161,7 @@
   </article><!-- end .tab-pane -->
 
   <!-- Chapter notes tab -->
-  <article class="tab-pane" id="notes" data-id="<%= declarable.to_param %>" data-class="<%=declarable.class.name.downcase.pluralize %>">
+  <article class="js-tab-pane tab-pane" id="notes" data-id="<%= declarable.to_param %>" data-class="<%=declarable.class.name.downcase.pluralize %>">
     <h2 class="heading-medium">Chapter notes</h2>
     <%= render 'shared/notes', section_note: declarable.section.section_note, chapter_note: declarable.chapter.chapter_note %>
   </article><!-- end .tab-pane -->
