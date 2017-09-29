@@ -21,6 +21,7 @@ gem "sass-rails", "~> 5.0.6"
 gem "uglifier", "~> 2.7"
 gem "responders", "~> 2.1", ">= 2.1.0"
 gem "bootscale", "~> 0.5", require: false
+gem "nokogiri", "~>1.8.1"
 
 # Logging
 gem "logstash-event"
