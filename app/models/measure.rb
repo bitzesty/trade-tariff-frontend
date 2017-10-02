@@ -73,6 +73,6 @@ class Measure
   end
 
   def key
-    "#{national? ? 0: 1 }#{vat? ? 0 : 1}#{ geographical_area.children_geographical_areas.any? ? 0 : 1 }#{ geographical_area.description }#{ additional_code_sort }"
+    "#{DEFAULT_GEOGRAPHICAL_AREA_ID == geographical_area.id ? 0 : 1}#{national? ? 0: 1 }#{vat? ? 0 : 1}#{ geographical_area.children_geographical_areas.any? ? 0 : 1 }#{ geographical_area.description }#{ additional_code_sort }"
   end
 end
