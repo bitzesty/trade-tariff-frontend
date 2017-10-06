@@ -1,4 +1,4 @@
-<% if Rails.env.production? && request.domain == "www.trade-tariff.service.gov.uk" %>
+<% if Rails.env.production? && TradeTariffFrontend.production_domain?(request.domain) %>
   User-Agent: *
   Allow: /
   Disallow: /*changes$
