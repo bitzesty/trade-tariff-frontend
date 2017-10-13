@@ -71,8 +71,4 @@ class Measure
       additional_code.code.to_s
     end
   end
-
-  def key
-    "#{national? ? 0: 1 }#{vat? ? 0 : 1}#{ geographical_area.children_geographical_areas.any? ? 0 : 1 }#{ geographical_area.description }#{ additional_code_sort }"
-  end
 end
