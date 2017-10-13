@@ -69,34 +69,4 @@ describe Measure do
       ).to eq false
     end
   end
-
-  describe '#key' do
-    it 'has 0 in the 0 position for national' do
-      measure = Measure.new(
-        attributes_for(:measure, :national, geographical_area: {id: '1234', description: 'Other'})
-      )
-      expect(measure.key[0]).to eq('0')
-    end
-
-    it 'has 1 in the 0 position for not national' do
-      measure = Measure.new(
-        attributes_for(:measure, :eu, geographical_area: {id: '1234', description: 'Other'})
-      )
-      expect(measure.key[0]).to eq('1')
-    end
-
-    it 'has 0 in the 1 position for vat' do
-      measure = Measure.new(
-        attributes_for(:measure, :eu, vat: true, geographical_area: {id: '1234', description: 'Other'})
-      )
-      expect(measure.key[1]).to eq('0')
-    end
-
-    it 'has 1 in the 1 position for not vat' do
-      measure = Measure.new(
-        attributes_for(:measure, :eu, geographical_area: {id: '1234', description: 'Other'})
-      )
-      expect(measure.key[1]).to eq('1')
-    end
-  end
 end
