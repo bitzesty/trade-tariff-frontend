@@ -8,6 +8,13 @@
       </ul>
     <% end %>
 
+    <% if @results.cas_number_match.any? %>
+      <h2 class="heading-small">Results matching &lsquo;<%= @search %>&rsquo;</h2>
+      <ul class="results-subset cas-result js-results-subset">
+        <%= render partial: 'search/cas_result', collection: @results.cas_number_match.all, as: :result %>
+      </ul>
+    <% end %>
+
     <% if @results.reference_matches_by_chapter.any? %>
       <h2 class="heading-small">Results matching &lsquo;<%= @search %>&rsquo;</h2>
       <ul class="results-subset js-results-subset">
