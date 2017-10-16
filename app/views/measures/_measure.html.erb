@@ -5,13 +5,14 @@
         <dt class="has_children">
           <%= measure.geographical_area.description %>
         </dt>
-      <dd>
-        <ul>
-          <% measure.children_geographical_areas.each do |children_geographical_area| %>
-            <li><%= children_geographical_area.description %> (<%= children_geographical_area.id %>)</li>
-          <% end %>
-        </ul>
-      </dd>
+        <dd>
+          <ul>
+            <% measure.children_geographical_areas.each do |children_geographical_area| %>
+              <li><%= children_geographical_area.description %> (<%= children_geographical_area.id %>)</li>
+            <% end %>
+          </ul>
+        </dd>
+      </dl>
     <% else %>
       <%= measure.geographical_area.long_description %>
     <% end %>
