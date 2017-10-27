@@ -7,7 +7,7 @@ describe GeographicalAreasController, "GET to #index", type: :controller, vcr: {
 
   context 'with term param' do
     before(:each) do
-      get :index, { term: query, format: :json }
+      get :index, params: { term: query }, format: :json
     end
 
     let(:body) { JSON.parse(response.body) }
@@ -23,7 +23,7 @@ describe GeographicalAreasController, "GET to #index", type: :controller, vcr: {
 
   context 'without term param' do
     before(:each) do
-      get :index, { format: :json }
+      get :index, format: :json
     end
 
     let(:body) { JSON.parse(response.body) }

@@ -5,7 +5,7 @@ describe Commodities::ChangesController, "GET to #index", type: :controller do
     let!(:commodity)   { Commodity.new(attributes_for :commodity, goods_nomenclature_item_id: "0101210000") }
 
     before(:each) do
-      get :index, commodity_id: commodity.short_code, format: :atom
+      get :index, params: { commodity_id: commodity.short_code }, format: :atom
     end
 
     it { should respond_with(:success) }
@@ -17,7 +17,7 @@ describe Commodities::ChangesController, "GET to #index", type: :controller do
     let!(:commodity)   { Commodity.new(attributes_for :commodity, goods_nomenclature_item_id: "4302130000") }
 
     before(:each) do
-      get :index, commodity_id: commodity.short_code, as_of: Date.new(1998,1,1), format: :atom
+      get :index, params: { commodity_id: commodity.short_code, as_of: Date.new(1998,1,1) }, format: :atom
     end
 
     it { should respond_with(:success) }
@@ -33,7 +33,7 @@ describe Commodities::ChangesController, "GET to #index", type: :controller do
     let!(:commodity)   { Commodity.new(attributes_for :commodity, goods_nomenclature_item_id: "4302130000") }
 
     before(:each) do
-      get :index, commodity_id: commodity.short_code, as_of: Date.new(2013,11,11), format: :atom
+      get :index, params: { commodity_id: commodity.short_code, as_of: Date.new(2013,11,11) }, format: :atom
     end
 
     it { should respond_with(:not_found) }

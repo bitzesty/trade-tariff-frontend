@@ -6,7 +6,7 @@ describe CommoditiesController, type: :controller do
       let!(:commodity)   { Commodity.new(attributes_for :commodity) }
 
       before(:each) do
-        get :show, id: commodity.short_code
+        get :show, params: { id: commodity.short_code }
       end
 
       subject { controller }
@@ -22,7 +22,7 @@ describe CommoditiesController, type: :controller do
       let(:commodity_id) { '01012100001234' } # commodity 0101210000 does exist
 
       before(:each) do
-        get :show, id: commodity_id
+        get :show, params: { id: commodity_id }
       end
 
       it 'redirects to heading page (strips exceeding heading id characters)' do
@@ -35,7 +35,7 @@ describe CommoditiesController, type: :controller do
       let(:commodity_id) { '0101999999' } # commodity 0101999999 does not exist
 
       before(:each) do
-        get :show, id: commodity_id
+        get :show, params: { id: commodity_id }
       end
 
       it 'redirects to heading page (strips exceeding commodity id characters)' do
@@ -54,7 +54,7 @@ describe CommoditiesController, type: :controller do
       end
 
       before(:each) do
-        get :show, id: commodity_id, year: 2000, month: 1, day: 1, country: nil
+        get :show, params: { id: commodity_id, year: 2000, month: 1, day: 1, country: nil }
       end
 
       it 'redirects to actual version of the commodity page' do
