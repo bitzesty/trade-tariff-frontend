@@ -3,34 +3,21 @@ jobs:
   build:
     docker:
       - image: circleci/ruby:2.4.1
-        environment:
-          - RAILS_ENV: test
-          - PG_HOST: localhost
-          - PG_USER: ubuntu
-          - RACK_ENV: test
-      - image: circleci/postgres:9.6.2
-        environment:
-          - POSTGRES_USER: ubuntu
-          - POSTGRES_DB: circleci_test
       - image: elasticsearch:5.3
       - image: redis:3.2.11
     environment:
       - GOVUK_APP_DOMAIN: test
-      - DATABASE_URL: "postgres://ubuntu@localhost:5432/circleci_test"
     steps:
       - checkout
       - run:
           name: Install System Dependencies
-          command: sudo apt-get update -qq && sudo apt-get install -y build-essential postgresql libpq-dev nodejs rake
+          command: sudo apt-get update -qq && sudo apt-get install -y build-essential libpq-dev nodejs rake
       - run:
           name: Install bundler
           command: gem install bundler
       - run:
           name: Install gems
           command: bundle install
-      - run:
-          name: Set up DB
-          command: bundle exec rake db:create db:structure:load --trace
       - run:
           name: "Run Rspec"
           command: |
