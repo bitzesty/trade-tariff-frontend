@@ -3,15 +3,19 @@ jobs:
   build:
     docker:
       - image: circleci/ruby:2.4.1
-      - image: elasticsearch:5.3
-      - image: redis:3.2.11
     environment:
       - GOVUK_APP_DOMAIN: test
     steps:
       - checkout
       - run:
           name: Install System Dependencies
-          command: sudo apt-get update -qq && sudo apt-get install -y build-essential libpq-dev nodejs rake
+          command: sudo apt-get update -qq && sudo apt-get install -y build-essential nodejs rake
+      - run:
+          name: Install 'phantomjs'
+          command: |
+            sudo curl --output /tmp/phantomjs https://s3.amazonaws.com/circle-downloads/phantomjs-2.1.1
+            sudo chmod ugo+x /tmp/phantomjs
+            sudo ln -sf /tmp/phantomjs /usr/local/bin/phantomjs
       - run:
           name: Install bundler
           command: gem install bundler
