@@ -12,7 +12,7 @@ atom_feed do |feed|
     ) do |entry|
       entry.title(change.title)
       entry.content(change.content)
-      entry.updated(change.operation_date.xmlschema)
+      entry.updated(change.operation_date.try(:xmlschema))
 
       entry.author do |author|
         author.name("UK government")
