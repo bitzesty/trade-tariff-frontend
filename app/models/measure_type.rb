@@ -1,3 +1,5 @@
+require 'api_entity'
+
 class MeasureType
   include ApiEntity
 
