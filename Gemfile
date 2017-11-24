@@ -3,7 +3,7 @@ ruby "2.4.1"
 
 gem "rails", "5.1.3"
 
-gem "yajl-ruby", "~> 1.3", require: "yajl"
+gem "yajl-ruby", "~> 1.3.1", require: "yajl"
 gem "multi_json", "~> 1.11"
 gem "httparty", "~> 0.13"
 gem "hashie", "~> 3.4"
