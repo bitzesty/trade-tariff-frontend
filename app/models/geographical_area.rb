@@ -26,8 +26,11 @@ class GeographicalArea
   end
 
   def self.by_long_description(long_description)
+    lookup_regexp = /#{long_description}/i
     cached_countries.select do |country|
-      country.long_description =~ /#{long_description}/i
+      country.long_description =~ lookup_regexp
+    end.sort_by do |country|
+      country.id =~ lookup_regexp || country.description =~ lookup_regexp
     end
   end
 
