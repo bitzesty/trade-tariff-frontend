@@ -8,6 +8,7 @@ class GeographicalAreasController < ApplicationController
         text: geographical_area.long_description
       }
     end
+
     respond_with results: results
   end
 

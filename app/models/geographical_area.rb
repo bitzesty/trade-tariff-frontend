@@ -25,12 +25,17 @@ class GeographicalArea
     end
   end
 
-  def self.by_long_description(long_description)
-    lookup_regexp = /#{long_description}/i
+  def self.by_long_description(term)
+    lookup_regexp = /#{term}/i
     cached_countries.select do |country|
       country.long_description =~ lookup_regexp
     end.sort_by do |country|
-      country.id =~ lookup_regexp || country.description =~ lookup_regexp
+      match_id = country.id =~ lookup_regexp
+      match_desc = country.description =~ lookup_regexp
+      key = ""
+      key << (match_id ? "0" : "1")
+      key << (match_desc || '')
+      key
     end
   end
 
