@@ -37,7 +37,9 @@ module CommoditiesHelper
       <div class='code-text'>#{code[2..3]}</div>
     </div>
     <div class='commodity-code'>
-      <div class='code-text'>#{code[4..-1]}</div>
+      <div class='code-text'>#{code[4..5]}</div>
+      <div class='code-text'>#{code[6..7]}</div>
+      <div class='code-text'>#{code[8..-1]}</div>
     </div>".html_safe
   end
 
