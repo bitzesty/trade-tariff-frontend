@@ -31,4 +31,9 @@
     width: $commodity-code-width-desktop;
   }
   height: $chapter-code-height;
+
+  > .code-text {
+    position: relative;
+    width: 33.333%;
+  }
 }
