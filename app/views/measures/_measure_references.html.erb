@@ -42,15 +42,14 @@
       </thead>
       <tbody>
         <tr>
-          <td><%= measure.legal_act.generating_regulation_code %></td>
+          <td>
+            <%= link_to measure.legal_act.generating_regulation_code, measure.legal_act.url, target: '_blank', rel: 'external', class: 'print-link-without-description' %>
+          </td>
           <td><%= measure.legal_act.validity_start_date %></td>
           <td><%= measure.legal_act.validity_end_date %></td>
           <td><%= measure.legal_act.published_date %></td>
           <td><%= measure.legal_act.officialjournal_number %></td>
           <td><%= measure.legal_act.officialjournal_page %></td>
-          <td>
-            <%= link_to "eurlex", measure.legal_act.url, target: '_blank', rel: 'external', class: 'print-link-without-description' %>
-          </td>
         </tr>
       </tbody>
     </table>
