@@ -1,5 +1,5 @@
 <% if measure.has_measure_conditions? %>
-  <div class='conditions' id='<%= measure.id %>' data-popup='<%= measure.destination %>-<%= measure.id %>-conditions'>
+<div class='conditions' id='<%= measure.id %>' data-popup='<%= measure.destination %>-<%= measure.id %>-conditions'>
   <article>
     <table class="small-table">
       <caption>
@@ -18,7 +18,42 @@
         <%= render partial: "measure_conditions/measure_condition", collection: measure.measure_conditions, locals: { measure: measure } %>
       </tbody>
     </table>
-    <!-- <p><a href="#" class="help-link">What does this mean?</a></p> -->
+  </article>
+</div>
+<% end %>
+
+<% if measure.legal_act.present? %>
+<div class='regulations' id='<%= measure.legal_act.url_safe_code %>' data-popup='<%= measure.destination %>-<%= measure.legal_act.url_safe_code %>-regulations'>
+  <article>
+    <table class="small-table">
+      <caption>
+        <h2>Council Regulation (EEC)</h2>
+      </caption>
+      <thead>
+        <tr>
+          <th>Regulation No.</th>
+          <th>Start date</th>
+          <th>End date</th>
+          <th>Publication date</th>
+          <th>Journal No.</th>
+          <th>Journal page</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= measure.legal_act.generating_regulation_code %></td>
+          <td><%= measure.legal_act.validity_start_date %></td>
+          <td><%= measure.legal_act.validity_end_date %></td>
+          <td><%= measure.legal_act.published_date %></td>
+          <td><%= measure.legal_act.officialjournal_number %></td>
+          <td><%= measure.legal_act.officialjournal_page %></td>
+          <td>
+            <%= link_to "eurlex", measure.legal_act.url, target: '_blank', rel: 'external', class: 'print-link-without-description' %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </article>
 </div>
 <% end %>
@@ -40,7 +75,6 @@
         <%= render footnote %>
       </tbody>
     </table>
-    <!-- <p><a href="#" class="help-link">What does this mean?</a></p> -->
   </article>
 </div>
 <% end %>
