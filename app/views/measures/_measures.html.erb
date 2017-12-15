@@ -36,6 +36,8 @@
                   <%= link_to 'please see related guidance as to when zero VAT applies', 'https://www.gov.uk/guidance/rates-of-vat-on-different-goods-and-services#introduction', target: :_blank %>.
                 <% end %>
               </p>
+            <% else %>
+              <p>We are temporarily unable to find the VAT rate, please refer to the paper tariff.</p>
             <% end %>
             <% if declarable.basic_duty_rate.present? %>
               <p>Importing from outside the EU is subject to a third country duty of <strong><%= declarable.basic_duty_rate.html_safe %></strong> unless subject to other measures.</p>
