@@ -215,6 +215,10 @@ article.tariff {
       background-repeat: no-repeat;
       cursor:pointer;
       position:relative; /* to give z-index */
+
+      &.without_right_margin {
+        margin: 0 !important;
+      }
     }
 
    .description:hover,
@@ -230,6 +234,18 @@ article.tariff {
 
     .open {
       background-position:0 -386px;
+    }
+
+    .sub_heading_commodity_code_block {
+      width: 150px;
+
+      .chapter-code, .heading-code, .commodity-code {
+        float: left;
+      }
+
+      .code-text {
+        text-align: center;
+      }
     }
   }
 
