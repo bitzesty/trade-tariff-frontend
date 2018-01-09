@@ -30,12 +30,7 @@ module CommoditiesHelper
 
   def format_full_code(commodity)
     code = commodity.code.to_s
-    "<div class='chapter-code'>
-      <div class='code-text'>#{code[0..1]}</div>
-    </div>
-    <div class='heading-code'>
-      <div class='code-text'>#{code[2..3]}</div>
-    </div>
+    "#{chapter_and_heading_codes(code)}
     <div class='commodity-code'>
       <div class='code-text'>#{code[4..5]}</div>
       <div class='code-text'>#{code[6..7]}</div>
@@ -43,7 +38,41 @@ module CommoditiesHelper
     </div>".html_safe
   end
 
+  def format_commodity_code_based_on_level(commodity)
+    code = commodity.code.to_s
+
+    if commodity.number_indents > 1
+      code = if code[6..9] == "0000"
+        code[0..5]
+      elsif code[8..9] == "00"
+        code[0..7]
+      else
+        code
+      end
+
+      "#{chapter_and_heading_codes(code)}
+      <div class='commodity-code'>
+        <div class='code-text pull-left'>#{code[4..5]}</div>
+        #{code_text(code[6..7])}
+        #{code_text(code[8..9])}
+      </div>".html_safe
+    end
+  end
+
   private
+
+  def chapter_and_heading_codes(code)
+    "<div class='chapter-code'>
+      <div class='code-text'>#{code[0..1]}</div>
+    </div>
+    <div class='heading-code'>
+      <div class='code-text'>#{code[2..3]}</div>
+    </div>"
+  end
+
+  def code_text(code)
+    "<div class='code-text pull-left'>#{code}</div>" if code.present?
+  end
 
   def tree_node(main_commodity, commodities, depth)
     deeper_node = commodities.select{ |c| c.number_indents == depth + 1 }.first
