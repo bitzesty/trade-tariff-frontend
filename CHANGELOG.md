@@ -1,5 +1,10 @@
 # Change Log
 
+## [January 18, 2018]
+
+### Changed
+- Update `ruby` version to `2.4.3`.
+
 ## [August 28, 2017]
 
 ### Added
@@ -12,7 +17,7 @@
 ### Changed
 - Search term from `params[:search][:q]` to `params[:q]`
 - Not include day, month and year params if they are today
-- Stop using select2 for date select 
+- Stop using select2 for date select
 - Used form_tag instead of form_for for searching
 - Downcase search term
 - Enabled search green button
@@ -193,7 +198,7 @@ Maintained at now at the Bit Zesty repo - not the alphagov one.
 - Upgraded Ruby version to 2.2.2
 - Upgraded Rails version to 4.2.3
 - GOVUK Classic removed
-- API request_forwarder now passes on query strings so we can do pagenatination  
+- API request_forwarder now passes on query strings so we can do pagenatination
 - Fix licences typo
 
 ### Added
