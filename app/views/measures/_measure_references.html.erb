@@ -22,39 +22,39 @@
 </div>
 <% end %>
 
-<% if measure.legal_act.present? %>
-<div class='regulations' id='<%= measure.legal_act.url_safe_code %>' data-popup='<%= measure.destination %>-<%= measure.legal_act.url_safe_code %>-regulations'>
-  <article>
-    <table class="small-table">
-      <caption>
-        <h2>Council Regulation (EEC)</h2>
-      </caption>
-      <thead>
-        <tr>
-          <th>Regulation No.</th>
-          <th>Start date</th>
-          <th>End date</th>
-          <th>Publication date</th>
-          <th>Journal No.</th>
-          <th>Journal page</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>
-            <%= link_to measure.legal_act.generating_regulation_code, measure.legal_act.url, target: '_blank', rel: 'external', class: 'print-link-without-description' %>
-          </td>
-          <td><%= measure.legal_act.validity_start_date %></td>
-          <td><%= measure.legal_act.validity_end_date %></td>
-          <td><%= measure.legal_act.published_date %></td>
-          <td><%= measure.legal_act.officialjournal_number %></td>
-          <td><%= measure.legal_act.officialjournal_page %></td>
-        </tr>
-      </tbody>
-    </table>
-  </article>
-</div>
+<% if !measure.national? && measure.legal_act.present? %>
+  <div class='regulations' id='<%= measure.legal_act.url_safe_code %>' data-popup='<%= measure.destination %>-<%= measure.legal_act.url_safe_code %>-regulations'>
+    <article>
+      <table class="small-table">
+        <caption>
+          <h2>Council Regulation (EEC)</h2>
+        </caption>
+        <thead>
+          <tr>
+            <th>Regulation No.</th>
+            <th>Start date</th>
+            <th>End date</th>
+            <th>Publication date</th>
+            <th>Journal No.</th>
+            <th>Journal page</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <%= link_to measure.legal_act.generating_regulation_code, measure.legal_act.url, target: '_blank', rel: 'external', class: 'print-link-without-description' %>
+            </td>
+            <td><%= measure.legal_act.validity_start_date %></td>
+            <td><%= measure.legal_act.validity_end_date %></td>
+            <td><%= measure.legal_act.published_date %></td>
+            <td><%= measure.legal_act.officialjournal_number %></td>
+            <td><%= measure.legal_act.officialjournal_page %></td>
+          </tr>
+        </tbody>
+      </table>
+    </article>
+  </div>
 <% end %>
 
 <% measure.footnotes.each do |footnote| %>
