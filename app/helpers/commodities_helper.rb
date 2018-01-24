@@ -39,18 +39,15 @@ module CommoditiesHelper
   end
 
   def format_commodity_code_based_on_level(commodity)
-    code = commodity.code.to_s
-
     if commodity.number_indents > 1
-      code = if code[6..9] == "0000"
-        code[0..5]
-      elsif code[8..9] == "00"
-        code[0..7]
-      else
-        code
+      code = commodity_code_without_extra_trailing_zeros(commodity)
+
+      if commodity.has_children? &&
+         commodity.children.any? { |item| code == commodity_code_without_extra_trailing_zeros(item) }
+        code = code[0..-3]
       end
 
-      "#{chapter_and_heading_codes(code)}
+      code = "#{chapter_and_heading_codes(code)}
       <div class='commodity-code'>
         <div class='code-text pull-left'>#{code[4..5]}</div>
         #{code_text(code[6..7])}
@@ -60,6 +57,18 @@ module CommoditiesHelper
   end
 
   private
+
+  def commodity_code_without_extra_trailing_zeros(commodity)
+    code = commodity.code.to_s
+
+    if code[6..9] == "0000"
+      code[0..5]
+    elsif code[8..9] == "00"
+      code[0..7]
+    else
+      code
+    end
+  end
 
   def chapter_and_heading_codes(code)
     "<div class='chapter-code'>
