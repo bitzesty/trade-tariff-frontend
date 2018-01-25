@@ -2,9 +2,9 @@
   <li class="has_children <%= commodity_level(commodity)%><%= leaf_position(commodity) %>">
     <span class="description open without_right_margin" id="commodity-<%= commodity.short_code %>"><%= commodity.to_s.html_safe %></span>
 
-    <div class='sub_heading_commodity_code_block pull-right'>
-      <%= format_commodity_code_based_on_level(commodity) %>
-    </div>
+<!--     <div class='sub_heading_commodity_code_block pull-right'>
+      <%#= format_commodity_code_based_on_level(commodity) %>
+    </div> -->
 
     <ul><%= render commodity.children %></ul>
   </li>
@@ -14,7 +14,8 @@
       <div class="description open" id="commodity-<%= commodity.short_code %>"><%= commodity.to_s.html_safe %></div>
 
       <div class="identifier" aria-describedby="commodity-<%= commodity.short_code %>">
-        <%= format_commodity_code_based_on_level(commodity) %>
+        <%= format_full_code(commodity) %>
+        <%#= format_commodity_code_based_on_level(commodity) %>
       </div>
     <% end %>
   </li>
