@@ -42,7 +42,7 @@
   <td><%= measure.excluded_country_list %></td>
 
   <td class="numerical">
-    <% if measure.legal_act.present? %>
+    <% if !measure.national? && measure.legal_act.present? %>
       <%= link_to measure.legal_act.generating_regulation_code, "##{measure.destination}-#{measure.legal_act.url_safe_code}-regulations", class: 'reference', 'data-popup-ref' => "#{measure.destination}-#{measure.legal_act.url_safe_code}-regulations" %>
     <% end %>
   </td>
