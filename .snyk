@@ -12,7 +12,7 @@ ignore:
     - '* > nokogiri@1.8.1':
         reason: None given
         expires: '2018-01-05T09:50:06.541Z'
-    - '* > nokogiri@1.8.1':
+    - '* > nokogiri@1.8.2':
         reason: None given
         expires: '2018-03-14T13:00:14.090Z'
   SNYK-RUBY-ACTIONCABLE-20338:
