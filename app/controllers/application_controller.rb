@@ -42,13 +42,7 @@ class ApplicationController < ActionController::Base
   private
 
   def set_last_updated
-    @tariff_last_updated ||= Rails.cache.fetch(
-      "tariff_last_updated",
-      expires_in: 1.hour
-    ) do
-      last = TariffUpdate.all.first
-      last ? last.updated_at : nil
-    end
+    @tariff_last_updated ||= TariffUpdate.latest_applied_import_date
   end
 
   def search_invoked?

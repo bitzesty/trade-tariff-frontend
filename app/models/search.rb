@@ -43,7 +43,7 @@ class Search
   end
 
   def filtered_by_date?
-    date.date != Date.current
+    date.date != TariffUpdate.latest_applied_import_date
   end
 
   def filtered_by_country?
