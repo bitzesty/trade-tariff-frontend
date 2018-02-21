@@ -1,5 +1,5 @@
 source "https://rubygems.org"
-ruby "2.4.3"
+ruby '2.5.0'
 
 gem "rails", "5.1.3"
 
@@ -57,7 +57,7 @@ group :test do
   gem "shoulda-matchers", "~> 3.1.1"
   gem "vcr", "~> 3.0.3"
   gem "simplecov", "~> 0.14.1"
-  gem "simplecov-rcov", "~> 0.2.3"
+  gem "simplecov-rcov", git: 'git@github.com:bitzesty/simplecov-rcov.git' # monkey patch for ruby 2.5.0
   gem "rspec-rails", "~> 3.5.2"
   gem "capybara", "~> 2.13.0"
   gem "poltergeist", "~> 1.14.0"
