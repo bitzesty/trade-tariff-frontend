@@ -15,10 +15,41 @@ class TariffUpdate
   end
 
   def updated_at
-    Date.parse(attributes[:updated_at].to_s)
+    date_attribute(:updated_at)
+  end
+
+  def applied_at
+    date_attribute(:applied_at)
   end
 
   def to_s
     "Applied #{update_type} at #{updated_at} (#{filename})"
   end
+
+  class << self
+    def latest_applied_import_date
+      func = Proc.new {
+        last = all.first
+        last.try(:applied_at) || Date.current
+      }
+
+      if Rails.env.test? || Rails.env.development?
+        # Do not cache it in Test and Development environments.
+        #
+        func.call
+      else
+        # Cache for 1 hour
+        #
+        Rails.cache.fetch("tariff_last_updated", expires_in: 1.hour) do
+          func.call
+        end
+      end
+    end
+  end
+
+  private
+
+    def date_attribute(attr_name)
+      Date.parse(attributes[attr_name].to_s)
+    end
 end
