@@ -28,4 +28,5 @@
     </div>
     <%= render 'footnote', footnote: @heading.footnote %>
   </article>
+  <%= render 'shared/notes', section_note: @heading.section.section_note, chapter_note: @heading.chapter.chapter_note %>
 <% end %>
