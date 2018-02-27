@@ -1,5 +1,5 @@
-<% if chapter.chapter_note.present? %>
+<% if chapter&.chapter_note&.present? %>
     <%= render 'shared/chapter_notes' %>
-<% elsif chapter.section.section_note.present? %>
+<% elsif chapter&.section&.section_note&.present? %>
     <%= render 'shared/section_notes' %>
 <%end%>
