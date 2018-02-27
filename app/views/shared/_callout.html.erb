@@ -1,5 +1,5 @@
-<div class="panel panel-border-wide">
-    <p>
-        There are important <%= link_to "chapter notes", "#chapter-notes" %> shown further down this page.
-    </p>
-</div>
+<% if chapter.chapter_note.present? %>
+    <%= render 'shared/chapter_notes' %>
+<% elsif chapter.section.section_note.present? %>
+    <%= render 'shared/section_notes' %>
+<%end%>
