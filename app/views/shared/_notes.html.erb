@@ -2,14 +2,9 @@
 chapter_note ||= false %>
 
 <% if section_note || chapter_note %>
-  <article class="notes">
-
-    <% if section_note && chapter_note %>
-      <h2 class="heading-small">There are important section notes and chapter notes for this part of the tariff:</h2>
-    <% end %>
-
+  <article id="notes">
     <% if chapter_note %>
-      <div id="chapter-notes">
+      <div>
         <% if section_note %>
           <h3 class="heading-small">Chapter notes</h3>
         <% else %>
@@ -19,7 +14,7 @@ chapter_note ||= false %>
       </div>
     <% end %>
     <% if section_note %>
-      <div id="section-notes">
+      <div>
         <% if chapter_note %>
           <h3 class="heading-small">Section notes</h3>
         <% else %>
