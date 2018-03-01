@@ -2,9 +2,9 @@
 chapter_note ||= false %>
 
 <% if section_note || chapter_note %>
-  <article class="notes">
+  <article id="notes">
     <% if chapter_note %>
-      <div id="notes">
+      <div>
         <% if section_note %>
           <h3 class="heading-small">Chapter notes</h3>
         <% else %>
@@ -14,7 +14,7 @@ chapter_note ||= false %>
       </div>
     <% end %>
     <% if section_note %>
-      <div id="notes">
+      <div>
         <% if chapter_note %>
           <h3 class="heading-small">Section notes</h3>
         <% else %>
