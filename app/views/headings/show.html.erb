@@ -9,6 +9,7 @@
   <h2 class="heading-small">Choose the commodity code below that best matches your goods to see more information</h2>
   <p>If your item is not listed by name, it may be shown under what it's used for, what it's made from or 'other'.</p>
   <%= render 'shared/tariff_breadcrumbs', heading: @heading %>
+  <%= render 'shared/callout' %>
   <article class="tariff">
     <div class="tree-key">
       <div class="chapter-code">
@@ -27,4 +28,5 @@
     </div>
     <%= render 'footnote', footnote: @heading.footnote %>
   </article>
+  <%= render 'shared/notes', section_note: @heading.section.section_note, chapter_note: @heading.chapter.chapter_note %>
 <% end %>
