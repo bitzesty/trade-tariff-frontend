@@ -58,6 +58,13 @@ table.small-table {
     display: none;
   }
   &.measures {
+    span.table-line {
+      display: block;
+      & ~ .table-line {
+        margin-top: 0.5em;
+      }
+    }
+
     @media (max-width: $small-table-breakpoint - 1) {
       caption, thead, tbody, th, td, tr {
         display: block;
@@ -89,6 +96,7 @@ table.small-table {
           white-space: nowrap;
         }
       }
+
       td:nth-of-type(1):before { content: 'Country'; }
       td:nth-of-type(2):before { content: 'Measure'; }
       td:nth-of-type(3):before { content: 'Value'; }
@@ -100,8 +108,8 @@ table.small-table {
     }
     @media (min-width: $small-table-breakpoint) {
       td:nth-of-type(1) { width: 18%; }
-      td:nth-of-type(2) { width: 19% }
-      td:nth-of-type(3) { width: 13% }
+      td:nth-of-type(2) { width: 23% }
+      td:nth-of-type(3) { width: 7.4% }
       td:nth-of-type(4) { width: 9% }
       td:nth-of-type(5) { width: 14% }
       td:nth-of-type(6) { width: 9% }
