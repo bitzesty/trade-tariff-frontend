@@ -678,6 +678,10 @@
           $(window).on("resize", function() {
             self.enforceHeights();
           });
+
+          $(".js-tabs a").on("click", function() {
+            self.enforceHeights();
+          });
         },
         enforceHeights: function() {
           var windowWidth = $(window).width();
@@ -688,11 +692,15 @@
             table.find("dt.has_children").each(function() {
               var dt = $(this);
               var secondColumn = dt.closest("td").next();
+              var height = 0;
+              secondColumn.find("span.table-line").each(function() {
+                height += $(this).outerHeight();
+              });
 
               if (windowWidth > 839) {
-                dt.css("height", secondColumn.outerHeight() + "px");
+                dt.css("min-height", height + "px");
               } else {
-                dt.css("height", "auto");
+                dt.css("min-height", 0);
               }
             });
           });
