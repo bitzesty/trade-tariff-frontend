@@ -661,6 +661,43 @@
           }
         }
       },
+      measuresTable: {
+        initialize: function() {
+          this.$tables = $("table.measures");
+
+          if (this.$tables.length <= 0) {
+            return;
+          }
+
+          this.bindEvents();
+          this.enforceHeights()
+        },
+        bindEvents: function() {
+          var self = this;
+
+          $(window).on("resize", function() {
+            self.enforceHeights();
+          });
+        },
+        enforceHeights: function() {
+          var windowWidth = $(window).width();
+
+          this.$tables.each(function() {
+            var table = $(this);
+
+            table.find("dt.has_children").each(function() {
+              var dt = $(this);
+              var secondColumn = dt.closest("td").next();
+
+              if (windowWidth > 839) {
+                dt.css("height", secondColumn.outerHeight() + "px");
+              } else {
+                dt.css("height", "auto");
+              }
+            });
+          });
+        }
+      },
       /**
         @name initialize
         @function
@@ -682,6 +719,7 @@
           this.searchHighlight.initialize();
           this.countryPicker.initialize();
           this.breadcrumbs.initialize();
+          this.measuresTable.initialize();
       }
   };
 
