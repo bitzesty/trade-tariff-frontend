@@ -9,9 +9,6 @@
     <li>
       <a href="#export">Export</a>
     </li>
-    <li>
-      <a href="#notes">Chapter notes</a>
-    </li>
   </ul>
 </div>
 
@@ -70,6 +67,9 @@
       <h2 class="heading-medium">This commodity has a meursing code</h2>
       <p>Use the <%= link_to "Look up Meursing code", "https://www.gov.uk/additional-commodity-code", rel: "external", target: "_blank", title: "Opens in a new window" %> tool to find the additional code required for importing and exporting. To calculate the duty rate, enter the meursing code (without the 7 at the start) into the <%= link_to "meursing calculator", declarable.meursing_tool_link_for(@search.date.to_taric_date), rel: "external", target: "_blank", title: "Opens in a new window" %>.</p>
     <% end %>
+    <!-- Chapter notes content -->
+    <h2 class="heading-medium">Chapter notes</h2>
+    <%= render 'shared/notes', section_note: declarable.section.section_note, chapter_note: declarable.chapter.chapter_note %>
     <h2 class="heading-medium">Binding tariff information</h2>
     <p>You can search the EU EBTI-database for existing <%= link_to "Binding Tariff Information", declarable.bti_url, rel: "external", target: "_blank", title: "Opens in a new window" %> for commodity code <strong><%= declarable.code %></strong>.</p>
     </div>
@@ -148,13 +148,6 @@
     <% end %>
 
   </article><!-- end .tab-pane -->
-
-  <!-- Chapter notes tab -->
-  <article class="js-tab-pane tab-pane" id="notes" data-id="<%= declarable.to_param %>" data-class="<%=declarable.class.name.downcase.pluralize %>">
-    <h2 class="heading-medium">Chapter notes</h2>
-    <%= render 'shared/notes', section_note: declarable.section.section_note, chapter_note: declarable.chapter.chapter_note %>
-  </article><!-- end .tab-pane -->
-
   <!-- Footnote popups -->
   <div id="import-measure-references">
     <%= render partial: 'measures/measure_references', collection: declarable.import_measures.for_country(@search.country), as: 'measure' %>
