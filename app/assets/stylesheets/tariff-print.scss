@@ -88,3 +88,22 @@ a[href^="https://"]:after {
 .js-tab-pane {
   display: block !important;
 }
+
+tr.hidden {
+  display: none !important;
+}
+
+span.table-line {
+  display: block !important;
+  & + .table-line {
+    margin-top: 0.5em !important;
+  }
+}
+
+table.measures {
+  border-collapse: collapse;
+  td {
+    border-collapse: collapse;
+    border-bottom: 1px solid #000;
+  }
+}
