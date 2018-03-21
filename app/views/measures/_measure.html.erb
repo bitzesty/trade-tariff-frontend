@@ -19,18 +19,27 @@
   </td>
 
   <td class="<%= measure.measure_type.id %>">
-    <%= measure.measure_type.description %>
+    <span class='table-line'><%= measure.measure_type.description %></span>
     <% if measure.order_number.present? %>
-    <br />
-      <%= render measure.order_number %>
+      <span class='table-line'>
+        <%= render measure.order_number %>
+      </span>
+    <% end %>
+    <% if measure.additional_code.present? %>
+      <span class='table-line'>
+        Additional code: <strong><%= measure.additional_code.code %></strong>
+      </span>
+
+      <% if measure.additional_code.formatted_description.present? %>
+        <span class='table-line'>
+          <%= measure.additional_code.formatted_description %>
+        </span>
+      <% end %>
     <% end %>
   </td>
 
   <td class="numerical">
     <%= measure.duty_expression.to_s.html_safe %>
-    <% if measure.additional_code.present? %>
-      Additional code: <%= link_to measure.additional_code,  "##{measure.additional_code.id}", class: 'reference', 'data-popup-ref' => "#{measure.additional_code.id}" %>
-    <% end %>
   </td>
 
   <td>
