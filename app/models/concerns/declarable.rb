@@ -7,7 +7,7 @@ module Models
 
       has_one :section
       has_one :chapter
-      has_one :footnote
+      has_many :footnotes
       has_many :import_measures, class_name: 'Measure',
                                  wrapper: MeasureCollection
       has_many :export_measures, class_name: 'Measure',

@@ -50,7 +50,7 @@
             <h2 class="heading-medium">Export</h2>
             <p>The commodity code for exporting and intrastat reporting is <strong><%= declarable.display_export_code %></strong>.</p>
 
-            <% if declarable.footnote.eco? %>
+            <% if declarable.footnotes.select(&:eco?).any? %>
               <p>
                 <%= link_to 'You will need to apply for a licence from the Export Control Organisation (ECO)',
                             'https://www.gov.uk/guidance/uk-strategic-export-control-lists-the-consolidated-list-of-strategic-military-and-dual-use-items',
@@ -62,7 +62,7 @@
           </div>
         </div>
       </div>
-    <%= render 'headings/footnote', footnote: declarable.footnote %>
+    <%= render 'headings/footnote', footnotes: declarable.footnotes %>
     <% if declarable.meursing_code? %>
       <h2 class="heading-medium">This commodity has a meursing code</h2>
       <p>Use the <%= link_to "Look up Meursing code", "https://www.gov.uk/additional-commodity-code", rel: "external", target: "_blank", title: "Opens in a new window" %> tool to find the additional code required for importing and exporting. To calculate the duty rate, enter the meursing code (without the 7 at the start) into the <%= link_to "meursing calculator", declarable.meursing_tool_link_for(@search.date.to_taric_date), rel: "external", target: "_blank", title: "Opens in a new window" %>.</p>

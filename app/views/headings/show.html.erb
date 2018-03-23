@@ -26,7 +26,7 @@
         <%= render @commodities.root_commodities %>
       </ul>
     </div>
-    <%= render 'footnote', footnote: @heading.footnote %>
+    <%= render 'footnote', footnotes: @heading.footnotes %>
   </article>
   <%= render 'shared/notes', section_note: @heading.section.section_note, chapter_note: @heading.chapter.chapter_note %>
 <% end %>
