@@ -1,14 +1,15 @@
-<% if footnote&.code&.present? %>
-    <table class="small-table">
-        <caption class="heading-medium">Commodity footnotes</caption>
-        <thead>
-        <tr>
-            <th scope="col">Code</th>
-            <th scope="col">Description</th>
-        </tr>
-        </thead>
-        <tbody>
-          <%= render footnote %>
-        </tbody>
-    </table>
-<% end %>
+<table class="small-table">
+  <caption class="heading-medium">Commodity footnotes</caption>
+  <thead>
+  <tr>
+      <th scope="col">Code</th>
+      <th scope="col">Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <% footnotes.each do |footnote| %>
+    <% next unless footnote&.code.present? %>
+      <%= render footnote %>
+    <% end %>
+  </tbody>
+</table>
