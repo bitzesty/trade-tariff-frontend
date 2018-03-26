@@ -52,10 +52,6 @@ class Heading < GoodsNomenclature
     short_code
   end
 
-  def footnotes
-    [import_measures.map(&:footnotes).select(&:present?) + export_measures.map(&:footnotes).select(&:present?)].flatten
-  end
-
   def to_s
     formatted_description || description
   end

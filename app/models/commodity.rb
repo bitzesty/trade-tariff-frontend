@@ -55,10 +55,6 @@ class Commodity < GoodsNomenclature
     formatted_description || description
   end
 
-  def footnotes
-    [import_measures.map(&:footnotes).select(&:present?) + export_measures.map(&:footnotes).select(&:present?)].flatten.uniq(&:code).sort_by(&:code)
-  end
-
   def root
     parent_sid.blank?
   end
