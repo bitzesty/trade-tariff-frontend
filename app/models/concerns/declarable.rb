@@ -29,5 +29,13 @@ module Models
     def code
       goods_nomenclature_item_id
     end
+
+    def all_footnotes
+      (
+        footnotes +
+        export_measures.map(&:footnotes).select(&:present?).flatten +
+        import_measures.map(&:footnotes).select(&:present?).flatten
+      ).uniq(&:code)
+    end
   end
 end
