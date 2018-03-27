@@ -7,7 +7,7 @@ module Models
 
       has_one :section
       has_one :chapter
-      has_one :footnote
+      has_many :footnotes
       has_many :import_measures, class_name: 'Measure',
                                  wrapper: MeasureCollection
       has_many :export_measures, class_name: 'Measure',
@@ -28,6 +28,14 @@ module Models
 
     def code
       goods_nomenclature_item_id
+    end
+
+    def all_footnotes
+      (
+        footnotes +
+        export_measures.map(&:footnotes).select(&:present?).flatten +
+        import_measures.map(&:footnotes).select(&:present?).flatten
+      ).uniq(&:code)
     end
   end
 end
