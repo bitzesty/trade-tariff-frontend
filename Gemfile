@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 ruby '~> 2.5.0'
 
-gem "rails", "5.1.3"
+gem "rails", "5.1.5"
 
 gem "yajl-ruby", "~> 1.3.1", require: "yajl"
 gem "multi_json", "~> 1.11"
