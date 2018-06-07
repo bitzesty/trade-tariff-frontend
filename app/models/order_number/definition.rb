@@ -26,9 +26,5 @@ class OrderNumber
     def present?
       status.present?
     end
-
-    def has_description?
-      description.present?
-    end
   end
 end
