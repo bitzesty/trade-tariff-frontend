@@ -11,7 +11,7 @@ class OrderNumber
 
     attr_accessor :initial_volume, :status, :measurement_unit,
                   :measurement_unit_qualifier,
-                  :monetary_unit, :balance
+                  :monetary_unit, :balance, :description
 
     DATE_FIELDS.each do |field|
       define_method(field.to_sym) {
@@ -25,6 +25,10 @@ class OrderNumber
 
     def present?
       status.present?
+    end
+
+    def has_description?
+      description.present?
     end
   end
 end
