@@ -3,7 +3,11 @@ Order No: <%= link_to order_number.number, "##{order_number.id}", class: 'refere
   <article>
     <% if order_number.has_definition? %>
       <table>
-        <caption>Order number <%= order_number.number %>:</caption>
+        <% if order_number.definition.has_description? %>
+          <caption><%= order_number.definition.description %></caption>
+        <% else %>
+          <caption>Order number <%= order_number.number %>:</caption>
+        <% end %>
         <tbody>
           <tr>
             <td>Order Number</td>
