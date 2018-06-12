@@ -4,6 +4,6 @@ module MeasuresHelper
   end
 
   def filter_duty_expression(record)
-    (record.eql? 'NIHIL') ? '' : record
+    record == 'NIHIL' ? '' : record
   end
 end
