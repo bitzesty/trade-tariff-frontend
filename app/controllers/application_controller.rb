@@ -20,9 +20,7 @@ class ApplicationController < ActionController::Base
     render plain: '404', status: 404
   end
 
-  rescue_from ApiEntity::Error do |e|
-    render plain: '', status: :error
-  end
+  rescue_from ApiEntity::Error, with: :render_500
 
   rescue_from URI::InvalidURIError do |e|
     render plain: '404', status: 404
@@ -40,6 +38,13 @@ class ApplicationController < ActionController::Base
   end
 
   private
+
+  def render_500
+    render template: "errors/internal_server_error",
+           layout: "pages",
+           status: 500
+    return false
+  end
 
   def set_last_updated
     @tariff_last_updated ||= TariffUpdate.latest_applied_import_date
