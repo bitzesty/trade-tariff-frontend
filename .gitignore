@@ -17,7 +17,10 @@ rerun.txt
 pickle-email-*.html
 coverage
 spec/reports
-*manifest.yml
+
+# Cloud Foundry manifest files
+*_manifest.yml
+
 cf-ssh.yml
 .ruby-gemset
 .idea/*
