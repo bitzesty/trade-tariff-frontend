@@ -1,23 +1,26 @@
 <% if measure.has_measure_conditions? %>
 <div class='conditions' id='<%= measure.id %>' data-popup='<%= measure.destination %>-<%= measure.id %>-conditions'>
   <article>
-    <table class="small-table">
-      <caption>
-        <h2 class="heading-medium"><%= measure.measure_type.description %> for <%= measure.geographical_area.description %></h2>
-      </caption>
-      <thead>
+    <h2 class="heading-medium"><%= measure.measure_type.description %> for <%= measure.geographical_area.description %></h2>
+
+    <% measure.grouped_measure_conditions(:condition).each do |condition_group, conditions| %>
+      <table class="small-table">
+        <caption>
+          <h5 class="heading-small"><%= condition_group %></h5>
+        </caption>
+        <thead>
         <tr>
-          <th>Condition</th>
           <th>Document code</th>
           <th>Requirement</th>
           <th>Action</th>
           <th>Duty expression</th>
         </tr>
-      </thead>
-      <tbody>
-        <%= render partial: "measure_conditions/measure_condition", collection: measure.measure_conditions, locals: { measure: measure } %>
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+        <%= render partial: "measure_conditions/measure_condition", collection: conditions, locals: { measure: measure } %>
+        </tbody>
+      </table>
+    <% end %>
   </article>
 </div>
 <% end %>

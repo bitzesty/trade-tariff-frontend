@@ -21,6 +21,10 @@ class MeasurePresenter
     measure.measure_conditions.any?
   end
 
+  def grouped_measure_conditions(field)
+    measure.measure_conditions.group_by(&field)
+  end
+
   def has_references?
     measure.measure_conditions.any? || measure.footnotes.any?
   end
