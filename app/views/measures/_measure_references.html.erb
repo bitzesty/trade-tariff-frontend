@@ -22,8 +22,8 @@
 </div>
 <% end %>
 
-<% if !measure.national? && measure.legal_act.present? %>
-  <div class='regulations' id='<%= measure.legal_act.url_safe_code %>' data-popup='<%= measure.destination %>-<%= measure.legal_act.url_safe_code %>-regulations'>
+<% if !measure.national? && measure.legal_acts.present? %>
+  <div class='regulations' id='<%= measure.id %>' data-popup='<%= measure.id %>-regulations'>
     <article>
       <table class="small-table">
         <caption>
@@ -37,20 +37,21 @@
             <th>Publication date</th>
             <th>Journal No.</th>
             <th>Journal page</th>
-            <th></th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>
-              <%= link_to measure.legal_act.generating_regulation_code, measure.legal_act.url, target: '_blank', rel: 'external', class: 'print-link-without-description' %>
-            </td>
-            <td><%= measure.legal_act.validity_start_date %></td>
-            <td><%= measure.legal_act.validity_end_date %></td>
-            <td><%= measure.legal_act.published_date %></td>
-            <td><%= measure.legal_act.officialjournal_number %></td>
-            <td><%= measure.legal_act.officialjournal_page %></td>
-          </tr>
+          <% measure.legal_acts.each do |legal_act| %>
+            <tr>
+              <td>
+                <%= link_to legal_act.regulation_code, legal_act.regulation_url, target: '_blank', rel: 'external', class: 'print-link-without-description' %>
+              </td>
+              <td><%= legal_act.validity_start_date %></td>
+              <td><%= legal_act.validity_end_date %></td>
+              <td><%= legal_act.published_date %></td>
+              <td><%= legal_act.officialjournal_number %></td>
+              <td><%= legal_act.officialjournal_page %></td>
+            </tr>
+          <% end %>
         </tbody>
       </table>
     </article>
