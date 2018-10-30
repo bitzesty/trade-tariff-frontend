@@ -57,25 +57,25 @@
   </div>
 <% end %>
 
-<% measure.footnotes.each do |footnote| %>
-<div class='footnotes' id='<%= footnote.id %>' data-popup='<%= footnote.id %>'>
-  <article>
-    <table class="small-table">
-      <caption>
-        <h2 class="heading-medium">Footnote for measure</h2>
-      </caption>
-      <thead>
+<% if measure.has_measure_footnotes? %>
+  <div class='footnotes' id='<%= measure.id %>' data-popup='<%= measure.destination %>-<%= measure.id %>-footnotes'>
+    <article>
+      <table class="small-table">
+        <caption>
+          <h2 class="heading-medium"><%= measure.measure_type.description %> for <%= measure.geographical_area.description %></h2>
+        </caption>
+        <thead>
         <tr>
           <th>Code</th>
           <th>Description</th>
         </tr>
-      </thead>
-      <tbody>
-        <%= render footnote %>
-      </tbody>
-    </table>
-  </article>
-</div>
+        </thead>
+        <tbody>
+        <%= render partial: "footnotes/footnote", collection: measure.footnotes, locals: { measure: measure } %>
+        </tbody>
+      </table>
+    </article>
+  </div>
 <% end %>
 
 <%= render measure.additional_code if measure.has_additional_code? %>

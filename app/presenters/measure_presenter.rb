@@ -25,6 +25,10 @@ class MeasurePresenter
     measure.measure_conditions.any? || measure.footnotes.any?
   end
 
+  def has_measure_footnotes?
+    measure.footnotes.any?
+  end
+
   def has_additional_code?
     additional_code.present?
   end
