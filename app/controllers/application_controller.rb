@@ -28,12 +28,13 @@ class ApplicationController < ActionController::Base
 
   def url_options
     return super unless search_invoked?
-    return { country: search_query.country }.merge(super) if search_query.date.today?
+    return { country: search_query.country, currency: search_query.currency }.merge(super) if search_query.date.today?
     {
       year: search_query.date.year,
       month: search_query.date.month,
       day: search_query.date.day,
-      country: search_query.country
+      country: search_query.country,
+      currency: search_query.currency
     }.merge(super)
   end
 
@@ -67,7 +68,7 @@ class ApplicationController < ActionController::Base
   end
 
   def query_params
-    { query: { as_of: search_query.date } }
+    { query: { as_of: search_query.date, currency: search_query.currency } }
   end
 
   def set_cache

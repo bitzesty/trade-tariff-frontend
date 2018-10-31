@@ -13,7 +13,7 @@ class Search
   delegate :today?, to: :date
 
   def perform
-    response = self.class.post('/search', body: { q: q, as_of: date.to_s(:db) })
+    response = self.class.post('/search', body: { q: q, as_of: date.to_s(:db), currency: currency })
 
     raise ApiEntity::Error if response.code == 500
 
@@ -42,6 +42,19 @@ class Search
               end
   end
 
+  def currency_name(currency = attributes['currency'])
+    case currency
+      when "GBP"
+        then 'British Pound'
+      else
+        'Euro'
+    end
+  end
+
+  def currency
+    attributes['currency'] || 'EUR'
+  end
+
   def filtered_by_date?
     date.date != TariffUpdate.latest_applied_import_date
   end
@@ -61,7 +74,7 @@ class Search
   def query_attributes
     { 'day'  => date.day,
       'year' => date.year,
-      'month' => date.month }.merge(attributes.slice(:country))
+      'month' => date.month }.merge(attributes.slice(:country, :currency))
   end
 
   def to_s
