@@ -9,8 +9,23 @@
     <%= link_to commodity_path(commodity, request.query_parameters.symbolize_keys), title: "View complete information for this commodity" do %>
       <div class="description open" id="commodity-<%= commodity.short_code %>"><%= commodity.to_s.html_safe %></div>
 
-      <div class="identifier" aria-describedby="commodity-<%= commodity.short_code %>">
-        <%= format_full_code(commodity) %>
+      <div class="commodity__info">
+        <div class="vat" aria-describedby="commodity-vat-title">
+          <% national_vat = commodity.import_measures.vat.national.to_a %>
+          <%= commodity.import_measures.vat.national.to_a.length %>
+          <% if national_vat.count > 0 %>
+            <%= national_vat.map{ |m| "<strong>#{m.measure_type.description}</strong>" }.join(' and ').html_safe + (national_vat.count > 1 ? ',' : '.') %>
+          <% end %>
+        </div>
+        <div class="duty" aria-describedby="commodity-duty-title">
+          <% if commodity.basic_duty_rate.present? %>
+            <%= commodity.basic_duty_rate.html_safe %>
+          <% end %>
+        </div>
+        <div class="supplementary-units" aria-describedby="commodity-supplementary-title"></div>
+        <div class="identifier" aria-describedby="commodity-<%= commodity.short_code %>">
+          <%= format_full_code(commodity) %>
+        </div>
       </div>
     <% end %>
   </li>
