@@ -9,6 +9,8 @@ class Commodity < GoodsNomenclature
   attr_accessor :parent_sid
 
   has_one :heading
+  # vat_measure is used for commodities under the heading only
+  has_one :vat_measure, class_name: 'Measure'
   has_many :ancestors, class_name: 'Commodity'
 
   delegate :goods_nomenclature_item_id, :display_short_code, to: :heading, prefix: true
