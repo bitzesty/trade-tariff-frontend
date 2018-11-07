@@ -40,8 +40,15 @@ module CommoditiesHelper
 
   def format_commodity_code_based_on_level(commodity)
     code = commodity.code.to_s
+    is_declarable = (
+      commodity.number_indents == 1 &&
+      (
+        commodity.leaf? ||
+        commodity.producline_suffix == '80'
+      )
+    )
 
-    if commodity.number_indents > 1
+    if commodity.number_indents > 1 || is_declarable
       code = if code[6..9] == "0000"
         code[0..5]
       elsif code[8..9] == "00"
