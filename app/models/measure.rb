@@ -9,7 +9,7 @@ class Measure
   DEFAULT_GEOGRAPHICAL_AREA_ID = "1011" #ERGA OMNES
 
   has_one :geographical_area
-  has_one :legal_act
+  has_many :legal_acts
   has_one :measure_type
   has_one :suspension_legal_act, class_name: 'LegalAct'
   has_one :additional_code
