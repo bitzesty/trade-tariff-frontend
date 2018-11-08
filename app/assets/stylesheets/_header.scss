@@ -51,6 +51,10 @@
   .change-date-link {
     white-space: nowrap;
   }
+  fieldset.inline {
+    display: inline-block;
+    width: auto;
+  }
 }
 
 a.back-to-previous {
