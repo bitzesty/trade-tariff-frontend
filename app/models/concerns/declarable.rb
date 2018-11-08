@@ -16,7 +16,7 @@ module Models
       attr_accessor :description, :goods_nomenclature_item_id,
                     :number_indents, :goods_nomenclature_sid, :bti_url, :description_plain,
                     :formatted_description, :consigned, :consigned_from, :basic_duty_rate,
-                    :meursing_code
+                    :meursing_code, :producline_suffix
 
       delegate :numeral, to: :section, prefix: true
       delegate :code, :short_code, to: :chapter, prefix: true
