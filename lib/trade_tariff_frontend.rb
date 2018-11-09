@@ -1,5 +1,6 @@
 require 'trade_tariff_frontend/api_constraints'
 require 'trade_tariff_frontend/request_forwarder'
+require 'redis_resolver'
 
 module TradeTariffFrontend
   autoload :Presenter,      'trade_tariff_frontend/presenter'
