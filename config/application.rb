@@ -67,6 +67,8 @@ module TradeTariffFrontend
     # Tells Rails to serve error pages from the app itself, rather than using static error pages in public/
     config.exceptions_app = self.routes
 
+    config.x.http.max_retry = 5
+
     initializer :regenerate_require_cache, before: :load_environment_config do
       Bootscale.regenerate
     end

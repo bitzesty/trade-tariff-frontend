@@ -13,11 +13,21 @@ class Search
   delegate :today?, to: :date
 
   def perform
-    response = self.class.post('/search', body: { q: q, as_of: date.to_s(:db), currency: currency })
+    retries = 0
+    begin
+      response = self.class.post('/search', body: { q: q, as_of: date.to_s(:db), currency: currency })
 
-    raise ApiEntity::Error if response.code == 500
+      raise ApiEntity::Error if response.code == 500
 
-    Outcome.new(response)
+      Outcome.new(response)
+    rescue
+      if retries < Rails.configuration.x.http.max_retry
+        retries += 1
+        retry
+      else
+        raise
+      end
+    end
   end
 
   def q=(term)
