@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     get "opensearch", to: "pages#opensearch", constraints: { format: :xml }
     get "terms", to: "pages#terms"
     get "cookies", to: "pages#cookies"
-    get "exchange_rates", to: "pages#exchange_rates"
+    get "exchange_rates", to: "exchange_rates#index"
     get "geographical_areas", to: "geographical_areas#index", as: :geographical_areas
     get 'feedback', to: 'feedback#new'
     post 'feedback', to: 'feedback#create'

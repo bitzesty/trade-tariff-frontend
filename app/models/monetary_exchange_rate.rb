@@ -14,6 +14,10 @@ class MonetaryExchangeRate
     DateTime.parse(@validity_start_date)
   end
 
+  def operation_date
+    Date.parse(@operation_date)
+  end
+
   def inverse_rate
     (1/exchange_rate.to_f).to_d.truncate(9)
   end
