@@ -4,7 +4,7 @@ describe ExchangeRatesController, 'GET to #index', type: :controller do
   render_views
 
   around(:each) do |example|
-    VCR.use_cassette('monetary_exchange_rates#index') do
+    VCR.use_cassette('exchange_rates#index') do
       example.run
     end
   end
