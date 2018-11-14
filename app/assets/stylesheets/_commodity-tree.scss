@@ -204,6 +204,10 @@ article.tariff {
         float: right;
         width: 440px;
 
+        .lte-ie8 & {
+          float: none !important;
+        }
+
         &:after {
           clear: both;
           content: " ";
