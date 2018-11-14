@@ -11,18 +11,20 @@
 
       <div class="commodity__info">
         <div class="vat" aria-describedby="commodity-vat-title">
-          <% national_vat = commodity.import_measures.vat.national.to_a %>
-          <%= commodity.import_measures.vat.national.to_a.length %>
-          <% if national_vat.count > 0 %>
-            <%= national_vat.map{ |m| "<strong>#{m.measure_type.description}</strong>" }.join(' and ').html_safe + (national_vat.count > 1 ? ',' : '.') %>
-          <% end %>
+          <%= commodity.consolidated_vat %>
         </div>
         <div class="duty" aria-describedby="commodity-duty-title">
-          <% if commodity.basic_duty_rate.present? %>
-            <%= commodity.basic_duty_rate.html_safe %>
+          <% tcd = commodity.additional_info_measures.third_country_duty %>
+          <% if tcd.count > 0 %>
+            <%= tcd.map { |m| m.duty_expression.base }.join("<br />").html_safe %>
           <% end %>
         </div>
-        <div class="supplementary-units" aria-describedby="commodity-supplementary-title"></div>
+        <div class="supplementary-units" aria-describedby="commodity-supplementary-title">
+          <% supplementary = commodity.additional_info_measures.supplementary %>
+          <% if supplementary.count > 0 %>
+            <%= supplementary.map { |m| m.duty_expression.base }.join("<br />").html_safe %>
+          <% end %>
+        </div>
         <div class="identifier" aria-describedby="commodity-<%= commodity.short_code %>">
           <%= format_full_code(commodity) %>
         </div>

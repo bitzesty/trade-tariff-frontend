@@ -39,6 +39,15 @@ class Measure
     vat
   end
 
+  def third_country?
+    measure_type.id == "103"
+  end
+
+  def supplementary?
+    options = ["109", "110", "111"]
+    options.include?(measure_type.id)
+  end
+
   def import?
     import
   end

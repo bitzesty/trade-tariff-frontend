@@ -87,12 +87,12 @@ article.tariff {
 
   .commodity-tree__additional-info {
     float: right;
-    width: 445px;
+    width: 450px;
 
     em {
       font-style: normal;
       float: left;
-      margin-left: 10px;
+      margin-left: 15px;
       text-align: right;
 
       &:first-of-type {
@@ -202,7 +202,7 @@ article.tariff {
 
       .commodity__info {
         float: right;
-        width: 445px;
+        width: 450px;
 
         &:after {
           clear: both;
@@ -211,31 +211,32 @@ article.tariff {
           zoom: 1;
         }
 
-        .vat {
-          width: 40px;
+        .vat,
+        .duty,
+        .supplementary-units {
           display: none;
+          float: left;
+          margin-right: 15px;
+          color: $text-colour;
+          font-weight: normal;
 
           @media (min-width: $headings-large-viewport) {
             display: block;
           }
+        }
+
+        .vat {
+          width: 40px;
+          text-align: right;
         }
 
         .duty {
           width: 115px;
-          display: none;
-
-          @media (min-width: $headings-large-viewport) {
-            display: block;
-          }
         }
 
         .supplementary-units {
           width: 100px;
-          display: none;
-
-          @media (min-width: $headings-large-viewport) {
-            display: block;
-          }
+          text-align: right;
         }
       }
 
@@ -288,13 +289,30 @@ article.tariff {
     background-position: 0 -100px;
   }
 
+  li:not(.has_children) .description {
+    color: $link-colour;
+    padding-left: px($expand-arrow-space);
+    margin-left: -1 * px($expand-arrow-space);
+    @media (min-width: $headings-large-viewport) {
+      width: calc(100% - #{$identifier-width-desktop + 45px});
+      float: left;
+    }
+    cursor:pointer;
+    position:relative; /* to give z-index */
+
+    &.without_right_margin {
+      margin: 0 !important;
+    }
+  }
+
   li.has_children {
     .description {
       color: $link-colour;
       padding-left: px($expand-arrow-space);
       margin-left: -1 * px($expand-arrow-space);
       @media (min-width: $headings-large-viewport) {
-        margin-right: $identifier-width-desktop + 45px;
+        width: calc(100% - #{$identifier-width-desktop + 45px});
+        float: left;
       }
       background-image: image-url("expand-collapse-transparent_commodity-tree.png");
       background-position: 0 4px;
