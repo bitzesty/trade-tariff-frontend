@@ -63,29 +63,49 @@ module ApiEntity
 
   module ClassMethods
     def all(opts = {})
-      resp = get(collection_path, opts)
-      case resp.code
-      when 404
-        raise ApiEntity::NotFound.new resp['error']
-      when 500
-        raise ApiEntity::Error.new resp['error']
-      when 502
-        raise ApiEntity::Error.new "502 Bad Gateway"
+      retries = 0
+      begin
+        resp = get(collection_path, opts)
+        case resp.code
+          when 404
+            raise ApiEntity::NotFound.new resp['error']
+          when 500
+            raise ApiEntity::Error.new resp['error']
+          when 502
+            raise ApiEntity::Error.new "502 Bad Gateway"
+        end
+        resp.map {|entry_data| new(entry_data)}
+      rescue
+        if retries < Rails.configuration.x.http.max_retry
+          retries += 1
+          retry
+        else
+          raise
+        end
       end
-      resp.map { |entry_data| new(entry_data) }
     end
 
     def find(id, opts = {})
-      resp = get("/#{self.name.pluralize.parameterize}/#{id}", opts)
-      case resp.code
-      when 404
-        raise ApiEntity::NotFound
-      when 500
-        raise ApiEntity::Error.new resp['error']
-      when 502
-        raise ApiEntity::Error.new resp['error']
+      retries = 0
+      begin
+        resp = get("/#{self.name.pluralize.parameterize}/#{id}", opts)
+        case resp.code
+        when 404
+          raise ApiEntity::NotFound
+        when 500
+          raise ApiEntity::Error.new resp['error']
+        when 502
+          raise ApiEntity::Error.new resp['error']
+        end
+        new(resp)
+      rescue
+        if retries < Rails.configuration.x.http.max_retry
+          retries += 1
+          retry
+        else
+          raise
+        end
       end
-      new(resp)
     end
 
     def has_one(association, opts = {})
