@@ -26,7 +26,7 @@ class MeasurePresenter
       {
           condition: condition.condition,
           partial_type: case condition.condition_code
-                          when "A", "B", "C", "H", "Q", "Y"
+                          when "A", "B", "C", "H", "Q", "Y", "Z"
                             "document"
                           when "R", "S", "U"
                             "ratio"
