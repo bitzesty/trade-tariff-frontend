@@ -11,7 +11,7 @@
   <tbody>
     <% conditions.each do |condition| %>
       <tr>
-        <td>Greater than or equal to <%= condition.requirement %></td>
+        <td>Greater than or equal to <%= condition.requirement.to_s.html_safe %></td>
         <td><%= condition.action %></td>
       </tr>
     <% end %>

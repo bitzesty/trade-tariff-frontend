@@ -15,11 +15,11 @@
     <tr>
       <td class="numerical"><%= condition.document_code %></td>
       <td>
-        <%= condition.requirement %>
+        <%= condition.requirement.to_s.html_safe %>
       </td>
       <td><%= condition.action %></td>
       <td class="numerical">
-        <%= condition.duty_expression %>
+        <%= condition.duty_expression.to_s.html_safe %>
       </td>
     </tr>
   <% end %>
