@@ -1,0 +1,102 @@
+image:
+  name: ruby:2.5.0
+
+variables:
+  GOVUK_APP_DOMAIN: test
+  REDIS_URL: redis://redis:6379
+  PHANTOM_JS: phantomjs-2.1.1-linux-x86_64
+
+services:
+  - name: redis:3.2.11
+
+stages:
+  - test
+  - deploy
+
+test:
+  stage: test
+  before_script:
+    - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
+    - eval $(ssh-agent -s)
+    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - ssh-keyscan gitlab.bitzesty.com > ~/.ssh/known_hosts
+    - chmod 644 ~/.ssh/known_hosts
+    - echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+    - chmod 400 ~/.ssh/id_rsa
+    - wget https://bitbucket.org/ariya/phantomjs/downloads/$PHANTOM_JS.tar.bz2
+    - tar xvjf $PHANTOM_JS.tar.bz2
+    - mv $PHANTOM_JS /usr/local/share
+    - ln -sf /usr/local/share/$PHANTOM_JS/bin/phantomjs /usr/local/bin
+    - phantomjs --version
+    - apt-get update -qy
+    - apt-get install -y build-essential nodejs rake
+    - gem install bundler
+    - bundle install --jobs 4 --retry 3 --path vendor
+  script:
+    - RAILS_ENV=test RAILS_DISABLE_TEST_LOG=true bundle exec rspec spec/ --tag '~skip_ci' --profile 10 --format RspecJunitFormatter --out rspec.xml --format progress
+  artifacts:
+    reports:
+      junit: rspec.xml
+  cache:
+    key: gems-cache
+    paths:
+      - vendor/ruby
+
+code_quality:
+  image: docker:stable
+  variables:
+    DOCKER_DRIVER: overlay2
+  allow_failure: true
+  services:
+    - docker:stable-dind
+  script:
+    - export SP_VERSION=$(echo "$CI_SERVER_VERSION" | sed 's/^\([0-9]*\)\.\([0-9]*\).*/\1-\2-stable/')
+    - docker run
+        --env SOURCE_CODE="$PWD"
+        --volume "$PWD":/code
+        --volume /var/run/docker.sock:/var/run/docker.sock
+        "registry.gitlab.com/gitlab-org/security-products/codequality:$SP_VERSION" /code
+  artifacts:
+      paths: [gl-code-quality-report.json]
+
+deploy_dev:
+  stage: deploy
+  script:
+    - curl -v -L -o cf-cli_amd64.deb 'https://cli.run.pivotal.io/stable?release=debian64&source=github'
+    - sudo dpkg -i cf-cli_amd64.deb
+    - cf -v
+    - curl -v -L -o autopilot https://github.com/contraband/autopilot/releases/download/0.0.3/autopilot-linux
+    - chmod +x autopilot
+    - cf install-plugin autopilot -f
+    - CF_SPACE=development CF_APP=tariff-frontend-dev CF_APP_WORKER=tariff-frontend-worker-dev ./bin/deploy
+  only:
+    - master
+
+deploy_staging:
+  stage: deploy
+  script:
+    - curl -v -L -o cf-cli_amd64.deb 'https://cli.run.pivotal.io/stable?release=debian64&source=github'
+    - sudo dpkg -i cf-cli_amd64.deb
+    - cf -v
+    - curl -v -L -o autopilot https://github.com/contraband/autopilot/releases/download/0.0.3/autopilot-linux
+    - chmod +x autopilot
+    - cf install-plugin autopilot -f
+    - CF_SPACE=staging CF_APP=tariff-frontend-staging CF_APP_WORKER=tariff-frontend-worker-staging ./bin/deploy
+  only:
+    - staging
+
+deploy_production:
+  stage: deploy
+  script:
+    - curl -v -L -o cf-cli_amd64.deb 'https://cli.run.pivotal.io/stable?release=debian64&source=github'
+    - sudo dpkg -i cf-cli_amd64.deb
+    - cf -v
+    - curl -v -L -o autopilot https://github.com/contraband/autopilot/releases/download/0.0.3/autopilot-linux
+    - chmod +x autopilot
+    - cf install-plugin autopilot -f
+    - CF_SPACE=production CF_APP=tariff-frontend-production CF_APP_WORKER=tariff-frontend-worker-production ./bin/deploy
+  when: manual
+  only:
+  - production

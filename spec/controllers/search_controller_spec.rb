@@ -180,7 +180,7 @@ describe SearchController, "GET to #search", type: :controller do
 
       specify 'second argument in Array is Array of suggestions' do
         expect(body.second).to be_kind_of Array
-        expect(body.second.first).to eq 'Live Horses, Asses, Mules And Hinnies'
+        expect(body.second.first).to eq 'Meat Of Horses, Asses, Mules Or Hinnies, Fresh, Chilled Or Frozen'
       end
     end
   end
