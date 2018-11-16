@@ -57,7 +57,7 @@
               <%= select_tag :q, options_for_select([@search.q ]), name: 'q', class: 'js-commodity-picker-select form-control' %>
             </fieldset>
             <fieldset class="search-submit">
-              <%= button_tag 'Search', class: 'button' %>
+              <input class="button" type="submit" name="new_search" value="Search">
             </fieldset>
           </div>
 

@@ -27,9 +27,4 @@ describe SearchReferencesController, 'GET to #show', type: :controller do
     expect(response.body).to include 'Machine Tools'
     expect(response.body).to include '/sections/16'
   end
-
-  it 'renders links to relevant commodities' do
-    expect(response.body).to include 'Mtest'
-    expect(response.body).to include '/commodities/010121000'
-  end
 end
