@@ -10,7 +10,7 @@ class Commodity < GoodsNomenclature
 
   has_one :heading
   # vat_measure is used for commodities under the heading only
-  has_many :additional_info_measures, class_name: 'Measure', wrapper: MeasureCollection
+  has_many :overview_measures, class_name: 'Measure', wrapper: MeasureCollection
   has_many :ancestors, class_name: 'Commodity'
 
   delegate :goods_nomenclature_item_id, :display_short_code, to: :heading, prefix: true
@@ -78,7 +78,7 @@ class Commodity < GoodsNomenclature
   end
 
   def consolidated_vat
-    national_vat = additional_info_measures.vat
+    national_vat = overview_measures.vat
 
     return "" if national_vat.count == 0
 
