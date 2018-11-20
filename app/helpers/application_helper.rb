@@ -33,6 +33,10 @@ module ApplicationHelper
     active_class_for(controller_methods: %w[search_references])
   end
 
+  def wider_page?
+    %w[sections chapters headings commodities].include?(params[:controller])
+  end
+
   private
 
   def active_class_for(controller_methods:)

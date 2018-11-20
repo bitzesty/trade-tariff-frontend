@@ -12,4 +12,8 @@ class DutyExpression
       base
     end
   end
+
+  def amount
+    base.gsub("%", "").to_i
+  end
 end

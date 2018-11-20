@@ -9,6 +9,8 @@ class Commodity < GoodsNomenclature
   attr_accessor :parent_sid
 
   has_one :heading
+  # vat_measure is used for commodities under the heading only
+  has_many :overview_measures, class_name: 'Measure', wrapper: MeasureCollection
   has_many :ancestors, class_name: 'Commodity'
 
   delegate :goods_nomenclature_item_id, :display_short_code, to: :heading, prefix: true
@@ -73,5 +75,13 @@ class Commodity < GoodsNomenclature
     else
       false
     end
+  end
+
+  def consolidated_vat
+    national_vat = overview_measures.vat
+
+    return "" if national_vat.count == 0
+
+    national_vat.map { |n| n.duty_expression.amount }.min.to_s + " %"
   end
 end

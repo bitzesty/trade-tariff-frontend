@@ -1,5 +1,9 @@
 $(document).ready(function() {
 
+  if ($("[data-sticky-element]").length === 0) {
+    return;
+  }
+
   $("[data-sticky-element]").each(function() {
     var el = $(this);
 
