@@ -3,6 +3,8 @@
   <link rel='alternate' type='application/json' href='<%= heading_url(@heading, format: :json) %>' title='Heading information page in JSON format' />
 <% end %>
 
+<% content_for :body_classes, "page--wide" %>
+
 <% if @heading.declarable? %>
   <%= render 'declarables/declarable', declarable: @heading %>
 <% else %>
@@ -21,7 +23,17 @@
       <div class="key-text">Heading code</div>
     </div>
     <div class="commodity-tree">
-      <p class="commodity-tree-note"><span>The number following each commodity's </span><em class="description">Description</em><span> is its </span><em class="commcode">Commodity code</em></p>
+      <div class="commodity-tree-note">
+        <span>The number following each commodity's description is its commodity code.</span>
+        <em class="level">Level</em>
+        <em class="description">Description</em>
+        <div class="commodity-tree__additional-info">
+          <em class="vat" id="commodity-vat-title">VAT</em>
+          <em class="duty" id="commodity-duty-title">Third country duty</em>
+          <em class="supplementary-units" id="commodity-supplementary-title">Unit</em>
+          <em class="commcode">Commodity code</em>
+        </div>
+      </div>
       <ul class="commodities js-commodities">
         <%= render @commodities.root_commodities %>
       </ul>
