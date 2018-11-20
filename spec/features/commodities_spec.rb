@@ -2,8 +2,10 @@ require "spec_helper"
 
 describe "JS behaviour", js: true do
   before {
-    VCR.use_cassette("commodities#show_0201300020") do
-      visit commodity_path("0201300020")
+    VCR.use_cassette('geographical_areas#countries') do
+      VCR.use_cassette("commodities#show_0201300020") do
+        visit commodity_path("0201300020", day: 31, month: 5, year: 2014)
+      end
     end
   }
 
