@@ -9,7 +9,7 @@ class Measure
   DEFAULT_GEOGRAPHICAL_AREA_ID = "1011" #ERGA OMNES
 
   has_one :geographical_area
-  has_one :legal_act
+  has_many :legal_acts
   has_one :measure_type
   has_one :suspension_legal_act, class_name: 'LegalAct'
   has_one :additional_code
@@ -37,6 +37,15 @@ class Measure
 
   def vat?
     vat
+  end
+
+  def third_country?
+    measure_type.id == "103"
+  end
+
+  def supplementary?
+    options = ["109", "110", "111"]
+    options.include?(measure_type.id)
   end
 
   def import?

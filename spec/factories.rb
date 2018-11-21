@@ -34,6 +34,13 @@ FactoryGirl.define do
     parent_sid { Forgery(:basic).number }
   end
 
+  factory :monetary_exchange_rate do
+    child_monetary_unit_code "GBP"
+    exchange_rate { Random.rand.to_d.truncate(9) }
+    operation_date { Date.today.at_beginning_of_month.ago(5.days).strftime("%Y-%m-%d") }
+    validity_start_date { Date.today.at_beginning_of_month.strftime("%Y-%m-%d") }
+  end
+
   factory :measure do
     transient do
       measure_type_description { Forgery(:basic).text }

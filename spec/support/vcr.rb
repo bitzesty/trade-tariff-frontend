@@ -7,5 +7,7 @@ VCR.configure do |c|
   # c.debug_logger = $stdout
   c.default_cassette_options = { match_requests_on: [:path] }
   c.configure_rspec_metadata!
-  c.ignore_localhost = true
+  c.ignore_request do |request|
+    URI(request.uri).host.in?(%w(localhost 127.0.0.1)) && URI(request.uri).port != 3018
+  end
 end

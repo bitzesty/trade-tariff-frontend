@@ -19,6 +19,7 @@
 @import "colors";
 @import "header";
 @import "footer";
+@import "grid_extensions";
 @import "commodity-codes";
 @import "tariff-breadcrumbs";
 @import "sections-list";
@@ -28,6 +29,9 @@
 @import "a-z-index";
 @import "country-picker";
 @import "commodity-tree";
+@import "current_rate";
+@import "exchange_rate";
+@import "header_hero";
 @import "popup";
 @import "search-results";
 @import "index-page";
@@ -113,4 +117,17 @@ section, article {
 
 .pull-right {
   float: right;
+}
+
+.page--wide {
+  #content,
+  #global-header-bar,
+  #global-cookie-message p,
+  #footer .footer-wrapper {
+    max-width: 1140px !important;
+  }
+
+  .header-wrapper {
+    max-width: 1170px !important;
+  }
 }

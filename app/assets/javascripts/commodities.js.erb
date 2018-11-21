@@ -391,10 +391,15 @@
             @description initializes namespace
           */
           initialize: function () {
-            var toggledControls = ['js-date-picker'],
+            var toggledDataControls = ['js-date-picker'],
+                toggleCurrencyControls = ['js-currency-picker'],
                 namespace = this;
 
-            $(toggledControls).each(function(idx, element){
+            $(toggledDataControls).each(function(idx, element){
+              namespace.toggledControl.initialize(element);
+            });
+
+            $(toggleCurrencyControls).each(function(idx, element){
               namespace.toggledControl.initialize(element);
             });
 

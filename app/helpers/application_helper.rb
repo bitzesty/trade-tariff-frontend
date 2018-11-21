@@ -25,8 +25,16 @@ module ApplicationHelper
     active_class_for(controller_methods: %w[sections chapters headings commodities])
   end
 
+  def exchange_rates_active_class
+    active_class_for(controller_methods: %w[exchange_rates])
+  end
+
   def a_z_active_class
     active_class_for(controller_methods: %w[search_references])
+  end
+
+  def wider_page?
+    %w[sections chapters headings commodities].include?(params[:controller])
   end
 
   private

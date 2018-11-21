@@ -1,0 +1,94 @@
+<div class="exchange-rate-page">
+  <div class="grid-row sidebar-with-body" data-module="sticky-element-container" id="contents">
+    <div class="column-full-mobile-only column-one-quarter-desktop-only">
+      <nav role="navigation" class="contents-list" data-module="track-click">
+        <h2>Contents</h2>
+
+        <ol class="contents-list__list">
+          <% @years.each do |year| %>
+            <li>
+              <a href="#rates-for-<%= year %>">Rates for <%= year %></a>
+            </li>
+          <% end %>
+        </ol>
+      </nav>
+    </div>
+
+    <div class="column-full-mobile-only column-three-quarters-desktop-only">
+      <div class="gem-c-govspeak-html-publication">
+        <div class="gem-c-govspeak govuk-govspeak direction-ltr">
+          <div class="govspeak">
+
+            <p>These industrial euro conversion rates are for calculating duty, not converting the cost amount of importing into sterling.</p>
+
+            <p>The conversion should be used when consulting the tariff and when the duty rates are expressed in euros. This is different to the monthly exchange rates which are used for converting the amounts associated with costs of importing to sterling, such as the item price or freight costs.</p>
+
+            <% if @current_rate.present? %>
+              <div class="current-rate">
+                <div class="data">
+                  <span class="data-item bold-xlarge current-rate__pound">
+                    1 GBP
+                    <span class="current-rate__big-arrow"></span>
+                    <span class="current-rate__accent">
+                      <%= @current_rate.inverse_rate %> EUR
+                    </span>
+                  </span>
+                  <span class="data-item bold-large current-rate__inverse">
+                    1 EUR
+                    <span class="current-rate__small-arrow"></span>
+                    <%= @current_rate.exchange_rate %> GBP
+                  </span>
+                </div>
+              </div>
+            <% else %>
+              <div class="current-rate">
+                <div class="data">
+                  <span class="data-item bold-xlarge current-rate__pound">
+                    1 EUR
+                    <span class="current-rate__big-arrow"></span>
+                    <span class="current-rate__accent">
+                      1 EUR
+                    </span>
+                  </span>
+                </div>
+              </div>
+            <% end %>
+
+            <% @years.each do |year| %>
+
+              <h2 class="heading-medium" id="rates-for-<%= year %>">Rates for <%= year %></h2>
+
+              <table>
+                <thead>
+                  <tr>
+                    <th>Effective date</th>
+                    <th>Multiply euros</th>
+                    <th>Or divide euros</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% @rates[year].each do |rate| %>
+                    <tr>
+                      <td><%= rate.validity_start_date.strftime("%d %B %Y") %></td>
+                      <td><%= rate.exchange_rate %></td>
+                      <td><%= rate.inverse_rate %></td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div data-sticky-element class="govuk-sticky-element">
+      <a class="app-c-back-to-top dont-print" href="#contents">
+        <svg class="app-c-back-to-top__icon" xmlns="http://www.w3.org/2000/svg" width="13" height="17" viewBox="0 0 13 17">
+          <path fill="currentColor" d="M6.5 0L0 6.5 1.4 8l4-4v12.7h2V4l4.3 4L13 6.4z"></path>
+        </svg>
+        Contents
+      </a>
+    </div>
+  </div>
+</div>
