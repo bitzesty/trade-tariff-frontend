@@ -1,5 +1,6 @@
 require 'trade_tariff_frontend/api_constraints'
 require 'trade_tariff_frontend/request_forwarder'
+require 'redis_resolver'
 
 module TradeTariffFrontend
   autoload :Presenter,      'trade_tariff_frontend/presenter'
@@ -10,7 +11,7 @@ module TradeTariffFrontend
   # API Endpoints of the Tariff API app that can be reached
   # via Frontend
   def accessible_api_endpoints
-    ['sections', 'chapters', 'headings', 'commodities', 'updates']
+    ['sections', 'chapters', 'headings', 'commodities', 'updates', "monetary_exchange_rates"]
   end
 
   def production?

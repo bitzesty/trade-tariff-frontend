@@ -1,0 +1,19 @@
+<table class="small-table">
+  <caption>
+    <h5 class="heading-small"><%= condition_group[:condition] %></h5>
+  </caption>
+  <thead>
+  <tr>
+    <th>Requirement</th>
+    <th>Action</th>
+  </tr>
+  </thead>
+  <tbody>
+    <% conditions.each do |condition| %>
+      <tr>
+        <td>Greater than or equal to <%= condition.requirement.to_s.html_safe %></td>
+        <td><%= condition.action %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,0 +1,278 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://localhost:3018/commodities/010121000012?as_of=2018-11-15&currency=EUR
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - text/html; charset=utf-8
+      Cache-Control:
+      - no-cache
+      X-Request-Id:
+      - 100cd136-57f6-46e6-a83c-e02f1fe9a619
+      X-Runtime:
+      - '0.079360'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: 404 - Not Found
+    http_version: 
+  recorded_at: Thu, 15 Nov 2018 13:24:57 GMT
+- request:
+    method: get
+    uri: http://localhost:3018/commodities/010121000012?as_of=2018-11-15&currency=EUR
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - text/html; charset=utf-8
+      Cache-Control:
+      - no-cache
+      X-Request-Id:
+      - f5a31c75-d90e-4bbc-bce9-a045796ede3e
+      X-Runtime:
+      - '0.038819'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: 404 - Not Found
+    http_version: 
+  recorded_at: Thu, 15 Nov 2018 13:24:57 GMT
+- request:
+    method: get
+    uri: http://localhost:3018/commodities/010121000012?as_of=2018-11-15&currency=EUR
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - text/html; charset=utf-8
+      Cache-Control:
+      - no-cache
+      X-Request-Id:
+      - 6f220d4c-8157-4deb-8dc8-53dd4cdf1790
+      X-Runtime:
+      - '0.003818'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: 404 - Not Found
+    http_version: 
+  recorded_at: Thu, 15 Nov 2018 13:24:57 GMT
+- request:
+    method: get
+    uri: http://localhost:3018/commodities/010121000012?as_of=2018-11-15&currency=EUR
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - text/html; charset=utf-8
+      Cache-Control:
+      - no-cache
+      X-Request-Id:
+      - f44e8fba-5e29-416e-8da3-0fa70cd3ce54
+      X-Runtime:
+      - '0.006127'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: 404 - Not Found
+    http_version: 
+  recorded_at: Thu, 15 Nov 2018 13:24:57 GMT
+- request:
+    method: get
+    uri: http://localhost:3018/commodities/010121000012?as_of=2018-11-15&currency=EUR
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - text/html; charset=utf-8
+      Cache-Control:
+      - no-cache
+      X-Request-Id:
+      - 4ec594e5-56e8-4601-9d0b-9d5f9e4c4f87
+      X-Runtime:
+      - '0.005539'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: 404 - Not Found
+    http_version: 
+  recorded_at: Thu, 15 Nov 2018 13:24:57 GMT
+- request:
+    method: get
+    uri: http://localhost:3018/commodities/010121000012?as_of=2018-11-15&currency=EUR
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - text/html; charset=utf-8
+      Cache-Control:
+      - no-cache
+      X-Request-Id:
+      - ffd54451-e6c1-44b7-836f-2f80e763c745
+      X-Runtime:
+      - '0.004028'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: 404 - Not Found
+    http_version: 
+  recorded_at: Thu, 15 Nov 2018 13:24:57 GMT
+- request:
+    method: post
+    uri: http://localhost:3018/search
+    body:
+      encoding: UTF-8
+      string: q=010121000012&as_of=2018-11-15&currency=EUR
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"b4d7eb2add20ffdec56fe810fe1e680f"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 43ec4efa-d763-4e86-996e-d12a17ac14a4
+      X-Runtime:
+      - '0.194390'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"type":"exact_match","entry":{"endpoint":"commodities","id":"0101210000"}}'
+    http_version: 
+  recorded_at: Thu, 15 Nov 2018 13:24:57 GMT
+recorded_with: VCR 3.0.3

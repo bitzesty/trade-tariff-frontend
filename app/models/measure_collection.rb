@@ -25,6 +25,16 @@ class MeasureCollection
     self
   end
 
+  def third_country_duty
+    self.measures = measures.select{ |measure| measure.third_country? }
+    self
+  end
+
+  def supplementary
+    self.measures = measures.select{ |measure| measure.supplementary? }
+    self
+  end
+
   def to_a
     if presenter_klass.present?
       present_with(presenter_klass)

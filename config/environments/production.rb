@@ -54,15 +54,13 @@ Rails.application.configure do
   end
   config.lograge.ignore_actions = ['HealthcheckController#index']
 
-  # Use a different cache store in production
-  config.cache_store = :dalli_store, nil, {
-    compress: true,
+  # Rails cache store
+  # RedisResolver returns url and db
+  config.cache_store = :redis_store, RedisResolver.get_redis_config.merge({
     expires_in: 1.day,
-    username: ENV["MEMCACHE_USER"],
-    password: ENV["MEMCACHE_PASSWORD"],
-    namespace: ENV["GOVUK_APP_DOMAIN"],
-    pool_size: Integer(ENV["MAX_THREADS"] || 5)
-  }
+    namespace:  ENV["GOVUK_APP_DOMAIN"],
+    pool_size:  Integer(ENV["MAX_THREADS"] || 5)
+  })
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server
   config.action_controller.asset_host = ENV["GOVUK_ASSET_ROOT"]

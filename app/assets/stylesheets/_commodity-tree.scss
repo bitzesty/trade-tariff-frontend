@@ -73,16 +73,63 @@ article.tariff {
     em {
       font-style: normal;
       float: left;
+    }
+
+    .level {
+      width: px(($token-width - $token-padding) + $token-space);
+      display: none;
+
       @media (min-width: $desktop-min-width) {
-        &.description::before {
-          content: 'Level';
-          display: inline-block;
-          width: px(($token-width - $token-padding) + $token-space);
-        }
+        display: block;
       }
-      &.commcode {
-        float: right;
+    }
+  }
+
+  .commodity-tree__additional-info {
+    float: right;
+    width: 440px;
+
+    em {
+      font-style: normal;
+      float: left;
+      margin-left: 15px;
+      text-align: right;
+
+      &:first-of-type {
+        margin-left: 0;
       }
+    }
+
+    .vat {
+      width: 40px;
+      display: none;
+
+      @media (min-width: $headings-large-viewport) {
+        display: block;
+      }
+    }
+
+    .duty {
+      width: 115px;
+      display: none;
+
+      @media (min-width: $headings-large-viewport) {
+        display: block;
+      }
+    }
+
+    .supplementary-units {
+      width: 90px;
+      display: none;
+
+      @media (min-width: $headings-large-viewport) {
+        display: block;
+      }
+    }
+
+    .commcode {
+      width: 145px;
+      float: right;
     }
   }
 
@@ -153,6 +200,50 @@ article.tariff {
         }
       }
 
+      .commodity__info {
+        float: right;
+        width: 440px;
+
+        .lte-ie8 & {
+          float: none !important;
+        }
+
+        &:after {
+          clear: both;
+          content: " ";
+          display: table;
+          zoom: 1;
+        }
+
+        .vat,
+        .duty,
+        .supplementary-units {
+          display: none;
+          float: left;
+          margin-right: 15px;
+          color: $text-colour;
+          font-weight: normal;
+
+          @media (min-width: $headings-large-viewport) {
+            display: block;
+          }
+        }
+
+        .vat {
+          width: 40px;
+          text-align: right;
+        }
+
+        .duty {
+          width: 115px;
+        }
+
+        .supplementary-units {
+          width: 90px;
+          text-align: right;
+        }
+      }
+
       .identifier {
         font-family: ntatabularnumbers, "Helvetica Neue", Arial, Helvetica, sans-serif;
         font-weight: normal;
@@ -161,7 +252,7 @@ article.tariff {
         border: 0;
         padding: 0;
         @media (min-width: $desktop-min-width) {
-          width: $identifier-width-desktop;
+          width: 150px;
           position: absolute;
           right: 0;
           bottom: 0;
@@ -202,13 +293,30 @@ article.tariff {
     background-position: 0 -100px;
   }
 
+  li:not(.has_children) .description {
+    color: $link-colour;
+    padding-left: px($expand-arrow-space);
+    margin-left: -1 * px($expand-arrow-space);
+    @media (min-width: $headings-large-viewport) {
+      width: calc(100% - #{$identifier-width-desktop + 45px});
+      float: left;
+    }
+    cursor:pointer;
+    position:relative; /* to give z-index */
+
+    &.without_right_margin {
+      margin: 0 !important;
+    }
+  }
+
   li.has_children {
     .description {
       color: $link-colour;
       padding-left: px($expand-arrow-space);
       margin-left: -1 * px($expand-arrow-space);
-      @media (min-width: $desktop-min-width) {
-        margin-right: $identifier-width-desktop + 15px;
+      @media (min-width: $headings-large-viewport) {
+        width: calc(100% - #{$identifier-width-desktop + 45px});
+        float: left;
       }
       background-image: image-url("expand-collapse-transparent_commodity-tree.png");
       background-position: 0 4px;
@@ -239,6 +347,8 @@ article.tariff {
     .sub_heading_commodity_code_block {
       color: #696969;
       width: 150px;
+      font-weight: normal;
+      font-family: ntatabularnumbers, "Helvetica Neue", Arial, Helvetica, sans-serif;
 
       .chapter-code, .heading-code, .commodity-code {
         float: left;

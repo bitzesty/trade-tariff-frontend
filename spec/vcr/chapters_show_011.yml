@@ -2,74 +2,277 @@
 http_interactions:
 - request:
     method: get
-    uri: http://tariff-api.dev.gov.uk/chapters/011?as_of=2013-11-08
+    uri: http://localhost:3018/chapters/011?as_of=2018-11-15&currency=EUR
     body:
       encoding: US-ASCII
       string: ''
-    headers: {}
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
   response:
     status:
       code: 404
-      message: 'Not Found '
+      message: Not Found
     headers:
-      Server:
-      - nginx
-      Date:
-      - Fri, 08 Nov 2013 13:18:15 GMT
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
       Content-Type:
       - text/html; charset=utf-8
-      Content-Length:
-      - '15'
-      Connection:
-      - close
-      X-Ua-Compatible:
-      - IE=Edge
       Cache-Control:
       - no-cache
       X-Request-Id:
-      - 66dd5e074c7b3490451a595f524a4df4
+      - 926b36de-9049-4fb4-a117-7d78f59a050c
       X-Runtime:
-      - '0.077833'
+      - '0.003871'
+      Transfer-Encoding:
+      - chunked
     body:
       encoding: UTF-8
       string: 404 - Not Found
     http_version: 
-  recorded_at: Fri, 08 Nov 2013 13:18:15 GMT
+  recorded_at: Thu, 15 Nov 2018 14:59:36 GMT
 - request:
-    method: post
-    uri: http://tariff-api.dev.gov.uk/search
+    method: get
+    uri: http://localhost:3018/chapters/011?as_of=2018-11-15&currency=EUR
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - text/html; charset=utf-8
+      Cache-Control:
+      - no-cache
+      X-Request-Id:
+      - f3e8b831-702f-491a-91a2-9738ca8a6d63
+      X-Runtime:
+      - '0.004273'
+      Transfer-Encoding:
+      - chunked
     body:
       encoding: UTF-8
-      string: t=011&as_of=2013-11-08
-    headers: {}
+      string: 404 - Not Found
+    http_version: 
+  recorded_at: Thu, 15 Nov 2018 14:59:36 GMT
+- request:
+    method: get
+    uri: http://localhost:3018/chapters/011?as_of=2018-11-15&currency=EUR
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - text/html; charset=utf-8
+      Cache-Control:
+      - no-cache
+      X-Request-Id:
+      - '0895619f-f781-4de4-8828-c5f51c71bdf6'
+      X-Runtime:
+      - '0.003873'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: 404 - Not Found
+    http_version: 
+  recorded_at: Thu, 15 Nov 2018 14:59:36 GMT
+- request:
+    method: get
+    uri: http://localhost:3018/chapters/011?as_of=2018-11-15&currency=EUR
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - text/html; charset=utf-8
+      Cache-Control:
+      - no-cache
+      X-Request-Id:
+      - e5ba1dde-5b45-4ea1-872c-da2ca929a6f7
+      X-Runtime:
+      - '0.003896'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: 404 - Not Found
+    http_version: 
+  recorded_at: Thu, 15 Nov 2018 14:59:36 GMT
+- request:
+    method: get
+    uri: http://localhost:3018/chapters/011?as_of=2018-11-15&currency=EUR
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - text/html; charset=utf-8
+      Cache-Control:
+      - no-cache
+      X-Request-Id:
+      - ecac207c-31b2-4f5b-b3f6-9bcd7c1cb6ef
+      X-Runtime:
+      - '0.004215'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: 404 - Not Found
+    http_version: 
+  recorded_at: Thu, 15 Nov 2018 14:59:36 GMT
+- request:
+    method: get
+    uri: http://localhost:3018/chapters/011?as_of=2018-11-15&currency=EUR
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - text/html; charset=utf-8
+      Cache-Control:
+      - no-cache
+      X-Request-Id:
+      - fce78f3b-2e6a-485b-981a-c8a7762351dd
+      X-Runtime:
+      - '0.003834'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: 404 - Not Found
+    http_version: 
+  recorded_at: Thu, 15 Nov 2018 14:59:36 GMT
+- request:
+    method: post
+    uri: http://localhost:3018/search
+    body:
+      encoding: UTF-8
+      string: q=011&as_of=2018-11-15&currency=EUR
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
   response:
     status:
       code: 200
-      message: 'OK '
+      message: OK
     headers:
-      Server:
-      - nginx
-      Date:
-      - Fri, 08 Nov 2013 13:18:15 GMT
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
       Content-Type:
       - application/json; charset=utf-8
-      Content-Length:
-      - '64'
-      Connection:
-      - close
-      X-Ua-Compatible:
-      - IE=Edge
       Etag:
-      - '"92117a675eb2b6c8c0a9f1d9bb7b0c7d"'
+      - W/"3d1a1eea5297545b80ed4f7f0ff6d111"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - fd942fb3cc440d1de1d3bb4e2f3db9b0
+      - 29a0582d-5cc0-494a-8eef-a50b209ba330
       X-Runtime:
-      - '0.018457'
+      - '0.007395'
+      Transfer-Encoding:
+      - chunked
     body:
       encoding: UTF-8
       string: '{"type":"exact_match","entry":{"endpoint":"chapters","id":"01"}}'
     http_version: 
-  recorded_at: Fri, 08 Nov 2013 13:18:15 GMT
-recorded_with: VCR 2.5.0
+  recorded_at: Thu, 15 Nov 2018 14:59:36 GMT
+recorded_with: VCR 3.0.3
