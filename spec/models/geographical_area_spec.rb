@@ -31,6 +31,7 @@ describe GeographicalArea do
       expect(by_long_desc.detect { |c| c.id == 'BR' }).to be_blank
     end
 
+    # TODO: need to fix countryies ordering
     it 'sorts countries by id and description' do
       expect(by_long_desc[0].id).to eq('IN')
       expect(by_long_desc[1].id).to eq('ID')

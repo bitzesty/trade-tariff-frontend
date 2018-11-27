@@ -23,7 +23,7 @@
                 </span>
               </fieldset>
 
-              <% unless TradeTariffFrontend.production_domain?(request.host) %>
+              <% if TradeTariffFrontend.currency_picker_enabled? %>
                 <fieldset class="js-currency-picker font-xsmall form-group inline">
                 <span class="fields">
                   <select id="tariff_currency" name="currency">
@@ -80,7 +80,7 @@
             </span>
           </fieldset>
 
-          <% unless TradeTariffFrontend.production_domain?(request.host) %>
+          <% if TradeTariffFrontend.currency_picker_enabled? %>
             <fieldset class="js-currency-picker font-xsmall form-group inline">
                 <span class="fields">
                   <select id="tariff_currency" name="currency">
