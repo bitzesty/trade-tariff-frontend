@@ -22,6 +22,10 @@ module TradeTariffFrontend
     domain == "www.trade-tariff.service.gov.uk"
   end
 
+  def currency_picker_enabled?
+    ENV["CURRENCY_PICKER"].to_i == 1
+  end
+
   # Number of suggestions returned to select2
   def suggestions_count
     10
