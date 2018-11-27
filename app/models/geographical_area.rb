@@ -35,6 +35,7 @@ class GeographicalArea
       key = ""
       key << (match_id ? "0" : "1")
       key << (match_desc || '')
+      key << country.id
       key
     end
   end

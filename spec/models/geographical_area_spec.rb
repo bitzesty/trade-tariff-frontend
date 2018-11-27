@@ -35,7 +35,7 @@ describe GeographicalArea do
     it 'sorts countries by id and description' do
       expect(by_long_desc[0].id).to eq('IN')
       expect(by_long_desc[1].id).to eq('ID')
-      expect(by_long_desc[2].id).to eq('SG')
+      expect(by_long_desc[2].id).to eq('FI')
     end
   end
 end
