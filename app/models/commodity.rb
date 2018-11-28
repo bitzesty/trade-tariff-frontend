@@ -76,12 +76,4 @@ class Commodity < GoodsNomenclature
       false
     end
   end
-
-  def consolidated_vat
-    national_vat = overview_measures.vat
-
-    return "" if national_vat.count == 0
-
-    national_vat.map { |n| n.duty_expression.amount }.min.to_s + " %"
-  end
 end
