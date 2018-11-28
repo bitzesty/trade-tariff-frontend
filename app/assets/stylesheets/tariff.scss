@@ -119,15 +119,13 @@ section, article {
   float: right;
 }
 
-.page--wide {
-  #content,
-  #global-header-bar,
-  #global-cookie-message p,
-  #footer .footer-wrapper {
-    max-width: 1140px !important;
-  }
+#content,
+#global-header-bar,
+#global-cookie-message p,
+#footer .footer-wrapper {
+  max-width: 1140px !important;
+}
 
-  .header-wrapper {
-    max-width: 1170px !important;
-  }
+.header-wrapper {
+  max-width: 1170px !important;
 }
