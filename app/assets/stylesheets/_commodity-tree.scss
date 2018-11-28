@@ -87,13 +87,12 @@ article.tariff {
 
   .commodity-tree__additional-info {
     float: right;
-    width: 440px;
+    width: 480px;
 
     em {
       font-style: normal;
       float: left;
       margin-left: 15px;
-      text-align: right;
 
       &:first-of-type {
         margin-left: 0;
@@ -101,8 +100,9 @@ article.tariff {
     }
 
     .vat {
-      width: 40px;
+      width: 80px;
       display: none;
+      text-align: right;
 
       @media (min-width: $headings-large-viewport) {
         display: block;
@@ -121,6 +121,7 @@ article.tariff {
     .supplementary-units {
       width: 90px;
       display: none;
+      text-align: right;
 
       @media (min-width: $headings-large-viewport) {
         display: block;
@@ -130,6 +131,12 @@ article.tariff {
     .commcode {
       width: 145px;
       float: right;
+      text-align: right;
+      display: none;
+
+      @media (min-width: $headings-large-viewport) {
+        display: block;
+      }
     }
   }
 
@@ -201,8 +208,12 @@ article.tariff {
       }
 
       .commodity__info {
-        float: right;
-        width: 440px;
+        @media (min-width: 641px) {
+          position: absolute;
+          bottom: 0;
+          right: 0;
+          width: 480px;
+        }
 
         .lte-ie8 & {
           float: none !important;
@@ -230,7 +241,7 @@ article.tariff {
         }
 
         .vat {
-          width: 40px;
+          width: 80px;
           text-align: right;
         }
 
@@ -297,12 +308,17 @@ article.tariff {
     color: $link-colour;
     padding-left: px($expand-arrow-space);
     margin-left: -1 * px($expand-arrow-space);
-    @media (min-width: $headings-large-viewport) {
-      width: calc(100% - #{$identifier-width-desktop + 45px});
-      float: left;
-    }
     cursor:pointer;
     position:relative; /* to give z-index */
+
+    @media (min-width: 641px) {
+      float: left;
+      width: calc(100% - 200px);
+    }
+
+    @media (min-width: $headings-large-viewport) {
+      width: calc(100% - #{$identifier-width-desktop + 45px});
+    }
 
     &.without_right_margin {
       margin: 0 !important;
@@ -314,15 +330,20 @@ article.tariff {
       color: $link-colour;
       padding-left: px($expand-arrow-space);
       margin-left: -1 * px($expand-arrow-space);
-      @media (min-width: $headings-large-viewport) {
-        width: calc(100% - #{$identifier-width-desktop + 45px});
-        float: left;
-      }
       background-image: image-url("expand-collapse-transparent_commodity-tree.png");
       background-position: 0 4px;
       background-repeat: no-repeat;
       cursor:pointer;
       position:relative; /* to give z-index */
+
+      @media (min-width: 641px) {
+        float: left;
+        width: calc(100% - 200px);
+      }
+
+      @media (min-width: $headings-large-viewport) {
+        width: calc(100% - #{$identifier-width-desktop + 45px});
+      }
 
       &.without_right_margin {
         margin: 0 !important;
@@ -356,6 +377,10 @@ article.tariff {
 
       .code-text {
         text-align: center;
+      }
+
+      @media (max-width: 640px) {
+        display: none;
       }
     }
   }
