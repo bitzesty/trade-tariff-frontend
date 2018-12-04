@@ -8,6 +8,7 @@
 //= require govuk/analytics/analytics
 //= require govuk/analytics/print-intent
 //= require govuk/analytics/error-tracking
+//= require govuk_toolkit
 //= require popup
 //= require jquery.mark
 //= require select2
