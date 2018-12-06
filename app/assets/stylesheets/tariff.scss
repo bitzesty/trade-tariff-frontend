@@ -1,14 +1,50 @@
-// GOV.UK frontend toolkit
-@import "typography";
-@import "conditionals";
-@import "colours";
-@import "shims";
-@import "device-pixels";
-@import "grid_layout";
-@import "design-patterns/buttons";
+// GOV.UK Frontend Toolkit (alphagov/govuk_frontend_toolkit)
+@import 'colours';
+@import 'font_stack';
+@import 'measurements';
+@import 'conditionals';
+@import 'device-pixels';
+@import 'grid_layout';
+@import 'typography';
+@import 'shims';
 
-// GOV.UK elements
-@import "govuk-elements";
+@import 'design-patterns/alpha-beta';
+@import 'design-patterns/buttons';
+@import 'design-patterns/breadcrumbs';
+
+// GOV.UK elements (alphagov/govuk_elements)
+
+// Helper functions and classes
+@import "elements/helpers";
+
+// Generic (normalize/reset.css)
+@import "elements/reset";
+
+// Base (unclassed HTML elements)
+// These are predefined by govuk_template
+// If you're not using govuk_template, uncomment the line below.
+// @import "elements/govuk-template-base"
+
+// Main content container. Grid layout - rows and column widths
+@import "elements/layout";
+
+// Components (chunks of UI)
+@import "elements/elements-typography";
+@import "elements/buttons";
+@import "elements/icons";
+@import "elements/lists";
+@import "elements/tables";
+@import "elements/details";
+@import "elements/panels";
+@import "elements/forms";
+@import "elements/forms/form-multiple-choice";
+@import "elements/forms/form-date";
+@import "elements/forms/form-validation";
+@import "elements/breadcrumbs";
+@import "elements/phase-banner";
+@import "elements/components";
+@import "elements/shame";
+
 
 // Third party
 @import "select2";
