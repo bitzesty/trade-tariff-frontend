@@ -160,6 +160,14 @@ section, article {
 #global-cookie-message p,
 #footer .footer-wrapper {
   max-width: 1140px !important;
+
+  @media (min-width: 1020px) {
+    margin: 0 30px !important;
+  }
+
+  @media (min-width: 1190px) {
+    margin: 0 auto !important;
+  }
 }
 
 .header-wrapper {

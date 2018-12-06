@@ -136,7 +136,7 @@
                     effectAll(1);
                   }
 
-                  $parentNodes.closest('.commodity-tree').prepend($controls);
+                  $('.tree-controls').prepend('<a href="#">Open all headings</a><a href="#">Close all headings</a>');
                   $parentNodes.closest('.commodity-tree').append($controls);
                   $('.tree-controls a', context).each(function (idx) {
                     $(this)
