@@ -2,4 +2,14 @@
     <p>
       There are <%= link_to 'important notes for classifying your goods', "#notes" %> shown further down this page
     </p>
+    <% if chapter.guides &&
+          !chapter.guides.empty? %>
+    <p>
+      Get guidance on this product area:
+      <% chapter.guides.each do |guide| %>
+        <span class="chapter-guide"><a href="<%= guide[:url] %>"><%= guide[:title] %></a></span>&nbsp;
+      <% end %>
+    </p>
+    <% end %>
+    <% if chapter && chapter.short_code %><a href="https://forum.trade-tariff.service.gov.uk/c/classification/<%= chapter.short_code %>">Disscuss this chapter in the forums</a><% end %>
 </div>
