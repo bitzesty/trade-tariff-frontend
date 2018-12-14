@@ -61,6 +61,15 @@ module TradeTariffFrontend
       g.test_framework  false
     end
 
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins ENV['HOST'] || 'localhost:3017'
+        resource '*',
+                 headers: :any,
+                 methods: %i[get options]
+      end
+    end
+
     # Disable Rack::Cache.
     config.action_dispatch.rack_cache = nil
 
