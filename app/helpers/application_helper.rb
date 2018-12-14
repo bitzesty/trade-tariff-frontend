@@ -33,9 +33,23 @@ module ApplicationHelper
     active_class_for(controller_methods: %w[search_references])
   end
 
+  def currency_options
+    options = [['Euro', 'EUR']]
+    options << ['British Pound', 'GBP'] unless search_date_in_future_month?
+    options
+  end
+
+  def change_currency_message
+    search_date_in_future_month? ? "for a future date" : "Change currency"
+  end
+
   private
 
   def active_class_for(controller_methods:)
     return "active" if controller_methods.include?(params[:controller])
+  end
+
+  def search_date_in_future_month?
+    @search && @search.date.date >= Date.today.at_beginning_of_month.next_month
   end
 end

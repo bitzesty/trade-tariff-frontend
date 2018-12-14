@@ -1,0 +1,15 @@
+<fieldset class="js-date-picker date-picker font-xsmall form-group inline">
+  <span class="fields">This tariff is for
+    <label class="visuallyhidden" for="tariff_date_day">Day</label>
+    <%= select_day(@search.date, {}, { id: 'tariff_date_day', name: 'day' }) %>
+    <label class="visuallyhidden" for="tariff_date_month">Month</label>
+    <%= select_month(@search.date, {}, { id: 'tariff_date_month', name: 'month' }) %>
+    <label class="visuallyhidden" for="tariff_date_year">Year</label>
+    <%= select_year(@search.date, {end_year: 2008, start_year: Date.current.year + 1 }, { id: 'tariff_date_year', name: 'year' }) %>&emsp;
+    <a class="submit" role="button" href="#set-date" title="set date" rel="nofollow">Set date</a>&emsp;
+  </span>
+  <span class="text <%= @section_css %>">
+    This tariff is for <%= @search.date.to_formatted_s(:long) %>&emsp;
+    <a href="#change-date" title="change date" rel="nofollow">Change date</a>&emsp;
+  </span>
+</fieldset>
