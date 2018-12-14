@@ -25,4 +25,8 @@ class Chapter < GoodsNomenclature
   def to_s
     formatted_description || description
   end
+
+  def guides
+    attributes['guides']
+  end
 end
