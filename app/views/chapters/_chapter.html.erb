@@ -6,18 +6,6 @@
   </td>
   <td>
     <%= link_to chapter, chapter_path(chapter, request.query_parameters.symbolize_keys) %>
-    <% if chapter.guides && 
-          !chapter.guides.empty? %>
-    <div style="font-size: 80%; margin-top: 1em;">
-      Get guidance on this product area:
-      <% chapter.guides.each do |guide| %>
-        <% separator = chapter.guides.index(guide) < (chapter.guides.length - 1) ? ",&nbsp;".html_safe : "" %>
-        <span class="chapter-guide">
-          <a href="<%= guide[:url] %>"><%= guide[:title] %></a><%= separator %>
-        </span>
-      <% end %>
-    </div>
-    <% end %>
-    <% if chapter %><div style="font-size: 80%;"><a href="https://forum.trade-tariff.service.gov.uk/c/classification/<%= chapter.short_code[0..1] %>">Disscuss this chapter in the forums</a></div><% end %>
+    <%= render partial: 'chapters/chapter_guides', locals: {chapter: chapter} %>
   </td>
 </tr>

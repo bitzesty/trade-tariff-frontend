@@ -1,0 +1,17 @@
+<% if chapter.guides &&
+      !chapter.guides.empty? %>
+<p style="font-size: 80%; margin-top: 1em;">
+  <a name="invisible" style="display: inline; width:0;"></a>Get guidance on this product area:
+  <% chapter.guides.each do |guide| %>
+    <% separator = chapter.guides.index(guide) < (chapter.guides.length - 1) ? ",&nbsp;".html_safe : "" %>
+    <span class="chapter-guide">
+      <a href="<%= guide[:url] %>" style="display: inherit; margin-left: inherit;"><%= guide[:title] %></a><%= separator %>
+    </span>
+  <% end %>
+</p>
+<% end %>
+<% if chapter && chapter.short_code %>
+<p style="font-size: 80%; margin-top: 1em;">
+  <a href="https://forum.trade-tariff.service.gov.uk/c/classification/<%= chapter.short_code %>">Disscuss this chapter in the forums</a>
+</p>
+<% end %>
