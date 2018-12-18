@@ -6,6 +6,7 @@
       <div class="code-text"><%= chapter.short_code %></div>
     </div>
     <a href="<%= chapter_path(chapter) %>"><%= chapter.description.html_safe %></a>
+    <%= render partial: 'chapters/chapter_guides', locals: {chapter: chapter} %>
   </div>
   <% if headings.any? %>
     <ul>
