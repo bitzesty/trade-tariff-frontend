@@ -37,3 +37,14 @@
     width: 33.333%;
   }
 }
+.chapter-guide, .forum-link {
+  font-size: 80%;
+  margin-top: 1em;
+  a {
+    display: inline !important;
+    margin-left: inherit !important;
+  }
+}
+.guides-container {
+  margin-left: 46px;
+}

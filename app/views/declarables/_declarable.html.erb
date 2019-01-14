@@ -3,19 +3,7 @@
 <article class="tariff commodity">
   <div class="panel panel-border-wide">
     <p>Check the chapter notes to make sure this code is suitable for your product.</p>
-    <% if declarable.chapter.guides &&
-          !declarable.chapter.guides.empty? %>
-    <p>
-      Get guidance on this product area:
-      <% declarable.chapter.guides.each do |guide| %>
-        <% separator = declarable.chapter.guides.index(guide) < (declarable.chapter.guides.length - 1) ? ",&nbsp;".html_safe : "" %>
-        <span class="chapter-guide">
-          <a href="<%= guide[:url] %>"><%= guide[:title] %></a><%= separator %>
-        </span>
-      <% end %>
-    </p>
-    <% end %>
-    <% if declarable %><a href="https://forum.trade-tariff.service.gov.uk/c/classification/<%= declarable.short_code[0..1] %>">Disscuss this chapter in the forums</a><% end %>
+    <%= render partial: 'chapters/chapter_guides', locals: {chapter: declarable.chapter} %>
   </div>
   <%= render 'shared/tariff_breadcrumbs', declarable: declarable %>
   <%= render 'measures/measures', declarable: declarable %>
