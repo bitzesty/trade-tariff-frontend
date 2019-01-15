@@ -20,7 +20,7 @@ class Search
       raise ApiEntity::Error if response.code == 500
 
       Outcome.new(response)
-    rescue
+    rescue StandardError
       if retries < Rails.configuration.x.http.max_retry
         retries += 1
         retry
@@ -35,7 +35,7 @@ class Search
   end
 
   def countries
-    [ geographical_area ].compact
+    [geographical_area].compact
   end
 
   def geographical_area
@@ -54,10 +54,10 @@ class Search
 
   def currency_name(currency = attributes['currency'])
     case currency
-      when "GBP"
+    when "GBP"
         then 'British Pound'
-      else
-        'Euro'
+    else
+      'Euro'
     end
   end
 

@@ -56,7 +56,7 @@ Rails.application.configure do
 
   # Rails cache store
   # RedisResolver returns url and db
-  config.cache_store = :redis_store, RedisResolver.get_redis_config.merge({
+  config.cache_store = :redis_store, RedisResolver.redis_config.merge({
     expires_in: 1.day,
     namespace:  ENV["GOVUK_APP_DOMAIN"],
     pool_size:  Integer(ENV["MAX_THREADS"] || 5)

@@ -15,6 +15,6 @@ class LegalAct
   end
 
   def url_safe_code
-    regulation_code.gsub("/", "_")
+    regulation_code.tr("/", "_")
   end
 end

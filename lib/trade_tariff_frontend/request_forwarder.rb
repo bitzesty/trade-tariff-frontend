@@ -3,7 +3,7 @@ require 'net/http'
 
 module TradeTariffFrontend
   class RequestForwarder
-    IGNORED_UPSTREAM_HEADERS = %w[status x-ua-compatible connection transfer-encoding]
+    IGNORED_UPSTREAM_HEADERS = %w[status x-ua-compatible connection transfer-encoding].freeze
 
     def initialize(opts = {})
       @host = URI.parse(opts.fetch(:host))

@@ -1,8 +1,7 @@
 class FeedbackController < ApplicationController
   layout "pages"
 
-  def new
-  end
+  def new; end
 
   def create
     FrontendMailer.new_feedback(params[:message], params[:name], params[:email]).deliver_now
@@ -14,6 +13,5 @@ class FeedbackController < ApplicationController
     end
   end
 
-  def thanks
-  end
+  def thanks; end
 end

@@ -23,8 +23,7 @@ class ChangesPresenter
 
   def change_presenter_class_for(model)
     "#{model}ChangePresenter".constantize
-
-    rescue NameError
-      ChangePresenter
+  rescue NameError
+    ChangePresenter
   end
 end
