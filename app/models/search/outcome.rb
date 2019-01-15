@@ -20,7 +20,7 @@ class Search
 
     def any?
       (goods_nomenclature_match.present? && goods_nomenclature_match.any?) ||
-      (reference_match.present? && reference_match.any?)
+        (reference_match.present? && reference_match.any?)
     end
 
     def goods_nomenclature_match

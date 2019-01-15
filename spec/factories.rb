@@ -35,7 +35,7 @@ FactoryGirl.define do
   end
 
   factory :monetary_exchange_rate do
-    child_monetary_unit_code "GBP"
+    child_monetary_unit_code { "GBP" }
     exchange_rate { Random.rand.to_d.truncate(9) }
     operation_date { Date.today.at_beginning_of_month.ago(5.days).strftime("%Y-%m-%d") }
     validity_start_date { Date.today.at_beginning_of_month.strftime("%Y-%m-%d") }
@@ -46,7 +46,7 @@ FactoryGirl.define do
       measure_type_description { Forgery(:basic).text }
     end
 
-    origin { ['eu', 'uk'].sample }
+    origin { %w[eu uk].sample }
     ordernumber { Forgery(:basic).number(exactly: 5) }
     effective_start_date { Date.today.ago(3.years).to_s }
     effective_end_date { nil }
@@ -94,9 +94,9 @@ FactoryGirl.define do
   end
 
   factory :duty_expression do
-    base "80.50 EUR / Hectokilogram"
-    formatted_base "80.50 EUR / <abbr title='Hectokilogram'>Hectokilogram</abbr>"
-    national_measurement_units nil
+    base { "80.50 EUR / Hectokilogram" }
+    formatted_base { "80.50 EUR / <abbr title='Hectokilogram'>Hectokilogram</abbr>" }
+    national_measurement_units { nil }
   end
 
   factory :measure_type do
@@ -147,8 +147,9 @@ FactoryGirl.define do
   end
 
   factory :tariff_update do
-    update_type    { ['TariffSynchronizer::ChiefUpdate',
-                      'TariffSynchronizer::TaricUpdate'].sample }
+    update_type {
+      %w[TariffSynchronizer::ChiefUpdate TariffSynchronizer::TaricUpdate].sample
+    }
     state { 'A' }
     created_at { Time.now.to_s }
     updated_at { Time.now.to_s }

@@ -67,6 +67,10 @@ IndentationConsistency:
   Description: Keep indentation straight.
   Enabled: true
 
+Layout/AccessModifierIndentation:
+  Enabled: true
+  EnforcedStyle: indent
+
 LineLength:
   Description: Limit lines to 80 characters.
   Enabled: false

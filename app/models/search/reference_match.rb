@@ -14,7 +14,7 @@ class Search
     array_attr_writer :sections, :chapters, :headings, :commodities
 
     def any?
-      [headings, chapters, sections, commodities].any? { |entity_group| entity_group.any? }
+      [headings, chapters, sections, commodities].any?(&:any?)
     end
 
     def all

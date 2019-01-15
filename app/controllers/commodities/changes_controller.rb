@@ -1,6 +1,5 @@
 module Commodities
   class ChangesController < ::ChangesController
-
     private
 
     def commodity

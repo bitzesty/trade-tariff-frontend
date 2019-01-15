@@ -5,9 +5,9 @@ class OrderNumber
   class Definition
     include ApiEntity
 
-    DATE_FIELDS = %w(blocking_period_start_date blocking_period_end_date
+    DATE_FIELDS = %w[blocking_period_start_date blocking_period_end_date
                      suspension_period_start_date suspension_period_end_date
-                     validity_start_date validity_end_date last_allocation_date)
+                     validity_start_date validity_end_date last_allocation_date].freeze
 
     attr_accessor :initial_volume, :status, :measurement_unit,
                   :measurement_unit_qualifier,

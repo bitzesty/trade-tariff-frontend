@@ -49,12 +49,14 @@ module ApiEntity
     end
   end
 
-  def attributes=(attributes={})
-    attributes.each do |name, value|
-      if self.respond_to?(:"#{name}=")
-        send(:"#{name}=", (value.is_a?(String) && value == "null") ? nil : value)
+  def attributes=(attributes = {})
+    if attributes.present?
+      attributes.each do |name, value|
+        if respond_to?(:"#{name}=")
+          send(:"#{name}=", value.is_a?(String) && value == "null" ? nil : value)
+        end
       end
-    end if attributes.present?
+    end
   end
 
   def persisted?
@@ -67,15 +69,15 @@ module ApiEntity
       begin
         resp = get(collection_path, opts)
         case resp.code
-          when 404
-            raise ApiEntity::NotFound.new resp['error']
-          when 500
-            raise ApiEntity::Error.new resp['error']
-          when 502
-            raise ApiEntity::Error.new "502 Bad Gateway"
+        when 404
+          raise ApiEntity::NotFound, resp['error']
+        when 500
+          raise ApiEntity::Error, resp['error']
+        when 502
+          raise ApiEntity::Error, "502 Bad Gateway"
         end
-        resp.map {|entry_data| new(entry_data)}
-      rescue
+        resp.map { |entry_data| new(entry_data) }
+      rescue StandardError
         if retries < Rails.configuration.x.http.max_retry
           retries += 1
           retry
@@ -93,12 +95,12 @@ module ApiEntity
         when 404
           raise ApiEntity::NotFound
         when 500
-          raise ApiEntity::Error.new resp['error']
+          raise ApiEntity::Error, resp['error']
         when 502
-          raise ApiEntity::Error.new resp['error']
+          raise ApiEntity::Error, resp['error']
         end
         new(resp)
-      rescue
+      rescue StandardError
         if retries < Rails.configuration.x.http.max_retry
           retries += 1
           retry
@@ -109,7 +111,7 @@ module ApiEntity
     end
 
     def has_one(association, opts = {})
-      options = opts.reverse_merge({ class_name: association.to_s.singularize.classify })
+      options = opts.reverse_merge(class_name: association.to_s.singularize.classify)
 
       attr_accessor association.to_sym
 
@@ -123,8 +125,7 @@ module ApiEntity
     end
 
     def has_many(associations, opts = {})
-      options = opts.reverse_merge({ class_name: associations.to_s.singularize.classify,
-                                     wrapper: Array })
+      options = opts.reverse_merge(class_name: associations.to_s.singularize.classify, wrapper: Array)
 
       class_eval <<-METHODS
         def #{associations}

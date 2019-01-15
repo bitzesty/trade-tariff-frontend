@@ -4,7 +4,7 @@ describe TradeTariffFrontend::RequestForwarder do
   let(:app)            { ->(env) { [200, env, "app"] } }
   let(:host)           { "http://tariff-api.example.com" }
   let(:request_path)   { "/sections/1" }
-  let(:request_params) { "?page=2"}
+  let(:request_params) { "?page=2" }
 
   let(:response_body) { "example" }
 
@@ -12,7 +12,7 @@ describe TradeTariffFrontend::RequestForwarder do
     described_class.new(host: host)
   end
 
-  around(:each) do |example|
+  around do |example|
     # These specs use WebMock
     VCR.turned_off do
       example.run
