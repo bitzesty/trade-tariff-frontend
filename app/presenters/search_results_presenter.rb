@@ -5,7 +5,7 @@ class SearchResultsPresenter
     @search_results = search_results
   end
 
-  def as_json(opts = {})
+  def as_json(_opts = {})
     flattened_search_results.first(SUGGESTION_COUNT).reject(&:blank?).map(&:titlecase)
   end
 

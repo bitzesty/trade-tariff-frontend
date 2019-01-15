@@ -1,6 +1,5 @@
 module Headings
   class ChangesController < ::ChangesController
-
     private
 
     def heading

@@ -3,7 +3,7 @@ require 'api_entity'
 class Footnote
   include ApiEntity
 
-  ECO_CODE = '05002'
+  ECO_CODE = '05002'.freeze
 
   attr_accessor :code, :description, :formatted_description
 

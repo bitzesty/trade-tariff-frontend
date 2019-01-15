@@ -6,9 +6,10 @@ class NullObject
   end
 
   def empty?; true; end
+
   def blank?; true; end
 
-  def method_missing(*args, &block)
+  def method_missing(*args)
     method_name = args.first
 
     @stub_attrs.fetch(method_name, nil)

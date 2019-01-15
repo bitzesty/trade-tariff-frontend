@@ -47,6 +47,7 @@ gem "aws-sdk-rails", ">= 1.0.1"
 group :development do
   gem "web-console", ">= 3.3.0"
   gem "letter_opener"
+  gem "govuk-lint"
 end
 
 group :development, :test do

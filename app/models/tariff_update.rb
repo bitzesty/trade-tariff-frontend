@@ -28,10 +28,10 @@ class TariffUpdate
 
   class << self
     def latest_applied_import_date
-      func = Proc.new {
+      func = Proc.new do
         last = all.first
         last.try(:applied_at) || Date.current
-      }
+      end
 
       if Rails.env.test? || Rails.env.development?
         # Do not cache it in Test and Development environments.
@@ -49,7 +49,7 @@ class TariffUpdate
 
   private
 
-    def date_attribute(attr_name)
-      Date.parse(attributes[attr_name].to_s)
-    end
+  def date_attribute(attr_name)
+    Date.parse(attributes[attr_name].to_s)
+  end
 end
