@@ -11,7 +11,7 @@
   <h2 class="heading-small">Choose the commodity code below that best matches your goods to see more information</h2>
   <p>If your item is not listed by name, it may be shown under what it's used for, what it's made from or 'other'.</p>
   <%= render 'shared/tariff_breadcrumbs', heading: @heading %>
-  <%= render 'shared/callout' %>
+  <%= render 'shared/callout', chapter: @heading.chapter %>
   <article class="tariff">
     <div class="tree-key">
       <div class="chapter-code">
@@ -23,6 +23,7 @@
       <div class="key-text">Heading code</div>
     </div>
     <div class="commodity-tree">
+      <div class="tree-controls"></div>
       <div class="commodity-tree-note">
         <span>The number following each commodity's description is its commodity code.</span>
         <em class="level">Level</em>

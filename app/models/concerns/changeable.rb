@@ -5,10 +5,10 @@ module Models
     def changes(query_params = {})
       retries = 0
       begin
-        self.class.get("#{resource_path}/changes", query_params).map { | change_data|
+        self.class.get("#{resource_path}/changes", query_params).map do |change_data|
           Change.new(change_data)
-        }
-      rescue
+        end
+      rescue StandardError
         if retries < Rails.configuration.x.http.max_retry
           retries += 1
           retry

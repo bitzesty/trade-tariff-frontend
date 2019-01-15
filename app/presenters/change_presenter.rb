@@ -30,8 +30,7 @@ class ChangePresenter
     end
   end
 
-  def anchor_link
-  end
+  def anchor_link; end
 
   private
 

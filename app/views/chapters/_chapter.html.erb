@@ -4,5 +4,8 @@
       <span class="code-text"><%= chapter.short_code %></span>
     </div>
   </td>
-  <td><%= link_to chapter, chapter_path(chapter, request.query_parameters.symbolize_keys) %></td>
+  <td>
+    <%= link_to chapter, chapter_path(chapter, request.query_parameters.symbolize_keys) %>
+    <%= render partial: 'chapters/chapter_guides', locals: {chapter: chapter} %>
+  </td>
 </tr>

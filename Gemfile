@@ -1,27 +1,31 @@
 source "https://rubygems.org"
-ruby '~> 2.5.0'
+ruby "~> 2.5.3"
 
-gem "rails", "5.1.5"
-gem "connection_pool", "~> 2.2"
+gem "rails", "5.1.6.1"
 
 gem "yajl-ruby", "~> 1.3.1", require: "yajl"
 gem "multi_json", "~> 1.11"
 gem "httparty", "~> 0.13"
-gem "hashie", "~> 3.4"
-gem "govspeak", "~> 3.6", ">= 3.6.2"
-
-gem "govuk_template", "0.20.0"
 gem "addressable", "~> 2.3"
+gem "hashie", "~> 3.4"
 
+# Assets
 gem "coffee-rails", "~> 4.2.2", ">= 4.1.0"
-gem "govuk_frontend_toolkit", "~> 4.18", ">= 4.18.4"
-gem 'govuk_elements_rails', '~> 1.2', '>= 1.2.2'
 gem "jquery-rails", "~> 4.2.2"
-gem 'jquery-migrate-rails'
+gem "jquery-migrate-rails"
 gem "sass-rails", "~> 5.0.6"
 gem "uglifier", "~> 2.7"
 gem "responders", "~> 2.1", ">= 2.1.0"
 gem "bootscale", "~> 0.5", require: false
+
+# gov UK
+gem "govspeak", "~> 3.6", ">= 3.6.2"
+gem "govuk_template", ">= 0.23.0"
+gem "govuk_frontend_toolkit", ">= 6.0.2"
+gem "govuk_elements_rails", ">= 3.1.3"
+
+gem "connection_pool", "~> 2.2"
+
 gem "nokogiri", "~>1.8.1"
 
 # Logging
@@ -30,6 +34,7 @@ gem "lograge", ">= 0.3.6"
 
 # Web Server
 gem "puma"
+gem 'rack-cors'
 gem "rack-timeout", "~> 0.4"
 
 # Redis
@@ -42,6 +47,7 @@ gem "aws-sdk-rails", ">= 1.0.1"
 group :development do
   gem "web-console", ">= 3.3.0"
   gem "letter_opener"
+  gem "govuk-lint"
 end
 
 group :development, :test do
@@ -57,7 +63,7 @@ group :test do
   gem "shoulda-matchers", "~> 3.1.1"
   gem "vcr", "~> 3.0.3"
   gem "simplecov", "~> 0.14.1"
-  gem "simplecov-rcov", git: 'git@gitlab.bitzesty.com:open-source/simplecov-rcov.git' # monkey patch for ruby 2.5.0
+  gem "simplecov-rcov", git: "git@gitlab.bitzesty.com:open-source/simplecov-rcov.git" # monkey patch for ruby 2.5.0
   gem "rspec-rails", "~> 3.5.2"
   gem "capybara", "~> 2.13.0"
   gem "poltergeist", "~> 1.14.0"

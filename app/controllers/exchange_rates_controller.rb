@@ -12,8 +12,8 @@ class ExchangeRatesController < ApplicationController
       @rates[rate.validity_start_date.year.to_i] << rate
     end
 
-    @rates.each do |k,v|
-      v.sort_by! { |rate| rate.validity_start_date }
+    @rates.each do |_k, v|
+      v.sort_by!(&:validity_start_date)
     end
 
     @years = @rates.keys.sort.reverse

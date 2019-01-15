@@ -1,6 +1,5 @@
 module Chapters
   class ChangesController < ::ChangesController
-
     private
 
     def changeable

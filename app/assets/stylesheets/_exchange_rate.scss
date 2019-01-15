@@ -42,6 +42,7 @@
     @include media(false, $desktop-min-width - 1px) {
       @include grid-column(1);
       margin: 1em 0;
+      position: static;
     }
 
     @include media (desktop) {
@@ -49,6 +50,15 @@
 
       position: fixed;
       bottom: 20px;
+    }
+  }
+
+  & + #last-updated-at {
+    padding-left: 26%;
+    margin-top: 37px;
+
+    @include media(false, $desktop-min-width - 1px) {
+      padding-left: 0;
     }
   }
 }

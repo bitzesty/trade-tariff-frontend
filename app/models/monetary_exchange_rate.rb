@@ -19,6 +19,6 @@ class MonetaryExchangeRate
   end
 
   def inverse_rate
-    (1/exchange_rate.to_f).to_d.truncate(9)
+    (1 / exchange_rate.to_f).to_d.truncate(9)
   end
 end

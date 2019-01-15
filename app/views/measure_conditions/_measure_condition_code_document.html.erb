@@ -20,7 +20,11 @@
       <% else %>
         <td colspan="2">No document provided</td>
       <% end %>
-      <td><%= condition.action %></td>
+      <td>
+        <%= condition.action %>
+        <br/>
+        <%= condition.duty_expression.to_s.html_safe %>
+      </td>
     </tr>
   <% end %>
   </tbody>

@@ -6,14 +6,14 @@ require 'simplecov-rcov'
 SimpleCov.start 'rails'
 SimpleCov.formatter = SimpleCov::Formatter::RcovFormatter
 
-require File.expand_path("../../config/environment", __FILE__)
+require File.expand_path('../config/environment', __dir__)
 
 require 'rspec/rails'
 
-Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
+Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 
 # require models
-Dir[Rails.root.join("app/models/*.rb")].each {|f| require f}
+Dir[Rails.root.join("app/models/*.rb")].each { |f| require f }
 
 require 'capybara/rails'
 require 'capybara/rspec'
@@ -23,7 +23,7 @@ require 'capybara/poltergeist'
 # Allow any SSL protocol, we override the default SSLv3 PhantomJS SSL Protocol
 # as it is not supported by our servers
 Capybara.register_driver :poltergeist do |app|
-  Capybara::Poltergeist::Driver.new(app, { phantomjs_options: ['--ssl-protocol=any']})
+  Capybara::Poltergeist::Driver.new(app, phantomjs_options: ['--ssl-protocol=any'])
 end
 Capybara.javascript_driver = :poltergeist
 
@@ -47,7 +47,7 @@ RSpec.configure do |config|
   config.include Rails.application.routes.url_helpers
   config.include Capybara::DSL
 
-  config.before(:each) do
+  config.before do
     allow(TariffUpdate).to receive(:all).and_return([OpenStruct.new(updated_at: Date.today)])
   end
 end

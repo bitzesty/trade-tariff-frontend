@@ -32,7 +32,7 @@ class Search
         if existing_heading = find_heading(commodity.heading)
           existing_heading.add_commodity(commodity)
         else
-          @commodity_headings << build_heading_from(commodity).tap {|heading|
+          @commodity_headings << build_heading_from(commodity).tap { |heading|
             heading.add_commodity(commodity)
           }
         end
@@ -44,7 +44,7 @@ class Search
     end
 
     def any?
-      [headings, commodities, chapters, sections].any? {|entity_group| entity_group.any? }
+      [headings, commodities, chapters, sections].any?(&:any?)
     end
 
     def all

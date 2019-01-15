@@ -4,7 +4,7 @@ class GoodsNomenclatureChangePresenter < ChangePresenter
   end
 
   def content
-    %Q{
+    %{
       Commodity #{change_record.goods_nomenclature_item_id} ('#{change_record.description}') #{operation_name}"
 
       #{effective_start_date}
@@ -12,8 +12,7 @@ class GoodsNomenclatureChangePresenter < ChangePresenter
     }.strip
   end
 
-  def anchor_link
-  end
+  def anchor_link; end
 
   def effective_start_date
     "Effective start date: #{validity_start_date}"

@@ -1,7 +1,7 @@
 require "api_entity"
 
 class HealthcheckController < ActionController::Base
-  rescue_from ApiEntity::Error do |e|
+  rescue_from ApiEntity::Error do |_e|
     render plain: '', status: :error
   end
 
