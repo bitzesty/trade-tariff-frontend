@@ -14,13 +14,13 @@ class OrderNumber
                   :monetary_unit, :balance, :description
 
     DATE_FIELDS.each do |field|
-      define_method(field.to_sym) {
+      define_method(field.to_sym) do
         instance_variable_get("@#{field}".to_sym).presence || NullObject.new
-      }
+      end
 
-      define_method("#{field}=".to_sym) { |arg|
+      define_method("#{field}=".to_sym) do |arg|
         instance_variable_set("@#{field}".to_sym, Time.parse(arg)) if arg.present?
-      }
+      end
     end
 
     def present?

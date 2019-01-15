@@ -24,19 +24,19 @@ class MeasurePresenter
   def grouped_measure_conditions
     measure.measure_conditions.group_by do |condition|
       {
-          condition: condition.condition,
-          partial_type: case condition.condition_code
-                        when "A", "B", "C", "H", "Q", "Y", "Z"
-                          "document"
-                        when "R", "S", "U"
-                          "ratio"
-                        when "F", "L", "M", "V"
-                          "ratio_duty"
-                        when "E", "I"
-                          "quantity"
-                        else
-                          "default"
-                        end
+        condition: condition.condition,
+        partial_type: case condition.condition_code
+                      when "A", "B", "C", "H", "Q", "Y", "Z"
+                        "document"
+                      when "R", "S", "U"
+                        "ratio"
+                      when "F", "L", "M", "V"
+                        "ratio_duty"
+                      when "E", "I"
+                        "quantity"
+                      else
+                        "default"
+                      end
       }
     end
   end

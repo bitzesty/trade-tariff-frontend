@@ -5,7 +5,7 @@ class SearchController < ApplicationController
     @results = @search.perform
 
     respond_to do |format|
-      format.html {
+      format.html do
         if @search.contains_search_term?
           redirect_to url_for(@results.to_param.merge(url_options)) if @results.exact_match?
         else
@@ -33,7 +33,7 @@ class SearchController < ApplicationController
 
           redirect_to(return_to + anchor)
         end
-      }
+      end
 
       format.json {
         render json: SearchPresenter.new(@search, @results)

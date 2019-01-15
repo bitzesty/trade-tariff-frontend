@@ -6,7 +6,7 @@ class Measure
   attr_accessor :id, :origin, :effective_start_date, :effective_end_date,
                 :import, :vat, :excise
 
-  DEFAULT_GEOGRAPHICAL_AREA_ID = "1011".freeze #ERGA OMNES
+  DEFAULT_GEOGRAPHICAL_AREA_ID = "1011".freeze # ERGA OMNES
 
   has_one :geographical_area
   has_many :legal_acts

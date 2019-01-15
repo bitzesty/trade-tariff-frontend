@@ -4,6 +4,12 @@ require: rubocop-rspec
 Metrics/LineLength:
   Max: 180
 
+Metrics/MethodLength:
+  Max: 20
+
+Style/GuardClause:
+  Enabled: false
+
 Documentation:
   Enabled: false
 

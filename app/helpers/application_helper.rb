@@ -51,6 +51,6 @@ module ApplicationHelper
   end
 
   def search_date_in_future_month?
-    @search && @search.date.date >= Date.today.at_beginning_of_month.next_month
+    @search&.date.date >= Date.today.at_beginning_of_month.next_month
   end
 end

@@ -77,7 +77,7 @@ class ApplicationController < ActionController::Base
 
   def set_cache
     unless Rails.env.development?
-      expires_in 2.hours, :public => true, 'stale-if-error' => 86400, 'stale-while-revalidate' => 86400
+      expires_in 2.hours, :public => true, 'stale-if-error' => 86_400, 'stale-while-revalidate' => 86_400
     end
   end
 
