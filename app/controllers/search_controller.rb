@@ -22,13 +22,13 @@ class SearchController < ApplicationController
           end
 
           anchor = if params.dig(:search, :anchor).present?
-            if params[:search][:anchor] == 'import'
-              '#import'
-            else
-              '#export'
-            end
-          else
-            ''
+                     if params[:search][:anchor] == 'import'
+                       '#import'
+                     else
+                       '#export'
+                     end
+                   else
+                     ''
           end
 
           redirect_to(return_to + anchor)
@@ -46,7 +46,7 @@ class SearchController < ApplicationController
   def suggestions
     search_term = Regexp.escape(params[:term].to_s)
     start_with = SearchSuggestion.start_with(search_term).sort_by(&:value)
-    results = start_with.map{ |s| { id: s.value, text: s.value } }
+    results = start_with.map { |s| { id: s.value, text: s.value } }
 
     render json: { results: results }
   end

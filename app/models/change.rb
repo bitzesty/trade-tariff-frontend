@@ -21,7 +21,7 @@ class Change
     @operation_date = Date.parse(operation_date)
   end
 
-  def change_url(changeable)
+  def change_url(_changeable)
     "/"
   end
 
@@ -29,8 +29,7 @@ class Change
 
   def record_class
     model_name.constantize # if change has relevant model, e.g. Measure
-
-    rescue NameError # if change has no relevant model revert to Hashie
-      Change::Record
+  rescue NameError # if change has no relevant model revert to Hashie
+    Change::Record
   end
 end

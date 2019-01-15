@@ -49,7 +49,7 @@ class TariffUpdate
 
   private
 
-    def date_attribute(attr_name)
-      Date.parse(attributes[attr_name].to_s)
-    end
+  def date_attribute(attr_name)
+    Date.parse(attributes[attr_name].to_s)
+  end
 end

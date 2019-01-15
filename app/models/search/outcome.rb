@@ -63,13 +63,13 @@ class Search
         results[chapter.short_code] = [chapter, []]
       end
 
-      headings.sort_by! { |h| h.short_code }
+      headings.sort_by!(&:short_code)
       headings.each do |heading|
         result = results[heading.chapter.short_code]
         result_existing_headings = result.nil? ? [] : result[1]
         results[heading.chapter.short_code] = [heading.chapter, result_existing_headings.push(heading)]
       end
-      sorted_results = results.sort_by { |k, v| k }
+      sorted_results = results.sort_by { |k, _v| k }
       sorted_results.to_a
     end
 

@@ -72,12 +72,12 @@ module CommoditiesHelper
   end
 
   def tree_node(main_commodity, commodities, depth)
-    deeper_node = commodities.select{ |c| c.number_indents == depth + 1 }.first
+    deeper_node = commodities.select { |c| c.number_indents == depth + 1 }.first
     if deeper_node.present? && deeper_node.number_indents < main_commodity.number_indents
       content_tag(:ul) do
         content_tag(:li) do
           content_tag(:span, deeper_node.to_s.html_safe) +
-          tree_node(main_commodity, commodities, deeper_node.number_indents)
+            tree_node(main_commodity, commodities, deeper_node.number_indents)
         end
       end
     else
@@ -96,9 +96,9 @@ module CommoditiesHelper
         content_tag(:div, format_commodity_code(commodity), class: 'code-text')
       end
       content_tag(:h1, commodity.to_s.html_safe) +
-      content_tag(:div, class: 'feed') do
-        link_to('Changes', commodity_changes_path(commodity.declarable, format: :atom), rel: "nofollow")
-      end
+        content_tag(:div, class: 'feed') do
+          link_to('Changes', commodity_changes_path(commodity.declarable, format: :atom), rel: "nofollow")
+        end
     end
   end
 
@@ -111,9 +111,9 @@ module CommoditiesHelper
         content_tag(:div, format_full_code(commodity), class: 'code-text')
       end
       content_tag(:h1, commodity.to_s.html_safe) +
-      content_tag(:div, class: 'feed') do
-        link_to('Changes', commodity_changes_path(commodity.declarable, format: :atom), rel: "nofollow")
-      end
+        content_tag(:div, class: 'feed') do
+          link_to('Changes', commodity_changes_path(commodity.declarable, format: :atom), rel: "nofollow")
+        end
     end
   end
 
@@ -131,7 +131,7 @@ module CommoditiesHelper
                          title: "Full tariff code: #{commodity.code}",
                          class: 'full-code',
                          'aria-describedby' => "commodity-#{commodity.code}") +
-      content_tag(:h1, commodity.to_s.html_safe)
+        content_tag(:h1, commodity.to_s.html_safe)
     end
   end
 end

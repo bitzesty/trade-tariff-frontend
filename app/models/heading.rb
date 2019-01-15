@@ -14,12 +14,12 @@ class Heading < GoodsNomenclature
   alias :leaf? :leaf
   alias :declarable? :declarable
 
-  def eql?(other_heading)
-    self.goods_nomenclature_item_id == other_heading.goods_nomenclature_item_id
+  def eql?(other)
+    goods_nomenclature_item_id == other.goods_nomenclature_item_id
   end
 
-  def ==(other_heading)
-    self.goods_nomenclature_item_id == other_heading.goods_nomenclature_item_id
+  def ==(other)
+    goods_nomenclature_item_id == other.goods_nomenclature_item_id
   end
 
   def hash

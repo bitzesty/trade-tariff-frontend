@@ -15,23 +15,24 @@ class ApplicationController < ActionController::Base
 
   layout :set_layout
 
-  rescue_from Errno::ECONNREFUSED do |e|
+  rescue_from Errno::ECONNREFUSED do |_e|
     render plain: '', status: :error
   end
 
-  rescue_from ApiEntity::NotFound do ||
+  rescue_from ApiEntity::NotFound do
     render plain: '404', status: 404
   end
 
   rescue_from ApiEntity::Error, with: :render_500
 
-  rescue_from URI::InvalidURIError do |e|
+  rescue_from URI::InvalidURIError do |_e|
     render plain: '404', status: 404
   end
 
   def url_options
     return super unless search_invoked?
     return { country: search_query.country, currency: search_query.currency }.merge(super) if search_query.date.today?
+
     {
       year: search_query.date.year,
       month: search_query.date.month,
@@ -47,7 +48,7 @@ class ApplicationController < ActionController::Base
     render template: "errors/internal_server_error",
            layout: "pages",
            status: 500
-    return false
+    false
   end
 
   def set_last_updated
@@ -85,7 +86,7 @@ class ApplicationController < ActionController::Base
   def preprocess_raw_params
     if params[:year] && params[:month] && params[:day]
       search_date = Date.new(*[params[:year], params[:month], params[:day]].map(&:to_i))
-      brexit_date = Date.new(2019,3,29)
+      brexit_date = Date.new(2019, 3, 29)
       now = Date.today
       if (search_date >= brexit_date) && (now < brexit_date)
         params[:year] = now.year
