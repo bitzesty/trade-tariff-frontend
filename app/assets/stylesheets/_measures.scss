@@ -31,3 +31,8 @@
 article.notes h2 {
   @extend .heading-small;
 }
+
+table caption.heading-medium,
+table caption.heading-small {
+  display: table-caption;
+}
