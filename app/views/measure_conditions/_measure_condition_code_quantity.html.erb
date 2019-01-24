@@ -14,9 +14,11 @@
     <tr>
       <% if condition.document_code.blank? %>
         <% if condition.requirement.blank? %>
-          <td colspan="2">Condition not fulfilled</td>
+          <td>&nbsp;</td>
+          <td>Condition not fulfilled</td>
         <% else %>
-          <td colspan="2"><%= condition.requirement.to_s.html_safe %></td>
+          <td>&nbsp;</td>
+          <td><%= condition.requirement.to_s.html_safe %></td>
         <% end %>
       <% else %>
         <td class="numerical"><%= condition.document_code %></td>

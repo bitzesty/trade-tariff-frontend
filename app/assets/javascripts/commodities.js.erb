@@ -80,6 +80,24 @@
                 }
               };
 
+              var adjustCommodityInfoHeights = function () {
+                var windowWidth = $(window).width();
+
+                $(".commodity__info").each(function () {
+                  $(this).css("height", "auto");
+
+                  if (windowWidth >= 1100) {
+                    $(this).css("height", $(this).parent().height());
+                  }
+                });
+              };
+
+              if ($(".commodity__info").length > 0) {
+                adjustCommodityInfoHeights();
+
+                $(window).resize(adjustCommodityInfoHeights);
+              }
+
               $parentNodes.each(function (idx) {
                   var $parentNode = $(this),
                       $childList;
