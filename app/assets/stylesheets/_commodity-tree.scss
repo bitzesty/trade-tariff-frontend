@@ -87,7 +87,7 @@ article.tariff {
 
   .commodity-tree__additional-info {
     float: right;
-    width: 480px;
+    width: 510px;
 
     em {
       font-style: normal;
@@ -110,7 +110,7 @@ article.tariff {
     }
 
     .duty {
-      width: 115px;
+      width: 145px;
       display: none;
 
       @media (min-width: $headings-large-viewport) {
@@ -210,10 +210,13 @@ article.tariff {
 
       .commodity__info {
         @media (min-width: 641px) {
-          position: absolute;
-          bottom: 0;
-          right: 0;
-          width: 480px;
+          float: right;
+          width: 510px;
+
+          @supports(display: flex) {
+            display: flex;
+            align-items: flex-end;
+          }
         }
 
         .lte-ie8 & {
@@ -235,6 +238,7 @@ article.tariff {
           margin-right: 15px;
           color: $text-colour;
           font-weight: normal;
+          font-size: 0.9em;
 
           @media (min-width: $headings-large-viewport) {
             display: block;
@@ -247,7 +251,7 @@ article.tariff {
         }
 
         .duty {
-          width: 115px;
+          width: 145px;
         }
 
         .supplementary-units {
