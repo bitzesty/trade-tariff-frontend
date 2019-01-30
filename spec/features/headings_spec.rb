@@ -4,8 +4,6 @@ describe "JS behaviour", js: true, vcr: {
   cassette_name: "headings#8501",
   record: :new_episodes
 } do
-
-
   it "displays the correct page" do
     visit heading_path("8501")
 
