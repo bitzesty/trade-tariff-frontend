@@ -50,4 +50,20 @@ RSpec.configure do |config|
   config.before do
     allow(TariffUpdate).to receive(:all).and_return([OpenStruct.new(updated_at: Date.today)])
   end
+
+  config.after(:each, type: :feature, js: true) do
+    errors = page.driver.browser.manage.logs.get(:browser)
+    puts "LOL " + errors.to_s
+    if errors.present?
+      aggregate_failures 'javascript errrors' do
+        errors.each do |error|
+          puts error.level
+          expect(error.level).not_to eq('SEVERE'), error.message
+          next unless error.level == 'WARNING'
+          STDERR.puts 'WARN: javascript warning'
+          STDERR.puts error.message
+        end
+      end
+    end
+end
 end
