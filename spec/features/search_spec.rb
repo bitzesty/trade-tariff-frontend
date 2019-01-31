@@ -34,6 +34,9 @@ describe "Search", js: true, vcr: {
 
     page.find(".select2-results__option--highlighted").click
 
+    # trying to see if redirect done by JS needs some sleep to be caught up
+    sleep 2
+
     expect(page).to have_content("Search results for ‘gold’")
   end
 
@@ -48,6 +51,9 @@ describe "Search", js: true, vcr: {
     expect(page.find(".select2-results__option--highlighted").text).to eq("dsauidoasuiodsa")
 
     page.find(".select2-results__option--highlighted").click
+
+    # trying to see if redirect done by JS needs some sleep to be caught up
+    sleep 2
 
     expect(page).to have_content("Search results for ‘dsauidoasuiodsa’")
     expect(page).to have_content("There are no results matching your query.")
