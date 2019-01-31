@@ -53,7 +53,6 @@ RSpec.configure do |config|
 
   config.after(:each, type: :feature, js: true) do
     errors = page.driver.browser.manage.logs.get(:browser)
-    puts "LOL " + errors.to_s
     if errors.present?
       aggregate_failures 'javascript errrors' do
         errors.each do |error|
