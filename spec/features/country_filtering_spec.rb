@@ -2,7 +2,6 @@ require "spec_helper"
 
 describe "Search", js: true, vcr: {
   cassette_name: "country_filtering",
-  record: :new_episodes,
   match_requests_on: [:query, :path, :body]
 } do
 
