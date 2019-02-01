@@ -3,7 +3,7 @@ require "spec_helper"
 describe "Date & Currency change", js: true, vcr: {
   cassette_name: "date_currency",
   record: :new_episodes,
-  match_requests_on: [:query, :path]
+  match_requests_on: [:path, :query]
 } do
 
   it "displays the current date" do
