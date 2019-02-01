@@ -2,6 +2,7 @@ require "spec_helper"
 
 describe "Search", js: true, vcr: {
   cassette_name: "search#gold",
+  record: :new_episodes,
   match_requests_on: [:query, :path, :body]
 } do
 
@@ -20,6 +21,7 @@ describe "Search", js: true, vcr: {
     page.find("#select2-q-container").click
 
     page.find(".select2-search__field").set("gold")
+    sleep 2
 
     expect(page.find(".select2-results__option--highlighted").text).to eq("gold")
     sleep 2
@@ -46,8 +48,11 @@ describe "Search", js: true, vcr: {
 
     page.find(".select2-search__field").set("dsauidoasuiodsa")
 
+    sleep 2
+
     expect(page.find_all(".select2-results__option").length).to eq(1)
     expect(page.find(".select2-results__option--highlighted").text).to eq("dsauidoasuiodsa")
+    sleep 2
 
     page.find(".select2-results__option--highlighted").click
 

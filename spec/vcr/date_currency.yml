@@ -31,9 +31,9 @@ http_interactions:
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - e6bfea69-0b80-4b6b-8c74-73dd3f1bb84d
+      - 41bdee61-f22c-481d-89c3-179251137a8e
       X-Runtime:
-      - '0.251235'
+      - '0.314129'
       Transfer-Encoding:
       - chunked
     body:
@@ -74,13 +74,13 @@ http_interactions:
         manufactured articles","numeral":"XX","chapter_from":"94","chapter_to":"96","section_note_id":null},{"id":21,"position":21,"title":"Works
         of art, collectors'' pieces and antiques","numeral":"XXI","chapter_from":"97","chapter_to":"98","section_note_id":null}]'
     http_version: 
-  recorded_at: Thu, 31 Jan 2019 11:55:37 GMT
+  recorded_at: Fri, 01 Feb 2019 13:03:23 GMT
 - request:
     method: post
     uri: http://localhost:3018/search
     body:
       encoding: UTF-8
-      string: q=&as_of=2018-12-31&currency=EUR
+      string: q=&as_of=2018-12-01&currency=EUR
     headers:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -106,14 +106,14 @@ http_interactions:
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 5991e26b-edf0-49bd-809c-fd078fa950dd
+      - '068787b8-64f6-4cf1-a249-4de3d7b028ce'
       X-Runtime:
-      - '0.250972'
+      - '0.009412'
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
       string: '{"q":["can''t be blank"]}'
     http_version: 
-  recorded_at: Thu, 31 Jan 2019 12:10:35 GMT
+  recorded_at: Fri, 01 Feb 2019 14:03:41 GMT
 recorded_with: VCR 3.0.3
