@@ -6,16 +6,16 @@ describe "Search", js: true, vcr: {
   match_requests_on: [:query, :path]
 } do
 
-  before {
-    visit commodity_path("0201300020", day: 31, month: 5, year: 2014)
+  it "is possible to filter measures by country" do
+
+    visit commodity_path("0201300020")
+
+    sleep 2
 
     within ".nav-tabs" do
       click_on "Import"
     end
-  }
 
-  it "is possible to filter measures by country" do
-    sleep 2
     expect(page.find("#select2-import_search_country-container").text).to eq("All countries")
 
     page.find("#select2-import_search_country-container").click

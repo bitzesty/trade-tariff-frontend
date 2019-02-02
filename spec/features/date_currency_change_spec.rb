@@ -2,18 +2,18 @@ require "spec_helper"
 
 describe "Date & Currency change", js: true, vcr: {
   cassette_name: "date_currency",
-  record: :new_episodes,
+  record: :once,
   match_requests_on: [:path, :query]
 } do
 
   it "displays the current date" do
-    visit sections_path
+    visit sections_path(day: 01, month: 02, year: 2019)
 
     expect(page).to have_content "This tariff is for 1 February 2019"
   end
 
   it "is able to change dates and go back in time" do
-    visit sections_path
+    visit sections_path(day: 01, month: 02, year: 2019)
 
     expect(page).to have_content "This tariff is for 1 February 2019"
     expect(page).to have_content "Change date"
