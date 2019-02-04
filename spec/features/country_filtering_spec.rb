@@ -8,7 +8,7 @@ describe "Search", js: true, vcr: {
 
   it "is possible to filter measures by country" do
 
-    visit commodity_path("0201300020")
+    visit commodity_path("0101210000")
 
     sleep 2
 
