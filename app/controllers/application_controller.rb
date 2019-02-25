@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   include TradeTariffFrontend::ViewContext::Controller
   include ApplicationHelper
 
-  http_basic_authenticate_with name: ENV['CDS_USER'], password: ENV['CDS_PASSWORD'], if: -> { ENV['CDS_LOCKED'].present? && ENV['CDS_USER'].present? && ENV['CDS_PASSWORD'].present? }
+  http_basic_authenticate_with name: TradeTariffFrontend::Locking.user, password: TradeTariffFrontend::Locking.password, if: -> { TradeTariffFrontend::Locking.authenticable? }
   before_action :set_last_updated
   before_action :set_cache
   before_action :preprocess_raw_params
