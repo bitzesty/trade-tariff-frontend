@@ -56,7 +56,7 @@ module TradeTariffFrontend
     end
 
     def allowed_ip(ip)
-      allowed_ips = ENV['CDS_IP_WHITELIST']&.split(',') || []
+      allowed_ips = ENV['CDS_IP_WHITELIST']&.split(',')&.map(&:squish) || []
       allowed_ips.include?(ip)
     end
 
