@@ -6,7 +6,6 @@ class ApplicationController < ActionController::Base
   include ApplicationHelper
 
   before_action :http_basic_authenticate, if: -> { TradeTariffFrontend::Locking.authenticable? }
-  # http_basic_authenticate_with name: TradeTariffFrontend::Locking.user, password: TradeTariffFrontend::Locking.password, if: -> { TradeTariffFrontend::Locking.authenticable? }
   before_action :set_last_updated
   before_action :set_cache
   before_action :preprocess_raw_params
