@@ -5,7 +5,8 @@ class ApplicationController < ActionController::Base
   include TradeTariffFrontend::ViewContext::Controller
   include ApplicationHelper
 
-  http_basic_authenticate_with name: TradeTariffFrontend::Locking.user, password: TradeTariffFrontend::Locking.password, if: -> { TradeTariffFrontend::Locking.authenticable? }
+  before_action :http_basic_authenticate, if: -> { TradeTariffFrontend::Locking.authenticable? }
+  # http_basic_authenticate_with name: TradeTariffFrontend::Locking.user, password: TradeTariffFrontend::Locking.password, if: -> { TradeTariffFrontend::Locking.authenticable? }
   before_action :set_last_updated
   before_action :set_cache
   before_action :preprocess_raw_params
@@ -119,5 +120,12 @@ class ApplicationController < ActionController::Base
   def append_info_to_payload(payload)
     super
     payload[:user_agent] = request.env["HTTP_USER_AGENT"]
+  end
+
+  def http_basic_authenticate
+    authenticate_or_request_with_http_basic do |name, password|
+      ActiveSupport::SecurityUtils.variable_size_secure_compare(name, TradeTariffFrontend::Locking.user) &
+          ActiveSupport::SecurityUtils.variable_size_secure_compare(password, TradeTariffFrontend::Locking.password)
+    end
   end
 end

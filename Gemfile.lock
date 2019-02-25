@@ -366,6 +366,7 @@ DEPENDENCIES
   puma
   rack-attack
   rack-cors
+  rack-test
   rack-timeout (~> 0.4)
   rails (= 5.1.6.1)
   rails-controller-testing
