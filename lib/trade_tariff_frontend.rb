@@ -39,4 +39,10 @@ module TradeTariffFrontend
   def to_email
     ENV["TARIFF_TO_EMAIL"]
   end
+
+  def regulations_enabled?
+    return true unless ENV['HIDE_REGULATIONS']
+
+    ENV.fetch('HIDE_REGULATIONS') != 'true'
+  end
 end

@@ -50,11 +50,13 @@
 
   <td><%= measure.excluded_country_list %></td>
 
-  <td class="numerical">
-    <% if !measure.national? && measure.legal_acts.present? %>
-      <%= link_to measure.legal_acts.first.regulation_code, "##{measure.id}-regulations", class: 'reference', 'data-popup-ref' => "#{measure.id}-regulations" %>
-    <% end %>
-  </td>
+  <%- if TradeTariffFrontend.regulations_enabled? -%>
+    <td class="numerical">
+      <% if !measure.national? && measure.legal_acts.present? %>
+        <%= link_to measure.legal_acts.first.regulation_code, "##{measure.id}-regulations", class: 'reference', 'data-popup-ref' => "#{measure.id}-regulations" %>
+      <% end %>
+    </td>
+  <%- end -%>
 
   <td class="numerical">
     <%= measure.effective_start_date %><% if measure.effective_end_date.present? %><br>(<%= measure.effective_end_date %>)<% end %>
