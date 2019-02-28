@@ -8,8 +8,9 @@ describe '', vcr: { cassette_name: "sections#index" } do
   end
 
   context 'when app is not locked' do
-    before { ENV['CDS_LOCKED'] = nil }
+    before { ENV['CDS_LOCKED_IP'] = nil }
     before { ENV['CDS_IP_WHITELIST'] = nil }
+    before { ENV['CDS_LOCKED_AUTH'] = nil }
     before { ENV['CDS_USER'] = nil }
     before { ENV['CDS_PASSWORD'] = nil }
 
@@ -24,8 +25,9 @@ describe '', vcr: { cassette_name: "sections#index" } do
     let(:correct_password) { 'password' }
     let(:wrong_password) { 'password12' }
 
-    before { ENV['CDS_LOCKED'] = 'true' }
-    before { ENV['CDS_IP_WHITELIST'] = '127.0.0.1' }
+    before { ENV['CDS_LOCKED_IP'] = nil }
+    before { ENV['CDS_IP_WHITELIST'] = nil }
+    before { ENV['CDS_LOCKED_AUTH'] = 'true' }
     before { ENV['CDS_USER'] = correct_user }
     before { ENV['CDS_PASSWORD'] = correct_password }
 
@@ -43,8 +45,9 @@ describe '', vcr: { cassette_name: "sections#index" } do
       }
     end
 
-    after { ENV['CDS_LOCKED'] = nil }
+    after { ENV['CDS_LOCKED_IP'] = nil }
     after { ENV['CDS_IP_WHITELIST'] = nil }
+    after { ENV['CDS_LOCKED_AUTH'] = nil }
     after { ENV['CDS_USER'] = nil }
     after { ENV['CDS_PASSWORD'] = nil }
   end

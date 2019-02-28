@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   include TradeTariffFrontend::ViewContext::Controller
   include ApplicationHelper
 
-  before_action :http_basic_authenticate, if: -> { TradeTariffFrontend::Locking.authenticable? }
+  before_action :http_basic_authenticate, if: -> { TradeTariffFrontend::Locking.auth_locked? }
   before_action :set_last_updated
   before_action :set_cache
   before_action :preprocess_raw_params

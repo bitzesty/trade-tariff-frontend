@@ -51,8 +51,8 @@ module TradeTariffFrontend
 
     module_function
 
-    def locked?
-      ENV['CDS_LOCKED'].present?
+    def ip_locked?
+      ENV['CDS_LOCKED_IP'].present? && ENV['CDS_IP_WHITELIST'].present?
     end
 
     def allowed_ip(ip)
@@ -60,8 +60,8 @@ module TradeTariffFrontend
       allowed_ips.include?(ip)
     end
 
-    def authenticable?
-      ENV['CDS_LOCKED'].present? && ENV['CDS_USER'].present? && ENV['CDS_PASSWORD'].present?
+    def auth_locked?
+      ENV['CDS_LOCKED_AUTH'].present? && ENV['CDS_USER'].present? && ENV['CDS_PASSWORD'].present?
     end
 
     def user
