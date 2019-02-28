@@ -85,7 +85,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def preprocess_raw_params
-    if params[:year] && params[:month] && params[:day]
+    if TradeTariffFrontend.block_searching_past_march? && params[:year] && params[:month] && params[:day]
       search_date = Date.new(*[params[:year], params[:month], params[:day]].map(&:to_i))
       brexit_date = Date.new(2019, 3, 29)
       now = Date.today

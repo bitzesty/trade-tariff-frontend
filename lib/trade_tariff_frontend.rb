@@ -45,6 +45,12 @@ module TradeTariffFrontend
 
     ENV.fetch('HIDE_REGULATIONS') != 'true'
   end
+  
+  def block_searching_past_march?
+    return true unless ENV['ALLOW_SEARCH']
+    
+    ENV.fetch('ALLOW_SEARCH') != 'true'
+  end
 
   # CDS locking and authentication
   module Locking
