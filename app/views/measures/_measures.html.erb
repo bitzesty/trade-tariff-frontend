@@ -30,16 +30,16 @@
                 Goods are subject to
                 <%= national_vat.map{ |m| "<strong>#{m.measure_type.description} (#{filter_duty_expression(m.duty_expression.to_s.html_safe)})</strong>" }.join(' and ').html_safe + (national_vat.count > 1 ? ',' : '.') %>
                 <% if national_vat.any?{| x | x.additional_code.code == "VATZ" } %>
-                  <%= link_to 'please see related guidance as to when zero VAT applies', 'https://www.gov.uk/guidance/rates-of-vat-on-different-goods-and-services#introduction', target: :_blank %>.
+                  <%= link_to 'Please see related guidance as to when zero VAT applies', 'https://www.gov.uk/guidance/rates-of-vat-on-different-goods-and-services#introduction', target: :_blank %>.
                 <% end %>
               </p>
             <% else %>
               <p>We are temporarily unable to display the VAT rate, please refer to the paper tariff.</p>
             <% end %>
             <% if declarable.basic_duty_rate.present? %>
-              <p>Importing from outside the EU is subject to a third country duty of <strong><%= declarable.basic_duty_rate.html_safe %></strong> unless subject to other measures.</p>
+              <p>Importing from outside the UK is subject to a third country duty of <strong><%= declarable.basic_duty_rate.html_safe %></strong> unless subject to other measures.</p>
             <% else %>
-              <p>Importing from outside the EU is subject to <strong>variable</strong> third country duty.</p>
+              <p>Importing from outside the UK is subject to <strong>variable</strong> third country duty.</p>
             <% end %>
             <p> Import measures and restrictions for specific countries can be found under the <a href="#import">import</a> tab.</p>
           </div>
@@ -52,7 +52,7 @@
 
             <% if declarable.all_footnotes.compact.select(&:eco?).any? %>
               <p>
-                <%= link_to 'You may need to apply for a licence from the Export Control Organisation (ECO) as your goods may be controlled under the Export Control Order 2008, or under EU Council Regulation 428/2009',
+                <%= link_to 'You may need to apply for a licence from the Export Control Organisation (ECO) as your goods may be controlled under the Export Control Order 2008',
                             'https://www.gov.uk/guidance/uk-strategic-export-control-lists-the-consolidated-list-of-strategic-military-and-dual-use-items',
                             target: :_blank %>.
               </p>
