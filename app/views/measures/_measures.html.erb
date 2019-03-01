@@ -29,7 +29,7 @@
               <p>
                 Goods are subject to
                 <%= national_vat.map{ |m| "<strong>#{m.measure_type.description} (#{filter_duty_expression(m.duty_expression.to_s.html_safe)})</strong>" }.join(' and ').html_safe + (national_vat.count > 1 ? ',' : '.') %>
-                <% if national_vat.count > 1 } %>
+                <% if national_vat.count > 1  %>
                   <%= link_to 'Please see related guidance as to when zero VAT applies', 'https://www.gov.uk/guidance/rates-of-vat-on-different-goods-and-services#introduction', target: :_blank %>.
                 <% end %>
               </p>
