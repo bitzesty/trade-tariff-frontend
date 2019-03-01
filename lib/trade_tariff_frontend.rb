@@ -40,6 +40,10 @@ module TradeTariffFrontend
     ENV["TARIFF_TO_EMAIL"]
   end
 
+  def origin
+    regulations_enabled? ? "EU" : "UK"
+  end
+
   def regulations_enabled?
     return true unless ENV['HIDE_REGULATIONS']
 

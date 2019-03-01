@@ -37,9 +37,9 @@
               <p>We are temporarily unable to display the VAT rate, please refer to the paper tariff.</p>
             <% end %>
             <% if declarable.basic_duty_rate.present? %>
-              <p>Importing from outside the UK is subject to a third country duty of <strong><%= declarable.basic_duty_rate.html_safe %></strong> unless subject to other measures.</p>
+              <p>Importing from outside the <%= TradeTariffFrontend.origin %> is subject to a third country duty of <strong><%= declarable.basic_duty_rate.html_safe %></strong> unless subject to other measures.</p>
             <% else %>
-              <p>Importing from outside the UK is subject to <strong>variable</strong> third country duty.</p>
+              <p>Importing from outside the <%= TradeTariffFrontend.origin %> is subject to <strong>variable</strong> third country duty.</p>
             <% end %>
             <p> Import measures and restrictions for specific countries can be found under the <a href="#import">import</a> tab.</p>
           </div>
