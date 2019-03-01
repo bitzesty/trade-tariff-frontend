@@ -28,8 +28,8 @@
             <% if national_vat.count > 0 %>
               <p>
                 Goods are subject to
-                <%= national_vat.map{ |m| "<strong>#{m.measure_type.description}</strong>" }.join(' and ').html_safe + (national_vat.count > 1 ? ',' : '.') %>
-                <% if national_vat.count > 1 %>
+                <%= national_vat.map{ |m| "<strong>#{m.measure_type.description} (#{filter_duty_expression(m.duty_expression.to_s.html_safe)})</strong>" }.join(' and ').html_safe + (national_vat.count > 1 ? ',' : '.') %>
+                <% if national_vat.any?{| x | x.additional_code.code == "VATZ" } %>
                   <%= link_to 'please see related guidance as to when zero VAT applies', 'https://www.gov.uk/guidance/rates-of-vat-on-different-goods-and-services#introduction', target: :_blank %>.
                 <% end %>
               </p>
