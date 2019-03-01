@@ -62,12 +62,16 @@
     <%= measure.effective_start_date %><% if measure.effective_end_date.present? %><br>(<%= measure.effective_end_date %>)<% end %>
     <% if measure.suspension_legal_act.present? %>
       <br />
-      <a class="suspended" href="<%= measure.suspension_legal_act.regulation_url %>" target="_blank">
-        Suspended from <%= measure.suspension_legal_act.validity_start_date %>
-        <% if measure.suspension_legal_act.validity_end_date %>
-          to <%= measure.suspension_legal_act.validity_end_date %>
+      <%- if TradeTariffFrontend.regulations_enabled? -%>
+        <a class="suspended" href="<%= measure.suspension_legal_act.regulation_url %>" target="_blank">
+          Suspended from <%= measure.suspension_legal_act.validity_start_date %>
+          <% if measure.suspension_legal_act.validity_end_date %>
+            to <%= measure.suspension_legal_act.validity_end_date %>
+          <% end %>
+        </a>
+        <%- else -%>
+          Suspended from <%= measure.suspension_legal_act.validity_start_date %> to <%= measure.suspension_legal_act.validity_end_date %>
         <% end %>
-      </a>
     <% end %>
   </td>
 
