@@ -96,29 +96,6 @@ describe SearchController, "GET to #search", type: :controller do
           it { should redirect_to(chapter_path("01", year: year, month: month, day: day)) }
         end
 
-        context 'valid future date params past brexit_date provided, it is before 2019-03-29, and date is re-set to today' do
-          let(:year)        { 2019 }
-          let(:month)       { 3 }
-          let(:day)         { 30 }
-
-          before(:each) do
-            @request.env['HTTP_REFERER'] = "/#{APP_SLUG}/chapters/01"
-
-            post :search, params: {
-              year: year,
-              month: month,
-              day: day
-            }
-          end
-
-          it { should respond_with(:redirect) }
-          it { expect(assigns(:search)).to be_a(Search) }
-          if Date.today <= Date.new(2019,3,29)
-            # ^ should prevent this context from failing after 2019-03-29
-            it { should redirect_to(chapter_path("01") + '?') }
-          end
-        end
-
         context 'valid date params provided for today' do
           let(:year)    { now.year }
           let(:month)   { now.month }
