@@ -81,5 +81,7 @@ module TradeTariffFrontend
     initializer :regenerate_require_cache, before: :load_environment_config do
       Bootscale.regenerate
     end
+
+    config.middleware.use Rack::Attack
   end
 end

@@ -45,4 +45,31 @@ module TradeTariffFrontend
 
     ENV.fetch('HIDE_REGULATIONS') != 'true'
   end
+
+  # CDS locking and authentication
+  module Locking
+
+    module_function
+
+    def ip_locked?
+      ENV['CDS_LOCKED_IP'].present? && ENV['CDS_IP_WHITELIST'].present?
+    end
+
+    def allowed_ip(ip)
+      allowed_ips = ENV['CDS_IP_WHITELIST']&.split(',')&.map(&:squish) || []
+      allowed_ips.include?(ip)
+    end
+
+    def auth_locked?
+      ENV['CDS_LOCKED_AUTH'].present? && ENV['CDS_USER'].present? && ENV['CDS_PASSWORD'].present?
+    end
+
+    def user
+      ENV['CDS_USER']
+    end
+
+    def password
+      ENV['CDS_PASSWORD']
+    end
+  end
 end

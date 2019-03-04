@@ -36,6 +36,7 @@ gem "lograge", ">= 0.3.6"
 gem "puma"
 gem 'rack-cors'
 gem "rack-timeout", "~> 0.4"
+gem 'rack-attack'
 
 # Redis
 gem "redis-rails"
@@ -69,6 +70,7 @@ group :test do
   gem "poltergeist", "~> 1.14.0"
   gem "timecop", "~> 0.8.1"
   gem "rspec_junit_formatter"
+  gem 'rack-test'
 end
 
 group :production do
