@@ -28,18 +28,18 @@
             <% if national_vat.count > 0 %>
               <p>
                 Goods are subject to
-                <%= national_vat.map{ |m| "<strong>#{m.measure_type.description}</strong>" }.join(' and ').html_safe + (national_vat.count > 1 ? ',' : '.') %>
-                <% if national_vat.count > 1 %>
-                  <%= link_to 'please see related guidance as to when zero VAT applies', 'https://www.gov.uk/guidance/rates-of-vat-on-different-goods-and-services#introduction', target: :_blank %>.
+                <%= national_vat.map{ |m| "<strong>#{m.measure_type.description} (#{m.duty_expression.to_s})</strong>" }.join(' and ').html_safe + (national_vat.count > 1 ? ',' : '.') %>
+                <% if national_vat.count > 1  %>
+                  <%= link_to 'Please see related guidance as to when zero VAT applies', 'https://www.gov.uk/guidance/rates-of-vat-on-different-goods-and-services#introduction', target: :_blank %>.
                 <% end %>
               </p>
             <% else %>
               <p>We are temporarily unable to display the VAT rate, please refer to the paper tariff.</p>
             <% end %>
             <% if declarable.basic_duty_rate.present? %>
-              <p>Importing from outside the EU is subject to a third country duty of <strong><%= declarable.basic_duty_rate.html_safe %></strong> unless subject to other measures.</p>
+              <p>Importing from outside the <%= TradeTariffFrontend.origin %> is subject to a third country duty of <strong><%= declarable.basic_duty_rate.html_safe %></strong> unless subject to other measures.</p>
             <% else %>
-              <p>Importing from outside the EU is subject to <strong>variable</strong> third country duty.</p>
+              <p>Importing from outside the <%= TradeTariffFrontend.origin %> is subject to <strong>variable</strong> third country duty.</p>
             <% end %>
             <p> Import measures and restrictions for specific countries can be found under the <a href="#import">import</a> tab.</p>
           </div>
@@ -52,7 +52,7 @@
 
             <% if declarable.all_footnotes.compact.select(&:eco?).any? %>
               <p>
-                <%= link_to 'You may need to apply for a licence from the Export Control Organisation (ECO) as your goods may be controlled under the Export Control Order 2008, or under EU Council Regulation 428/2009',
+                <%= link_to 'You may need to apply for a licence from the Export Control Organisation (ECO) as your goods may be controlled under the Export Control Order 2008',
                             'https://www.gov.uk/guidance/uk-strategic-export-control-lists-the-consolidated-list-of-strategic-military-and-dual-use-items',
                             target: :_blank %>.
               </p>
@@ -68,8 +68,10 @@
       <p>Use the <%= link_to "Look up Meursing code", "https://www.gov.uk/additional-commodity-code", rel: "external", target: "_blank", title: "Opens in a new window" %> tool to find the additional code required for importing and exporting. To calculate the duty rate, enter the meursing code (without the 7 at the start) into the <%= link_to "meursing calculator", declarable.meursing_tool_link_for(@search.date.to_taric_date), rel: "external", target: "_blank", title: "Opens in a new window" %>.</p>
     <% end %>
     <%= render 'shared/notes', section_note: declarable.section.section_note, chapter_note: declarable.chapter.chapter_note %>
-    <h2 class="heading-medium">Binding tariff information</h2>
-    <p>You can search the EU EBTI-database for existing <%= link_to "Binding Tariff Information", declarable.bti_url, rel: "external", target: "_blank", title: "Opens in a new window" %> for commodity code <strong><%= declarable.code %></strong>.</p>
+    <%- if TradeTariffFrontend.regulations_enabled? -%>
+      <h2 class="heading-medium">Binding tariff information</h2>
+      <p>You can search the EU EBTI-database for existing <%= link_to "Binding Tariff Information", declarable.bti_url, rel: "external", target: "_blank", title: "Opens in a new window" %> for commodity code <strong><%= declarable.code %></strong>.</p>
+    <% end %>
     </div>
   </article>
 
@@ -134,7 +136,9 @@
             <th>Value</th>
             <th>Conditions that apply</th>
             <th>Exclusions</th>
-            <th class="legal-act" title="Opens in a new window">Legal base</th>
+            <%- if TradeTariffFrontend.regulations_enabled? -%>
+               <th class="legal-act" title="Opens in a new window">Legal base</th>
+             <%- end -%>
             <th>Start date<br>(End date, if any)</th>
             <th>Footnotes</th>
           </tr>

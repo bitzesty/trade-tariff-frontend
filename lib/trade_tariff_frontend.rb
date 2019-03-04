@@ -40,10 +40,20 @@ module TradeTariffFrontend
     ENV["TARIFF_TO_EMAIL"]
   end
 
+  def origin
+    regulations_enabled? ? "EU" : "UK"
+  end
+
   def regulations_enabled?
     return true unless ENV['HIDE_REGULATIONS']
 
     ENV.fetch('HIDE_REGULATIONS') != 'true'
+  end
+  
+  def block_searching_past_march?
+    return true unless ENV['BLOCK_SEARCH']
+    
+    ENV.fetch('BLOCK_SEARCH') != 'true'
   end
 
   # CDS locking and authentication
