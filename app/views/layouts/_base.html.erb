@@ -42,12 +42,26 @@
 <% end %>
 
 <% content_for :footer_top do %>
+  <div class="footer-categories">
+    <div class="footer-explore">
+      <h2>Prepare for EU Exit</h2>
+
+      <ul>
+        <li><a href="https://www.gov.uk/business-uk-leaving-eu" target="_blank">Prepare your business for the UK leaving the EU</a></li>
+        <li><a href="https://www.gov.uk/prepare-eu-exit" target="_blank">Prepare for EU Exit if you live in the UK</a></li>
+      </ul>
+      <ul>
+        <li><a href="https://www.gov.uk/uk-nationals-living-eu" target="_blank">Living in Europe after the UK leaves the EU</a></li>
+        <li><a href="https://www.gov.uk/staying-uk-eu-citizen" target="_blank">Continue to live in the UK after it leaves the EU</a></li>
+      </ul>
+    </div>
+  </div>
   <nav class="footer-categories">
     <div class="footer-category">
       <h2>Contact</h2>
       <ul>
-        <li><a target="_blank" href="https://www.gov.uk/government/publications/notice-600-classifying-your-imports-or-exports/notice-600-classifying-your-imports-or-exports#using-the-tariff-classification-service-email-service">Tariff Classification Service</a></li>
-        <li><a target="_blank" href="https://www.gov.uk/government/organisations/hm-revenue-customs/contact/vat-enquiries">HMRC VAT, Excise and Customs Helpline:</a> <a href="tel:03002003700" class="tel">0300 200 3700</a></li>
+        <li><a target="_blank" href="https://www.gov.uk/guidance/ask-hmrc-for-advice-on-classifying-your-goods">Ask HMRC for advice on classifying your goods</a></li>
+        <li><a target="_blank" href="https://www.gov.uk/government/organisations/hm-revenue-customs/contact/customs-international-trade-and-excise-enquiries">Imports and exports: general enquiries</a></li>
         <li><%= link_to 'Feedback', feedback_path %></li>
       </ul>
     </div>
@@ -56,8 +70,8 @@
       <h2>Help</h2>
       <ul>
         <!-- <li><a href="#">How to use the Tariff</a></li> -->
-        <li><a target="_blank" href="https://www.gov.uk/guidance/classification-of-goods">How to classify imports and exports using the UK Trade Tariff</a></li>
-        <li><a target="_blank" href="https://www.gov.uk/government/collections/classification-of-goods">Classification guides</a></li>
+        <li><a target="_blank" href="https://www.gov.uk/guidance/finding-commodity-codes-for-imports-or-exports">Finding commodity codes for imports or exports</a></li>
+        <li><a target="_blank" href="https://www.gov.uk/guidance/using-the-trade-tariff-tool-to-find-a-commodity-code">Using the Trade Tariff tool to find a commodity code</a></li>
         <li><a target="_blank" href="https://www.gov.uk/topic/business-tax/import-export">Import and export</a></li>
       </ul>
     </div>
