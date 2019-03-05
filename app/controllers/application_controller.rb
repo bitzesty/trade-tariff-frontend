@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   include TradeTariffFrontend::ViewContext::Controller
   include ApplicationHelper
 
+  # before_action :http_authentication, if: -> { TradeTariffFrontend::Locking.auth_locked? }
   before_action :set_last_updated
   before_action :set_cache
   before_action :preprocess_raw_params
@@ -43,6 +44,15 @@ class ApplicationController < ActionController::Base
   end
 
   private
+
+  # def http_authentication
+  #   if TradeTariffFrontend::Locking.auth_locked?
+  #     authenticate_or_request_with_http_basic do |name, password|
+  #       ActiveSupport::SecurityUtils.variable_size_secure_compare(name, TradeTariffFrontend::Locking.user) &
+  #         ActiveSupport::SecurityUtils.variable_size_secure_compare(password, TradeTariffFrontend::Locking.password)
+  #     end
+  #   end
+  # end
 
   def render_500
     render template: "errors/internal_server_error",
@@ -84,7 +94,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def preprocess_raw_params
-    if params[:year] && params[:month] && params[:day]
+    if TradeTariffFrontend.block_searching_past_march? && params[:year] && params[:month] && params[:day]
       search_date = Date.new(*[params[:year], params[:month], params[:day]].map(&:to_i))
       brexit_date = Date.new(2019, 3, 29)
       now = Date.today

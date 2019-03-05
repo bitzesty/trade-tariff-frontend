@@ -39,4 +39,57 @@ module TradeTariffFrontend
   def to_email
     ENV["TARIFF_TO_EMAIL"]
   end
+
+  def origin
+    regulations_enabled? ? "EU" : "UK"
+  end
+
+  def regulations_enabled?
+    return true unless ENV['HIDE_REGULATIONS']
+
+    ENV.fetch('HIDE_REGULATIONS') != 'true'
+  end
+  
+  def block_searching_past_march?
+    return true unless ENV['ALLOW_SEARCH']
+    
+    ENV.fetch('ALLOW_SEARCH') != 'true'
+  end
+
+  # CDS locking and authentication
+  module Locking
+
+    module_function
+
+    def ip_locked?
+      ENV['CDS_LOCKED_IP'].present? && ENV['CDS_IP_WHITELIST'].present?
+    end
+
+    def allowed_ip(ip)
+      allowed_ips = ENV['CDS_IP_WHITELIST']&.split(',')&.map(&:squish) || []
+      allowed_ips.include?(ip)
+    end
+
+    def auth_locked?
+      ENV['CDS_LOCKED_AUTH'].present? && ENV['CDS_USER'].present? && ENV['CDS_PASSWORD'].present?
+    end
+
+    def user
+      ENV['CDS_USER']
+    end
+
+    def password
+      ENV['CDS_PASSWORD']
+    end
+  end
+
+  class BasicAuth < Rack::Auth::Basic
+    def call(env)
+      if TradeTariffFrontend::Locking.auth_locked?
+        super # perform auth
+      else
+        @app.call(env) # skip auth
+      end
+    end
+  end
 end
