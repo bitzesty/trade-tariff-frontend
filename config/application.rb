@@ -61,6 +61,13 @@ module TradeTariffFrontend
       g.test_framework  false
     end
 
+    if TradeTariffFrontend::Locking.auth_locked?
+      config.middleware.insert_before 0, Rack::Auth::Basic do |name, password|
+        ActiveSupport::SecurityUtils.variable_size_secure_compare(name, TradeTariffFrontend::Locking.user) &
+          ActiveSupport::SecurityUtils.variable_size_secure_compare(password, TradeTariffFrontend::Locking.password)
+      end
+    end
+
     config.middleware.insert_before 0, Rack::Cors do
       allow do
         origins ENV['HOST'] || 'localhost:3017'
