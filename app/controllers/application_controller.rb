@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   include TradeTariffFrontend::ViewContext::Controller
   include ApplicationHelper
 
-  before_action :http_basic_authenticate, if: -> { TradeTariffFrontend::Locking.auth_locked? }
+  before_action :http_authentication, if: -> { TradeTariffFrontend::Locking.auth_locked? }
   before_action :set_last_updated
   before_action :set_cache
   before_action :preprocess_raw_params
@@ -44,6 +44,15 @@ class ApplicationController < ActionController::Base
   end
 
   private
+
+  def http_authentication
+    if TradeTariffFrontend::Locking.auth_locked?
+      authenticate_or_request_with_http_basic do |name, password|
+        ActiveSupport::SecurityUtils.variable_size_secure_compare(name, TradeTariffFrontend::Locking.user) &
+          ActiveSupport::SecurityUtils.variable_size_secure_compare(password, TradeTariffFrontend::Locking.password)
+      end
+    end
+  end
 
   def render_500
     render template: "errors/internal_server_error",
@@ -119,12 +128,5 @@ class ApplicationController < ActionController::Base
   def append_info_to_payload(payload)
     super
     payload[:user_agent] = request.env["HTTP_USER_AGENT"]
-  end
-
-  def http_basic_authenticate
-    authenticate_or_request_with_http_basic do |name, password|
-      ActiveSupport::SecurityUtils.variable_size_secure_compare(name, TradeTariffFrontend::Locking.user) &
-          ActiveSupport::SecurityUtils.variable_size_secure_compare(password, TradeTariffFrontend::Locking.password)
-    end
   end
 end
