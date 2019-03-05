@@ -82,4 +82,14 @@ module TradeTariffFrontend
       ENV['CDS_PASSWORD']
     end
   end
+
+  class BasicAuth < Rack::Auth::Basic
+    def call(env)
+      if TradeTariffFrontend::Locking.auth_locked?
+        super # perform auth
+      else
+        @app.call(env) # skip auth
+      end
+    end
+  end
 end
