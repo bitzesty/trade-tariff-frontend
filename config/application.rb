@@ -61,6 +61,11 @@ module TradeTariffFrontend
       g.test_framework  false
     end
 
+    config.middleware.insert_before 0, TradeTariffFrontend::BasicAuth do |name, password|
+      ActiveSupport::SecurityUtils.variable_size_secure_compare(name, TradeTariffFrontend::Locking.user) &
+        ActiveSupport::SecurityUtils.variable_size_secure_compare(password, TradeTariffFrontend::Locking.password)
+    end
+
     config.middleware.insert_before 0, Rack::Cors do
       allow do
         origins ENV['HOST'] || 'localhost:3017'
@@ -81,5 +86,7 @@ module TradeTariffFrontend
     initializer :regenerate_require_cache, before: :load_environment_config do
       Bootscale.regenerate
     end
+
+    config.middleware.use Rack::Attack
   end
 end

@@ -6,6 +6,8 @@ class Commodity < GoodsNomenclature
   include Models::Changeable
   include Models::Declarable
 
+  collection_path "/commodities"
+
   attr_accessor :parent_sid
 
   has_one :heading

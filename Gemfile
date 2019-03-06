@@ -1,5 +1,5 @@
 source "https://rubygems.org"
-ruby "~> 2.5.3"
+ruby "~> 2.6.0"
 
 gem "rails", "5.1.6.1"
 
@@ -36,6 +36,7 @@ gem "lograge", ">= 0.3.6"
 gem "puma"
 gem 'rack-cors'
 gem "rack-timeout", "~> 0.4"
+gem 'rack-attack'
 
 # Redis
 gem "redis-rails"
@@ -57,7 +58,7 @@ end
 
 group :test do
   gem "rails-controller-testing"
-  gem "webmock", "~> 3.0.1"
+  gem "webmock", "~> 3.5.0"
   gem "factory_girl_rails", "~> 4.8.0"
   gem "forgery"
   gem "shoulda-matchers", "~> 3.1.1"
@@ -65,10 +66,11 @@ group :test do
   gem "simplecov", "~> 0.14.1"
   gem "simplecov-rcov", git: "git@gitlab.bitzesty.com:open-source/simplecov-rcov.git" # monkey patch for ruby 2.5.0
   gem "rspec-rails", "~> 3.5.2"
-  gem "capybara", "~> 2.13.0"
+  gem "capybara", "~> 2.18.0"
   gem "poltergeist", "~> 1.14.0"
   gem "timecop", "~> 0.8.1"
   gem "rspec_junit_formatter"
+  gem 'rack-test'
 end
 
 group :production do

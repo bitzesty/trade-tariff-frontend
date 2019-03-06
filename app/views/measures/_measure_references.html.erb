@@ -10,7 +10,7 @@
 </div>
 <% end %>
 
-<% if !measure.national? && measure.legal_acts.present? %>
+<% if !measure.national? && measure.legal_acts.present? && TradeTariffFrontend.regulations_enabled? %>
   <div class='regulations' id='<%= measure.id %>' data-popup='<%= measure.id %>-regulations'>
     <article>
       <table class="small-table">
