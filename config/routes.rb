@@ -56,7 +56,7 @@ Rails.application.routes.draw do
 
   scope path: "v1", :format => true, :constraints => { :format => 'json' } do
     constraints TradeTariffFrontend::ApiConstraints.new(
-      TradeTariffFrontend.accessible_api_endpoints
+      TradeTariffFrontend.public_api_endpoints
     ) do
       match ':endpoint/(*path)',
         via: :get,
