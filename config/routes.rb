@@ -54,6 +54,21 @@ Rails.application.routes.draw do
     end
   end
 
+  scope path: "v1", :format => true, :constraints => { :format => 'json' } do
+    constraints TradeTariffFrontend::ApiConstraints.new(
+      TradeTariffFrontend.accessible_api_endpoints
+    ) do
+      match ':endpoint/(*path)',
+        via: :get,
+        to: TradeTariffFrontend::RequestForwarder.new(
+          host: Rails.application.config.api_host,
+          api_request_path_formatter: ->(path) {
+            path.gsub("v1/", "")
+          }
+        )
+    end
+  end
+
   root to: redirect("https://www.gov.uk/trade-tariff", status: 302)
 
   get "/robots.:format", to: "pages#robots"
