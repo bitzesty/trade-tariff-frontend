@@ -26,7 +26,8 @@ module TradeTariffFrontend
           Rack::Utils::HeaderHash.new(
             response.headers.
                      except(*IGNORED_UPSTREAM_HEADERS).
-                     merge('X-Slimmer-Skip' => true)
+                     merge('X-Slimmer-Skip' => true).
+                     merge('Cache-Control' => "max-age=#{cache_max_age}")
           )
         ).finish
       else
@@ -60,6 +61,10 @@ module TradeTariffFrontend
 
     def api_request_path_for(path)
       @api_request_path_formatter.call(path)
+    end
+
+    def cache_max_age
+      Time.zone.now.tomorrow.midnight.to_i - Time.now.to_i
     end
   end
 end
