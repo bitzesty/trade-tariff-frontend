@@ -63,8 +63,16 @@ module TradeTariffFrontend
       @api_request_path_formatter.call(path)
     end
 
-    def cache_max_age
-      Time.zone.now.tomorrow.midnight.to_i - Time.now.to_i
+    def cache_max_age(now=nil)
+      now ||= Time.now.utc
+      case now.hour
+      when 0..21
+        Time.now.utc.change(hour: 22).to_i - now.to_i
+      when 22
+        Time.now.utc.change(hour: 23).to_i - now.to_i
+      when 23
+        Time.now.utc.tomorrow.change(hour: 22).to_i - now.to_i
+      end
     end
   end
 end
