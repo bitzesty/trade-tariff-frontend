@@ -14,6 +14,10 @@ module TradeTariffFrontend
     %w[sections chapters headings commodities updates monetary_exchange_rates]
   end
 
+  def public_api_endpoints
+    %w[sections chapters headings commodities monetary_exchange_rates]
+  end
+
   def production?
     ENV["GOVUK_APP_DOMAIN"] == "tariff-frontend-production.cloudapps.digital"
   end
