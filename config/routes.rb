@@ -54,7 +54,7 @@ Rails.application.routes.draw do
     end
   end
 
-  get "v1/commodities/codes", to: TradeTariffFrontend::RequestForwarder.new(
+  get "v1(/commodities)/goods_nomenclature", to: TradeTariffFrontend::RequestForwarder.new(
     host: Rails.application.config.api_host,
     api_request_path_formatter: ->(path) {
       path.gsub("v1/", "")
