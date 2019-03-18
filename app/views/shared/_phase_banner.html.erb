@@ -1,6 +1,7 @@
+<%- phase, text = ENV['NOTICE_BANNER_LINK'].split('|') -%>
 <div class="phase-banner">
   <p>
-    <strong class="phase-tag">NOTICE</strong>
-    <span>This service is currently being updated, some data might be missing, please <a class="govuk-link" href="<%= ENV['NOTICE_BANNER_LINK']%>">click here</a> for further details.</span>
+    <strong class="phase-tag"><%= phase.upcase %></strong>
+    <span><%= govspeak(text).gsub(/<p>|<\/p>/, '').html_safe %></span>
   </p>
 </div>
