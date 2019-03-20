@@ -57,13 +57,16 @@ module TradeTariffFrontend
     end
 
     def request_headers_for(env)
-      http_headers = Rack::Utils::HeaderHash.new()
-      env.select{|k,v| k =~ /^HTTP_(.*)/}.each_pair do |k,v|
-        http_headers[k.gsub(/^HTTP_/, '')] = v unless k == "HTTP_VERSION"
-      end
-      http_headers
-    end
+      headers = Rack::Utils::HeaderHash.new
 
+      env.each { |key, value|
+        if key =~ /HTTP_(.*)/
+          headers[$1] = value unless ["HTTP_VERSION", "HTTP_CACHE_CONTROL"].include?(key)
+        end
+      }
+      headers
+    end
+    
     def api_request_path_for(path)
       @api_request_path_formatter.call(path)
     end
