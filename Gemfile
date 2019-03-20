@@ -35,7 +35,6 @@ gem "lograge", ">= 0.3.6"
 # Web Server
 gem "puma"
 gem 'rack-cors'
-gem "rack-timeout", "~> 0.4"
 gem 'rack-attack'
 
 # Redis
