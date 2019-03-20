@@ -18,7 +18,11 @@ module TradeTariffFrontend
       case rackreq.request_method
       # The API is read-only
       when "GET", "HEAD"
-        response = HTTParty.send(rackreq.request_method.downcase, request_url_for(rackreq), request_headers_for(env))
+        response = HTTParty.send(
+          rackreq.request_method.downcase, 
+          request_url_for(rackreq), 
+          {timeout: 600, headers: request_headers_for(env)}
+        )
 
         Rack::Response.new(
           [response.body],
@@ -50,13 +54,11 @@ module TradeTariffFrontend
     end
 
     def request_headers_for(env)
-      headers = Rack::Utils::HeaderHash.new
-
-      env.each { |key, value|
-        if key =~ /HTTP_(.*)/
-          headers[$1] = value
-        end
-      }
+      http_headers = {}
+      env.select{|k,v| k =~ /^HTTP_(.*)/}.each_pair do |k,v|
+        http_headers[k.gsub(/^HTTP_/, '')] = v unless k == "HTTP_VERSION"
+      end
+      http_headers
     end
 
     def api_request_path_for(path)
