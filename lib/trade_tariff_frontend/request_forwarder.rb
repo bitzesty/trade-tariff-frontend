@@ -21,7 +21,10 @@ module TradeTariffFrontend
         response = HTTParty.send(
           rackreq.request_method.downcase, 
           request_url_for(rackreq), 
-          {timeout: 600, headers: request_headers_for(env)}
+          {
+            timeout: Integer(ENV.fetch('HTTPARTY_READ_TIMEOUT', 661)), 
+            headers: request_headers_for(env)
+          }
         )
 
         Rack::Response.new(
@@ -54,7 +57,7 @@ module TradeTariffFrontend
     end
 
     def request_headers_for(env)
-      http_headers = {}
+      http_headers = Rack::Utils::HeaderHash.new()
       env.select{|k,v| k =~ /^HTTP_(.*)/}.each_pair do |k,v|
         http_headers[k.gsub(/^HTTP_/, '')] = v unless k == "HTTP_VERSION"
       end
