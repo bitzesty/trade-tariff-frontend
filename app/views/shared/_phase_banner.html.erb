@@ -1,0 +1,7 @@
+<%- phase, text = ENV['NOTICE_BANNER'].split('|') -%>
+<div class="phase-banner">
+  <p>
+    <strong class="phase-tag"><%= phase.upcase %></strong>
+    <span><%= govspeak(text).gsub(/<p>|<\/p>/, '').html_safe %></span>
+  </p>
+</div>
