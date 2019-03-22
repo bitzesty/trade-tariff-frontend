@@ -184,7 +184,6 @@ GEM
     rack-cors (1.0.2)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
-    rack-timeout (0.4.2)
     rails (5.1.6.2)
       actioncable (= 5.1.6.2)
       actionmailer (= 5.1.6.2)
@@ -367,7 +366,6 @@ DEPENDENCIES
   rack-attack
   rack-cors
   rack-test
-  rack-timeout (~> 0.4)
   rails (= 5.1.6.2)
   rails-controller-testing
   rails_12factor
