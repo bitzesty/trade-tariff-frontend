@@ -18,7 +18,13 @@ module TradeTariffFrontend
       case rackreq.request_method
       # The API is read-only
       when "GET", "HEAD"
-        response = HTTParty.send(rackreq.request_method.downcase, request_url_for(rackreq), request_headers_for(env))
+        response = HTTParty.send(
+          rackreq.request_method.downcase, 
+          request_url_for(rackreq), 
+          {
+            timeout: Integer(ENV.fetch('HTTPARTY_READ_TIMEOUT', 661))
+          }
+        )
 
         Rack::Response.new(
           [response.body],
