@@ -18,7 +18,13 @@ module TradeTariffFrontend
       case rackreq.request_method
       # The API is read-only
       when "GET", "HEAD"
-        response = HTTParty.send(rackreq.request_method.downcase, request_url_for(rackreq), request_headers_for(env))
+        response = HTTParty.send(
+          rackreq.request_method.downcase, 
+          request_url_for(rackreq), 
+          {
+            timeout: Integer(ENV.fetch('HTTPARTY_READ_TIMEOUT', 661))
+          }
+        )
 
         Rack::Response.new(
           [response.body],
@@ -27,7 +33,7 @@ module TradeTariffFrontend
             response.headers.
                      except(*IGNORED_UPSTREAM_HEADERS).
                      merge('X-Slimmer-Skip' => true).
-                     merge('Cache-Control' => "max-age=#{cache_max_age}")
+                     merge('Cache-Control' => "max-age=#{cache_max_age(response.code.to_i)}")
           )
         ).finish
       else
@@ -60,10 +66,18 @@ module TradeTariffFrontend
     end
 
     def api_request_path_for(path)
+      @uri = URI.parse(path)
       @api_request_path_formatter.call(path)
     end
 
-    def cache_max_age(now=nil)
+    def cache_max_age(response_code, now=nil)
+      # cache server errors for a relatively short time
+      return 180 if response_code.to_i.between?(500, 599)
+
+      # cache goods_nomenclature calls with `as_of` parameter for 10 years
+      return (60 * 60 * 24 * 365 * 10) if @uri.path =~ /\/v1\/goods_nomenclature\.(json|csv)/ && @uri.query.include?('as_of')
+
+      # cache other calls according to the daily sync schedule
       now ||= Time.now.utc
       case now.hour
       when 0..21
