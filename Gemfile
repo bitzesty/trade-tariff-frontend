@@ -36,6 +36,7 @@ gem "lograge", ">= 0.3.6"
 gem "puma"
 gem 'rack-cors'
 gem 'rack-attack'
+gem "scout_apm"
 
 # Redis
 gem "redis-rails"
@@ -75,5 +76,4 @@ end
 group :production do
   gem "rails_12factor"
   gem "sentry-raven"
-  gem "newrelic_rpm"
 end
