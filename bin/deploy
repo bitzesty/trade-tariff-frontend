@@ -20,7 +20,8 @@ curl -X POST \
 $SLACK_WEBHOOK
 
 # Deploy
-cf bgd $CF_APP 
+cf create-app-manifest $CF_APP
+cf bgd $CF_APP -f "$CF_APP"_manifest.yml
 
 # Notify Slack deployment finished
 curl -X POST \
