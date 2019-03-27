@@ -70,7 +70,7 @@ deploy_dev:
     - curl -v -L -o autopilot https://github.com/contraband/autopilot/releases/download/0.0.3/autopilot-linux
     - chmod +x autopilot
     - cf install-plugin autopilot -f
-    - CF_SPACE=development CF_APP=tariff-frontend-dev CF_APP_WORKER=tariff-frontend-worker-dev ./bin/deploy
+    - CF_ENDPOINT=api.london.cloud.service.gov.uk CF_SPACE=development CF_APP=tariff-frontend-dev CF_APP_WORKER=tariff-frontend-worker-dev ./bin/deploy
   only:
     - master
 
@@ -83,7 +83,7 @@ deploy_staging:
     - curl -v -L -o autopilot https://github.com/contraband/autopilot/releases/download/0.0.3/autopilot-linux
     - chmod +x autopilot
     - cf install-plugin autopilot -f
-    - CF_SPACE=staging CF_APP=tariff-frontend-staging CF_APP_WORKER=tariff-frontend-worker-staging ./bin/deploy
+    - CF_ENDPOINT=api.london.cloud.service.gov.uk CF_SPACE=staging CF_APP=tariff-frontend-staging CF_APP_WORKER=tariff-frontend-worker-staging ./bin/deploy
   only:
     - staging
 
