@@ -19,4 +19,11 @@
 
   // Track initial pageview
   GOVUK.analytics.trackPageview();
+
+  $(document).on("click", "[data-analytics-event]", function(e){
+    var $target = $(e.target);
+    GOVUK.analytics.trackEvent('click', $target.data("analytics-event"), {
+      label: e.target.innerText
+    });
+  });
 })();
