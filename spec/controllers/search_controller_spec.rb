@@ -78,8 +78,8 @@ describe SearchController, "GET to #search", type: :controller do
 
         context 'valid future date params provided and currency is forced to EUR' do
           let(:year)    { 2019 }
-          let(:month)   { 3 }
-          let(:day)     { 28 }
+          let(:month)   { 4 }
+          let(:day)     { 12 }
 
           before(:each) do
             @request.env['HTTP_REFERER'] = "/#{APP_SLUG}/chapters/01"
@@ -93,7 +93,7 @@ describe SearchController, "GET to #search", type: :controller do
 
           it { should respond_with(:redirect) }
           it { expect(assigns(:search)).to be_a(Search) }
-          it { should redirect_to(chapter_path("01", year: year, month: month, day: day)) }
+          it { should redirect_to(chapter_path("01", year: year, month: month, day: day, currency: 'EUR')) }
         end
 
         context 'valid date params provided for today' do
