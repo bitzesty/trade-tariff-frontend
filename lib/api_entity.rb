@@ -1,6 +1,7 @@
 require 'httparty'
 require 'multi_json'
 require 'active_model'
+require 'tariff_jsonapi_parser'
 
 module ApiEntity
   class NotFound < StandardError; end
@@ -76,6 +77,9 @@ module ApiEntity
         when 502
           raise ApiEntity::Error, "502 Bad Gateway"
         end
+
+        resp = TariffJsonapiParser.new(resp).parse
+
         resp.map { |entry_data| new(entry_data) }
       rescue StandardError
         if retries < Rails.configuration.x.http.max_retry
@@ -99,6 +103,9 @@ module ApiEntity
         when 502
           raise ApiEntity::Error, resp['error']
         end
+
+        resp = TariffJsonapiParser.new(resp).parse
+
         new(resp)
       rescue StandardError
         if retries < Rails.configuration.x.http.max_retry
