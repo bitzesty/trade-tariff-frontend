@@ -68,14 +68,7 @@ module TradeTariffFrontend
 
     config.middleware.insert_before 0, Rack::Cors do
       allow do
-        origins '*'
-        resource '/tariff/*',
-                 :headers => :any, 
-                 :methods => %i[get options]
-      end
-
-      allow do
-        origins ENV['CORS_HOST'] || 'localhost:3017'
+        origins ENV['CORS_HOST'] || '*'
         resource '*',
                  headers: :any,
                  methods: %i[get options]
