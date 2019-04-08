@@ -17,6 +17,7 @@ module ApiEntity
     include HTTParty
     include MultiJson
     base_uri Rails.application.config.api_host
+    headers 'Accept' => "application/vnd.uktt.v#{Rails.configuration.x.backend.api_version}"
     # debug_output
 
     attr_reader :attributes

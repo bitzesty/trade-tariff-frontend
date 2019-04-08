@@ -88,6 +88,9 @@ module TradeTariffFrontend
     # Tells Rails to serve error pages from the app itself, rather than using static error pages in public/
     config.exceptions_app = self.routes
 
+    # Trade Tariff Backend API Version
+    config.x.backend.api_version = ENV["TARIFF_API_VERSION"] || 1
+
     config.x.http.max_retry = 5
 
     initializer :regenerate_require_cache, before: :load_environment_config do
