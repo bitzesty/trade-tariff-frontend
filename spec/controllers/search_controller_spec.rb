@@ -94,7 +94,7 @@ describe SearchController, "GET to #search", type: :controller do
 
           it { should respond_with(:redirect) }
           it { expect(assigns(:search)).to be_a(Search) }
-          it { should redirect_to(chapter_path("01", year: year, month: month, day: day, currency: 'EUR')) }
+          it { should redirect_to(chapter_path("01", year: year, month: month, day: day)) }
         end
 
         context 'valid date params provided for today' do
