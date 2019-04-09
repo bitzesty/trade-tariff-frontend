@@ -82,7 +82,7 @@ class ApplicationController < ActionController::Base
   end
 
   def query_params
-    { query: { as_of: search_query.date, currency: search_query.currency } }
+    { as_of: search_query.date, currency: search_query.currency }
   end
 
   def set_cache

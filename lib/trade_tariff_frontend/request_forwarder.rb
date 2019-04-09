@@ -18,22 +18,23 @@ module TradeTariffFrontend
       case rackreq.request_method
       # The API is read-only
       when "GET", "HEAD"
-        response = HTTParty.send(
-          rackreq.request_method.downcase, 
-          request_url_for(rackreq), 
-          {
-            timeout: Integer(ENV.fetch('HTTPARTY_READ_TIMEOUT', 661))
-          }
-        )
+        conn = Faraday.new
+        response = conn.send(
+          rackreq.request_method.downcase,
+          request_url_for(rackreq)
+        ) do |req|
+          req.options.timeout = 60           # open/read timeout in seconds
+          req.options.open_timeout = 15      # connection open timeout in seconds
+        end
 
         Rack::Response.new(
           [response.body],
-          response.code.to_i,
+          response.status.to_i,
           Rack::Utils::HeaderHash.new(
             response.headers.
                      except(*IGNORED_UPSTREAM_HEADERS).
                      merge('X-Slimmer-Skip' => true).
-                     merge('Cache-Control' => "max-age=#{cache_max_age(response.code.to_i)}")
+                     merge('Cache-Control' => "max-age=#{cache_max_age(response.status.to_i)}")
           )
         ).finish
       else

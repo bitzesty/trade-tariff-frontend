@@ -98,6 +98,8 @@ GEM
       railties (>= 3.0.0)
     faraday (0.11.0)
       multipart-post (>= 1.2, < 3)
+    faraday_middleware (0.13.1)
+      faraday (>= 0.7.4, < 1.0)
     ffi (1.9.25)
     forgery (0.6.0)
     globalid (0.4.2)
@@ -124,9 +126,6 @@ GEM
     hashdiff (0.3.8)
     hashie (3.4.2)
     htmlentities (4.3.4)
-    httparty (0.13.5)
-      json (~> 1.8)
-      multi_xml (>= 0.5.2)
     i18n (1.6.0)
       concurrent-ruby (~> 1.0)
     jaro_winkler (1.5.2)
@@ -157,7 +156,6 @@ GEM
     mini_portile2 (2.3.0)
     minitest (5.11.3)
     multi_json (1.12.1)
-    multi_xml (0.5.5)
     multipart-post (2.0.0)
     nio4r (2.3.1)
     nokogiri (1.8.5)
@@ -344,6 +342,8 @@ DEPENDENCIES
   connection_pool (~> 2.2)
   dotenv-rails
   factory_girl_rails (~> 4.8.0)
+  faraday
+  faraday_middleware
   forgery
   govspeak (~> 3.6, >= 3.6.2)
   govuk-lint
@@ -351,7 +351,6 @@ DEPENDENCIES
   govuk_frontend_toolkit (>= 6.0.2)
   govuk_template (>= 0.23.0)
   hashie (~> 3.4)
-  httparty (~> 0.13)
   jquery-migrate-rails
   jquery-rails (~> 4.2.2)
   letter_opener
