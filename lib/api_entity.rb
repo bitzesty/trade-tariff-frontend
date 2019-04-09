@@ -1,4 +1,4 @@
-require 'httparty'
+require 'faraday_middleware'
 require 'multi_json'
 require 'active_model'
 require 'tariff_jsonapi_parser'
@@ -14,11 +14,8 @@ module ApiEntity
     include ActiveModel::Conversion
     extend  ActiveModel::Naming
 
-    include HTTParty
+    include Faraday
     include MultiJson
-    base_uri Rails.application.config.api_host
-    headers 'Accept' => "application/vnd.uktt.v#{Rails.configuration.x.backend.api_version}"
-    # debug_output
 
     attr_reader :attributes
 
@@ -66,11 +63,13 @@ module ApiEntity
   end
 
   module ClassMethods
+    delegate :get, :post, to: :api
+
     def all(opts = {})
       retries = 0
       begin
-        resp = get(collection_path, opts)
-        case resp.code
+        resp = api.get(collection_path, opts)
+        case resp.status
         when 404
           raise ApiEntity::NotFound, resp['error']
         when 500
@@ -78,9 +77,7 @@ module ApiEntity
         when 502
           raise ApiEntity::Error, "502 Bad Gateway"
         end
-
-        resp = TariffJsonapiParser.new(resp).parse
-
+        resp = TariffJsonapiParser.new(resp.body).parse
         resp.map { |entry_data| new(entry_data) }
       rescue StandardError
         if retries < Rails.configuration.x.http.max_retry
@@ -95,8 +92,8 @@ module ApiEntity
     def find(id, opts = {})
       retries = 0
       begin
-        resp = get("/#{self.name.pluralize.parameterize}/#{id}", opts)
-        case resp.code
+        resp = api.get("/#{self.name.pluralize.parameterize}/#{id}", opts)
+        case resp.status
         when 404
           raise ApiEntity::NotFound
         when 500
@@ -104,9 +101,7 @@ module ApiEntity
         when 502
           raise ApiEntity::Error, resp['error']
         end
-
-        resp = TariffJsonapiParser.new(resp).parse
-
+        resp = TariffJsonapiParser.new(resp.body).parse
         new(resp)
       rescue StandardError
         if retries < Rails.configuration.x.http.max_retry
@@ -160,6 +155,15 @@ module ApiEntity
         @collection_path = path
       else
         @collection_path
+      end
+    end
+
+    def api
+      @api ||= Faraday.new Rails.application.config.api_host do |conn|
+        conn.request :url_encoded
+        conn.adapter Faraday.default_adapter
+        conn.response :json, content_type: /\bjson$/
+        conn.headers['Accept'] = "application/vnd.uktt.v#{Rails.configuration.x.backend.api_version}"
       end
     end
   end

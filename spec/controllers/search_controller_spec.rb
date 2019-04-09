@@ -77,9 +77,10 @@ describe SearchController, "GET to #search", type: :controller do
         end
 
         context 'valid future date params provided and currency is forced to EUR' do
-          let(:year)    { 2019 }
-          let(:month)   { 4 }
-          let(:day)     { 12 }
+          let(:future_date) { Date.today + 10.months }
+          let(:year)    { future_date.year }
+          let(:month)   { future_date.month }
+          let(:day)     { future_date.day }
 
           before(:each) do
             @request.env['HTTP_REFERER'] = "/#{APP_SLUG}/chapters/01"
