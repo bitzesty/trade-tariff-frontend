@@ -71,9 +71,9 @@ module ApiEntity
         resp = api.get(collection_path, opts)
         case resp.status
         when 404
-          raise ApiEntity::NotFound, resp['error']
+          raise ApiEntity::NotFound, TariffJsonapiParser.new(resp.body).errors
         when 500
-          raise ApiEntity::Error, resp['error']
+          raise ApiEntity::Error, TariffJsonapiParser.new(resp.body).errors
         when 502
           raise ApiEntity::Error, "502 Bad Gateway"
         end
