@@ -1,11 +1,12 @@
 source "https://rubygems.org"
-ruby "~> 2.6.0"
+ruby "~> 2.6.2"
 
 gem "rails", "5.1.6.2"
 
 gem "yajl-ruby", "~> 1.3.1", require: "yajl"
 gem "multi_json", "~> 1.11"
-gem "httparty", "~> 0.13"
+gem "faraday"
+gem "faraday_middleware"
 gem "addressable", "~> 2.3"
 gem "hashie", "~> 3.4"
 
@@ -36,6 +37,7 @@ gem "lograge", ">= 0.3.6"
 gem "puma"
 gem 'rack-cors'
 gem 'rack-attack'
+gem "scout_apm"
 
 # Redis
 gem "redis-rails"
@@ -75,5 +77,4 @@ end
 group :production do
   gem "rails_12factor"
   gem "sentry-raven"
-  gem "newrelic_rpm"
 end

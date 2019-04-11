@@ -82,7 +82,7 @@ class ApplicationController < ActionController::Base
   end
 
   def query_params
-    { query: { as_of: search_query.date, currency: search_query.currency } }
+    { as_of: search_query.date, currency: search_query.currency }
   end
 
   def set_cache
@@ -96,13 +96,13 @@ class ApplicationController < ActionController::Base
   def preprocess_raw_params
     if TradeTariffFrontend.block_searching_past_march? && params[:year] && params[:month] && params[:day]
       search_date = Date.new(*[params[:year], params[:month], params[:day]].map(&:to_i))
-      brexit_date = Date.new(2019, 4, 13)
+      brexit_date = Date.parse(ENV['BREXIT_DATE'] || '19-5-22')
       now = Date.today
       if (search_date >= brexit_date) && (now < brexit_date)
         params[:year] = now.year
         params[:month] = now.month
         params[:day] = now.day
-        flash[:alert] = "Sorry we are currently unable to display data past 12th of April 2019"
+        flash[:alert] = "Sorry we are currently unable to display data past #{brexit_date.strftime("#{brexit_date.day.ordinalize} of %B %Y")}"
       end
     end
   end
