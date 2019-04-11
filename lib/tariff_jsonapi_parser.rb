@@ -15,6 +15,10 @@ class TariffJsonapiParser
     end
   end
 
+  def errors
+    @attributes['error'] || @attributes['errors']&.map { |error| error['detail'] }&.join(', ')
+  end
+
   private
 
   def data

@@ -97,9 +97,9 @@ module ApiEntity
         when 404
           raise ApiEntity::NotFound
         when 500
-          raise ApiEntity::Error, resp.body['error'] || resp.body['errors']&.map { |error| error['detail'] }&.join(', ')
+          raise ApiEntity::Error, TariffJsonapiParser.new(resp.body).errors
         when 502
-          raise ApiEntity::Error, resp.body['error'] || resp.body['errors']&.map { |error| error['detail'] }&.join(', ')
+          raise ApiEntity::Error, TariffJsonapiParser.new(resp.body).errors
         end
         resp = TariffJsonapiParser.new(resp.body).parse
         new(resp)
