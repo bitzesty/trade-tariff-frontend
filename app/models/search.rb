@@ -15,11 +15,11 @@ class Search
   def perform
     retries = 0
     begin
-      response = self.class.post('/search', body: { q: q, as_of: date.to_s(:db), currency: currency })
+      response = self.class.post('/search', q: q, as_of: date.to_s(:db), currency: currency)
 
-      raise ApiEntity::Error if response.code == 500
+      raise ApiEntity::Error if response.status == 500
 
-      Outcome.new(response)
+      Outcome.new(response.body)
     rescue StandardError
       if retries < Rails.configuration.x.http.max_retry
         retries += 1

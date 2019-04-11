@@ -1,6 +1,7 @@
 <% content_for :content do %>
   <div id="wrapper" class="tariff service">
     <main id="content" role="main">
+      <%= render 'shared/phase_banner' if ENV['NOTICE_BANNER'] %>
       <%= render 'shared/header' %>
       <%= yield %>
     <% if @tariff_last_updated %>
