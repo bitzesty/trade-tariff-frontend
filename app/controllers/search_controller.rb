@@ -50,4 +50,11 @@ class SearchController < ApplicationController
 
     render json: { results: results }
   end
+  
+  def quota_search
+    @results = OrderNumber.search(params)
+    respond_to do |format|
+      format.html
+    end
+  end
 end
