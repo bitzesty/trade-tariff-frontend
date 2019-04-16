@@ -1,0 +1,21 @@
+<%= render partial: 'search/quotas/form' %>
+<h1 class="heading-medium">Quota search results</h1>
+<article class="search-results">
+  <% if @results.any? %>
+    <table class="tariff-zebra index">
+      <thead>
+        <tr>
+          <td>Order number</td>
+          <td>Origins</td>
+          <td>Start date</td>
+          <td>End date</td>
+          <td>Balance</td>
+          <td></td>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render partial: 'search/quotas/order_number', collection: @results %>
+      </tbody>
+    </table>
+  <% end %>
+</article>
