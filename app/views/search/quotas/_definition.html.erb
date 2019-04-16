@@ -1,0 +1,8 @@
+<tr>
+  <td><%= definition.order_number.number %></td>
+  <td><%= definition.order_number.geographical_area&.description %></td>
+  <td><%= definition.validity_start_date&.strftime('%d %B %Y') %></td>
+  <td><%= definition.validity_end_date&.strftime('%d %B %Y') %></td>
+  <td><%= definition.balance %></td>
+  <td></td>
+</tr>

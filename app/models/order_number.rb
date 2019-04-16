@@ -4,8 +4,6 @@ require 'order_number/definition'
 class OrderNumber
   include ApiEntity
 
-  collection_path "/quotas"
-  
   attr_accessor :number
 
   delegate :present?, to: :number

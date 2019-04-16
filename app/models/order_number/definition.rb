@@ -5,6 +5,8 @@ class OrderNumber
   class Definition
     include ApiEntity
 
+    collection_path '/quotas'
+
     DATE_FIELDS = %w[blocking_period_start_date blocking_period_end_date
                      suspension_period_start_date suspension_period_end_date
                      validity_start_date validity_end_date last_allocation_date].freeze
@@ -23,6 +25,8 @@ class OrderNumber
       end
     end
 
+    has_one :order_number
+    
     def present?
       status.present?
     end
