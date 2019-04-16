@@ -54,7 +54,7 @@ class SearchController < ApplicationController
   def quota_search
     search_params = quota_search_params
     @result = { params: search_params }
-    @result[:quotas] =  OrderNumber::Definition.search(search_params) if search_params.present?
+    @result[:quotas] =  OrderNumber::Definition.search(search_params).sort_by(&:quota_order_number_id) if search_params.present?
     respond_to do |format|
       format.html
     end
