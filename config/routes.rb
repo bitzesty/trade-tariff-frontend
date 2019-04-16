@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 
     match "/search", to: "search#search", as: :perform_search, via: [:get, :post]
     get "search_suggestions", to: "search#suggestions", as: :search_suggestions
-    get 'quota_search', to: 'search#quota_search', as: :quota_search, via: [:get, :post]
+    get 'quota_search', to: 'search#quota_search', as: :quota_search
     match "a-z-index/:letter", to: "search_references#show",
           via: :get,
           as: :a_z_index,

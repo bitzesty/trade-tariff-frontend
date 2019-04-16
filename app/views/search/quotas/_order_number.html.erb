@@ -1,6 +1,6 @@
 <tr>
   <td><%= order_number.number %></td>
-  <td><%= order_number.geographical_area&.long_description %></td>
+  <td><%= order_number.geographical_area&.description %></td>
   <td><%= order_number.definition&.validity_start_date&.strftime('%d %B %Y') %></td>
   <td><%= order_number.definition&.validity_end_date&.strftime('%d %B %Y') %></td>
   <td><%= order_number.definition&.balance %></td>
