@@ -3,6 +3,8 @@
   <%= text_field_tag :order_number, search_params['order_number'] %>
   <%= select_tag :critical, options_for_select(['Y', 'N'], search_params['critical']), include_blank: true %>
   <%= select_tag :status, options_for_select(['Blocked', 'Exhausted', 'Not blocked', 'Not exhausted'], search_params['status']), include_blank: true %>
-  <%= select_tag :year, options_for_select(['2016', '2017', '2018', '2019', '2020'], search_params['year'] || Date.current.year.to_s) %>
+  <% ['2016', '2017', '2018', '2019', '2020'].each do |year| %>
+    <%= check_box_tag 'year[]', year, year.in?(Array.wrap(search_params['year'] || Date.current.year.to_s)) %>
+  <% end %>
   <input class="button" type="submit" name="new_search" value="Search">
 <% end %>

@@ -65,6 +65,7 @@ class SearchController < ApplicationController
   QUOTA_SEARCH_KEY = %w[geographical_area_id order_number critical status year].freeze
   
   def quota_search_params
+    params[:year] = ['2019'] unless params[:year]
     params.select do |key, value|
       key.in?(QUOTA_SEARCH_KEY) && value.present?
     end
