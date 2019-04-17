@@ -24,6 +24,19 @@ class GeographicalArea
       countries
     end
   end
+  
+  def self.areas
+    collection('/geographical_areas').sort_by(&:id)
+  end
+  
+  def self.cached_areas
+    Rails.cache.fetch(
+      'areas',
+      expires_in: 24.hours
+    ) do
+      areas
+    end
+  end
 
   def self.by_long_description(term)
     lookup_regexp = /#{term}/i

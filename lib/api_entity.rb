@@ -73,7 +73,7 @@ module ApiEntity
       collection("#{collection_path}/search", opts)
     end
 
-    def collection(collection_path, opts)
+    def collection(collection_path, opts = {})
       retries = 0
       begin
         resp = api.get(collection_path, opts)

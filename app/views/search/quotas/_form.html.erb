@@ -1,5 +1,5 @@
 <%= form_tag quota_search_path, method: :get, class: "tariff-search #{@section_css}", id: "new_search" do |f| %>
-  <%= select_tag :geographical_area_id, options_from_collection_for_select(GeographicalArea.all.sort_by(&:id), "id", "long_description", search_params['geographical_area_id']), include_blank: true %>
+  <%= select_tag :geographical_area_id, options_from_collection_for_select(GeographicalArea.cached_areas, "id", "long_description", search_params['geographical_area_id']), include_blank: true %>
   <%= text_field_tag :order_number, search_params['order_number'] %>
   <%= select_tag :critical, options_for_select(['Y', 'N'], search_params['critical']), include_blank: true %>
   <%= select_tag :status, options_for_select(['Blocked', 'Exhausted', 'Not blocked', 'Not exhausted'], search_params['status']), include_blank: true %>
