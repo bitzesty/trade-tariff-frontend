@@ -19,7 +19,8 @@ class Search
 
       raise ApiEntity::Error if response.status == 500
 
-      Outcome.new(response.body)
+      response = TariffJsonapiParser.new(response.body).parse
+      Outcome.new(response)
     rescue StandardError
       if retries < Rails.configuration.x.http.max_retry
         retries += 1
