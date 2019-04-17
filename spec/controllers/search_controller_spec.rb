@@ -54,7 +54,7 @@ describe SearchController, "GET to #search", type: :controller do
     end
 
     context 'without search term', vcr: { cassette_name: "search#blank_match" }  do
-      let(:now) { Date.today }
+      let(:now) { Time.now.utc }
       context 'changing browse date' do
         context 'valid past date params provided' do
           let(:year)    { now.year - 1 }
