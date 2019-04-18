@@ -1,56 +1,60 @@
-<%= form_tag quota_search_path, method: :get, class: "tariff-search #{@section_css}", id: 'new_search' do |f| %>
+<%= form_tag quota_search_path, method: :get, class: "tariff-search quota-search #{@section_css}", id: 'new_search' do |f| %>
   <h1 class="heading-large">Search the quotas</h1>
   <div class="grid-row">
     <div class="column-quarter">
       <%= label_tag :goods_nomenclature_item_id, 'Goods nomenclature' %>
     </div>
-    <div class="column-half">
-      <%= text_field_tag :goods_nomenclature_item_id, search_form.goods_nomenclature_item_id %>
+    <div class="column-three-quarters">
+      <%= text_field_tag :goods_nomenclature_item_id, search_form.goods_nomenclature_item_id, class: "form-control" %>
     </div>
   </div>
   <div class="grid-row">
     <div class="column-quarter">
       <%= label_tag :geographical_area_id, 'Origin' %>
     </div>
-    <div class="column-half">
-      <%= select_tag :geographical_area_id, options_from_collection_for_select(GeographicalArea.cached_areas, 'id', 'long_description', search_form.geographical_area_id), include_blank: true %>
+    <div class="column-three-quarters">
+      <%= select_tag :geographical_area_id, options_from_collection_for_select(GeographicalArea.cached_areas, 'id', 'long_description', search_form.geographical_area_id), include_blank: true, class: "form-control form-control--100" %>
     </div>
   </div>
   <div class="grid-row">
     <div class="column-quarter">
       <%= label_tag :order_number, 'Order number' %>
     </div>
-    <div class="column-half">
-      <%= text_field_tag :order_number, search_form.order_number %>
+    <div class="column-three-quarters">
+      <%= text_field_tag :order_number, search_form.order_number, class: "form-control" %>
     </div>
   </div>
   <div class="grid-row">
     <div class="column-quarter">
       <%= label_tag :critical, 'Critical' %>
     </div>
-    <div class="column-half">
-      <%= select_tag :critical, options_for_select(QuotaSearchForm::CRITICAL_VALUES, search_form.critical), include_blank: true %>
+    <div class="column-three-quarters">
+      <%= select_tag :critical, options_for_select(QuotaSearchForm::CRITICAL_VALUES, search_form.critical), include_blank: true, class: "form-control form-control--tiny" %>
     </div>
   </div>
   <div class="grid-row">
     <div class="column-quarter">
       <%= label_tag :status, 'Status' %>
     </div>
-    <div class="column-half">
-      <%= select_tag :status, options_for_select(QuotaSearchForm::STATUS_VALUES, search_form.status), include_blank: true %>
+    <div class="column-three-quarters">
+      <%= select_tag :status, options_for_select(QuotaSearchForm::STATUS_VALUES, search_form.status), include_blank: true, class: "form-control form-control--small" %>
     </div>
   </div>
   <div class="grid-row">
     <div class="column-quarter">
       <%= label_tag :year, 'Years' %>
     </div>
-    <div class="column-half">
-      <% QuotaSearchForm::YEAR_VALUES.each do |year| %>
-        <label>
-          <%= check_box_tag 'year[]', year, year.in?(search_form.year) %>
-          <%= year %>
-        </label>
-      <% end %>
+    <div class="column-three-quarters">
+      <fieldset>
+        <% QuotaSearchForm::YEAR_VALUES.each do |year| %>
+          <div class="multiple-choice multiple-choice--inline">
+            <%= check_box_tag 'year[]', year, year.in?(search_form.year), id: "quota-search-year-#{year}" %>
+            <label for="quota-search-year-<%= year %>">
+              <%= year %>
+            </label>
+          </div>
+        <% end %>
+      </fieldset>
     </div>
   </div>
   <input class="button" type="submit" name="new_search" value="Search">
