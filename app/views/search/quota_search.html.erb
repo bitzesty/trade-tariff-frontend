@@ -1,5 +1,5 @@
-<%= render partial: 'search/quotas/form', locals: { search_params: @result[:params] } %>
-<% if @result[:quotas]&.any? %>
+<%= render partial: 'search/quotas/form', locals: { search_form: @result.search_form } %>
+<% if @result.search_result&.any? %>
   <h1 class="heading-medium">Quota search results</h1>
   <article class="search-results">
       <table class="tariff-zebra index">
@@ -13,7 +13,7 @@
           </tr>
         </thead>
         <tbody>
-          <%= render partial: 'search/quotas/definition', collection: @result[:quotas] %>
+          <%= render partial: 'search/quotas/definition', collection: @result.search_result %>
         </tbody>
       </table>
   </article>

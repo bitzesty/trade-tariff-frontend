@@ -1,10 +1,10 @@
 <%= form_tag quota_search_path, method: :get, class: "tariff-search #{@section_css}", id: "new_search" do |f| %>
-  <%= select_tag :geographical_area_id, options_from_collection_for_select(GeographicalArea.cached_areas, "id", "long_description", search_params.geographical_area_id), include_blank: true %>
-  <%= text_field_tag :order_number, search_params.order_number %>
-  <%= select_tag :critical, options_for_select(QuotaSearchForm::CRITICAL_VALUES, search_params.critical), include_blank: true %>
-  <%= select_tag :status, options_for_select(QuotaSearchForm::STATUS_VALUES, search_params.status), include_blank: true %>
+  <%= select_tag :geographical_area_id, options_from_collection_for_select(GeographicalArea.cached_areas, "id", "long_description", search_form.geographical_area_id), include_blank: true %>
+  <%= text_field_tag :order_number, search_form.order_number %>
+  <%= select_tag :critical, options_for_select(QuotaSearchForm::CRITICAL_VALUES, search_form.critical), include_blank: true %>
+  <%= select_tag :status, options_for_select(QuotaSearchForm::STATUS_VALUES, search_form.status), include_blank: true %>
   <% QuotaSearchForm::YEAR_VALUES.each do |year| %>
-    <%= check_box_tag 'year[]', year, year.in?(search_params.year) %>
+    <%= check_box_tag 'year[]', year, year.in?(search_form.year) %>
   <% end %>
   <input class="button" type="submit" name="new_search" value="Search">
 <% end %>
