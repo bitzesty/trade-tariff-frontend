@@ -1,8 +1,69 @@
 <tr>
-  <td><%= definition.order_number.number %></td>
+  <td>
+    <%= link_to definition.order_number.number, "##{definition.quota_definition_sid}", class: 'reference numerical', title: 'Opens in a popup', 'data-popup-ref' => "#{definition.quota_definition_sid}" %>
+    <div class='popup hidden' data-popup='<%= definition.quota_definition_sid %>'>
+      <article>
+        <table>
+          <caption>
+            <%= definition.description %>
+          </caption>
+          <tbody>
+          <tr>
+            <td>Order Number</td>
+            <td class="numerical"><%= definition.order_number.number %></td>
+          </tr>
+          <tr>
+            <td>Balance</td>
+            <td class="numerical"><%= definition.balance %></td>
+          </tr>
+          <tr>
+            <td>Initial amount</td>
+            <td class="numerical"><%= definition.initial_volume %></td>
+          </tr>
+          <tr>
+            <td>Status</td>
+            <td><%= definition.status %></td>
+          </tr>
+          <tr>
+            <td>Unit</td>
+            <td><%= definition.measurement_unit %></td>
+          </tr>
+          <tr>
+            <td>Start date</td>
+            <td class="numerical"><%= definition.validity_start_date.to_formatted_s(:date) %></td>
+          </tr>
+          <tr>
+            <td>End date</td>
+            <td class="numerical"><%= definition.validity_end_date.to_formatted_s(:date) %></td>
+          </tr>
+          <tr>
+            <td>Suspension period start</td>
+            <td class="numerical"><%= definition.suspension_period_start_date.to_formatted_s(:full) %></td>
+          </tr>
+          <tr>
+            <td>Suspension period end</td>
+            <td class="numerical"><%= definition.suspension_period_end_date.to_formatted_s(:full) %></td>
+          </tr>
+          <tr>
+            <td>Blocking period start</td>
+            <td class="numerical"><%= definition.blocking_period_start_date.to_formatted_s(:full) %></td>
+          </tr>
+          <tr>
+            <td>Blocking period end</td>
+            <td class="numerical"><%= definition.blocking_period_end_date.to_formatted_s(:full) %></td>
+          </tr>
+          <tr>
+            <td>Last allocation date</td>
+            <td class="numerical"><%= definition.last_allocation_date.to_formatted_s(:full) %></td>
+          </tr>
+          </tbody>
+        </table>
+        <p>In an effort to facilitate UK importers HMRC endeavours to keep quotas 'OPEN' where possible, therefore the information displayed above may differ slightly from the current UK position. If you require further information contact the Tariff Quota Management Team by email: <%= mail_to("tariff.management@hmrc.gsi.gov.uk", nil, subject: "Order number #{definition.order_number.number}") %>.</p>
+      </article>
+    </div>
+  </td>
   <td><%= definition.order_number.geographical_area&.description %></td>
   <td><%= definition.validity_start_date&.strftime('%d %B %Y') %></td>
   <td><%= definition.validity_end_date&.strftime('%d %B %Y') %></td>
-  <td><%= definition.balance %></td>
-  <td></td>
+  <td><%= definition.balance %> <%= definition.measurement_unit %></td>
 </tr>

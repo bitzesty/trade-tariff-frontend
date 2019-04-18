@@ -11,7 +11,7 @@ class OrderNumber
                      suspension_period_start_date suspension_period_end_date
                      validity_start_date validity_end_date last_allocation_date].freeze
 
-    attr_accessor :quota_order_number_id, :initial_volume, :status, :measurement_unit,
+    attr_accessor :quota_definition_sid, :quota_order_number_id, :initial_volume, :status, :measurement_unit,
                   :measurement_unit_qualifier,
                   :monetary_unit, :balance, :description
 
