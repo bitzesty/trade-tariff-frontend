@@ -33,6 +33,10 @@ module ApplicationHelper
   def a_z_active_class
     active_class_for(controller_methods: %w[search_references])
   end
+  
+  def quota_search_active_class
+    "active" if params[:action] == 'quota_search'
+  end
 
   def currency_options
     options = [%w[Euro EUR]]
