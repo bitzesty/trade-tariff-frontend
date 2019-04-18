@@ -60,7 +60,22 @@ Rails.application.routes.draw do
       path.gsub("v2/", "")
     }
   )
-  
+
+  scope path: "v2", :format => true, :constraints => { :format => 'json' } do
+    constraints TradeTariffFrontend::ApiConstraints.new(
+      TradeTariffFrontend.public_api_endpoints
+    ) do
+      match ':endpoint/(*path)',
+        via: :get,
+        to: TradeTariffFrontend::RequestForwarder.new(
+          host: Rails.application.config.api_host,
+          api_request_path_formatter: ->(path) {
+            path.gsub("v2/", "")
+          }
+        )
+    end
+  end
+
   scope path: "v1", :format => true, :constraints => { :format => 'json' } do
     constraints TradeTariffFrontend::ApiConstraints.new(
       TradeTariffFrontend.public_api_endpoints
