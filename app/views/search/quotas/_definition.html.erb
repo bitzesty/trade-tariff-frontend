@@ -62,8 +62,8 @@
       </article>
     </div>
   </td>
-  <td><%= definition.order_number.geographical_area&.description %></td>
+  <td><%= definition.order_number.geographical_area&.long_description %></td>
   <td><%= definition.validity_start_date&.strftime('%d %B %Y') %></td>
   <td><%= definition.validity_end_date&.strftime('%d %B %Y') %></td>
-  <td><%= definition.balance %> <%= definition.measurement_unit %></td>
+  <td class="numerical"><%= definition.balance %> <%= definition.measurement_unit %></td>
 </tr>

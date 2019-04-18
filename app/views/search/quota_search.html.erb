@@ -1,20 +1,20 @@
 <%= render partial: 'search/quotas/form', locals: { search_form: @result.search_form } %>
 <% if @result.search_result&.any? %>
-  <h1 class="heading-medium">Quota search results</h1>
   <article class="search-results">
-      <table class="tariff-zebra index">
-        <thead>
-          <tr>
-            <td>Order number</td>
-            <td>Origins</td>
-            <td>Start date</td>
-            <td>End date</td>
-            <td>Balance</td>
-          </tr>
-        </thead>
-        <tbody>
-          <%= render partial: 'search/quotas/definition', collection: @result.search_result %>
-        </tbody>
-      </table>
+    <table class="small-table measures">
+      <caption class="heading-small">Quota search results</caption>
+      <thead>
+        <tr>
+          <th>Order number</th>
+          <th>Origins</th>
+          <th>Start date</th>
+          <th>End date</th>
+          <th>Balance</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render partial: 'search/quotas/definition', collection: @result.search_result %>
+      </tbody>
+    </table>
   </article>
 <% end %>
