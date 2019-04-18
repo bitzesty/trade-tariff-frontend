@@ -52,22 +52,11 @@ class SearchController < ApplicationController
   end
   
   def quota_search
-    search_params = quota_search_params
-    @result = { params: search_params }
-    @result[:quotas] =  OrderNumber::Definition.search(search_params).sort_by(&:quota_order_number_id) if search_params.present?
+    form = QuotaSearchForm.new(params)
+    @result = { params: form }
+    @result[:quotas] =  OrderNumber::Definition.search(form.to_params).sort_by(&:quota_order_number_id) if form.present?
     respond_to do |format|
       format.html
-    end
-  end
-  
-  private
-  
-  QUOTA_SEARCH_KEY = %w[geographical_area_id order_number critical status year].freeze
-  
-  def quota_search_params
-    params[:year] = ['2019'] unless params[:year]
-    params.select do |key, value|
-      key.in?(QUOTA_SEARCH_KEY) && value.present?
     end
   end
 end
