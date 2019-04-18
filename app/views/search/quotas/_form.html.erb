@@ -2,6 +2,14 @@
   <h1 class="heading-large">Search the quotas</h1>
   <div class="grid-row">
     <div class="column-quarter">
+      <%= label_tag :goods_nomenclature_item_id, 'Goods nomenclature' %>
+    </div>
+    <div class="column-half">
+      <%= text_field_tag :goods_nomenclature_item_id, search_form.goods_nomenclature_item_id %>
+    </div>
+  </div>
+  <div class="grid-row">
+    <div class="column-quarter">
       <%= label_tag :geographical_area_id, 'Origin' %>
     </div>
     <div class="column-half">

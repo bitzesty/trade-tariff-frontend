@@ -13,7 +13,7 @@ class OrderNumber
 
     attr_accessor :quota_definition_sid, :quota_order_number_id, :initial_volume, :status, :measurement_unit,
                   :measurement_unit_qualifier,
-                  :monetary_unit, :balance, :description
+                  :monetary_unit, :balance, :description, :goods_nomenclature_item_id
 
     DATE_FIELDS.each do |field|
       define_method(field.to_sym) do

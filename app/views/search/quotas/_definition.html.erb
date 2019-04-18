@@ -62,6 +62,7 @@
       </article>
     </div>
   </td>
+  <td><%= link_to definition.goods_nomenclature_item_id, commodity_path(definition.goods_nomenclature_item_id) %></td>
   <td><%= definition.order_number.geographical_area&.long_description %></td>
   <td><%= definition.validity_start_date&.strftime('%d %B %Y') %></td>
   <td><%= definition.validity_end_date&.strftime('%d %B %Y') %></td>
