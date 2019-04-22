@@ -303,3 +303,111 @@ describe SearchController, "GET to #codes", type: :controller do
     end
   end
 end
+
+describe SearchController, "GET to #quota_search", type: :controller, vcr: { cassette_name: 'search#quota_search', allow_playback_repeats: true } do
+
+  context 'without search params' do
+    render_views
+
+    before(:each) do
+      get :quota_search, format: :html
+    end
+
+    it { should respond_with(:success) }
+    it 'should display no results' do
+      expect(response.body).not_to match /Quota search results/
+    end
+  end
+
+  context 'without search params' do
+    render_views
+
+    before(:each) do
+      get :quota_search, format: :html
+    end
+
+    it { should respond_with(:success) }
+    it 'should display no results' do
+      expect(response.body).not_to match /Quota search results/
+    end
+  end
+
+  context 'search by goods nomenclature' do
+    render_views
+  
+    before(:each) do
+      get :quota_search, params: {goods_nomenclature_item_id: '0301919011'}, format: :html
+    end
+  
+    it { should respond_with(:success) }
+    it 'should display results' do
+      expect(response.body).to match /Quota search results/
+    end
+  end
+
+  context 'search by origin' do
+    render_views
+  
+    before(:each) do
+      get :quota_search, params: {geographical_area_id: '1011'}, format: :html
+    end
+  
+    it { should respond_with(:success) }
+    it 'should display results' do
+      expect(response.body).to match /Quota search results/
+    end
+  end
+
+  context 'search by order number' do
+    render_views
+  
+    before(:each) do
+      get :quota_search, params: {order_number: '090671'}, format: :html
+    end
+  
+    it { should respond_with(:success) }
+    it 'should display results' do
+      expect(response.body).to match /Quota search results/
+    end
+  end
+
+  context 'search by critical flag' do
+    render_views
+  
+    before(:each) do
+      get :quota_search, params: {critical: 'Y'}, format: :html
+    end
+  
+    it { should respond_with(:success) }
+    it 'should display results' do
+      expect(response.body).to match /Quota search results/
+    end
+  end
+
+  context 'search by status' do
+    render_views
+  
+    before(:each) do
+      get :quota_search, params: {status: 'Blocked'}, format: :html
+    end
+  
+    it { should respond_with(:success) }
+    it 'should display results' do
+      expect(response.body).to match /Quota search results/
+    end
+  end
+
+  context 'search by multiple years' do
+    render_views
+  
+    before(:each) do
+      get :quota_search, params: {year: %w(2018 2019)}, format: :html
+    end
+  
+    it { should respond_with(:success) }
+    it 'should display results' do
+      expect(response.body).to match /Quota search results/
+    end
+  end
+
+end
