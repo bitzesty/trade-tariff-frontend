@@ -18,11 +18,13 @@ module TradeTariffFrontend
       case rackreq.request_method
       # The API is read-only
       when "GET", "HEAD"
+        api_version = rackreq.path.split('/').reject(&:empty?).first.downcase || 'v1'
         conn = Faraday.new
         response = conn.send(
           rackreq.request_method.downcase,
           request_url_for(rackreq)
         ) do |req|
+          req.headers['Accept'] = "application/vnd.uktt.#{api_version}"
           req.options.timeout = 60           # open/read timeout in seconds
           req.options.open_timeout = 15      # connection open timeout in seconds
         end
