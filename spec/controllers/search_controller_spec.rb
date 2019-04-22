@@ -305,7 +305,11 @@ describe SearchController, "GET to #codes", type: :controller do
 end
 
 describe SearchController, "GET to #quota_search", type: :controller, vcr: { cassette_name: 'search#quota_search', allow_playback_repeats: true } do
-
+  
+  before(:each) do
+    Rails.cache.clear
+  end
+  
   context 'without search params' do
     render_views
 
@@ -388,7 +392,7 @@ describe SearchController, "GET to #quota_search", type: :controller, vcr: { cas
     render_views
   
     before(:each) do
-      get :quota_search, params: {status: 'Blocked'}, format: :html
+      get :quota_search, params: {status: 'Not blocked'}, format: :html
     end
   
     it { should respond_with(:success) }

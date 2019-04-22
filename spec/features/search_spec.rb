@@ -72,6 +72,10 @@ describe "Search", js: true do
   
   context 'quota search' do
     
+    before(:each) do
+      Rails.cache.clear
+    end
+    
     context 'quota search link on page header' do
       it 'should contain link to quota search page' do
         VCR.use_cassette('search#quota_search_header', record: :new_episodes) do
