@@ -409,5 +409,4 @@ describe SearchController, "GET to #quota_search", type: :controller, vcr: { cas
       expect(response.body).to match /Quota search results/
     end
   end
-
 end

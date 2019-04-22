@@ -1,0 +1,49 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://localhost:3018/quotas/search?critical&geographical_area_id&goods_nomenclature_item_id=0301&order_number=0906&status&year%5B%5D=2018&year%5B%5D=2019
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/vnd.uktt.v2
+      User-Agent:
+      - Faraday v0.11.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"8a34b59ecc4c099a014e55be28e26979"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 3da1a13e-8afb-4e87-bd5b-e79e6e11d31f
+      X-Runtime:
+      - '0.179032'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"data":[{"id":"14183","type":"definition","attributes":{"quota_definition_sid":14183,"quota_order_number_id":"090671","initial_volume":"700000.0","validity_start_date":"2019-01-01T00:00:00.000Z","validity_end_date":"2019-12-31T00:00:00.000Z","status":"Open","description":"Commission
+        Regulation (EC) No 2471/1999 of 23 November 1999 amending Council Regulation
+        (EC) No 669/97 opening and providing for the administration of Community tariff
+        quotas for certain fish and fishery products originating in the Faroe Islands","balance":"700000.0","measurement_unit":"Kilogram
+        (kg)","monetary_unit":null,"measurement_unit_qualifier":null,"last_allocation_date":null,"suspension_period_start_date":null,"suspension_period_end_date":null,"blocking_period_start_date":null,"blocking_period_end_date":null,"goods_nomenclature_item_id":"0301919011"},"relationships":{"order_number":{"data":{"id":"090671","type":"order_number"}}}}],"included":[{"id":"090671","type":"order_number","attributes":{"number":"090671"},"relationships":{"geographical_area":{"data":{"id":"FO","type":"geographical_area"}}}},{"id":"FO","type":"geographical_area","attributes":{"id":"FO","description":"Faroe
+        Islands","geographical_area_id":"FO"}}]}'
+    http_version: 
+  recorded_at: Mon, 22 Apr 2019 14:09:57 GMT
+recorded_with: VCR 3.0.3
