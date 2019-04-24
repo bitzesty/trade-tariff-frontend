@@ -1,0 +1,21 @@
+<%= render partial: 'search/quotas/form', locals: { search_form: @result.search_form } %>
+<% if @result.search_result&.any? %>
+  <article class="search-results">
+    <table class="small-table quota-results">
+      <caption class="heading-small">Quota search results</caption>
+      <thead>
+        <tr>
+          <th>Order number</th>
+          <th>Goods nomenclature</th>
+          <th>Origins</th>
+          <th>Start date</th>
+          <th>End date</th>
+          <th>Balance</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render partial: 'search/quotas/definition', collection: @result.search_result %>
+      </tbody>
+    </table>
+  </article>
+<% end %>

@@ -66,6 +66,14 @@ module ApiEntity
     delegate :get, :post, to: :api
 
     def all(opts = {})
+      collection(collection_path, opts)
+    end
+
+    def search(opts = {})
+      collection("#{collection_path}/search", opts)
+    end
+
+    def collection(collection_path, opts = {})
       retries = 0
       begin
         resp = api.get(collection_path, opts)

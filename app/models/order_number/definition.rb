@@ -5,13 +5,15 @@ class OrderNumber
   class Definition
     include ApiEntity
 
+    collection_path '/quotas'
+
     DATE_FIELDS = %w[blocking_period_start_date blocking_period_end_date
                      suspension_period_start_date suspension_period_end_date
                      validity_start_date validity_end_date last_allocation_date].freeze
 
-    attr_accessor :initial_volume, :status, :measurement_unit,
+    attr_accessor :quota_definition_sid, :quota_order_number_id, :initial_volume, :status, :measurement_unit,
                   :measurement_unit_qualifier,
-                  :monetary_unit, :balance, :description
+                  :monetary_unit, :balance, :description, :goods_nomenclature_item_id
 
     DATE_FIELDS.each do |field|
       define_method(field.to_sym) do
@@ -23,6 +25,8 @@ class OrderNumber
       end
     end
 
+    has_one :order_number
+    
     def present?
       status.present?
     end
