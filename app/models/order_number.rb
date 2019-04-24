@@ -9,6 +9,7 @@ class OrderNumber
   delegate :present?, to: :number
 
   has_one :definition
+  has_one :geographical_area
 
   def id
     @id ||= "#{casted_by.destination}-#{casted_by.id}-order-number-#{number}"

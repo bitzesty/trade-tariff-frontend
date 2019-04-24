@@ -50,4 +50,12 @@ class SearchController < ApplicationController
 
     render json: { results: results }
   end
+  
+  def quota_search
+    form = QuotaSearchForm.new(params)
+    @result = QuotaSearchPresenter.new(form)
+    respond_to do |format|
+      format.html
+    end
+  end
 end
