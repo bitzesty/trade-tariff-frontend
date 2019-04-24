@@ -1,7 +1,5 @@
---- 
-applications: 
-  - 
-    buildpacks: 
-      - ruby_buildpack
-    health-check-http-endpoint: /trade-tariff/healthcheck
-    health-check-type: http
+---
+applications:
+- buildpack: ruby_buildpack
+  health-check-type: http
+  health-check-http-endpoint: /trade-tariff/healthcheck
