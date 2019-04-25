@@ -1,7 +1,7 @@
 require 'trade_tariff_frontend'
 
 Rails.application.routes.draw do
-  scope path: "#{APP_SLUG}" do
+  scope path: APP_SLUG.to_s do
     get "/", to: redirect("https://www.gov.uk/trade-tariff", status: 302)
     get "healthcheck", to: "healthcheck#check"
     get "opensearch", to: "pages#opensearch", constraints: { format: :xml }
@@ -13,9 +13,11 @@ Rails.application.routes.draw do
     post 'feedback', to: 'feedback#create'
     get 'feedback/thanks', to: 'feedback#thanks'
 
-    match "/search", to: "search#search", as: :perform_search, via: [:get, :post]
+    match "/search", to: "search#search", as: :perform_search, via: %i[get post]
     get "search_suggestions", to: "search#suggestions", as: :search_suggestions
-    match "a-z-index/:letter", to: "search_references#show",
+    get 'quota_search', to: 'search#quota_search', as: :quota_search
+    match "a-z-index/:letter",
+          to: "search_references#show",
           via: :get,
           as: :a_z_index,
           constraints: { letter: /[a-z]{1}/i }
@@ -24,29 +26,29 @@ Rails.application.routes.draw do
       TradeTariffFrontend.accessible_api_endpoints
     ) do
       match ':endpoint/(*path)',
-        via: :get,
-        to: TradeTariffFrontend::RequestForwarder.new(
-          host: Rails.application.config.api_host,
-          api_request_path_formatter: ->(path) {
-            path.gsub("#{APP_SLUG}/", "")
-          }
-        )
+            via: :get,
+            to: TradeTariffFrontend::RequestForwarder.new(
+              host: Rails.application.config.api_host,
+              api_request_path_formatter: lambda { |path|
+                path.gsub("#{APP_SLUG}/", "")
+              }
+            )
     end
 
-    resources :sections, only: [:index, :show]
-    resources :chapters, only: [:index, :show] do
+    resources :sections, only: %i[index show]
+    resources :chapters, only: %i[index show] do
       resources :changes,
                 only: [:index],
                 defaults: { format: :atom },
                 module: 'chapters'
     end
-    resources :headings, only: [:index, :show] do
+    resources :headings, only: %i[index show] do
       resources :changes,
                 only: [:index],
                 defaults: { format: :atom },
                 module: 'headings'
     end
-    resources :commodities, only: [:index, :show] do
+    resources :commodities, only: %i[index show] do
       resources :changes,
                 only: [:index],
                 defaults: { format: :atom },
@@ -54,25 +56,40 @@ Rails.application.routes.draw do
     end
   end
 
-  get "v1/goods_nomenclature", to: TradeTariffFrontend::RequestForwarder.new(
+  get "v2/goods_nomenclatures(/*path)", to: TradeTariffFrontend::RequestForwarder.new(
     host: Rails.application.config.api_host,
-    api_request_path_formatter: ->(path) {
-      path.gsub("v1/", "")
+    api_request_path_formatter: lambda { |path|
+      path.gsub("v2/", "")
     }
   )
-  
-  scope path: "v1", :format => true, :constraints => { :format => 'json' } do
+
+  scope path: "v2", format: true, constraints: { format: 'json' } do
     constraints TradeTariffFrontend::ApiConstraints.new(
       TradeTariffFrontend.public_api_endpoints
     ) do
       match ':endpoint/(*path)',
-        via: :get,
-        to: TradeTariffFrontend::RequestForwarder.new(
-          host: Rails.application.config.api_host,
-          api_request_path_formatter: ->(path) {
-            path.gsub("v1/", "")
-          }
-        )
+            via: :get,
+            to: TradeTariffFrontend::RequestForwarder.new(
+              host: Rails.application.config.api_host,
+              api_request_path_formatter: lambda { |path|
+                path.gsub("v2/", "")
+              }
+            )
+    end
+  end
+
+  scope path: "v1", format: true, constraints: { format: 'json' } do
+    constraints TradeTariffFrontend::ApiConstraints.new(
+      TradeTariffFrontend.public_api_endpoints
+    ) do
+      match ':endpoint/(*path)',
+            via: :get,
+            to: TradeTariffFrontend::RequestForwarder.new(
+              host: Rails.application.config.api_host,
+              api_request_path_formatter: lambda { |path|
+                path.gsub("v1/", "")
+              }
+            )
     end
   end
 
@@ -82,4 +99,5 @@ Rails.application.routes.draw do
   match "/404", to: "errors#not_found", via: :all
   match "/500", to: "errors#internal_server_error", via: :all
   match "/503", to: "errors#maintenance", via: :all
+  match "*path", to: "errors#not_found", via: :all
 end

@@ -111,7 +111,7 @@
     <% else %>
       <p>There are no measures for this commodity on this date.</p>
     <% end %>
-
+    <%= render 'headings/footnote', footnotes: declarable.footnotes %>
   </article><!-- end .tab-pane -->
 
   <!-- Export tab -->
@@ -150,7 +150,7 @@
     <% else %>
       <p>There are no measures for this commodity on this date.</p>
     <% end %>
-
+    <%= render 'headings/footnote', footnotes: declarable.footnotes %>
   </article><!-- end .tab-pane -->
   <!-- Footnote popups -->
   <div id="import-measure-references">

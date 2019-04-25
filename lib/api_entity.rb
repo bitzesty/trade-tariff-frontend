@@ -1,6 +1,7 @@
 require 'faraday_middleware'
 require 'multi_json'
 require 'active_model'
+require 'tariff_jsonapi_parser'
 
 module ApiEntity
   class NotFound < StandardError; end
@@ -65,18 +66,27 @@ module ApiEntity
     delegate :get, :post, to: :api
 
     def all(opts = {})
+      collection(collection_path, opts)
+    end
+
+    def search(opts = {})
+      collection("#{collection_path}/search", opts)
+    end
+
+    def collection(collection_path, opts = {})
       retries = 0
       begin
         resp = api.get(collection_path, opts)
         case resp.status
         when 404
-          raise ApiEntity::NotFound, resp['error']
+          raise ApiEntity::NotFound, TariffJsonapiParser.new(resp.body).errors
         when 500
-          raise ApiEntity::Error, resp['error']
+          raise ApiEntity::Error, TariffJsonapiParser.new(resp.body).errors
         when 502
           raise ApiEntity::Error, "502 Bad Gateway"
         end
-        resp.body.map { |entry_data| new(entry_data) }
+        resp = TariffJsonapiParser.new(resp.body).parse
+        resp.map { |entry_data| new(entry_data) }
       rescue StandardError
         if retries < Rails.configuration.x.http.max_retry
           retries += 1
@@ -95,11 +105,12 @@ module ApiEntity
         when 404
           raise ApiEntity::NotFound
         when 500
-          raise ApiEntity::Error, resp['error']
+          raise ApiEntity::Error, TariffJsonapiParser.new(resp.body).errors
         when 502
-          raise ApiEntity::Error, resp['error']
+          raise ApiEntity::Error, TariffJsonapiParser.new(resp.body).errors
         end
-        new(resp.body)
+        resp = TariffJsonapiParser.new(resp.body).parse
+        new(resp)
       rescue StandardError
         if retries < Rails.configuration.x.http.max_retry
           retries += 1
@@ -160,6 +171,7 @@ module ApiEntity
         conn.request :url_encoded
         conn.adapter Faraday.default_adapter
         conn.response :json, content_type: /\bjson$/
+        conn.headers['Accept'] = "application/vnd.uktt.v#{Rails.configuration.x.backend.api_version}"
       end
     end
   end
