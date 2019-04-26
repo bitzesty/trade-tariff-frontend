@@ -44,7 +44,7 @@ module CommoditiesHelper
 
     if commodity.number_indents > 1 || display_full_code
       if commodity.has_children?
-        code = code[0..7]
+        code = code[0..(commodity.number_indents * 2 + 3)]
       end
 
       "#{chapter_and_heading_codes(code)}
