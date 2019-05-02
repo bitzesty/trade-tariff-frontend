@@ -13,15 +13,6 @@
   <%= render 'shared/tariff_breadcrumbs', heading: @heading %>
   <%= render 'shared/callout', chapter: @heading.chapter %>
   <article class="tariff">
-    <div class="tree-key">
-      <div class="chapter-code">
-        <div class="code-text"><%= @heading.chapter_short_code %></div>
-      </div>
-      <div class="heading-code">
-        <div class="code-text"><%= @heading.heading_display_short_code %></div>
-      </div>
-      <div class="key-text">Heading code</div>
-    </div>
     <div class="commodity-tree">
       <div class="tree-controls"></div>
       <div class="commodity-tree-note">
@@ -31,7 +22,7 @@
         <div class="commodity-tree__additional-info">
           <em class="vat" id="commodity-vat-title">VAT</em>
           <em class="duty" id="commodity-duty-title">Third country duty</em>
-          <em class="supplementary-units" id="commodity-supplementary-title">Unit</em>
+          <em class="supplementary-units" id="commodity-supplementary-title">Supplementary unit</em>
           <em class="commcode">Commodity code</em>
         </div>
       </div>
