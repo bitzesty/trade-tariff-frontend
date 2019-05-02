@@ -118,6 +118,7 @@
                       e.stopPropagation();
                       if ($childList.is('.visuallyhidden')) {
                           clickBranch($(this), $childList, 'open');
+                          adjustCommodityInfoHeights();
                       }
                       else {
                           clickBranch($(this), $childList, 'close');
@@ -145,6 +146,7 @@
                               clickBranch($branchSwitches.eq(idx), $childList, 'close');
                           }
                       });
+                      adjustCommodityInfoHeights();
                   };
 
                   // Open/close tree nodes on load based on cookie
