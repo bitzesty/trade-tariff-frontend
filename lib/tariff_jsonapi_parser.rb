@@ -70,6 +70,6 @@ class TariffJsonapiParser
   end
 
   def find_included(id, type)
-    @attributes['included'].find { |r| r['id'].to_s == id.to_s && r['type'].to_s == type.to_s } || {}
+    @attributes['included']&.find { |r| r['id'].to_s == id.to_s && r['type'].to_s == type.to_s } || {}
   end
 end
