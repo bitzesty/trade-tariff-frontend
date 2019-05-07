@@ -1,59 +1,59 @@
 require 'trade_tariff_frontend'
 
 Rails.application.routes.draw do
-  scope path: APP_SLUG.to_s do
-    get "/", to: redirect("https://www.gov.uk/trade-tariff", status: 302)
-    get "healthcheck", to: "healthcheck#check"
-    get "opensearch", to: "pages#opensearch", constraints: { format: :xml }
-    get "terms", to: "pages#terms"
-    get "cookies", to: "pages#cookies"
-    get "exchange_rates", to: "exchange_rates#index"
-    get "geographical_areas", to: "geographical_areas#index", as: :geographical_areas
-    get 'feedback', to: 'feedback#new'
-    post 'feedback', to: 'feedback#create'
-    get 'feedback/thanks', to: 'feedback#thanks'
+  get "/trade-tariff/*path", to: redirect('/%{path}', status: 302)
 
-    match "/search", to: "search#search", as: :perform_search, via: %i[get post]
-    get "search_suggestions", to: "search#suggestions", as: :search_suggestions
-    get 'quota_search', to: 'search#quota_search', as: :quota_search
-    match "a-z-index/:letter",
-          to: "search_references#show",
+  get "/", to: redirect("https://www.gov.uk/trade-tariff", status: 302)
+  get "healthcheck", to: "healthcheck#check"
+  get "opensearch", to: "pages#opensearch", constraints: { format: :xml }
+  get "terms", to: "pages#terms"
+  get "cookies", to: "pages#cookies"
+  get "exchange_rates", to: "exchange_rates#index"
+  get "geographical_areas", to: "geographical_areas#index", as: :geographical_areas
+  get 'feedback', to: 'feedback#new'
+  post 'feedback', to: 'feedback#create'
+  get 'feedback/thanks', to: 'feedback#thanks'
+
+  match "/search", to: "search#search", as: :perform_search, via: %i[get post]
+  get "search_suggestions", to: "search#suggestions", as: :search_suggestions
+  get 'quota_search', to: 'search#quota_search', as: :quota_search
+  match "a-z-index/:letter",
+        to: "search_references#show",
+        via: :get,
+        as: :a_z_index,
+        constraints: { letter: /[a-z]{1}/i }
+
+  constraints TradeTariffFrontend::ApiConstraints.new(
+    TradeTariffFrontend.accessible_api_endpoints
+  ) do
+    match ':endpoint/(*path)',
           via: :get,
-          as: :a_z_index,
-          constraints: { letter: /[a-z]{1}/i }
+          to: TradeTariffFrontend::RequestForwarder.new(
+            host: Rails.application.config.api_host,
+            api_request_path_formatter: lambda { |path|
+              path.gsub("#{APP_SLUG}/", "")
+            }
+          )
+  end
 
-    constraints TradeTariffFrontend::ApiConstraints.new(
-      TradeTariffFrontend.accessible_api_endpoints
-    ) do
-      match ':endpoint/(*path)',
-            via: :get,
-            to: TradeTariffFrontend::RequestForwarder.new(
-              host: Rails.application.config.api_host,
-              api_request_path_formatter: lambda { |path|
-                path.gsub("#{APP_SLUG}/", "")
-              }
-            )
-    end
-
-    resources :sections, only: %i[index show]
-    resources :chapters, only: %i[index show] do
-      resources :changes,
-                only: [:index],
-                defaults: { format: :atom },
-                module: 'chapters'
-    end
-    resources :headings, only: %i[index show] do
-      resources :changes,
-                only: [:index],
-                defaults: { format: :atom },
-                module: 'headings'
-    end
-    resources :commodities, only: %i[index show] do
-      resources :changes,
-                only: [:index],
-                defaults: { format: :atom },
-                module: 'commodities'
-    end
+  resources :sections, only: %i[index show]
+  resources :chapters, only: %i[index show] do
+    resources :changes,
+              only: [:index],
+              defaults: { format: :atom },
+              module: 'chapters'
+  end
+  resources :headings, only: %i[index show] do
+    resources :changes,
+              only: [:index],
+              defaults: { format: :atom },
+              module: 'headings'
+  end
+  resources :commodities, only: %i[index show] do
+    resources :changes,
+              only: [:index],
+              defaults: { format: :atom },
+              module: 'commodities'
   end
 
   get "v2/goods_nomenclatures(/*path)", to: TradeTariffFrontend::RequestForwarder.new(
