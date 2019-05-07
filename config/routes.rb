@@ -2,6 +2,8 @@ require 'trade_tariff_frontend'
 
 Rails.application.routes.draw do
   get "/trade-tariff/*path", to: redirect('/%{path}', status: 302)
+  get "/v1/(*path).json", to: redirect('/api/v1/%{path}.json', status: 302)
+  get "/v2/(*path).json", to: redirect('/api/v2/%{path}.json', status: 302)
 
   get "/", to: redirect("https://www.gov.uk/trade-tariff", status: 302)
   get "healthcheck", to: "healthcheck#check"
@@ -56,14 +58,14 @@ Rails.application.routes.draw do
               module: 'commodities'
   end
 
-  get "v2/goods_nomenclatures(/*path)", to: TradeTariffFrontend::RequestForwarder.new(
+  get "api/v2/goods_nomenclatures(/*path)", to: TradeTariffFrontend::RequestForwarder.new(
     host: Rails.application.config.api_host,
     api_request_path_formatter: lambda { |path|
-      path.gsub("v2/", "")
+      path.gsub("api/v2/", "")
     }
   )
 
-  scope path: "v2", format: true, constraints: { format: 'json' } do
+  scope path: "api/v2", format: true, constraints: { format: 'json' } do
     constraints TradeTariffFrontend::ApiConstraints.new(
       TradeTariffFrontend.public_api_endpoints
     ) do
@@ -72,13 +74,13 @@ Rails.application.routes.draw do
             to: TradeTariffFrontend::RequestForwarder.new(
               host: Rails.application.config.api_host,
               api_request_path_formatter: lambda { |path|
-                path.gsub("v2/", "")
+                path.gsub("api/v2/", "")
               }
             )
     end
   end
 
-  scope path: "v1", format: true, constraints: { format: 'json' } do
+  scope path: "api/v1", format: true, constraints: { format: 'json' } do
     constraints TradeTariffFrontend::ApiConstraints.new(
       TradeTariffFrontend.public_api_endpoints
     ) do
@@ -87,7 +89,7 @@ Rails.application.routes.draw do
             to: TradeTariffFrontend::RequestForwarder.new(
               host: Rails.application.config.api_host,
               api_request_path_formatter: lambda { |path|
-                path.gsub("v1/", "")
+                path.gsub("api/v1/", "")
               }
             )
     end
