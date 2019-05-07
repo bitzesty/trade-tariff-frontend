@@ -15,7 +15,7 @@ describe 'Basic Auth' do
       ENV['CDS_USER'] = nil
       ENV['CDS_PASSWORD'] = nil
 
-      get 'trade-tariff/sections'
+      get '/sections'
     end
 
     it { expect(last_response.status).to eq(200) }
@@ -44,13 +44,13 @@ describe 'Basic Auth' do
     end
 
     context 'with incorrect credentials' do
-      before { get 'trade-tariff/sections', {}, 'HTTP_AUTHORIZATION' => ActionController::HttpAuthentication::Basic.encode_credentials(wrong_user,wrong_password) }
+      before { get '/sections', {}, 'HTTP_AUTHORIZATION' => ActionController::HttpAuthentication::Basic.encode_credentials(wrong_user,wrong_password) }
 
       it { expect(last_response.status).to eq(401) }
     end
 
     context 'with correct credentials' do
-      before { get 'trade-tariff/sections', {}, 'HTTP_AUTHORIZATION' => ActionController::HttpAuthentication::Basic.encode_credentials(correct_user,correct_password) }
+      before { get '/sections', {}, 'HTTP_AUTHORIZATION' => ActionController::HttpAuthentication::Basic.encode_credentials(correct_user,correct_password) }
 
       it { expect(last_response.status).to eq(200) }
     end

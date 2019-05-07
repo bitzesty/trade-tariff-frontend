@@ -62,7 +62,7 @@ describe SearchController, "GET to #search", type: :controller do
           let(:day)     { now.day }
 
           before(:each) do
-            @request.env['HTTP_REFERER'] = "/#{APP_SLUG}/chapters/01"
+            @request.env['HTTP_REFERER'] = "/chapters/01"
 
             post :search, params: {
               year: year,
@@ -83,7 +83,7 @@ describe SearchController, "GET to #search", type: :controller do
           let(:day)     { future_date.day }
 
           before(:each) do
-            @request.env['HTTP_REFERER'] = "/#{APP_SLUG}/chapters/01"
+            @request.env['HTTP_REFERER'] = "/chapters/01"
 
             post :search, params: {
               year: year,
@@ -103,7 +103,7 @@ describe SearchController, "GET to #search", type: :controller do
           let(:day)     { now.day }
 
           before(:each) do
-            @request.env['HTTP_REFERER'] = "/#{APP_SLUG}/chapters/01"
+            @request.env['HTTP_REFERER'] = "/chapters/01"
 
             post :search, params: {
               year: year,
@@ -123,7 +123,7 @@ describe SearchController, "GET to #search", type: :controller do
           let(:day)     { now.day }
 
           before(:each) do
-            @request.env['HTTP_REFERER'] = "/#{APP_SLUG}/chapters/01"
+            @request.env['HTTP_REFERER'] = "/chapters/01"
 
             post :search, params: {
               as_of: "#{year}-#{month}-#{day}"
@@ -141,7 +141,7 @@ describe SearchController, "GET to #search", type: :controller do
           let(:day)     { now.day }
 
           before(:each) do
-            @request.env['HTTP_REFERER'] = "/#{APP_SLUG}/chapters/01"
+            @request.env['HTTP_REFERER'] = "/chapters/01"
 
             post :search, params: {
               as_of: "#{year}-#{month}-#{day}"
@@ -238,11 +238,11 @@ describe SearchController, "GET to #search", type: :controller do
 
     describe 'returns search suggestion in ATOM 1.0 format' do
       specify 'includes link to current page (self link)' do
-        expect(response.body).to include 'trade-tariff/search.atom'
+        expect(response.body).to include '/search.atom'
       end
 
       specify 'includes link to opensearch.xml file (search link)' do
-        expect(response.body).to include 'trade-tariff/opensearch.xml'
+        expect(response.body).to include '/opensearch.xml'
       end
 
       specify 'includes commodity descriptions' do
@@ -250,7 +250,7 @@ describe SearchController, "GET to #search", type: :controller do
       end
 
       specify 'includes links to commodity pages' do
-        expect(response.body).to include 'trade-tariff/commodities/0206809100'
+        expect(response.body).to include '/commodities/0206809100'
       end
     end
   end
@@ -305,11 +305,11 @@ describe SearchController, "GET to #codes", type: :controller do
 end
 
 describe SearchController, "GET to #quota_search", type: :controller, vcr: { cassette_name: 'search#quota_search', allow_playback_repeats: true } do
-  
+
   before(:each) do
     Rails.cache.clear
   end
-  
+
   context 'without search params' do
     render_views
 
@@ -338,11 +338,11 @@ describe SearchController, "GET to #quota_search", type: :controller, vcr: { cas
 
   context 'search by goods nomenclature' do
     render_views
-  
+
     before(:each) do
       get :quota_search, params: {goods_nomenclature_item_id: '0301919011'}, format: :html
     end
-  
+
     it { should respond_with(:success) }
     it 'should display results' do
       expect(response.body).to match /Quota search results/
@@ -351,11 +351,11 @@ describe SearchController, "GET to #quota_search", type: :controller, vcr: { cas
 
   context 'search by origin' do
     render_views
-  
+
     before(:each) do
       get :quota_search, params: {geographical_area_id: '1011'}, format: :html
     end
-  
+
     it { should respond_with(:success) }
     it 'should display results' do
       expect(response.body).to match /Quota search results/
@@ -364,11 +364,11 @@ describe SearchController, "GET to #quota_search", type: :controller, vcr: { cas
 
   context 'search by order number' do
     render_views
-  
+
     before(:each) do
       get :quota_search, params: {order_number: '090671'}, format: :html
     end
-  
+
     it { should respond_with(:success) }
     it 'should display results' do
       expect(response.body).to match /Quota search results/
@@ -377,11 +377,11 @@ describe SearchController, "GET to #quota_search", type: :controller, vcr: { cas
 
   context 'search by critical flag' do
     render_views
-  
+
     before(:each) do
       get :quota_search, params: {critical: 'Y'}, format: :html
     end
-  
+
     it { should respond_with(:success) }
     it 'should display results' do
       expect(response.body).to match /Quota search results/
@@ -390,11 +390,11 @@ describe SearchController, "GET to #quota_search", type: :controller, vcr: { cas
 
   context 'search by status' do
     render_views
-  
+
     before(:each) do
       get :quota_search, params: {status: 'Not blocked'}, format: :html
     end
-  
+
     it { should respond_with(:success) }
     it 'should display results' do
       expect(response.body).to match /Quota search results/
@@ -403,11 +403,11 @@ describe SearchController, "GET to #quota_search", type: :controller, vcr: { cas
 
   context 'search by multiple years' do
     render_views
-  
+
     before(:each) do
       get :quota_search, params: {year: %w(2018 2019)}, format: :html
     end
-  
+
     it { should respond_with(:success) }
     it 'should display results' do
       expect(response.body).to match /Quota search results/

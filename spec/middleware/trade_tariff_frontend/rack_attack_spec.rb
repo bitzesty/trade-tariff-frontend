@@ -14,7 +14,7 @@ describe Rack::Attack, vcr: { cassette_name: "sections#index" } do
     before { ENV['CDS_USER'] = nil }
     before { ENV['CDS_PASSWORD'] = nil }
 
-    before { get 'trade-tariff/sections' }
+    before { get '/sections' }
 
     it { expect(last_response.status).to eq(200) }
   end
@@ -27,13 +27,13 @@ describe Rack::Attack, vcr: { cassette_name: "sections#index" } do
     before { ENV['CDS_PASSWORD'] = nil }
 
     context 'and ip is not listed' do
-      before { get 'trade-tariff/sections', {}, { 'REMOTE_ADDR' => '1.2.3.4' } }
+      before { get '/sections', {}, { 'REMOTE_ADDR' => '1.2.3.4' } }
 
       it { expect(last_response.status).to eq(403) }
     end
 
     context 'and ip is listed' do
-      before { get 'trade-tariff/sections', {}, { 'REMOTE_ADDR' => '127.0.0.1' } }
+      before { get '/sections', {}, { 'REMOTE_ADDR' => '127.0.0.1' } }
 
       it { expect(last_response.status).to eq(200) }
     end
