@@ -607,7 +607,11 @@
             placeholder: 'Enter the name of the goods or commodity code',
             ajax: {
               delay: 300,
-              url: '<%= Rails.application.routes.url_helpers.search_suggestions_path(format: :json) %>'
+              url: '<%= Rails.application.routes.url_helpers.search_suggestions_path(format: :json) %>',
+              processResults: function(data, params){
+                $(document).trigger('tariff:searchQuery', arguments);
+                return data;
+              }
             },
             tags: true,
             createTag: function (params) {
@@ -619,6 +623,9 @@
             }
           }).on('change', function(e) {
             $(this).parents('form:first').submit();
+          });
+          $('.js-commodity-picker-select').on('select2:select', function(e){
+            $(document).trigger('tariff:chooseSearchQueryOption', arguments);
           });
         }
       },
