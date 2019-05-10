@@ -18,7 +18,11 @@ module TradeTariffFrontend
       case rackreq.request_method
       # The API is read-only
       when "GET", "HEAD"
-        api_version = rackreq.path.split('/').reject(&:empty?).first.downcase || 'v1'
+        api_version = rackreq.path
+                             .downcase
+                             .split('/')
+                             .reject { |p| p.empty? || p == 'api' }
+                             .first || 'v2'
         conn = Faraday.new
         response = conn.send(
           rackreq.request_method.downcase,
