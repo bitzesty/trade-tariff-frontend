@@ -18,19 +18,6 @@ describe CommoditiesController, type: :controller do
       it { expect(assigns(:commodity)).to be_present }
     end
 
-    context 'with too long commodity id provided', vcr: { cassette_name: "commodities#show_010121000012" } do
-      let(:commodity_id) { '010121000012' } # commodity 0101210000 does exist
-
-      before(:each) do
-        get :show, params: { id: commodity_id }
-      end
-
-      it 'redirects to heading page (strips exceeding heading id characters)' do
-        expect(response.status).to eq 302
-        expect(response.location).to eq commodity_url(id: commodity_id.first(10))
-      end
-    end
-
     context 'with non existing commodity id provided', vcr: { cassette_name: "commodities#show_0101999999" } do
       let(:commodity_id) { '0101999999' } # commodity 0101999999 does not exist
 
