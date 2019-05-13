@@ -33,6 +33,7 @@ test:
     - sudo apt-get update -qy
     - sudo apt-get install -y build-essential nodejs rake
     - bundle install --jobs 4 --retry 3 --path vendor
+    - bundle exec rails assets:precompile
   script:
     - RAILS_ENV=test RAILS_DISABLE_TEST_LOG=true bundle exec rspec spec/ --tag '~skip_ci' --profile 10 --format RspecJunitFormatter --out rspec.xml --format progress
   artifacts:

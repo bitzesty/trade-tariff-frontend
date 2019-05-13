@@ -38,24 +38,35 @@ Rails.application.routes.draw do
           )
   end
 
-  resources :sections, only: %i[index show]
-  resources :chapters, only: %i[index show] do
-    resources :changes,
-              only: [:index],
-              defaults: { format: :atom },
-              module: 'chapters'
+  constraints(id: /[\d]{1,2}/) do
+    resources :sections, only: %i[index show]
   end
-  resources :headings, only: %i[index show] do
-    resources :changes,
-              only: [:index],
-              defaults: { format: :atom },
-              module: 'headings'
+
+  constraints(id: /[\d]{2}/) do
+    resources :chapters, only: %i[index show] do
+      resources :changes,
+                only: [:index],
+                defaults: { format: :atom },
+                module: 'chapters'
+    end
   end
-  resources :commodities, only: %i[index show] do
-    resources :changes,
-              only: [:index],
-              defaults: { format: :atom },
-              module: 'commodities'
+
+  constraints(id: /[\d]{4}/) do
+    resources :headings, only: %i[index show] do
+      resources :changes,
+                only: [:index],
+                defaults: { format: :atom },
+                module: 'headings'
+    end
+  end
+
+  constraints(id: /[\d]{10}/) do
+    resources :commodities, only: %i[index show] do
+      resources :changes,
+                only: [:index],
+                defaults: { format: :atom },
+                module: 'commodities'
+    end
   end
 
   get "api/v2/goods_nomenclatures(/*path)", to: TradeTariffFrontend::RequestForwarder.new(
