@@ -11,11 +11,11 @@ module TradeTariffFrontend
   # API Endpoints of the Tariff API app that can be reached
   # via Frontend
   def accessible_api_endpoints
-    %w[sections chapters headings commodities updates monetary_exchange_rates quotas]
+    %w[sections chapters headings commodities updates monetary_exchange_rates quotas goods_nomenclatures]
   end
 
   def public_api_endpoints
-    %w[sections chapters headings commodities monetary_exchange_rates quotas]
+    %w[sections chapters headings commodities monetary_exchange_rates quotas goods_nomenclatures]
   end
 
   def production?

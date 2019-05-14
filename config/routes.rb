@@ -69,40 +69,21 @@ Rails.application.routes.draw do
     end
   end
 
-  get "api/v2/goods_nomenclatures(/*path)", to: TradeTariffFrontend::RequestForwarder.new(
-    host: Rails.application.config.api_host,
-    api_request_path_formatter: lambda { |path|
-      path.gsub("api/v2/", "")
-    }
-  )
+  constraints(TradeTariffFrontend::ApiPubConstraints.new(TradeTariffFrontend.public_api_endpoints)) do
+    scope 'api' do
+      get ":version/*path", to: TradeTariffFrontend::RequestForwarder.new(
+        host: Rails.application.config.api_host,
+        api_request_path_formatter: lambda { |path|
+          path.gsub(/api\/v[1-2]{1}\//, '')
+        }
+      ), constraints: { version: /v[1-2]{1}/ }
 
-  scope path: "api/v2", format: true, constraints: { format: 'json' } do
-    constraints TradeTariffFrontend::ApiConstraints.new(
-      TradeTariffFrontend.public_api_endpoints
-    ) do
-      match ':endpoint/(*path)',
-            via: :get,
-            to: TradeTariffFrontend::RequestForwarder.new(
-              host: Rails.application.config.api_host,
-              api_request_path_formatter: lambda { |path|
-                path.gsub("api/v2/", "")
-              }
-            )
-    end
-  end
-
-  scope path: "api/v1", format: true, constraints: { format: 'json' } do
-    constraints TradeTariffFrontend::ApiConstraints.new(
-      TradeTariffFrontend.public_api_endpoints
-    ) do
-      match ':endpoint/(*path)',
-            via: :get,
-            to: TradeTariffFrontend::RequestForwarder.new(
-              host: Rails.application.config.api_host,
-              api_request_path_formatter: lambda { |path|
-                path.gsub("api/v1/", "")
-              }
-            )
+      get "v2/goods_nomenclatures/*path", to: TradeTariffFrontend::RequestForwarder.new(
+        host: Rails.application.config.api_host,
+        api_request_path_formatter: lambda { |path|
+          path.gsub("api/v2/", "")
+        }
+      )
     end
   end
 
