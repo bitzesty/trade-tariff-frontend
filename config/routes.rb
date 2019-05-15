@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get "/trade-tariff/*path", to: redirect('/%{path}', status: 301)
   get "/v1/(*path).json", to: redirect('/api/v1/%{path}.json', status: 301)
   get "/v2/(*path).json", to: redirect('/api/v2/%{path}.json', status: 301)
+  get "/api/v1/quotas/search(:format)", to: redirect('/api/v2/quotas/search(:format)', status: 301)
 
   get "/", to: redirect("https://www.gov.uk/trade-tariff", status: 302)
   get "healthcheck", to: "healthcheck#check"
@@ -74,14 +75,14 @@ Rails.application.routes.draw do
       get ":version/*path", to: TradeTariffFrontend::RequestForwarder.new(
         host: Rails.application.config.api_host,
         api_request_path_formatter: lambda { |path|
-          path.gsub(/api\/v[1-2]{1}\//, '')
+          path.gsub(/api\/v\d+\//, '')
         }
       ), constraints: { version: /v[1-2]{1}/ }
 
       get "v2/goods_nomenclatures/*path", to: TradeTariffFrontend::RequestForwarder.new(
         host: Rails.application.config.api_host,
         api_request_path_formatter: lambda { |path|
-          path.gsub("api/v2/", "")
+          path.gsub(/api\/v2\//, '')
         }
       )
     end
