@@ -376,4 +376,262 @@ http_interactions:
         W3siaWQiOiJTQSIsImRlc2NyaXB0aW9uIjoiU2F1ZGkgQXJhYmlhIn0seyJpZCI6IkJCIiwiZGVzY3JpcHRpb24iOiJCYXJiYWRvcyJ9LHsiaWQiOiJTQiIsImRlc2NyaXB0aW9uIjoiU29sb21vbiBJc2xhbmRzIn0seyJpZCI6IkJEIiwiZGVzY3JpcHRpb24iOiJCYW5nbGFkZXNoIn0seyJpZCI6IlNDIiwiZGVzY3JpcHRpb24iOiJTZXljaGVsbGVzIGFuZCBkZXBlbmRlbmNpZXMifSx7ImlkIjoiU0QiLCJkZXNjcmlwdGlvbiI6IlN1ZGFuIn0seyJpZCI6IkJFIiwiZGVzY3JpcHRpb24iOiJCZWxnaXVtIn0seyJpZCI6IlNFIiwiZGVzY3JpcHRpb24iOiJTd2VkZW4ifSx7ImlkIjoiQkYiLCJkZXNjcmlwdGlvbiI6IkJ1cmtpbmEgRmFzbyJ9LHsiaWQiOiJTRyIsImRlc2NyaXB0aW9uIjoiU2luZ2Fwb3JlIn0seyJpZCI6IkJHIiwiZGVzY3JpcHRpb24iOiJCdWxnYXJpYSJ9LHsiaWQiOiJTSCIsImRlc2NyaXB0aW9uIjoiU2FpbnQgSGVsZW5hLCBBc2NlbnNpb24gYW5kIFRyaXN0YW4gZGEgQ3VuaGEifSx7ImlkIjoiQkgiLCJkZXNjcmlwdGlvbiI6IkJhaHJhaW4ifSx7ImlkIjoiU0kiLCJkZXNjcmlwdGlvbiI6IlNsb3ZlbmlhIn0seyJpZCI6IlNLIiwiZGVzY3JpcHRpb24iOiJTbG92YWtpYSJ9LHsiaWQiOiJCSSIsImRlc2NyaXB0aW9uIjoiQnVydW5kaSJ9LHsiaWQiOiJTTCIsImRlc2NyaXB0aW9uIjoiU2llcnJhIExlb25lIn0seyJpZCI6IkJKIiwiZGVzY3JpcHRpb24iOiJCZW5pbiJ9LHsiaWQiOiJTTSIsImRlc2NyaXB0aW9uIjoiU2FuIE1hcmlubyJ9LHsiaWQiOiJTTiIsImRlc2NyaXB0aW9uIjoiU2VuZWdhbCJ9LHsiaWQiOiJCTSIsImRlc2NyaXB0aW9uIjoiQmVybXVkYSJ9LHsiaWQiOiJCTiIsImRlc2NyaXB0aW9uIjoiQnJ1bmVpIn0seyJpZCI6IlNPIiwiZGVzY3JpcHRpb24iOiJTb21hbGlhIn0seyJpZCI6IkJPIiwiZGVzY3JpcHRpb24iOiJCb2xpdmlhIn0seyJpZCI6IkJSIiwiZGVzY3JpcHRpb24iOiJCcmF6aWwifSx7ImlkIjoiU1IiLCJkZXNjcmlwdGlvbiI6IlN1cmluYW1lIn0seyJpZCI6IkJTIiwiZGVzY3JpcHRpb24iOiJCYWhhbWFzIn0seyJpZCI6IlNUIiwiZGVzY3JpcHRpb24iOiJTw6NvIFRvbcOpIGFuZCBQcmluY2lwZSJ9LHsiaWQiOiJCVCIsImRlc2NyaXB0aW9uIjoiQmh1dGFuIn0seyJpZCI6IlNWIiwiZGVzY3JpcHRpb24iOiJFbCBTYWx2YWRvciJ9LHsiaWQiOiJITSIsImRlc2NyaXB0aW9uIjoiSGVhcmQgSXNsYW5kIGFuZCBNY0RvbmFsZCBJc2xhbmRzIn0seyJpZCI6Ik5GIiwiZGVzY3JpcHRpb24iOiJOb3Jmb2xrIElzbGFuZCJ9LHsiaWQiOiJQUyIsImRlc2NyaXB0aW9uIjoiT2NjdXBpZWQgcGFsZXN0aW5pYW4gVGVycml0b3J5In0seyJpZCI6IlRGIiwiZGVzY3JpcHRpb24iOiJGcmVuY2ggU291dGhlcm4gVGVycml0b3JpZXMifSx7ImlkIjoiVEsiLCJkZXNjcmlwdGlvbiI6IlRva2VsYXUifSx7ImlkIjoiVU0iLCJkZXNjcmlwdGlvbiI6IlVuaXRlZCBTdGF0ZXMgTWlub3Igb3V0bHlpbmcgaXNsYW5kcyJ9LHsiaWQiOiJDSyIsImRlc2NyaXB0aW9uIjoiQ29vayBJc2xhbmRzIn0seyJpZCI6Ik5VIiwiZGVzY3JpcHRpb24iOiJOaXVlIElzbGFuZCJ9LHsiaWQiOiJYSyIsImRlc2NyaXB0aW9uIjoiS29zb3ZvIn0seyJpZCI6IlFVIiwiZGVzY3JpcHRpb24iOiJDb3VudHJpZXMgYW5kIHRlcnJpdG9yaWVzIG5vdCBzcGVjaWZpZWQifSx7ImlkIjoiUVYiLCJkZXNjcmlwdGlvbiI6IkNvdW50cmllcyBhbmQgdGVycml0b3JpZXMgbm90IHNwZWNpZmllZCBpbiB0aGUgZnJhbWV3b3JrIG9mIGludHJhLUNvbW11bml0eSB0cmFkZSJ9LHsiaWQiOiJRVyIsImRlc2NyaXB0aW9uIjoiQ291bnRyaWVzIGFuZCB0ZXJyaXRvcmllcyBub3Qgc3BlY2lmaWVkIHdpdGhpbiB0aGUgZnJhbWV3b3JrIG9mIHRyYWRlIHdpdGggdGhpcmQgY291bnRyaWVzIn0seyJpZCI6IlFYIiwiZGVzY3JpcHRpb24iOiJDb3VudHJpZXMgYW5kIHRlcnJpdG9yaWVzIG5vdCBzcGVjaWZpZWQgZm9yIGNvbW1lcmNpYWwgb3IgbWlsaXRhcnkgcmVhc29ucyJ9LHsiaWQiOiJRWSIsImRlc2NyaXB0aW9uIjoiUVggaW4gdGhlIGZyYW1ld29yayBvZiBpbnRyYS1Db21tdW5pdHkgdHJhZGUifSx7ImlkIjoiUVoiLCJkZXNjcmlwdGlvbiI6IkNvdW50cmllcyBhbmQgdGVycml0b3JpZXMgbm90IHNwZWNpZmllZCBmb3IgY29tbWVyY2lhbCBvciBtaWxpdGFyeSByZWFzb25zIGluIHRoZSBmcmFtZXdvcmsgb2YgdHJhZGUgd2l0aCB0aGlyZCBjb3VudHJpZXMifSx7ImlkIjoiUVIiLCJkZXNjcmlwdGlvbiI6IlN0b3JlcyBhbmQgcHJvdmlzaW9ucyB3aXRoaW4gdGhlIGZyYW1ld29yayBvZiBpbnRyYS1Db21tdW5pdHkgdHJhZGUifSx7ImlkIjoiV1MiLCJkZXNjcmlwdGlvbiI6Ildlc3Rlcm4gU2Ftb2EifSx7ImlkIjoiR1MiLCJkZXNjcmlwdGlvbiI6IlNvdXRoIEdlb3JnaWEgYW5kIFNvdXRoIFNhbmR3aWNoIElzbGFuZHMifSx7ImlkIjoiR1UiLCJkZXNjcmlwdGlvbiI6Ikd1YW0ifSx7ImlkIjoiVEwiLCJkZXNjcmlwdGlvbiI6IlRpbW9yLUxlc3RlIn0seyJpZCI6IlhTIiwiZGVzY3JpcHRpb24iOiJTZXJiaWEifSx7ImlkIjoiRVUiLCJkZXNjcmlwdGlvbiI6IkV1cm9wZWFuIENvbW11bml0eSJ9LHsiaWQiOiJDSSIsImRlc2NyaXB0aW9uIjoiSXZvcnkgQ29hc3QifSx7ImlkIjoiTUUiLCJkZXNjcmlwdGlvbiI6Ik1vbnRlbmVncm8ifSx7ImlkIjoiQUQiLCJkZXNjcmlwdGlvbiI6IkFuZG9ycmEifSx7ImlkIjoiTkkiLCJkZXNjcmlwdGlvbiI6Ik5pY2FyYWd1YSJ9LHsiaWQiOiJOTCIsImRlc2NyaXB0aW9uIjoiTmV0aGVybGFuZHMifSx7ImlkIjoiTk8iLCJkZXNjcmlwdGlvbiI6Ik5vcndheSJ9LHsiaWQiOiJOUCIsImRlc2NyaXB0aW9uIjoiTmVwYWwifSx7ImlkIjoiTlIiLCJkZXNjcmlwdGlvbiI6Ik5hdXJ1In0seyJpZCI6IkFFIiwiZGVzY3JpcHRpb24iOiJVbml0ZWQgQXJhYiBFbWlyYXRlcyJ9LHsiaWQiOiJOWiIsImRlc2NyaXB0aW9uIjoiTmV3IFplYWxhbmQifSx7ImlkIjoiT00iLCJkZXNjcmlwdGlvbiI6Ik9tYW4ifSx7ImlkIjoiUEEiLCJkZXNjcmlwdGlvbiI6IlBhbmFtYSJ9LHsiaWQiOiJBRiIsImRlc2NyaXB0aW9uIjoiQWZnaGFuaXN0YW4ifSx7ImlkIjoiUEUiLCJkZXNjcmlwdGlvbiI6IlBlcnUifSx7ImlkIjoiUEYiLCJkZXNjcmlwdGlvbiI6IkZyZW5jaCBQb2x5bmVzaWEifSx7ImlkIjoiQUciLCJkZXNjcmlwdGlvbiI6IkFudGlndWEgYW5kIEJhcmJ1ZGEifSx7ImlkIjoiUEciLCJkZXNjcmlwdGlvbiI6IlBhcHVhIE5ldyBHdWluZWEifSx7ImlkIjoiQUkiLCJkZXNjcmlwdGlvbiI6IkFuZ3VpbGxhIn0seyJpZCI6IlBIIiwiZGVzY3JpcHRpb24iOiJQaGlsaXBwaW5lcyJ9LHsiaWQiOiJBTCIsImRlc2NyaXB0aW9uIjoiQWxiYW5pYSJ9LHsiaWQiOiJQSyIsImRlc2NyaXB0aW9uIjoiUGFraXN0YW4ifSx7ImlkIjoiUEwiLCJkZXNjcmlwdGlvbiI6IlBvbGFuZCJ9LHsiaWQiOiJBTSIsImRlc2NyaXB0aW9uIjoiQXJtZW5pYSJ9LHsiaWQiOiJQTSIsImRlc2NyaXB0aW9uIjoiU3QgUGllcnJlIGFuZCBNaXF1ZWxvbiJ9LHsiaWQiOiJQTiIsImRlc2NyaXB0aW9uIjoiUGl0Y2Fpcm4ifSx7ImlkIjoiUFQiLCJkZXNjcmlwdGlvbiI6IlBvcnR1Z2FsIn0seyJpZCI6IkFSIiwiZGVzY3JpcHRpb24iOiJBcmdlbnRpbmEifSx7ImlkIjoiUFkiLCJkZXNjcmlwdGlvbiI6IlBhcmFndWF5In0seyJpZCI6IkFUIiwiZGVzY3JpcHRpb24iOiJBdXN0cmlhIn0seyJpZCI6IlFBIiwiZGVzY3JpcHRpb24iOiJRYXRhciJ9LHsiaWQiOiJSTyIsImRlc2NyaXB0aW9uIjoiUm9tYW5pYSJ9LHsiaWQiOiJBVSIsImRlc2NyaXB0aW9uIjoiQXVzdHJhbGlhIn0seyJpZCI6IlJVIiwiZGVzY3JpcHRpb24iOiJSdXNzaWFuIEZlZGVyYXRpb24ifSx7ImlkIjoiQVciLCJkZXNjcmlwdGlvbiI6IkFydWJhIn0seyJpZCI6IlJXIiwiZGVzY3JpcHRpb24iOiJSd2FuZGEifSx7ImlkIjoiQVoiLCJkZXNjcmlwdGlvbiI6IkF6ZXJiYWlqYW4ifSx7ImlkIjoiQkEiLCJkZXNjcmlwdGlvbiI6IkJvc25pYSBhbmQgSGVyemVnb3ZpbmEifSx7ImlkIjoiR04iLCJkZXNjcmlwdGlvbiI6Ikd1aW5lYSJ9LHsiaWQiOiJHUSIsImRlc2NyaXB0aW9uIjoiRXF1YXRvcmlhbCBHdWluZWEifSx7ImlkIjoiR1QiLCJkZXNjcmlwdGlvbiI6Ikd1YXRlbWFsYSJ9LHsiaWQiOiJHVyIsImRlc2NyaXB0aW9uIjoiR3VpbmVhIEJpc3NhdSJ9LHsiaWQiOiJHWSIsImRlc2NyaXB0aW9uIjoiR3V5YW5hIn0seyJpZCI6IkhLIiwiZGVzY3JpcHRpb24iOiJIb25nIEtvbmcifSx7ImlkIjoiSE4iLCJkZXNjcmlwdGlvbiI6IkhvbmR1cmFzIn0seyJpZCI6IkhSIiwiZGVzY3JpcHRpb24iOiJDcm9hdGlhIn0seyJpZCI6IkhUIiwiZGVzY3JpcHRpb24iOiJIYWl0aSJ9LHsiaWQiOiJIVSIsImRlc2NyaXB0aW9uIjoiSHVuZ2FyeSJ9LHsiaWQiOiJJRCIsImRlc2NyaXB0aW9uIjoiSW5kb25lc2lhIn0seyJpZCI6IklFIiwiZGVzY3JpcHRpb24iOiJJcmVsYW5kIn0seyJpZCI6IklMIiwiZGVzY3JpcHRpb24iOiJJc3JhZWwifSx7ImlkIjoiSU4iLCJkZXNjcmlwdGlvbiI6IkluZGlhIn0seyJpZCI6IklPIiwiZGVzY3JpcHRpb24iOiJCcml0aXNoIEluZGlhbiBPY2VhbiBUZXJyaXRvcnkifSx7ImlkIjoiSVEiLCJkZXNjcmlwdGlvbiI6IklyYXEifSx7ImlkIjoiSVIiLCJkZXNjcmlwdGlvbiI6IklyYW4sIElzbGFtaWMgUmVwdWJsaWMgb2YifSx7ImlkIjoiSVMiLCJkZXNjcmlwdGlvbiI6IkljZWxhbmQifSx7ImlkIjoiSVQiLCJkZXNjcmlwdGlvbiI6Ikl0YWx5In0seyJpZCI6IkpNIiwiZGVzY3JpcHRpb24iOiJKYW1haWNhIn0seyJpZCI6IkpPIiwiZGVzY3JpcHRpb24iOiJKb3JkYW4ifSx7ImlkIjoiSlAiLCJkZXNjcmlwdGlvbiI6IkphcGFuIn0seyJpZCI6IktFIiwiZGVzY3JpcHRpb24iOiJLZW55YSJ9LHsiaWQiOiJLRyIsImRlc2NyaXB0aW9uIjoiS3lyZ3l6c3RhbiJ9LHsiaWQiOiJLSCIsImRlc2NyaXB0aW9uIjoiQ2FtYm9kaWEgKEthbXB1Y2hlYSkifSx7ImlkIjoiS0kiLCJkZXNjcmlwdGlvbiI6IktpcmliYXRpIn0seyJpZCI6IktNIiwiZGVzY3JpcHRpb24iOiJDb21vcm9zIChleGNsdWRpbmcgTWF5b3R0ZSkifSx7ImlkIjoiS04iLCJkZXNjcmlwdGlvbiI6IlN0IEtpdHRzIGFuZCBOZXZpcyJ9LHsiaWQiOiJLUCIsImRlc2NyaXB0aW9uIjoiTm9ydGggS29yZWEgKERlbW9jcmF0aWMgUGVvcGxl4oCZcyBSZXB1YmxpYyBvZiBLb3JlYSkifSx7ImlkIjoiS1IiLCJkZXNjcmlwdGlvbiI6IktvcmVhLCBSZXB1YmxpYyBvZiAoU291dGggS29yZWEpIn0seyJpZCI6IktXIiwiZGVzY3JpcHRpb24iOiJLdXdhaXQifSx7ImlkIjoiS1kiLCJkZXNjcmlwdGlvbiI6IkNheW1hbiBJc2xhbmRzIn0seyJpZCI6IktaIiwiZGVzY3JpcHRpb24iOiJLYXpha2hzdGFuIn0seyJpZCI6IkxBIiwiZGVzY3JpcHRpb24iOiJMYW9zIn0seyJpZCI6IkxCIiwiZGVzY3JpcHRpb24iOiJMZWJhbm9uIn0seyJpZCI6IkxDIiwiZGVzY3JpcHRpb24iOiJTdC4gTHVjaWEifSx7ImlkIjoiTEsiLCJkZXNjcmlwdGlvbiI6IlNyaSBMYW5rYSJ9LHsiaWQiOiJMUiIsImRlc2NyaXB0aW9uIjoiTGliZXJpYSJ9LHsiaWQiOiJMUyIsImRlc2NyaXB0aW9uIjoiTGVzb3RobyJ9LHsiaWQiOiJMVCIsImRlc2NyaXB0aW9uIjoiTGl0aHVhbmlhIn0seyJpZCI6IkxVIiwiZGVzY3JpcHRpb24iOiJMdXhlbWJvdXJnIn0seyJpZCI6IkxWIiwiZGVzY3JpcHRpb24iOiJMYXR2aWEifSx7ImlkIjoiTFkiLCJkZXNjcmlwdGlvbiI6IkxpYnlhIn0seyJpZCI6Ik1BIiwiZGVzY3JpcHRpb24iOiJNb3JvY2NvIn0seyJpZCI6Ik1EIiwiZGVzY3JpcHRpb24iOiJNb2xkb3ZhLCBSZXB1YmxpYyBvZiJ9LHsiaWQiOiJNRyIsImRlc2NyaXB0aW9uIjoiTWFkYWdhc2NhciJ9LHsiaWQiOiJNSCIsImRlc2NyaXB0aW9uIjoiTWFyc2hhbGwgSXNsYW5kcywgUmVwdWJsaWMgb2YifSx7ImlkIjoiTUwiLCJkZXNjcmlwdGlvbiI6Ik1hbGkifSx7ImlkIjoiTU4iLCJkZXNjcmlwdGlvbiI6Ik1vbmdvbGlhIn0seyJpZCI6Ik1PIiwiZGVzY3JpcHRpb24iOiJNYWNhbyJ9LHsiaWQiOiJNUiIsImRlc2NyaXB0aW9uIjoiTWF1cml0YW5pYSJ9LHsiaWQiOiJNVCIsImRlc2NyaXB0aW9uIjoiTWFsdGEifSx7ImlkIjoiTVUiLCJkZXNjcmlwdGlvbiI6Ik1hdXJpdGl1cyJ9LHsiaWQiOiJNViIsImRlc2NyaXB0aW9uIjoiTWFsZGl2ZXMifSx7ImlkIjoiTVciLCJkZXNjcmlwdGlvbiI6Ik1hbGF3aSJ9LHsiaWQiOiJNWCIsImRlc2NyaXB0aW9uIjoiTWV4aWNvIn0seyJpZCI6Ik1ZIiwiZGVzY3JpcHRpb24iOiJNYWxheXNpYSJ9LHsiaWQiOiJNWiIsImRlc2NyaXB0aW9uIjoiTW96YW1iaXF1ZSJ9LHsiaWQiOiJOQSIsImRlc2NyaXB0aW9uIjoiTmFtaWJpYSJ9LHsiaWQiOiJOQyIsImRlc2NyaXB0aW9uIjoiTmV3IENhbGVkb25pYSBhbmQgZGVwZW5kZW5jaWVzIn0seyJpZCI6Ik5FIiwiZGVzY3JpcHRpb24iOiJOaWdlciJ9LHsiaWQiOiJORyIsImRlc2NyaXB0aW9uIjoiTmlnZXJpYSJ9LHsiaWQiOiJBTyIsImRlc2NyaXB0aW9uIjoiQW5nb2xhIn0seyJpZCI6IkdEIiwiZGVzY3JpcHRpb24iOiJHcmVuYWRhIn0seyJpZCI6IkVSIiwiZGVzY3JpcHRpb24iOiJFcml0cmVhIn0seyJpZCI6IkxJIiwiZGVzY3JpcHRpb24iOiJMaWVjaHRlbnN0ZWluIn0seyJpZCI6IlBXIiwiZGVzY3JpcHRpb24iOiJQYWxhdSJ9LHsiaWQiOiJNUyIsImRlc2NyaXB0aW9uIjoiTW9udHNlcnJhdCJ9LHsiaWQiOiJNSyIsImRlc2NyaXB0aW9uIjoiTWFjZWRvbmlhIChGb3JtZXIgWXVnb3NsYXYgUmVwdWJsaWMgb2YpIn0seyJpZCI6Ik1QIiwiZGVzY3JpcHRpb24iOiJOb3J0aGVybiBNYXJpYW5hIElzbGFuZHMifSx7ImlkIjoiR1IiLCJkZXNjcmlwdGlvbiI6IkdyZWVjZSJ9LHsiaWQiOiJDRCIsImRlc2NyaXB0aW9uIjoiQ29uZ28sIERlbW9jcmF0aWMgUmVwdWJsaWMgb2YifSx7ImlkIjoiWEwiLCJkZXNjcmlwdGlvbiI6Ik1lbGlsbGEifSx7ImlkIjoiTU0iLCJkZXNjcmlwdGlvbiI6Ik15YW5tYXIifSx7ImlkIjoiU1kiLCJkZXNjcmlwdGlvbiI6IlN5cmlhIn0seyJpZCI6IlNaIiwiZGVzY3JpcHRpb24iOiJTd2F6aWxhbmQifSx7ImlkIjoiQlciLCJkZXNjcmlwdGlvbiI6IkJvdHN3YW5hIn0seyJpZCI6IlRDIiwiZGVzY3JpcHRpb24iOiJUdXJrcyBhbmQgQ2FpY29zIElzbGFuZHMifSx7ImlkIjoiQlkiLCJkZXNjcmlwdGlvbiI6IkJlbGFydXMifSx7ImlkIjoiVEQiLCJkZXNjcmlwdGlvbiI6IkNoYWQifSx7ImlkIjoiQloiLCJkZXNjcmlwdGlvbiI6IkJlbGl6ZSJ9LHsiaWQiOiJURyIsImRlc2NyaXB0aW9uIjoiVG9nbyJ9LHsiaWQiOiJDQSIsImRlc2NyaXB0aW9uIjoiQ2FuYWRhIn0seyJpZCI6IlRIIiwiZGVzY3JpcHRpb24iOiJUaGFpbGFuZCJ9LHsiaWQiOiJDRiIsImRlc2NyaXB0aW9uIjoiQ2VudHJhbCBBZnJpY2FuIFJlcHVibGljIn0seyJpZCI6IkNHIiwiZGVzY3JpcHRpb24iOiJDb25nbyAoUmVwdWJsaWMgb2YpIn0seyJpZCI6IkNIIiwiZGVzY3JpcHRpb24iOiJTd2l0emVybGFuZCBhbmQgTGllY2h0ZW5zdGVpbiJ9LHsiaWQiOiJUSiIsImRlc2NyaXB0aW9uIjoiVGFqaWtpc3RhbiJ9LHsiaWQiOiJUTSIsImRlc2NyaXB0aW9uIjoiVHVya21lbmlzdGFuIn0seyJpZCI6IlROIiwiZGVzY3JpcHRpb24iOiJUdW5pc2lhIn0seyJpZCI6IkNMIiwiZGVzY3JpcHRpb24iOiJDaGlsZSJ9LHsiaWQiOiJUTyIsImRlc2NyaXB0aW9uIjoiVG9uZ2EifSx7ImlkIjoiQ00iLCJkZXNjcmlwdGlvbiI6IkNhbWVyb29uIn0seyJpZCI6IlRSIiwiZGVzY3JpcHRpb24iOiJUdXJrZXkifSx7ImlkIjoiQ04iLCJkZXNjcmlwdGlvbiI6IkNoaW5hIn0seyJpZCI6IlRUIiwiZGVzY3JpcHRpb24iOiJUcmluaWRhZCBhbmQgVG9iYWdvIn0seyJpZCI6IkNPIiwiZGVzY3JpcHRpb24iOiJDb2xvbWJpYSJ9LHsiaWQiOiJUViIsImRlc2NyaXB0aW9uIjoiVHV2YWx1In0seyJpZCI6IkNSIiwiZGVzY3JpcHRpb24iOiJDb3N0YSBSaWNhIn0seyJpZCI6IlRXIiwiZGVzY3JpcHRpb24iOiJUYWl3YW4ifSx7ImlkIjoiVFoiLCJkZXNjcmlwdGlvbiI6IlRhbnphbmlhLCBVbml0ZWQgUmVwdWJsaWMgb2YifSx7ImlkIjoiVUEiLCJkZXNjcmlwdGlvbiI6IlVrcmFpbmUifSx7ImlkIjoiQ1UiLCJkZXNjcmlwdGlvbiI6IkN1YmEifSx7ImlkIjoiVUciLCJkZXNjcmlwdGlvbiI6IlVnYW5kYSJ9LHsiaWQiOiJVUyIsImRlc2NyaXB0aW9uIjoiVW5pdGVkIFN0YXRlcyBvZiBBbWVyaWNhIn0seyJpZCI6IkNWIiwiZGVzY3JpcHRpb24iOiJDYXBlIFZlcmRlIn0seyJpZCI6IlVZIiwiZGVzY3JpcHRpb24iOiJVcnVndWF5In0seyJpZCI6IkNZIiwiZGVzY3JpcHRpb24iOiJDeXBydXMifSx7ImlkIjoiVVoiLCJkZXNjcmlwdGlvbiI6IlV6YmVraXN0YW4ifSx7ImlkIjoiQ1oiLCJkZXNjcmlwdGlvbiI6IkN6ZWNoIHJlcC4ifSx7ImlkIjoiVkEiLCJkZXNjcmlwdGlvbiI6IlZhdGljYW4gQ2l0eSBTdGF0ZSJ9LHsiaWQiOiJWQyIsImRlc2NyaXB0aW9uIjoiU3QgVmluY2VudCBhbmQgdGhlIEdyZW5hZGluZXMifSx7ImlkIjoiVkUiLCJkZXNjcmlwdGlvbiI6IlZlbmV6dWVsYSJ9LHsiaWQiOiJWRyIsImRlc2NyaXB0aW9uIjoiQnJpdC4gVmlyZ2luIElzLiBhbmQgTW9udHNlcnJhdCJ9LHsiaWQiOiJERSIsImRlc2NyaXB0aW9uIjoiR2VybWFueSJ9LHsiaWQiOiJESiIsImRlc2NyaXB0aW9uIjoiRGppYm91dGkifSx7ImlkIjoiREsiLCJkZXNjcmlwdGlvbiI6IkRlbm1hcmsifSx7ImlkIjoiVkkiLCJkZXNjcmlwdGlvbiI6IlZpcmdpbiBJc2xhbmRzLCBVbml0ZWQgU3RhdGVzIn0seyJpZCI6IkRNIiwiZGVzY3JpcHRpb24iOiJEb21pbmljYSJ9LHsiaWQiOiJETyIsImRlc2NyaXB0aW9uIjoiRG9taW5pY2FuIFJlcHVibGljIn0seyJpZCI6IlZOIiwiZGVzY3JpcHRpb24iOiJWaWV0IE5hbSJ9LHsiaWQiOiJWVSIsImRlc2NyaXB0aW9uIjoiVmFudWF0dSJ9LHsiaWQiOiJEWiIsImRlc2NyaXB0aW9uIjoiQWxnZXJpYSJ9LHsiaWQiOiJXRiIsImRlc2NyaXB0aW9uIjoiV2FsbGlzIGFuZCBGdXR1bmEgSXNsYW5kcyJ9LHsiaWQiOiJFQyIsImRlc2NyaXB0aW9uIjoiRWN1YWRvciJ9LHsiaWQiOiJFRSIsImRlc2NyaXB0aW9uIjoiRXN0b25pYSJ9LHsiaWQiOiJFRyIsImRlc2NyaXB0aW9uIjoiRWd5cHQifSx7ImlkIjoiWEMiLCJkZXNjcmlwdGlvbiI6IkNldXRhIGFuZCBNZWxpbGxhIn0seyJpZCI6IkVTIiwiZGVzY3JpcHRpb24iOiJTcGFpbiAoZXhjbHVkaW5nIFhCLCBYQykifSx7ImlkIjoiRVQiLCJkZXNjcmlwdGlvbiI6IkV0aGlvcGlhIn0seyJpZCI6IkZJIiwiZGVzY3JpcHRpb24iOiJGaW5sYW5kIn0seyJpZCI6IkZKIiwiZGVzY3JpcHRpb24iOiJGaWppIn0seyJpZCI6IkZLIiwiZGVzY3JpcHRpb24iOiJGYWxrbGFuZCBJc2xhbmRzIn0seyJpZCI6IkZNIiwiZGVzY3JpcHRpb24iOiJNaWNyb25lc2lhLCBGZWRlcmF0ZWQgU3RhdGVzIG9mIn0seyJpZCI6IkZPIiwiZGVzY3JpcHRpb24iOiJGYXJvZSBJc2xhbmRzIn0seyJpZCI6IkZSIiwiZGVzY3JpcHRpb24iOiJGcmFuY2UifSx7ImlkIjoiR0EiLCJkZXNjcmlwdGlvbiI6IkdhYm9uIn0seyJpZCI6IkdCIiwiZGVzY3JpcHRpb24iOiJVbml0ZWQgS2luZ2RvbSJ9LHsiaWQiOiJZRSIsImRlc2NyaXB0aW9uIjoiWWVtZW4ifSx7ImlkIjoiWkEiLCJkZXNjcmlwdGlvbiI6IlNvdXRoIEFmcmljYSJ9LHsiaWQiOiJaTSIsImRlc2NyaXB0aW9uIjoiWmFtYmlhIn0seyJpZCI6IlpXIiwiZGVzY3JpcHRpb24iOiJaaW1iYWJ3ZSJ9LHsiaWQiOiJHRSIsImRlc2NyaXB0aW9uIjoiR2VvcmdpYSJ9LHsiaWQiOiJHSCIsImRlc2NyaXB0aW9uIjoiR2hhbmEifSx7ImlkIjoiR0kiLCJkZXNjcmlwdGlvbiI6IkdpYnJhbHRhciJ9LHsiaWQiOiJHTCIsImRlc2NyaXB0aW9uIjoiR3JlZW5sYW5kIn0seyJpZCI6IkdNIiwiZGVzY3JpcHRpb24iOiJHYW1iaWEifSx7ImlkIjoiUVMiLCJkZXNjcmlwdGlvbiI6IlN0b3JlcyBhbmQgcHJvdmlzaW9ucyB3aXRoaW4gdGhlIGZyYW1ld29yayBvZiB0cmFkZSB3aXRoIFRoaXJkIENvdW50cmllcyJ9LHsiaWQiOiJRUSIsImRlc2NyaXB0aW9uIjoiU3RvcmVzIGFuZCBwcm92aXNpb25zIn0seyJpZCI6IkFRIiwiZGVzY3JpcHRpb24iOiJBbnRhcmN0aWNhIn0seyJpZCI6IkFTIiwiZGVzY3JpcHRpb24iOiJBbWVyaWNhbiBTYW1vYSJ9LHsiaWQiOiJCViIsImRlc2NyaXB0aW9uIjoiQm91dmV0IElzbGFuZCJ9LHsiaWQiOiJDQyIsImRlc2NyaXB0aW9uIjoiQ29jb3MgSXNsYW5kcyAob3IgS2VlbGluZyBJc2xhbmRzKSJ9LHsiaWQiOiJDWCIsImRlc2NyaXB0aW9uIjoiQ2hyaXN0bWFzIElzbGFuZCJ9LHsiaWQiOiJCTCIsImRlc2NyaXB0aW9uIjoiU2FpbnQgQmFydGjDqWxlbXkifSx7ImlkIjoiQlEiLCJkZXNjcmlwdGlvbiI6IkJvbmFpcmUsIFNpbnQgRXVzdGF0aXVzIGFuZCBTYWJhIn0seyJpZCI6IkNXIiwiZGVzY3JpcHRpb24iOiJDdXJhw6dhbyJ9LHsiaWQiOiJTUyIsImRlc2NyaXB0aW9uIjoiU291dGggU3VkYW4ifSx7ImlkIjoiU1giLCJkZXNjcmlwdGlvbiI6IlNpbnQgTWFhcnRlbiAoRHV0Y2ggcGFydCkifSx7ImlkIjoiRUgiLCJkZXNjcmlwdGlvbiI6Ildlc3Rlcm4gU2FoYXJhIn0seyJpZCI6IlFQIiwiZGVzY3JpcHRpb24iOiJIaWdoIHNlYXMgKE1hcml0aW1lIGRvbWFpbiBvdXRzaWRlIG9mIHRlcnJpdG9yaWFsIHdhdGVycykifV0=
     http_version: 
   recorded_at: Tue, 05 Mar 2019 10:53:04 GMT
+- request:
+    method: get
+    uri: http://localhost:3018/headings/0101?as_of=2019-03-05&currency=EUR
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/vnd.uktt.v2
+      User-Agent:
+      - Faraday v0.11.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"ee3bc91be5414be74da1d491b2dd993a"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 6430df56-9bd2-4af0-8730-222da3f4b200
+      X-Runtime:
+      - '0.411452'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"data":{"id":"27624","type":"heading","attributes":{"goods_nomenclature_item_id":"0101000000","description":"Live
+        horses, asses, mules and hinnies","bti_url":"http://ec.europa.eu/taxation_customs/dds2/ebti/ebti_consultation.jsp?Lang=en\u0026nomenc=0101000000\u0026Expand=true","formatted_description":"Live
+        horses, asses, mules and hinnies"},"relationships":{"footnotes":{"data":[{"id":"701","type":"footnote"}]},"section":{"data":{"id":"1","type":"section"}},"chapter":{"data":{"id":"27623","type":"chapter"}},"commodities":{"data":[{"id":"93797","type":"commodity"},{"id":"93796","type":"commodity"},{"id":"93798","type":"commodity"},{"id":"93799","type":"commodity"},{"id":"93800","type":"commodity"},{"id":"93801","type":"commodity"},{"id":"72763","type":"commodity"}]}}},"included":[{"id":"27623","type":"chapter","attributes":{"goods_nomenclature_item_id":"0100000000","description":"LIVE
+        ANIMALS","formatted_description":"Live animals","chapter_note":"* 1\\. This
+        chapter covers all live animals except:\r\n  * (a) fish and crustaceans, molluscs
+        and other aquatic invertebrates, of heading 0301, 0306, 0307 or 0308;\r\n  *
+        (b) cultures of micro-organisms and other products of heading 3002; and\r\n  *
+        (c) animals of heading 9508."},"relationships":{"guides":{"data":[{"id":"23","type":"guide"}]}}},{"id":"23","type":"guide","attributes":{"title":"Classification
+        of goods","url":"https://www.gov.uk/government/collections/classification-of-goods"}},{"id":"93797","type":"commodity","attributes":{"description":"Horses","number_indents":1,"goods_nomenclature_item_id":"0101210000","leaf":false,"goods_nomenclature_sid":93797,"formatted_description":"Horses","description_plain":"Horses","producline_suffix":"10","parent_sid":null},"relationships":{"overview_measures":{"data":[]}}},{"id":"93796","type":"commodity","attributes":{"description":"Pure-bred
+        breeding animals","number_indents":2,"goods_nomenclature_item_id":"0101210000","leaf":true,"goods_nomenclature_sid":93796,"formatted_description":"Pure-bred
+        breeding animals","description_plain":"Pure-bred breeding animals","producline_suffix":"80","parent_sid":93797},"relationships":{"overview_measures":{"data":[]}}},{"id":"93798","type":"commodity","attributes":{"description":"Other","number_indents":2,"goods_nomenclature_item_id":"0101290000","leaf":false,"goods_nomenclature_sid":93798,"formatted_description":"Other","description_plain":"Other","producline_suffix":"80","parent_sid":93797},"relationships":{"overview_measures":{"data":[]}}},{"id":"93799","type":"commodity","attributes":{"description":"For
+        slaughter","number_indents":3,"goods_nomenclature_item_id":"0101291000","leaf":true,"goods_nomenclature_sid":93799,"formatted_description":"For
+        slaughter","description_plain":"For slaughter","producline_suffix":"80","parent_sid":93798},"relationships":{"overview_measures":{"data":[]}}},{"id":"93800","type":"commodity","attributes":{"description":"Other","number_indents":3,"goods_nomenclature_item_id":"0101299000","leaf":true,"goods_nomenclature_sid":93800,"formatted_description":"Other","description_plain":"Other","producline_suffix":"80","parent_sid":93798},"relationships":{"overview_measures":{"data":[]}}},{"id":"93801","type":"commodity","attributes":{"description":"Asses","number_indents":1,"goods_nomenclature_item_id":"0101300000","leaf":true,"goods_nomenclature_sid":93801,"formatted_description":"Asses","description_plain":"Asses","producline_suffix":"80","parent_sid":null},"relationships":{"overview_measures":{"data":[]}}},{"id":"72763","type":"commodity","attributes":{"description":"Other","number_indents":1,"goods_nomenclature_item_id":"0101900000","leaf":true,"goods_nomenclature_sid":72763,"formatted_description":"Other","description_plain":"Other","producline_suffix":"80","parent_sid":null},"relationships":{"overview_measures":{"data":[]}}},{"id":"701","type":"footnote","attributes":{"code":"TN701","description":"According
+        to  the Council Regulation (EU) No 692/2014 (OJ L183, p. 9) it shall be prohibited
+        to import into European Union goods originating in Crimea or Sevastopol.\nThe
+        prohibition shall not apply in respect of: \n(a) the execution until 26 September
+        2014, of trade contracts concluded before 25 June 2014, or of ancillary contracts
+        necessary for the execution of such contracts, provided that the natural or
+        legal persons, entity or body seeking to perform the contract have notified,
+        at least 10 working days in advance, the activity or transaction to the competent
+        authority of the Member State in which they are established. \n(b) goods originating
+        in Crimea or Sevastopol which have been made available to the Ukrainian authorities
+        for examination, for which compliance with the conditions conferring entitlement
+        to preferential origin has been verified and for which a certificate of origin
+        has been issued in accordance with Regulation (EU) No 978/2012 and Regulation
+        (EU) No 374/2014 or in accordance with the EU-Ukraine Association Agreement.","formatted_description":"According
+        to  the Council Regulation (EU) No 692/2014 (OJ L183, p. 9) it shall be prohibited
+        to import into European Union goods originating in Crimea or Sevastopol.\u003cbr/\u003eThe
+        prohibition shall not apply in respect of: \u003cbr/\u003e(a) the execution
+        until 26 September 2014, of trade contracts concluded before 25 June 2014,
+        or of ancillary contracts necessary for the execution of such contracts, provided
+        that the natural or legal persons, entity or body seeking to perform the contract
+        have notified, at least 10 working days in advance, the activity or transaction
+        to the competent authority of the Member State in which they are established.
+        \u003cbr/\u003e(b) goods originating in Crimea or Sevastopol which have been
+        made available to the Ukrainian authorities for examination, for which compliance
+        with the conditions conferring entitlement to preferential origin has been
+        verified and for which a certificate of origin has been issued in accordance
+        with Regulation (EU) No 978/2012 and Regulation (EU) No 374/2014 or in accordance
+        with the EU-Ukraine Association Agreement."}},{"id":"1","type":"section","attributes":{"numeral":"I","title":"Live
+        animals; animal products","position":1,"section_note":"* 1\\. Any reference
+        in this section to a particular genus or species of an animal, except where
+        the context otherwise requires, includes a reference to the young of that
+        genus or species.\r\n* 2\\. Except where the context otherwise requires, throughout
+        the nomenclature any reference to ''dried'' products also covers products
+        which have been dehydrated, evaporated or freeze-dried.\r\n"}}]}'
+    http_version: 
+  recorded_at: Thu, 16 May 2019 22:05:58 GMT
+- request:
+    method: get
+    uri: http://localhost:3018/headings/0101?as_of=2019-03-05&currency=EUR
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/vnd.uktt.v2
+      User-Agent:
+      - Faraday v0.11.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"ee3bc91be5414be74da1d491b2dd993a"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 386e8410-7730-4788-8c67-080c3bfbf9a2
+      X-Runtime:
+      - '0.361490'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"data":{"id":"27624","type":"heading","attributes":{"goods_nomenclature_item_id":"0101000000","description":"Live
+        horses, asses, mules and hinnies","bti_url":"http://ec.europa.eu/taxation_customs/dds2/ebti/ebti_consultation.jsp?Lang=en\u0026nomenc=0101000000\u0026Expand=true","formatted_description":"Live
+        horses, asses, mules and hinnies"},"relationships":{"footnotes":{"data":[{"id":"701","type":"footnote"}]},"section":{"data":{"id":"1","type":"section"}},"chapter":{"data":{"id":"27623","type":"chapter"}},"commodities":{"data":[{"id":"93797","type":"commodity"},{"id":"93796","type":"commodity"},{"id":"93798","type":"commodity"},{"id":"93799","type":"commodity"},{"id":"93800","type":"commodity"},{"id":"93801","type":"commodity"},{"id":"72763","type":"commodity"}]}}},"included":[{"id":"27623","type":"chapter","attributes":{"goods_nomenclature_item_id":"0100000000","description":"LIVE
+        ANIMALS","formatted_description":"Live animals","chapter_note":"* 1\\. This
+        chapter covers all live animals except:\r\n  * (a) fish and crustaceans, molluscs
+        and other aquatic invertebrates, of heading 0301, 0306, 0307 or 0308;\r\n  *
+        (b) cultures of micro-organisms and other products of heading 3002; and\r\n  *
+        (c) animals of heading 9508."},"relationships":{"guides":{"data":[{"id":"23","type":"guide"}]}}},{"id":"23","type":"guide","attributes":{"title":"Classification
+        of goods","url":"https://www.gov.uk/government/collections/classification-of-goods"}},{"id":"93797","type":"commodity","attributes":{"description":"Horses","number_indents":1,"goods_nomenclature_item_id":"0101210000","leaf":false,"goods_nomenclature_sid":93797,"formatted_description":"Horses","description_plain":"Horses","producline_suffix":"10","parent_sid":null},"relationships":{"overview_measures":{"data":[]}}},{"id":"93796","type":"commodity","attributes":{"description":"Pure-bred
+        breeding animals","number_indents":2,"goods_nomenclature_item_id":"0101210000","leaf":true,"goods_nomenclature_sid":93796,"formatted_description":"Pure-bred
+        breeding animals","description_plain":"Pure-bred breeding animals","producline_suffix":"80","parent_sid":93797},"relationships":{"overview_measures":{"data":[]}}},{"id":"93798","type":"commodity","attributes":{"description":"Other","number_indents":2,"goods_nomenclature_item_id":"0101290000","leaf":false,"goods_nomenclature_sid":93798,"formatted_description":"Other","description_plain":"Other","producline_suffix":"80","parent_sid":93797},"relationships":{"overview_measures":{"data":[]}}},{"id":"93799","type":"commodity","attributes":{"description":"For
+        slaughter","number_indents":3,"goods_nomenclature_item_id":"0101291000","leaf":true,"goods_nomenclature_sid":93799,"formatted_description":"For
+        slaughter","description_plain":"For slaughter","producline_suffix":"80","parent_sid":93798},"relationships":{"overview_measures":{"data":[]}}},{"id":"93800","type":"commodity","attributes":{"description":"Other","number_indents":3,"goods_nomenclature_item_id":"0101299000","leaf":true,"goods_nomenclature_sid":93800,"formatted_description":"Other","description_plain":"Other","producline_suffix":"80","parent_sid":93798},"relationships":{"overview_measures":{"data":[]}}},{"id":"93801","type":"commodity","attributes":{"description":"Asses","number_indents":1,"goods_nomenclature_item_id":"0101300000","leaf":true,"goods_nomenclature_sid":93801,"formatted_description":"Asses","description_plain":"Asses","producline_suffix":"80","parent_sid":null},"relationships":{"overview_measures":{"data":[]}}},{"id":"72763","type":"commodity","attributes":{"description":"Other","number_indents":1,"goods_nomenclature_item_id":"0101900000","leaf":true,"goods_nomenclature_sid":72763,"formatted_description":"Other","description_plain":"Other","producline_suffix":"80","parent_sid":null},"relationships":{"overview_measures":{"data":[]}}},{"id":"701","type":"footnote","attributes":{"code":"TN701","description":"According
+        to  the Council Regulation (EU) No 692/2014 (OJ L183, p. 9) it shall be prohibited
+        to import into European Union goods originating in Crimea or Sevastopol.\nThe
+        prohibition shall not apply in respect of: \n(a) the execution until 26 September
+        2014, of trade contracts concluded before 25 June 2014, or of ancillary contracts
+        necessary for the execution of such contracts, provided that the natural or
+        legal persons, entity or body seeking to perform the contract have notified,
+        at least 10 working days in advance, the activity or transaction to the competent
+        authority of the Member State in which they are established. \n(b) goods originating
+        in Crimea or Sevastopol which have been made available to the Ukrainian authorities
+        for examination, for which compliance with the conditions conferring entitlement
+        to preferential origin has been verified and for which a certificate of origin
+        has been issued in accordance with Regulation (EU) No 978/2012 and Regulation
+        (EU) No 374/2014 or in accordance with the EU-Ukraine Association Agreement.","formatted_description":"According
+        to  the Council Regulation (EU) No 692/2014 (OJ L183, p. 9) it shall be prohibited
+        to import into European Union goods originating in Crimea or Sevastopol.\u003cbr/\u003eThe
+        prohibition shall not apply in respect of: \u003cbr/\u003e(a) the execution
+        until 26 September 2014, of trade contracts concluded before 25 June 2014,
+        or of ancillary contracts necessary for the execution of such contracts, provided
+        that the natural or legal persons, entity or body seeking to perform the contract
+        have notified, at least 10 working days in advance, the activity or transaction
+        to the competent authority of the Member State in which they are established.
+        \u003cbr/\u003e(b) goods originating in Crimea or Sevastopol which have been
+        made available to the Ukrainian authorities for examination, for which compliance
+        with the conditions conferring entitlement to preferential origin has been
+        verified and for which a certificate of origin has been issued in accordance
+        with Regulation (EU) No 978/2012 and Regulation (EU) No 374/2014 or in accordance
+        with the EU-Ukraine Association Agreement."}},{"id":"1","type":"section","attributes":{"numeral":"I","title":"Live
+        animals; animal products","position":1,"section_note":"* 1\\. Any reference
+        in this section to a particular genus or species of an animal, except where
+        the context otherwise requires, includes a reference to the young of that
+        genus or species.\r\n* 2\\. Except where the context otherwise requires, throughout
+        the nomenclature any reference to ''dried'' products also covers products
+        which have been dehydrated, evaporated or freeze-dried.\r\n"}}]}'
+    http_version: 
+  recorded_at: Thu, 16 May 2019 22:06:04 GMT
+- request:
+    method: get
+    uri: http://localhost:3018/headings/0101?as_of=2019-03-05&currency=EUR
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/vnd.uktt.v2
+      User-Agent:
+      - Faraday v0.11.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"ee3bc91be5414be74da1d491b2dd993a"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 6c9956e6-e4d7-4c9f-8735-3a58966cdf1b
+      X-Runtime:
+      - '0.308123'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"data":{"id":"27624","type":"heading","attributes":{"goods_nomenclature_item_id":"0101000000","description":"Live
+        horses, asses, mules and hinnies","bti_url":"http://ec.europa.eu/taxation_customs/dds2/ebti/ebti_consultation.jsp?Lang=en\u0026nomenc=0101000000\u0026Expand=true","formatted_description":"Live
+        horses, asses, mules and hinnies"},"relationships":{"footnotes":{"data":[{"id":"701","type":"footnote"}]},"section":{"data":{"id":"1","type":"section"}},"chapter":{"data":{"id":"27623","type":"chapter"}},"commodities":{"data":[{"id":"93797","type":"commodity"},{"id":"93796","type":"commodity"},{"id":"93798","type":"commodity"},{"id":"93799","type":"commodity"},{"id":"93800","type":"commodity"},{"id":"93801","type":"commodity"},{"id":"72763","type":"commodity"}]}}},"included":[{"id":"27623","type":"chapter","attributes":{"goods_nomenclature_item_id":"0100000000","description":"LIVE
+        ANIMALS","formatted_description":"Live animals","chapter_note":"* 1\\. This
+        chapter covers all live animals except:\r\n  * (a) fish and crustaceans, molluscs
+        and other aquatic invertebrates, of heading 0301, 0306, 0307 or 0308;\r\n  *
+        (b) cultures of micro-organisms and other products of heading 3002; and\r\n  *
+        (c) animals of heading 9508."},"relationships":{"guides":{"data":[{"id":"23","type":"guide"}]}}},{"id":"23","type":"guide","attributes":{"title":"Classification
+        of goods","url":"https://www.gov.uk/government/collections/classification-of-goods"}},{"id":"93797","type":"commodity","attributes":{"description":"Horses","number_indents":1,"goods_nomenclature_item_id":"0101210000","leaf":false,"goods_nomenclature_sid":93797,"formatted_description":"Horses","description_plain":"Horses","producline_suffix":"10","parent_sid":null},"relationships":{"overview_measures":{"data":[]}}},{"id":"93796","type":"commodity","attributes":{"description":"Pure-bred
+        breeding animals","number_indents":2,"goods_nomenclature_item_id":"0101210000","leaf":true,"goods_nomenclature_sid":93796,"formatted_description":"Pure-bred
+        breeding animals","description_plain":"Pure-bred breeding animals","producline_suffix":"80","parent_sid":93797},"relationships":{"overview_measures":{"data":[]}}},{"id":"93798","type":"commodity","attributes":{"description":"Other","number_indents":2,"goods_nomenclature_item_id":"0101290000","leaf":false,"goods_nomenclature_sid":93798,"formatted_description":"Other","description_plain":"Other","producline_suffix":"80","parent_sid":93797},"relationships":{"overview_measures":{"data":[]}}},{"id":"93799","type":"commodity","attributes":{"description":"For
+        slaughter","number_indents":3,"goods_nomenclature_item_id":"0101291000","leaf":true,"goods_nomenclature_sid":93799,"formatted_description":"For
+        slaughter","description_plain":"For slaughter","producline_suffix":"80","parent_sid":93798},"relationships":{"overview_measures":{"data":[]}}},{"id":"93800","type":"commodity","attributes":{"description":"Other","number_indents":3,"goods_nomenclature_item_id":"0101299000","leaf":true,"goods_nomenclature_sid":93800,"formatted_description":"Other","description_plain":"Other","producline_suffix":"80","parent_sid":93798},"relationships":{"overview_measures":{"data":[]}}},{"id":"93801","type":"commodity","attributes":{"description":"Asses","number_indents":1,"goods_nomenclature_item_id":"0101300000","leaf":true,"goods_nomenclature_sid":93801,"formatted_description":"Asses","description_plain":"Asses","producline_suffix":"80","parent_sid":null},"relationships":{"overview_measures":{"data":[]}}},{"id":"72763","type":"commodity","attributes":{"description":"Other","number_indents":1,"goods_nomenclature_item_id":"0101900000","leaf":true,"goods_nomenclature_sid":72763,"formatted_description":"Other","description_plain":"Other","producline_suffix":"80","parent_sid":null},"relationships":{"overview_measures":{"data":[]}}},{"id":"701","type":"footnote","attributes":{"code":"TN701","description":"According
+        to  the Council Regulation (EU) No 692/2014 (OJ L183, p. 9) it shall be prohibited
+        to import into European Union goods originating in Crimea or Sevastopol.\nThe
+        prohibition shall not apply in respect of: \n(a) the execution until 26 September
+        2014, of trade contracts concluded before 25 June 2014, or of ancillary contracts
+        necessary for the execution of such contracts, provided that the natural or
+        legal persons, entity or body seeking to perform the contract have notified,
+        at least 10 working days in advance, the activity or transaction to the competent
+        authority of the Member State in which they are established. \n(b) goods originating
+        in Crimea or Sevastopol which have been made available to the Ukrainian authorities
+        for examination, for which compliance with the conditions conferring entitlement
+        to preferential origin has been verified and for which a certificate of origin
+        has been issued in accordance with Regulation (EU) No 978/2012 and Regulation
+        (EU) No 374/2014 or in accordance with the EU-Ukraine Association Agreement.","formatted_description":"According
+        to  the Council Regulation (EU) No 692/2014 (OJ L183, p. 9) it shall be prohibited
+        to import into European Union goods originating in Crimea or Sevastopol.\u003cbr/\u003eThe
+        prohibition shall not apply in respect of: \u003cbr/\u003e(a) the execution
+        until 26 September 2014, of trade contracts concluded before 25 June 2014,
+        or of ancillary contracts necessary for the execution of such contracts, provided
+        that the natural or legal persons, entity or body seeking to perform the contract
+        have notified, at least 10 working days in advance, the activity or transaction
+        to the competent authority of the Member State in which they are established.
+        \u003cbr/\u003e(b) goods originating in Crimea or Sevastopol which have been
+        made available to the Ukrainian authorities for examination, for which compliance
+        with the conditions conferring entitlement to preferential origin has been
+        verified and for which a certificate of origin has been issued in accordance
+        with Regulation (EU) No 978/2012 and Regulation (EU) No 374/2014 or in accordance
+        with the EU-Ukraine Association Agreement."}},{"id":"1","type":"section","attributes":{"numeral":"I","title":"Live
+        animals; animal products","position":1,"section_note":"* 1\\. Any reference
+        in this section to a particular genus or species of an animal, except where
+        the context otherwise requires, includes a reference to the young of that
+        genus or species.\r\n* 2\\. Except where the context otherwise requires, throughout
+        the nomenclature any reference to ''dried'' products also covers products
+        which have been dehydrated, evaporated or freeze-dried.\r\n"}}]}'
+    http_version: 
+  recorded_at: Thu, 16 May 2019 22:06:07 GMT
 recorded_with: VCR 3.0.3
