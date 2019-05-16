@@ -1,0 +1,89 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://localhost:3018/headings/0101?as_of=2019-05-16&currency=EUR
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/vnd.uktt.v2
+      User-Agent:
+      - Faraday v0.11.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"ee3bc91be5414be74da1d491b2dd993a"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 759d5f34-c46c-4574-a20a-5418adb058de
+      X-Runtime:
+      - '0.485964'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"data":{"id":"27624","type":"heading","attributes":{"goods_nomenclature_item_id":"0101000000","description":"Live
+        horses, asses, mules and hinnies","bti_url":"http://ec.europa.eu/taxation_customs/dds2/ebti/ebti_consultation.jsp?Lang=en\u0026nomenc=0101000000\u0026Expand=true","formatted_description":"Live
+        horses, asses, mules and hinnies"},"relationships":{"footnotes":{"data":[{"id":"701","type":"footnote"}]},"section":{"data":{"id":"1","type":"section"}},"chapter":{"data":{"id":"27623","type":"chapter"}},"commodities":{"data":[{"id":"93797","type":"commodity"},{"id":"93796","type":"commodity"},{"id":"93798","type":"commodity"},{"id":"93799","type":"commodity"},{"id":"93800","type":"commodity"},{"id":"93801","type":"commodity"},{"id":"72763","type":"commodity"}]}}},"included":[{"id":"27623","type":"chapter","attributes":{"goods_nomenclature_item_id":"0100000000","description":"LIVE
+        ANIMALS","formatted_description":"Live animals","chapter_note":"* 1\\. This
+        chapter covers all live animals except:\r\n  * (a) fish and crustaceans, molluscs
+        and other aquatic invertebrates, of heading 0301, 0306, 0307 or 0308;\r\n  *
+        (b) cultures of micro-organisms and other products of heading 3002; and\r\n  *
+        (c) animals of heading 9508."},"relationships":{"guides":{"data":[{"id":"23","type":"guide"}]}}},{"id":"23","type":"guide","attributes":{"title":"Classification
+        of goods","url":"https://www.gov.uk/government/collections/classification-of-goods"}},{"id":"93797","type":"commodity","attributes":{"description":"Horses","number_indents":1,"goods_nomenclature_item_id":"0101210000","leaf":false,"goods_nomenclature_sid":93797,"formatted_description":"Horses","description_plain":"Horses","producline_suffix":"10","parent_sid":null},"relationships":{"overview_measures":{"data":[]}}},{"id":"93796","type":"commodity","attributes":{"description":"Pure-bred
+        breeding animals","number_indents":2,"goods_nomenclature_item_id":"0101210000","leaf":true,"goods_nomenclature_sid":93796,"formatted_description":"Pure-bred
+        breeding animals","description_plain":"Pure-bred breeding animals","producline_suffix":"80","parent_sid":93797},"relationships":{"overview_measures":{"data":[]}}},{"id":"93798","type":"commodity","attributes":{"description":"Other","number_indents":2,"goods_nomenclature_item_id":"0101290000","leaf":false,"goods_nomenclature_sid":93798,"formatted_description":"Other","description_plain":"Other","producline_suffix":"80","parent_sid":93797},"relationships":{"overview_measures":{"data":[]}}},{"id":"93799","type":"commodity","attributes":{"description":"For
+        slaughter","number_indents":3,"goods_nomenclature_item_id":"0101291000","leaf":true,"goods_nomenclature_sid":93799,"formatted_description":"For
+        slaughter","description_plain":"For slaughter","producline_suffix":"80","parent_sid":93798},"relationships":{"overview_measures":{"data":[]}}},{"id":"93800","type":"commodity","attributes":{"description":"Other","number_indents":3,"goods_nomenclature_item_id":"0101299000","leaf":true,"goods_nomenclature_sid":93800,"formatted_description":"Other","description_plain":"Other","producline_suffix":"80","parent_sid":93798},"relationships":{"overview_measures":{"data":[]}}},{"id":"93801","type":"commodity","attributes":{"description":"Asses","number_indents":1,"goods_nomenclature_item_id":"0101300000","leaf":true,"goods_nomenclature_sid":93801,"formatted_description":"Asses","description_plain":"Asses","producline_suffix":"80","parent_sid":null},"relationships":{"overview_measures":{"data":[]}}},{"id":"72763","type":"commodity","attributes":{"description":"Other","number_indents":1,"goods_nomenclature_item_id":"0101900000","leaf":true,"goods_nomenclature_sid":72763,"formatted_description":"Other","description_plain":"Other","producline_suffix":"80","parent_sid":null},"relationships":{"overview_measures":{"data":[]}}},{"id":"701","type":"footnote","attributes":{"code":"TN701","description":"According
+        to  the Council Regulation (EU) No 692/2014 (OJ L183, p. 9) it shall be prohibited
+        to import into European Union goods originating in Crimea or Sevastopol.\nThe
+        prohibition shall not apply in respect of: \n(a) the execution until 26 September
+        2014, of trade contracts concluded before 25 June 2014, or of ancillary contracts
+        necessary for the execution of such contracts, provided that the natural or
+        legal persons, entity or body seeking to perform the contract have notified,
+        at least 10 working days in advance, the activity or transaction to the competent
+        authority of the Member State in which they are established. \n(b) goods originating
+        in Crimea or Sevastopol which have been made available to the Ukrainian authorities
+        for examination, for which compliance with the conditions conferring entitlement
+        to preferential origin has been verified and for which a certificate of origin
+        has been issued in accordance with Regulation (EU) No 978/2012 and Regulation
+        (EU) No 374/2014 or in accordance with the EU-Ukraine Association Agreement.","formatted_description":"According
+        to  the Council Regulation (EU) No 692/2014 (OJ L183, p. 9) it shall be prohibited
+        to import into European Union goods originating in Crimea or Sevastopol.\u003cbr/\u003eThe
+        prohibition shall not apply in respect of: \u003cbr/\u003e(a) the execution
+        until 26 September 2014, of trade contracts concluded before 25 June 2014,
+        or of ancillary contracts necessary for the execution of such contracts, provided
+        that the natural or legal persons, entity or body seeking to perform the contract
+        have notified, at least 10 working days in advance, the activity or transaction
+        to the competent authority of the Member State in which they are established.
+        \u003cbr/\u003e(b) goods originating in Crimea or Sevastopol which have been
+        made available to the Ukrainian authorities for examination, for which compliance
+        with the conditions conferring entitlement to preferential origin has been
+        verified and for which a certificate of origin has been issued in accordance
+        with Regulation (EU) No 978/2012 and Regulation (EU) No 374/2014 or in accordance
+        with the EU-Ukraine Association Agreement."}},{"id":"1","type":"section","attributes":{"numeral":"I","title":"Live
+        animals; animal products","position":1,"section_note":"* 1\\. Any reference
+        in this section to a particular genus or species of an animal, except where
+        the context otherwise requires, includes a reference to the young of that
+        genus or species.\r\n* 2\\. Except where the context otherwise requires, throughout
+        the nomenclature any reference to ''dried'' products also covers products
+        which have been dehydrated, evaporated or freeze-dried.\r\n"}}]}'
+    http_version: 
+  recorded_at: Thu, 16 May 2019 21:48:22 GMT
+recorded_with: VCR 3.0.3
