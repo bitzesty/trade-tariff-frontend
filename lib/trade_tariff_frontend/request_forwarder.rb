@@ -29,6 +29,7 @@ module TradeTariffFrontend
           request_url_for(rackreq)
         ) do |req|
           req.headers['Accept'] = "application/vnd.uktt.#{api_version}"
+          req.headers['Content-Type'] = env['CONTENT_TYPE']
           req.options.timeout = 60           # open/read timeout in seconds
           req.options.open_timeout = 15      # connection open timeout in seconds
         end
