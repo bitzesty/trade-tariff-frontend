@@ -9,7 +9,7 @@
       }
     });
     fieldset.on('click', 'a.reset-country-picker', function (e) {
-      $('.js-quota-country-picker-select').select2('val', '');
+      $('.js-quota-country-picker-select').val(null).trigger("change");
       return false;
     });
     $('form.quota-search#new_search').submit(function(){
