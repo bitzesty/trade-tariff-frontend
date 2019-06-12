@@ -31,6 +31,11 @@ class ApplicationController < ActionController::Base
     render plain: '404', status: 404
   end
 
+  rescue_from(ActionView::MissingTemplate) do |_e|
+    request.format = :html
+    render_404
+  end
+
   def url_options
     return super unless search_invoked?
     return { country: search_query.country, currency: search_query.currency }.merge(super) if search_query.date.today?
@@ -59,6 +64,14 @@ class ApplicationController < ActionController::Base
     render template: "errors/internal_server_error",
            layout: "pages",
            status: 500
+    false
+  end
+
+  def render_404
+    render template: "errors/not_found",
+           layout: "pages",
+           status: :not_found,
+           formats: :html
     false
   end
 
