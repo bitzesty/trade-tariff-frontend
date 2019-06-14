@@ -31,9 +31,9 @@ http_interactions:
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 25d63820-3eae-4c29-ad36-a7633ef8fd81
+      - cf6f1e66-1aad-4e2d-87e7-d0d24ff80623
       X-Runtime:
-      - '0.155030'
+      - '0.123429'
       Transfer-Encoding:
       - chunked
     body:
@@ -75,5 +75,5 @@ http_interactions:
         manufactured articles","position":20,"chapter_from":"94","chapter_to":"96","section_note_id":null,"search_references_count":0}},{"id":"21","type":"section","attributes":{"id":21,"numeral":"XXI","title":"Works
         of art, collectors'' pieces and antiques","position":21,"chapter_from":"97","chapter_to":"98","section_note_id":null,"search_references_count":0}}]}'
     http_version: 
-  recorded_at: Fri, 07 Jun 2019 12:35:08 GMT
+  recorded_at: Fri, 14 Jun 2019 11:02:45 GMT
 recorded_with: VCR 3.0.3
