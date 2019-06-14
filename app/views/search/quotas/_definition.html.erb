@@ -72,7 +72,7 @@
       <br>
     <% end %>
   </td>
-  <td><%= (definition.order_number&.geographical_areas.presence || definition.measures&.map(&:geographical_area))&.map(&:long_description)&.uniq&.join('<br>').html_safe %></td>
+  <td><%= definition.geographical_areas.map(&:long_description)&.uniq&.join('<br>').html_safe %></td>
   <td><%= definition.validity_start_date&.strftime('%d %B %Y') %></td>
   <td><%= definition.validity_end_date&.strftime('%d %B %Y') %></td>
   <td class="numerical"><%= definition.balance %> <%= definition.measurement_unit %></td>
