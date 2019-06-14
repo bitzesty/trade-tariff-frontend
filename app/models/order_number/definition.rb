@@ -26,7 +26,8 @@ class OrderNumber
     end
 
     has_one :order_number
-    
+    has_many :measures
+
     def present?
       status.present?
     end
