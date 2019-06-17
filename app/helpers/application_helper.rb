@@ -1,5 +1,8 @@
 module ApplicationHelper
   def govspeak(text)
+    text = text[:content] if text.is_a?(HashWithIndifferentAccess)
+    return '' if text.nil?
+
     Govspeak::Document.new(text).to_sanitized_html.html_safe
   end
 
@@ -33,7 +36,7 @@ module ApplicationHelper
   def a_z_active_class
     active_class_for(controller_methods: %w[search_references])
   end
-  
+
   def quota_search_active_class
     "active" if params[:action] == 'quota_search'
   end
