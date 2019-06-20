@@ -4,7 +4,7 @@ class Measure
   include ApiEntity
 
   attr_accessor :id, :origin, :effective_start_date, :effective_end_date,
-                :import, :vat, :excise
+                :import, :vat, :excise, :goods_nomenclature_item_id
 
   DEFAULT_GEOGRAPHICAL_AREA_ID = "1011".freeze # ERGA OMNES
 
