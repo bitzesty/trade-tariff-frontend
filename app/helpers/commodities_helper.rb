@@ -43,9 +43,8 @@ module CommoditiesHelper
     display_full_code = commodity.producline_suffix == '80'
 
     if commodity.number_indents > 1 || display_full_code
-      if commodity.has_children?
-        code = code[0..(commodity.number_indents * 2 + 3)]
-      end
+      # remove trailing pairs of zeros for non declarable
+      code = code.gsub(/[0]{2}+$/, '') if commodity.has_children?
 
       "#{chapter_and_heading_codes(code)}
       <div class='commodity-code'>
