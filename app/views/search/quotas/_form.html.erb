@@ -5,15 +5,18 @@
       <%= label_tag :goods_nomenclature_item_id, 'Goods nomenclature' %>
     </div>
     <div class="column-three-quarters">
-      <%= text_field_tag :goods_nomenclature_item_id, search_form.goods_nomenclature_item_id, class: "form-control" %>
+      <%= text_field_tag :goods_nomenclature_item_id, search_form.goods_nomenclature_item_id, class: "form-control form-control--small" %>
     </div>
   </div>
   <div class="grid-row">
     <div class="column-quarter">
-      <%= label_tag :geographical_area_id, 'Origin' %>
+      <%= label_tag :geographical_area_id, 'Countries' %>
     </div>
     <div class="column-three-quarters">
-      <%= select_tag :geographical_area_id, options_from_collection_for_select(GeographicalArea.cached_areas, 'id', 'long_description', search_form.geographical_area_id), include_blank: true, class: "form-control form-control--100" %>
+      <fieldset class="js-quota-country-picker">
+        <%= select_tag :geographical_area_id, options_from_collection_for_select(Array.wrap(search_form.geographical_area), 'id', 'long_description', search_form.geographical_area_id), include_blank: 'All countries', class: 'js-quota-country-picker-select form-control form-control--50' %>
+        <a class="reset-country-picker" href="#reset-country-picker" title="Reset country picker" rel="nofollow">Reset<span class="long-text">&nbsp;to all countries</span></a>
+      </fieldset>
     </div>
   </div>
   <div class="grid-row">
@@ -21,12 +24,12 @@
       <%= label_tag :order_number, 'Order number' %>
     </div>
     <div class="column-three-quarters">
-      <%= text_field_tag :order_number, search_form.order_number, class: "form-control" %>
+      <%= text_field_tag :order_number, search_form.order_number, class: "form-control form-control--tiny" %>
     </div>
   </div>
   <div class="grid-row">
     <div class="column-quarter">
-      <%= label_tag :critical, 'Critical' %>
+      <%= label_tag :critical, 'Critical state' %>
     </div>
     <div class="column-three-quarters">
       <%= select_tag :critical, options_for_select(QuotaSearchForm::CRITICAL_VALUES, search_form.critical), include_blank: true, class: "form-control form-control--tiny" %>

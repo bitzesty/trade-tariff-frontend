@@ -69,28 +69,28 @@ describe "Search", js: true do
       end
     end
   end
-  
+
   context 'quota search' do
-    
+
     before(:each) do
       Rails.cache.clear
     end
-    
+
     context 'quota search link on page header' do
       it 'should contain link to quota search page' do
         VCR.use_cassette('search#quota_search_header', record: :new_episodes) do
           visit sections_path
-          expect(page).to have_content('Search the Quotas')
+          expect(page).to have_content('Quotas')
         end
       end
     end
-    
+
     context 'quota search form' do
       it 'should contain quota search params inputs' do
         VCR.use_cassette('search#quota_search_form', record: :new_episodes) do
           visit quota_search_path
 
-          expect(page).to have_content('Search the Quotas')
+          expect(page).to have_content('Quotas')
 
           expect(page.find('#goods_nomenclature_item_id')).to be_present
           expect(page.find('#geographical_area_id')).to be_present
@@ -114,11 +114,11 @@ describe "Search", js: true do
         VCR.use_cassette('search#quota_search_results', record: :new_episodes) do
           visit quota_search_path
 
-          expect(page).to have_content('Search the Quotas')
+          expect(page).to have_content('Quotas')
 
           page.find('#goods_nomenclature_item_id').set('0301')
           page.find('#order_number').set('0906')
-          page.find('#quota-search-year-2018', visible: :all).click
+          page.find('#quota-search-year-2019', visible: :all).click
           page.find('input[name="new_search"]').click
 
           using_wait_time 10 do

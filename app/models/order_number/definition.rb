@@ -26,9 +26,14 @@ class OrderNumber
     end
 
     has_one :order_number
-    
+    has_many :measures
+
     def present?
       status.present?
+    end
+
+    def geographical_areas
+      order_number&.geographical_areas.presence || measures&.map(&:geographical_area) || []
     end
   end
 end

@@ -32,7 +32,7 @@
         <a href="<%= sections_path %>" id="proposition-name">Trade Tariff</a>
         <ul id="proposition-links">
           <li><%= link_to "Search the Tariff", sections_path, class: search_active_class %></li>
-          <li><%= link_to "Search the Quotas", quota_search_path, class: quota_search_active_class %></li>
+          <li><%= link_to "Quotas", quota_search_path, class: quota_search_active_class %></li>
           <li><%= link_to "A-Z of Classified Goods", a_z_index_path(letter: "a"), class: a_z_active_class %></li>
           <li><%= link_to "Exchange rates", exchange_rates_path, class: exchange_rates_active_class %></li>
           <li><%= link_to "Forum", "https://forum.trade-tariff.service.gov.uk/", target: "_blank", data: { analytics_event: "forums" } %></li>
@@ -74,7 +74,6 @@
         <li><a target="_blank" href="https://www.gov.uk/guidance/finding-commodity-codes-for-imports-or-exports">Finding commodity codes for imports or exports</a></li>
         <li><a target="_blank" href="https://www.gov.uk/guidance/using-the-trade-tariff-tool-to-find-a-commodity-code">Using the Trade Tariff tool to find a commodity code</a></li>
         <li><a target="_blank" href="https://www.gov.uk/topic/business-tax/import-export">Import and export</a></li>
-        <li><a target="_blank" href="https://api.trade-tariff.service.gov.uk/#gov-uk-trade-tariff-api">API Documentation</a></li>
       </ul>
     </div>
 
@@ -86,6 +85,7 @@
         <%- if TradeTariffFrontend.regulations_enabled? -%>
           <li><a target="_blank" href="http://ec.europa.eu/taxation_customs/dds2/taric/taric_consultation.jsp?Lang=en&Screen=0&Expand=true">Integrated tariff of the European Community (TARIC) database</a></li>
         <% end %>
+        <li><a target="_blank" href="https://api.trade-tariff.service.gov.uk/#gov-uk-trade-tariff-api">API Documentation</a></li>
       </ul>
     </div>
   </nav>
