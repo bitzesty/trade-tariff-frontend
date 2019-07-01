@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe ChaptersController, "GET to #show", type: :controller do
-  let!(:section)     { attributes_for :section }
+  let!(:section)     { attributes_for(:section).stringify_keys }
 
   context 'with existing chapter id provided', vcr: { cassette_name: "chapters#show" } do
     let!(:chapter)     { build :chapter, section: section }

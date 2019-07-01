@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe 'GET to #index - getting heading change feed', type: :request do
-  let!(:heading) { Heading.new(attributes_for(:heading, goods_nomenclature_item_id: "0101000000")) }
+  let!(:heading) { Heading.new(attributes_for(:heading, goods_nomenclature_item_id: "0101000000").stringify_keys) }
 
   describe 'no request format supplied' do
     before do

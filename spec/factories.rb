@@ -52,36 +52,36 @@ FactoryGirl.define do
     effective_end_date { nil }
 
     measure_type {
-      attributes_for(:measure_type, id: Forgery(:basic).text, description: measure_type_description)
+      attributes_for(:measure_type, id: Forgery(:basic).text, description: measure_type_description).stringify_keys
     }
 
     trait :vat do
       measure_type {
-        attributes_for(:measure_type, :vat, description: measure_type_description)
+        attributes_for(:measure_type, :vat, description: measure_type_description).stringify_keys
       }
     end
 
     trait :third_country do
       measure_type {
-        attributes_for(:measure_type, :third_country, description: measure_type_description)
+        attributes_for(:measure_type, :third_country, description: measure_type_description).stringify_keys
       }
-      geographical_area { attributes_for(:geographical_area, :third_country) }
+      geographical_area { attributes_for(:geographical_area, :third_country).stringify_keys }
     end
 
     trait :specific_country do
-      geographical_area { attributes_for(:geographical_area, :specific_country) }
+      geographical_area { attributes_for(:geographical_area, :specific_country).stringify_keys }
     end
 
     trait :with_conditions do
-      measure_conditions { [attributes_for(:measure_condition)] }
+      measure_conditions { [attributes_for(:measure_condition).stringify_keys] }
     end
 
     trait :with_additional_code do
-      additional_code { attributes_for(:additional_code) }
+      additional_code { attributes_for(:additional_code).stringify_keys }
     end
 
     trait :with_footnotes do
-      footnotes { [attributes_for(:footnote)] }
+      footnotes { [attributes_for(:footnote).stringify_keys] }
     end
 
     trait :national do
@@ -125,7 +125,7 @@ FactoryGirl.define do
     end
 
     trait :with_children do
-      children_geographical_areas { [attributes_for(:geograpical_area)] }
+      children_geographical_areas { [attributes_for(:geograpical_area).stringify_keys] }
     end
   end
 
