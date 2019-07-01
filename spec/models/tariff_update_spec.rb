@@ -3,7 +3,7 @@ require 'spec_helper'
 describe TariffUpdate do
   describe '#update_type' do
     context 'when Chief update' do
-      let(:tariff_update) { TariffUpdate.new(attributes_for :tariff_update, :chief) }
+      let(:tariff_update) { TariffUpdate.new(attributes_for(:tariff_update, :chief).stringify_keys) }
 
       it 'returns Chief' do
         expect(tariff_update.update_type).to eq 'CHIEF'
@@ -11,7 +11,7 @@ describe TariffUpdate do
     end
 
     context 'when Taric update' do
-      let(:tariff_update) { TariffUpdate.new(attributes_for :tariff_update, :taric) }
+      let(:tariff_update) { TariffUpdate.new(attributes_for(:tariff_update, :taric).stringify_keys) }
 
       it 'returns Taric' do
         expect(tariff_update.update_type).to eq 'TARIC'
@@ -20,7 +20,7 @@ describe TariffUpdate do
   end
 
   describe '#updated_at' do
-    let(:tariff_update) { TariffUpdate.new(attributes_for :tariff_update, :chief) }
+    let(:tariff_update) { TariffUpdate.new(attributes_for(:tariff_update, :chief).stringify_keys) }
 
     it 'returns instance of date' do
       expect(tariff_update.updated_at).to be_kind_of Date
