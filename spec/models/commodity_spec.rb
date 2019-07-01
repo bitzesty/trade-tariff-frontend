@@ -6,12 +6,12 @@ describe Commodity do
     let(:associated_commodities) {
                                    {
                                     commodities: [attributes_for(:commodity, goods_nomenclature_sid: 1,
-                                                                             parent_sid: nil),
+                                                                             parent_sid: nil).stringify_keys,
                                                   attributes_for(:commodity, parent_sid: 1,
-                                                                             goods_nomenclature_sid: 2)]
+                                                                             goods_nomenclature_sid: 2).stringify_keys]
                                    }
                                  }
-    let(:heading_attributes) { attributes_for(:heading).merge(associated_commodities) }
+    let(:heading_attributes) { attributes_for(:heading).merge(associated_commodities).stringify_keys }
     let(:heading) { Heading.new(heading_attributes) }
 
     describe "#children" do
@@ -50,7 +50,7 @@ describe Commodity do
   end
 
   describe "#to_param" do
-    let(:commodity) { Commodity.new(attributes_for :commodity) }
+    let(:commodity) { Commodity.new(attributes_for(:commodity).stringify_keys) }
 
     it 'returns commodity code as param' do
       expect(commodity.to_param).to eq commodity.code

@@ -26,7 +26,7 @@ class TariffJsonapiParser
   end
 
   def parse_resource(resource)
-    result = ActiveSupport::HashWithIndifferentAccess.new({})
+    result = {}
 
     parse_top_level_attributes!(resource, result)
 

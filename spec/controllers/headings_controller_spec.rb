@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe HeadingsController, "GET to #show", type: :controller do
   context 'with existing heading id provided', vcr: { cassette_name: "headings#show" } do
-    let!(:heading)     { Heading.new(attributes_for :heading) }
+    let!(:heading)     { Heading.new(attributes_for(:heading).stringify_keys) }
 
     before(:each) do
       get :show, params: { id: heading.to_param }

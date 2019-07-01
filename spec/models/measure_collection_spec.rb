@@ -2,8 +2,8 @@ require 'spec_helper'
 
 describe MeasureCollection do
   describe '#for_country' do
-    let(:measure1) { Measure.new(attributes_for(:measure, geographical_area: { geographical_area_id: 'IT' })) }
-    let(:measure2) { Measure.new(attributes_for(:measure, geographical_area: { geographical_area_id: 'RU' })) }
+    let(:measure1) { Measure.new(attributes_for(:measure, geographical_area: { geographical_area_id: 'IT' }).stringify_keys) }
+    let(:measure2) { Measure.new(attributes_for(:measure, geographical_area: { geographical_area_id: 'RU' }).stringify_keys) }
     let(:collection) { MeasureCollection.new([measure1, measure2]) }
 
     it 'filters measures by country code' do
@@ -14,8 +14,8 @@ describe MeasureCollection do
   end
 
   describe '#vat' do
-    let(:measure1) { Measure.new(attributes_for(:measure, :vat)) }
-    let(:measure2) { Measure.new(attributes_for(:measure)) }
+    let(:measure1) { Measure.new(attributes_for(:measure, :vat).stringify_keys) }
+    let(:measure2) { Measure.new(attributes_for(:measure).stringify_keys) }
     let(:collection) { MeasureCollection.new([measure1, measure2]) }
 
     it 'filters VAT measures' do
@@ -24,8 +24,8 @@ describe MeasureCollection do
   end
 
   describe '#national' do
-    let(:measure1) { Measure.new(attributes_for(:measure, :national)) }
-    let(:measure2) { Measure.new(attributes_for(:measure)) }
+    let(:measure1) { Measure.new(attributes_for(:measure, :national).stringify_keys) }
+    let(:measure2) { Measure.new(attributes_for(:measure).stringify_keys) }
     let(:collection) { MeasureCollection.new([measure1, measure2]) }
 
     it 'filters national measures' do
@@ -35,7 +35,7 @@ describe MeasureCollection do
 
   describe '#to_a' do
     context 'presenter class given (default)' do
-      let(:measure) { Measure.new(attributes_for(:measure)) }
+      let(:measure) { Measure.new(attributes_for(:measure).stringify_keys) }
       let(:collection) { MeasureCollection.new([measure]) }
 
       it 'returns an Array' do
@@ -48,7 +48,7 @@ describe MeasureCollection do
     end
 
     context 'presenter class blank' do
-      let(:measure) { Measure.new(attributes_for(:measure)) }
+      let(:measure) { Measure.new(attributes_for(:measure).stringify_keys) }
       let(:collection) { MeasureCollection.new([measure], nil) }
 
       it 'returns an Array' do
@@ -63,7 +63,7 @@ describe MeasureCollection do
 
   describe "#present?" do
     context 'measures present' do
-      let(:measure) { Measure.new(attributes_for(:measure)) }
+      let(:measure) { Measure.new(attributes_for(:measure).stringify_keys) }
       subject { MeasureCollection.new([measure]) }
 
       it 'returns true' do
