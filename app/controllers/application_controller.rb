@@ -17,6 +17,10 @@ class ApplicationController < ActionController::Base
 
   layout :set_layout
 
+  rescue_from AbstractController::ActionNotFound do
+    render plain: '404', status: 404
+  end
+
   rescue_from Errno::ECONNREFUSED do |_e|
     render plain: '', status: :error
   end
@@ -143,8 +147,7 @@ class ApplicationController < ActionController::Base
     super
     payload[:user_agent] = request.env["HTTP_USER_AGENT"]
   end
-  
-  
+
   def sample_requests_for_scout
     # Sample rate should range from 0-1:
     # * 0: captures no requests

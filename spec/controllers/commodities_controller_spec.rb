@@ -3,7 +3,7 @@ require 'spec_helper'
 describe CommoditiesController, type: :controller do
   describe "GET to #show" do
     context 'existing commodity id provided', vcr: { cassette_name: "commodities#show" } do
-      let!(:commodity)   { Commodity.new(attributes_for :commodity) }
+      let!(:commodity)   { Commodity.new(attributes_for(:commodity).stringify_keys) }
 
       before(:each) do
         get :show, params: { id: commodity.short_code }
