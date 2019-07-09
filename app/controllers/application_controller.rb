@@ -128,7 +128,7 @@ class ApplicationController < ActionController::Base
   def set_currency_for_date
     search_query unless @search
     if search_date_in_future_month?
-      @search.attributes[:currency] = "EUR"
+      @search.attributes['currency'] = "EUR"
       flash[:alert] = "Euro is the only currency supported for a search date in the future"
     end
   end
