@@ -24,7 +24,7 @@ describe ApplicationHelper, type: :helper do
 
     context 'HashWithIndifferentAccess is passed as argument' do
       let(:hash) {
-        {"content"=>"* 1\\. This chapter does not cover:"}.with_indifferent_access
+        {"content"=>"* 1\\. This chapter does not cover:"}
       }
 
       it 'fetches :content from the hash' do
@@ -40,7 +40,7 @@ describe ApplicationHelper, type: :helper do
 
     context 'HashWithIndifferentAccess is passed as argument with no applicable content' do
       let(:na_hash) {
-        {"foo"=>"bar"}.with_indifferent_access
+        {"foo"=>"bar"}
       }
 
       it 'returns an empty string' do
