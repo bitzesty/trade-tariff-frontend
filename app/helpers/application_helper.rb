@@ -1,6 +1,6 @@
 module ApplicationHelper
   def govspeak(text)
-    text = text[:content] if text.is_a?(HashWithIndifferentAccess)
+    text = text['content'] if text.is_a?(Hash)
     return '' if text.nil?
 
     Govspeak::Document.new(text).to_sanitized_html.html_safe
