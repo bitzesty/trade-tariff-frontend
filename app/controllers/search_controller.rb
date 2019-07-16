@@ -50,7 +50,7 @@ class SearchController < ApplicationController
 
     render json: { results: results }
   end
-  
+
   def quota_search
     form = QuotaSearchForm.new(params)
     @result = QuotaSearchPresenter.new(form)

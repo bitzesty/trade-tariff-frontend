@@ -8,18 +8,18 @@ class TariffUpdate
   attr_accessor :update_type, :state, :created_at, :updated_at, :filename
 
   def update_type
-    case attributes[:update_type]
+    case attributes['update_type']
     when /Taric/ then 'TARIC'
     when /Chief/ then 'CHIEF'
     end
   end
 
   def updated_at
-    date_attribute(:updated_at)
+    date_attribute('updated_at')
   end
 
   def applied_at
-    date_attribute(:applied_at)
+    date_attribute('applied_at')
   end
 
   def to_s

@@ -4,7 +4,7 @@
   Get guidance on this product area:
   <% chapter.guides.each do |guide| %>
     <% separator = chapter.guides.index(guide) < (chapter.guides.length - 1) ? ",&nbsp;".html_safe : "" %>
-    <a href="<%= guide[:url] %>" class="chapter-guide-link" data-analytics-event="guidance"><%= guide[:title] %></a><%= separator %>
+    <a href="<%= guide['url'] %>" class="chapter-guide-link" data-analytics-event="guidance"><%= guide['title'] %></a><%= separator %>
   <% end %>
 </div>
 <% end %>
