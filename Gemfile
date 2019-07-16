@@ -64,8 +64,7 @@ group :test do
   gem "forgery"
   gem "shoulda-matchers", "~> 3.1.1"
   gem "vcr", "~> 3.0.3"
-  gem "simplecov", "~> 0.14.1"
-  gem "simplecov-rcov", git: "git@gitlab.bitzesty.com:open-source/simplecov-rcov.git" # monkey patch for ruby 2.5.0
+  gem "simplecov", "~> 0.15.0"
   gem "rspec-rails", "~> 3.5.2"
   gem "capybara", "~> 2.18.0"
   gem "poltergeist", "~> 1.14.0"
