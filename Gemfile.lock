@@ -52,7 +52,8 @@ GEM
     aws-sdk-resources (2.10.9)
       aws-sdk-core (= 2.10.9)
     aws-sigv4 (1.0.0)
-    bootscale (0.5.2)
+    bootsnap (1.4.4)
+      msgpack (~> 1.0)
     builder (3.2.3)
     capybara (2.18.0)
       addressable
@@ -148,6 +149,7 @@ GEM
     mini_mime (1.0.1)
     mini_portile2 (2.3.0)
     minitest (5.11.3)
+    msgpack (1.3.0)
     multi_json (1.12.1)
     multipart-post (2.0.0)
     nio4r (2.3.1)
@@ -329,7 +331,7 @@ DEPENDENCIES
   addressable (~> 2.3)
   aws-sdk (~> 2)
   aws-sdk-rails (>= 1.0.1)
-  bootscale (~> 0.5)
+  bootsnap
   capybara (~> 2.18.0)
   coffee-rails (~> 4.2.2, >= 4.1.0)
   connection_pool (~> 2.2)
