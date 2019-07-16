@@ -17,7 +17,7 @@ gem "jquery-migrate-rails"
 gem "sass-rails", "~> 5.0.6"
 gem "uglifier", "~> 2.7"
 gem "responders", "~> 2.1", ">= 2.1.0"
-gem "bootscale", "~> 0.5", require: false
+gem "bootsnap", require: false
 
 # gov UK
 gem "govspeak", "~> 3.6", ">= 3.6.2"
@@ -64,8 +64,7 @@ group :test do
   gem "forgery"
   gem "shoulda-matchers", "~> 3.1.1"
   gem "vcr", "~> 3.0.3"
-  gem "simplecov", "~> 0.14.1"
-  gem "simplecov-rcov", git: "git@gitlab.bitzesty.com:open-source/simplecov-rcov.git" # monkey patch for ruby 2.5.0
+  gem "simplecov", "~> 0.15.0", require: false
   gem "rspec-rails", "~> 3.5.2"
   gem "capybara", "~> 2.18.0"
   gem "poltergeist", "~> 1.14.0"
