@@ -87,10 +87,6 @@ module TradeTariffFrontend
 
     config.x.http.max_retry = 5
 
-    initializer :regenerate_require_cache, before: :load_environment_config do
-      Bootscale.regenerate
-    end
-
     config.middleware.use Rack::Attack
   end
 end
