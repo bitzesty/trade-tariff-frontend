@@ -4,7 +4,7 @@ class Search
   class Outcome
     include ApiEntity
 
-    attr_writer :entry, :type
+    attr_accessor :entry, :type
 
     def exact_match?
       @type == "exact_match"

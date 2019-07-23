@@ -1,5 +1,5 @@
-class SearchResultsPresenter
-  def initialize(search_results)
+class FuzzyMatchResultsPresenter
+  def initialize(search, search_results)
     @search_results = search_results
   end
 

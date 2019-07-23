@@ -1,7 +1,7 @@
 class SearchPresenter
   def initialize(search, results)
     @search = search
-    @search_results = SearchResultsPresenter.new(results)
+    @search_results = "#{results.type.camelize}ResultsPresenter".constantize.new(search, results)
   end
 
   def as_json(opts = {})
