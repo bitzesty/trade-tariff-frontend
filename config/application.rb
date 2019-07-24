@@ -22,9 +22,9 @@ module TradeTariffFrontend
     # -- all .rb files in that directory are automatically loaded.
 
     # Custom directories with classes and modules you want to be autoloadable.
-    config.autoload_paths += %W( #{config.root}/app/models/concerns
-                                 #{config.root}/app/presenters
-                                 #{config.root}/app/forms )
+    config.eager_load_paths += %W( #{config.root}/app/models/concerns
+                                   #{config.root}/app/presenters
+                                   #{config.root}/app/forms )
 
     # Only load the plugins named here, in the order given (default is alphabetical).
     # :all can be used as a placeholder for all plugins not explicitly named.
@@ -86,10 +86,6 @@ module TradeTariffFrontend
     config.x.backend.api_version = ENV["TARIFF_API_VERSION"] || 1
 
     config.x.http.max_retry = 5
-
-    initializer :regenerate_require_cache, before: :load_environment_config do
-      Bootscale.regenerate
-    end
 
     config.middleware.use Rack::Attack
   end
