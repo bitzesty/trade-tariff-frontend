@@ -1,0 +1,20 @@
+<%= form_tag search_by_additional_code_path, method: :get, class: "tariff-search quota-search #{@section_css}", id: 'new_search' do |f| %>
+  <h1 class="heading-large">Search by Additional Code</h1>
+  <div class="grid-row">
+    <div class="column-quarter">
+      <%= label_tag :code, 'Code' %>
+    </div>
+    <div class="column-three-quarters">
+      <%= text_field_tag :code, search_form.code, class: "form-control form-control--tiny" %>
+    </div>
+  </div>
+  <div class="grid-row">
+    <div class="column-quarter">
+      <%= label_tag :code, 'Description' %>
+    </div>
+    <div class="column-three-quarters">
+      <%= text_field_tag :description, search_form.description, class: "form-control form-control--large" %>
+    </div>
+  </div>
+  <input class="button" type="submit" name="new_search" value="Search">
+<% end %>

@@ -37,6 +37,19 @@ module ApplicationHelper
     active_class_for(controller_methods: %w[search_references])
   end
 
+  def search_by_active_class
+    "active" if params[:action].starts_with?('search_by_')
+  end
+
+  def search_by_additional_codes_class
+    puts params[:action]
+    "active" if params[:action] == 'search_by_additional_code'
+  end
+
+  def search_by_footnotes_class
+    "active" if params[:action] == 'search_by_footnote'
+  end
+
   def quota_search_active_class
     "active" if params[:action] == 'quota_search'
   end
