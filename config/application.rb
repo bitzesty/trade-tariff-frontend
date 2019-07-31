@@ -24,6 +24,7 @@ module TradeTariffFrontend
     # Custom directories with classes and modules you want to be autoloadable.
     config.eager_load_paths += %W( #{config.root}/app/models/concerns
                                    #{config.root}/app/presenters
+                                   #{config.root}/app/serializers
                                    #{config.root}/app/forms )
 
     # Only load the plugins named here, in the order given (default is alphabetical).
