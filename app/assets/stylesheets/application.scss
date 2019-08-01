@@ -2,3 +2,10 @@
  *= require 'mask'
 */
 @import "tariff.scss";
+
+.column-eighth,
+.column-one-eighth {
+  @include grid-column(1 / 8);
+}.column-seven-eighth {
+  @include grid-column(7 / 8);
+}
