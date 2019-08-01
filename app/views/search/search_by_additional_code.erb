@@ -1,7 +1,8 @@
 <%= render partial: 'search/search_by/additional_code_form', locals: { search_form: @result.search_form } %>
 <% if @result.search_result&.any? %>
+  <br/>
   <article class="search-results">
-    <ul>
+    <ul class="results-subset js-results-subset">
       <% @result.search_result.each do |additional_code| %>
         <%= render partial: 'goods_nomenclature', object: additional_code.measure.goods_nomenclature %>
       <% end %>

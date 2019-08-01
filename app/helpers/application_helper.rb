@@ -42,7 +42,6 @@ module ApplicationHelper
   end
 
   def search_by_additional_codes_class
-    puts params[:action]
     "active" if params[:action] == 'search_by_additional_code'
   end
 

@@ -48,4 +48,8 @@ class GoodsNomenclature
   def id
     goods_nomenclature_item_id
   end
+
+  def code
+    goods_nomenclature_item_id
+  end
 end
