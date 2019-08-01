@@ -4,7 +4,15 @@
   <article class="search-results">
     <ul class="results-subset js-results-subset">
       <% @result.search_result.each do |additional_code| %>
-        <%= render partial: 'goods_nomenclature', object: additional_code.measure.goods_nomenclature %>
+        <li>
+          <div>
+            <strong>
+              <%= additional_code.code %>
+            </strong>
+            <%= additional_code.formatted_description %>
+          </div>
+          <%= render partial: 'goods_nomenclature', object: additional_code.measure.goods_nomenclature %>
+        </li>
       <% end %>
     </ul>
   </article>
