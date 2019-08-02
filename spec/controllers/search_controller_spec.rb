@@ -458,7 +458,7 @@ describe SearchController, "GET to #quota_search", type: :controller, vcr: { cas
   end
 end
 
-describe SearchController, "GET to #search_by_additional_code", type: :controller, vcr: { cassette_name: 'search#search_by_additional_code', record: :all } do
+describe SearchController, "GET to #search_by_additional_code", type: :controller, vcr: { cassette_name: 'search#search_by_additional_code' } do
   before(:each) do
     Rails.cache.clear
   end
