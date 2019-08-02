@@ -2,6 +2,7 @@
 <% if @result.search_result&.any? %>
   <br/>
   <article class="search-results">
+    <h1 class="heading-medium">Additional code search results</h1>
     <ul class="results-subset js-results-subset">
       <% @result.search_result.each do |additional_code| %>
         <li>
