@@ -14,4 +14,8 @@ class NullObject
 
     @stub_attrs.fetch(method_name, nil)
   end
+
+  def to_s
+    nil
+  end
 end
