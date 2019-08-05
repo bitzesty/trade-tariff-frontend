@@ -5,7 +5,9 @@ module Models
     def changes(query_params = {})
       retries = 0
       begin
-        self.class.get("#{resource_path}/changes", query_params).body.map do |change_data|
+        body = self.class.get("#{resource_path}/changes", query_params).body
+        data = TariffJsonapiParser.new(body).parse
+        data.map do |change_data|
           Change.new(change_data)
         end
       rescue StandardError

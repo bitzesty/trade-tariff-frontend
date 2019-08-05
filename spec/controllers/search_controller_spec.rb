@@ -202,27 +202,84 @@ describe SearchController, "GET to #search", type: :controller do
     end
   end
 
-  context 'with JSON format', vcr: { cassette_name: "search#search_fuzzy" } do
-    let(:query) { "horses" }
+  context 'with JSON format', vcr: { cassette_name: "search#search_fuzzy", match_requests_on: [:uri, :body] } do
+    let(:day) { "5" }
+    let(:month) { "4" }
+    let(:year) { "2019" }
 
-    before(:each) do
-      get :search, params: { q: query }, format: :json
+    describe 'common fields' do
+      let(:query) { "car parts" }
+
+      before(:each) do
+        get :search, params: { q: query, day: day, month: month, year: year }, format: :json
+      end
+
+      specify "should return query and date within response body" do
+        body = JSON.parse(response.body)
+
+        expect(body).to be_kind_of Hash
+        expect(body["q"]).to eq(query)
+        expect(body["as_of"]).to eq(Date.new(year.to_i, month.to_i, day.to_i).to_formatted_s("YYYY-MM-DD"))
+      end
     end
 
-    let(:body) { JSON.parse(response.body) }
+    describe 'exact match search result' do
+      let(:query) { "2204" }
 
-    describe 'returns search suggestions as specified in OpenSearch Suggestion extension' do
-      specify 'returns an Array' do
-        expect(body).to be_kind_of Array
+      before(:each) do
+        get :search, params: { q: query, day: day, month: month, year: year }, format: :json
       end
 
-      specify 'first argument in Array is search query' do
-        expect(body.first).to eq query
+      specify "should return single goods nomenclature" do
+        body = JSON.parse(response.body)
+
+        expect(body["results"].size).to eq(1)
+        heading = body["results"].first
+        expect(heading["goods_nomenclature_item_id"]).to start_with(query)
+      end
+    end
+
+    describe 'search references exact match search result' do
+      let(:query) { "account books" }
+
+      before(:each) do
+        get :search, params: { q: query, day: day, month: month, year: year }, format: :json
       end
 
-      specify 'second argument in Array is Array of suggestions' do
-        expect(body.second).to be_kind_of Array
-        expect(body.second.first).to eq 'Meat Of Horses, Asses, Mules Or Hinnies, Fresh, Chilled Or Frozen'
+      specify "should return single goods nomenclature" do
+        body = JSON.parse(response.body)
+
+        expect(body["results"].size).to eq(1)
+        heading = body["results"].first
+        expect(heading["goods_nomenclature_item_id"]).to eq("4820000000")
+      end
+    end
+
+    describe 'fuzzy match search result' do
+      let(:query) { "minerals" }
+
+      before(:each) do
+        get :search, params: { q: query, day: day, month: month, year: year }, format: :json
+      end
+
+      specify "should return single goods nomenclature" do
+        body = JSON.parse(response.body)
+
+        expect(body["results"].size).to be > 1
+      end
+    end
+
+    describe 'empty search result' do
+      let(:query) { "designed velocycles" }
+
+      before(:each) do
+        get :search, params: { q: query, day: day, month: month, year: year }, format: :json
+      end
+
+      specify "should return single goods nomenclature" do
+        body = JSON.parse(response.body)
+
+        expect(body["results"].size).to eq(0)
       end
     end
   end
