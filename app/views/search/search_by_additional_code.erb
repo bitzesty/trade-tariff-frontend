@@ -12,7 +12,11 @@
             </strong>
             <%= additional_code.formatted_description %>
           </div>
-          <%= render partial: 'goods_nomenclature', object: additional_code.measure.goods_nomenclature %>
+          <% if additional_code.measure.goods_nomenclature.present? %>
+            <%= render partial: 'goods_nomenclature', object: additional_code.measure.goods_nomenclature %>
+          <% else %>
+            <div class="commodity">No valid goods nomenclatures associated</div>
+          <% end %>
         </li>
       <% end %>
     </ul>
