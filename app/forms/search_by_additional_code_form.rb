@@ -3,7 +3,7 @@ class SearchByAdditionalCodeForm
 
   def initialize(params)
     params.each do |key, value|
-      send("#{key}=", value) if respond_to?("#{key}=") && value.present?
+      public_send("#{key}=", value) if respond_to?("#{key}=") && value.present?
     end
   end
 
