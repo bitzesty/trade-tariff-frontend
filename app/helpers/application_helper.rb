@@ -41,6 +41,10 @@ module ApplicationHelper
     "active" if params[:action] == 'additional_code_search'
   end
 
+  def certificate_search_class
+    "active" if params[:action] == 'certificate_search'
+  end
+
   def quota_search_active_class
     "active" if params[:action] == 'quota_search'
   end
