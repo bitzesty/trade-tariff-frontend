@@ -58,4 +58,12 @@ class SearchController < ApplicationController
       format.html
     end
   end
+
+  def additional_code_search
+    form = AdditionalCodeSearchForm.new(params)
+    @result = AdditionalCodeSearchPresenter.new(form)
+    respond_to do |format|
+      format.html
+    end
+  end
 end

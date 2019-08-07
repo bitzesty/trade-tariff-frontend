@@ -1,0 +1,26 @@
+<%= render partial: 'search/additional_codes/form', locals: { search_form: @result.search_form } %>
+<% if @result.search_result&.any? %>
+  <br/>
+  <article class="search-results">
+    <h1 class="heading-medium">Additional code search results</h1>
+    <ul class="results-subset js-results-subset">
+      <% @result.search_result.each do |additional_code| %>
+        <li>
+          <div>
+            <strong>
+              <%= additional_code.code %>
+            </strong>
+            <%= additional_code.formatted_description %>
+          </div>
+          <% if additional_code.measures.any? %>
+            <% additional_code.measures.sort_by(&:goods_nomenclature_item_id).each do |measure| %>
+              <%= render partial: 'search/additional_codes/goods_nomenclature', object: measure.goods_nomenclature %>
+            <% end %>
+          <% else %>
+            <div class="commodity">No valid goods nomenclatures associated</div>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </article>
+<% end %>

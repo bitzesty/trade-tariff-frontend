@@ -1,5 +1,4 @@
 class QuotaSearchPresenter
-  
   attr_reader :search_form, :search_result
   
   def initialize(search_form)
