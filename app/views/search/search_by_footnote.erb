@@ -1,0 +1,26 @@
+<%= render partial: 'search/search_by/footnote_form', locals: { search_form: @result.search_form } %>
+<% if @result.search_result&.any? %>
+  <br/>
+  <article class="search-results">
+    <h1 class="heading-medium">Footnote search results</h1>
+    <ul class="results-subset js-results-subset">
+      <% @result.search_result.each do |footnote| %>
+        <li>
+          <div>
+            <strong>
+              <%= footnote.code %>
+            </strong>
+            <%= footnote.formatted_description.html_safe %>
+          </div>
+          <% if footnote.measures.empty? %>
+            <div class="commodity">No valid measures are associated with footnote <a class="inline" href="<%= search_by_footnote_path(code: footnote.code) %>"><%= footnote.code %></a>.</div>
+          <% else %>
+            <% footnote.measures.each do |measure| %>
+              <%= render partial: 'goods_nomenclature', object: measure.goods_nomenclature %>
+            <% end %>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </article>
+<% end %>

@@ -41,6 +41,10 @@ module ApplicationHelper
     "active" if params[:action] == 'search_by_additional_code'
   end
 
+  def search_by_footnotes_class
+    "active" if params[:action] == 'search_by_footnote'
+  end
+
   def quota_search_active_class
     "active" if params[:action] == 'quota_search'
   end
