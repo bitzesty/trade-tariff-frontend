@@ -67,9 +67,9 @@ class SearchController < ApplicationController
     end
   end
 
-  def search_by_footnote
-    form = SearchByFootnoteForm.new(params)
-    @result = SearchByFootnotePresenter.new(form)
+  def footnote_search
+    form = FootnoteSearchForm.new(params)
+    @result = FootnoteSearchPresenter.new(form)
     respond_to do |format|
       format.html
     end

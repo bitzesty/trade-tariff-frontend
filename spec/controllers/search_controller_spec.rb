@@ -503,7 +503,7 @@ describe SearchController, "GET to #search_by_additional_code", type: :controlle
   end
 end
 
-describe SearchController, "GET to #search_by_footnote", type: :controller do
+describe SearchController, "GET to #footnote_search", type: :controller do
   before(:each) do
     Rails.cache.clear
   end
@@ -512,7 +512,7 @@ describe SearchController, "GET to #search_by_footnote", type: :controller do
     render_views
 
     before(:each) do
-      get :search_by_footnote, format: :html
+      get :footnote_search, format: :html
     end
 
     it { should respond_with(:success) }
@@ -521,11 +521,11 @@ describe SearchController, "GET to #search_by_footnote", type: :controller do
     end
   end
 
-  context 'search by code', vcr: { cassette_name: 'search#search_by_footnote_code' } do
+  context 'search by code', vcr: { cassette_name: 'search#footnote_search_by_code' } do
     render_views
 
     before(:each) do
-      get :search_by_footnote, params: {code: '133'}, format: :html
+      get :footnote_search, params: {code: '133'}, format: :html
     end
 
     it { should respond_with(:success) }
@@ -534,11 +534,11 @@ describe SearchController, "GET to #search_by_footnote", type: :controller do
     end
   end
 
-  context 'search by description', vcr: { cassette_name: 'search#search_by_footnote_description' } do
+  context 'search by description', vcr: { cassette_name: 'search#footnote_search_by_description' } do
     render_views
 
     before(:each) do
-      get :search_by_footnote, params: {description: 'copper'}, format: :html
+      get :footnote_search, params: {description: 'copper'}, format: :html
     end
 
     it { should respond_with(:success) }

@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   get "search_suggestions", to: "search#suggestions", as: :search_suggestions
   get 'quota_search', to: 'search#quota_search', as: :quota_search
   get 'search_by_additional_code', to: 'search#search_by_additional_code', as: :search_by_additional_code
-  get 'search_by_footnote', to: 'search#search_by_footnote', as: :footnote_search
+  get 'footnote_search', to: 'search#footnote_search', as: :footnote_search
   match "a-z-index/:letter",
         to: "search_references#show",
         via: :get,

@@ -1,4 +1,4 @@
-class SearchByFootnoteForm
+class FootnoteSearchForm
   attr_accessor :code, :description
 
   def initialize(params)
