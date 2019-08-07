@@ -148,7 +148,7 @@ describe "Search", js: true do
     context 'additional code search form' do
       it 'should contain additional code search params inputs' do
         VCR.use_cassette('search#additional_code_search_form', record: :new_episodes) do
-          visit search_by_additional_code_path
+          visit additional_code_search_path
 
           expect(page).to have_content('Additional code')
 
@@ -164,7 +164,7 @@ describe "Search", js: true do
     context 'additional code search results' do
       it 'should perform search and render results' do
         VCR.use_cassette('search#additional_code_search_results', record: :new_episodes) do
-          visit search_by_additional_code_path
+          visit additional_code_search_path
 
           expect(page).to have_content('Additional code')
 

@@ -458,7 +458,7 @@ describe SearchController, "GET to #quota_search", type: :controller, vcr: { cas
   end
 end
 
-describe SearchController, "GET to #search_by_additional_code", type: :controller, vcr: { cassette_name: 'search#search_by_additional_code' } do
+describe SearchController, "GET to #additional_code_search", type: :controller, vcr: { cassette_name: 'search#additional_code_search' } do
   before(:each) do
     Rails.cache.clear
   end
@@ -467,7 +467,7 @@ describe SearchController, "GET to #search_by_additional_code", type: :controlle
     render_views
 
     before(:each) do
-      get :search_by_additional_code, format: :html
+      get :additional_code_search, format: :html
     end
 
     it { should respond_with(:success) }
@@ -480,7 +480,7 @@ describe SearchController, "GET to #search_by_additional_code", type: :controlle
     render_views
 
     before(:each) do
-      get :search_by_additional_code, params: {code: '119'}, format: :html
+      get :additional_code_search, params: {code: '119'}, format: :html
     end
 
     it { should respond_with(:success) }
@@ -493,7 +493,7 @@ describe SearchController, "GET to #search_by_additional_code", type: :controlle
     render_views
 
     before(:each) do
-      get :search_by_additional_code, params: {description: 'shanghai'}, format: :html
+      get :additional_code_search, params: {description: 'shanghai'}, format: :html
     end
 
     it { should respond_with(:success) }

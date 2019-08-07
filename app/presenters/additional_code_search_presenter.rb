@@ -1,4 +1,4 @@
-class SearchByAdditionalCodePresenter
+class AdditionalCodeSearchPresenter
   attr_reader :search_form, :search_result
 
   def initialize(search_form)

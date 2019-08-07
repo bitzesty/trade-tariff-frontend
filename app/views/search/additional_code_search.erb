@@ -1,4 +1,4 @@
-<%= render partial: 'search/search_by/additional_code_form', locals: { search_form: @result.search_form } %>
+<%= render partial: 'search/additional_codes/form', locals: { search_form: @result.search_form } %>
 <% if @result.search_result&.any? %>
   <br/>
   <article class="search-results">
@@ -14,7 +14,7 @@
           </div>
           <% if additional_code.measures.any? %>
             <% additional_code.measures.sort_by(&:goods_nomenclature_item_id).each do |measure| %>
-              <%= render partial: 'goods_nomenclature', object: measure.goods_nomenclature %>
+              <%= render partial: 'search/additional_codes/goods_nomenclature', object: measure.goods_nomenclature %>
             <% end %>
           <% else %>
             <div class="commodity">No valid goods nomenclatures associated</div>

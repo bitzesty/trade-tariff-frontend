@@ -31,9 +31,9 @@ http_interactions:
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - a68dd2ad-5632-4a3a-90c9-f4a8a3175747
+      - f469c6db-c2f4-4b7e-9a15-09f5a0dfb1be
       X-Runtime:
-      - '0.108257'
+      - '0.079763'
       Transfer-Encoding:
       - chunked
     body:
@@ -51,5 +51,5 @@ http_interactions:
         of tubes and pipes with other cross-sections and wall thicknesses","number_indents":3,"productline_suffix":"80"}},{"id":"103877","type":"goods_nomenclature","attributes":{"goods_nomenclature_item_id":"7304499390","goods_nomenclature_sid":103877,"description":"Other","number_indents":5,"productline_suffix":"80"}},{"id":"103878","type":"goods_nomenclature","attributes":{"goods_nomenclature_item_id":"7304499590","goods_nomenclature_sid":103878,"description":"Other","number_indents":5,"productline_suffix":"80"}},{"id":"103879","type":"goods_nomenclature","attributes":{"goods_nomenclature_item_id":"7304499990","goods_nomenclature_sid":103879,"description":"Other","number_indents":5,"productline_suffix":"80"}},{"id":"93768","type":"goods_nomenclature","attributes":{"goods_nomenclature_item_id":"7304900091","goods_nomenclature_sid":93768,"description":"Tubes
         and pipes, of stainless steel","number_indents":3,"productline_suffix":"80"}}]}'
     http_version: 
-  recorded_at: Wed, 07 Aug 2019 16:24:43 GMT
+  recorded_at: Wed, 07 Aug 2019 16:24:52 GMT
 recorded_with: VCR 3.0.3

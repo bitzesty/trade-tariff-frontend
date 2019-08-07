@@ -1,4 +1,4 @@
-class SearchByAdditionalCodeForm
+class AdditionalCodeSearchForm
   attr_accessor :code, :description
 
   def initialize(params)

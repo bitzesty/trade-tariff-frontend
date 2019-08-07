@@ -59,9 +59,9 @@ class SearchController < ApplicationController
     end
   end
 
-  def search_by_additional_code
-    form = SearchByAdditionalCodeForm.new(params)
-    @result = SearchByAdditionalCodePresenter.new(form)
+  def additional_code_search
+    form = AdditionalCodeSearchForm.new(params)
+    @result = AdditionalCodeSearchPresenter.new(form)
     respond_to do |format|
       format.html
     end
