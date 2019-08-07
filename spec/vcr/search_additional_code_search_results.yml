@@ -27,13 +27,13 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"7b6d88d451dc824523875d5d0caf1769"
+      - W/"db6db567785ed1dda190ff99d989c842"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 704ed295-71c3-4707-97be-ee7cea31496e
+      - 71bf611f-1b9e-444d-93ab-0eeb1a434e6a
       X-Runtime:
-      - '0.059394'
+      - '0.099657'
       Transfer-Encoding:
       - chunked
     body:
@@ -41,10 +41,15 @@ http_interactions:
       string: '{"data":[{"id":"5990","type":"additional_code","attributes":{"code":"3119","description":"Soldered
         cupro nickel solids (Delta): segregated cupro nickel solids, soldered, brazed
         or sweated","formatted_description":"Soldered cupro nickel solids (Delta):
-        segregated cupro nickel solids, soldered, brazed or sweated"},"relationships":{"measure":{"data":{"id":"2071204","type":"measure"}}}},{"id":"11545","type":"additional_code","attributes":{"code":"B119","description":"Wenzhou
+        segregated cupro nickel solids, soldered, brazed or sweated"},"relationships":{"measures":{"data":[]}}},{"id":"11545","type":"additional_code","attributes":{"code":"B119","description":"Wenzhou
         Jiangnan Steel Pipe Manufacturing, Co. Ltd., Yongzhong","formatted_description":"Wenzhou
-        Jiangnan Steel Pipe Manufacturing, Co. Ltd., Yongzhong"},"relationships":{"measure":{"data":{"id":"3205188","type":"measure"}}}}],"included":[{"id":"2071204","type":"measure","attributes":{"id":2071204,"validity_start_date":"1998-10-01T00:00:00.000Z","validity_end_date":"2000-09-30T00:00:00.000Z"},"relationships":{"goods_nomenclature":{"data":{"id":"46760","type":"goods_nomenclature"}}}},{"id":"46760","type":"goods_nomenclature","attributes":{"goods_nomenclature_item_id":"7404009900","goods_nomenclature_sid":46760,"description":"Other","number_indents":2,"productline_suffix":"80"}},{"id":"3205188","type":"measure","attributes":{"id":3205188,"validity_start_date":"2011-06-30T00:00:00.000Z","validity_end_date":"2011-12-20T00:00:00.000Z"},"relationships":{"goods_nomenclature":{"data":{"id":"86594","type":"goods_nomenclature"}}}},{"id":"86594","type":"goods_nomenclature","attributes":{"goods_nomenclature_item_id":"7304110000","goods_nomenclature_sid":86594,"description":"Of
-        stainless steel","number_indents":2,"productline_suffix":"80"}}]}'
+        Jiangnan Steel Pipe Manufacturing, Co. Ltd., Yongzhong"},"relationships":{"measures":{"data":[{"id":"3625237","type":"measure"},{"id":"3625270","type":"measure"},{"id":"3625303","type":"measure"},{"id":"3625336","type":"measure"},{"id":"3625368","type":"measure"},{"id":"3625401","type":"measure"},{"id":"3625434","type":"measure"},{"id":"3625467","type":"measure"},{"id":"3625500","type":"measure"}]}}}],"included":[{"id":"3625237","type":"measure","attributes":{"id":3625237,"validity_start_date":"2018-03-07T00:00:00.000Z","validity_end_date":null},"relationships":{"goods_nomenclature":{"data":{"id":"86594","type":"goods_nomenclature"}}}},{"id":"3625270","type":"measure","attributes":{"id":3625270,"validity_start_date":"2018-03-07T00:00:00.000Z","validity_end_date":null},"relationships":{"goods_nomenclature":{"data":{"id":"86607","type":"goods_nomenclature"}}}},{"id":"3625303","type":"measure","attributes":{"id":3625303,"validity_start_date":"2018-03-07T00:00:00.000Z","validity_end_date":null},"relationships":{"goods_nomenclature":{"data":{"id":"86609","type":"goods_nomenclature"}}}},{"id":"3625336","type":"measure","attributes":{"id":3625336,"validity_start_date":"2018-03-07T00:00:00.000Z","validity_end_date":null},"relationships":{"goods_nomenclature":{"data":{"id":"103876","type":"goods_nomenclature"}}}},{"id":"3625368","type":"measure","attributes":{"id":3625368,"validity_start_date":"2018-03-07T00:00:00.000Z","validity_end_date":null},"relationships":{"goods_nomenclature":{"data":{"id":"46104","type":"goods_nomenclature"}}}},{"id":"3625401","type":"measure","attributes":{"id":3625401,"validity_start_date":"2018-03-07T00:00:00.000Z","validity_end_date":null},"relationships":{"goods_nomenclature":{"data":{"id":"103877","type":"goods_nomenclature"}}}},{"id":"3625434","type":"measure","attributes":{"id":3625434,"validity_start_date":"2018-03-07T00:00:00.000Z","validity_end_date":null},"relationships":{"goods_nomenclature":{"data":{"id":"103878","type":"goods_nomenclature"}}}},{"id":"3625467","type":"measure","attributes":{"id":3625467,"validity_start_date":"2018-03-07T00:00:00.000Z","validity_end_date":null},"relationships":{"goods_nomenclature":{"data":{"id":"103879","type":"goods_nomenclature"}}}},{"id":"3625500","type":"measure","attributes":{"id":3625500,"validity_start_date":"2018-03-07T00:00:00.000Z","validity_end_date":null},"relationships":{"goods_nomenclature":{"data":{"id":"93768","type":"goods_nomenclature"}}}},{"id":"86594","type":"goods_nomenclature","attributes":{"goods_nomenclature_item_id":"7304110000","goods_nomenclature_sid":86594,"description":"Of
+        stainless steel","number_indents":2,"productline_suffix":"80"}},{"id":"86607","type":"goods_nomenclature","attributes":{"goods_nomenclature_item_id":"7304220000","goods_nomenclature_sid":86607,"description":"Drill
+        pipe of stainless steel","number_indents":2,"productline_suffix":"80"}},{"id":"86609","type":"goods_nomenclature","attributes":{"goods_nomenclature_item_id":"7304240000","goods_nomenclature_sid":86609,"description":"Other,
+        of stainless steel","number_indents":2,"productline_suffix":"80"}},{"id":"103876","type":"goods_nomenclature","attributes":{"goods_nomenclature_item_id":"7304410090","goods_nomenclature_sid":103876,"description":"Other","number_indents":3,"productline_suffix":"80"}},{"id":"46104","type":"goods_nomenclature","attributes":{"goods_nomenclature_item_id":"7304491000","goods_nomenclature_sid":46104,"description":"Unworked,
+        straight and of uniform wall thickness, for use solely in the manufacture
+        of tubes and pipes with other cross-sections and wall thicknesses","number_indents":3,"productline_suffix":"80"}},{"id":"103877","type":"goods_nomenclature","attributes":{"goods_nomenclature_item_id":"7304499390","goods_nomenclature_sid":103877,"description":"Other","number_indents":5,"productline_suffix":"80"}},{"id":"103878","type":"goods_nomenclature","attributes":{"goods_nomenclature_item_id":"7304499590","goods_nomenclature_sid":103878,"description":"Other","number_indents":5,"productline_suffix":"80"}},{"id":"103879","type":"goods_nomenclature","attributes":{"goods_nomenclature_item_id":"7304499990","goods_nomenclature_sid":103879,"description":"Other","number_indents":5,"productline_suffix":"80"}},{"id":"93768","type":"goods_nomenclature","attributes":{"goods_nomenclature_item_id":"7304900091","goods_nomenclature_sid":93768,"description":"Tubes
+        and pipes, of stainless steel","number_indents":3,"productline_suffix":"80"}}]}'
     http_version: 
-  recorded_at: Fri, 02 Aug 2019 13:38:56 GMT
+  recorded_at: Wed, 07 Aug 2019 15:58:48 GMT
 recorded_with: VCR 3.0.3

@@ -7,7 +7,7 @@ class AdditionalCode
 
   attr_accessor :code, :description, :formatted_description
 
-  has_one :measure
+  has_many :measures
 
   def id
     @id ||= "#{casted_by.destination}-#{casted_by.id}-additional-code-#{code}"
