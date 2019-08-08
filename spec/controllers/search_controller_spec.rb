@@ -503,7 +503,7 @@ describe SearchController, "GET to #additional_code_search", type: :controller, 
   end
 end
 
-describe SearchController, "GET to #certificate_search", type: :controller, vcr: { cassette_name: 'search#certificate_search', record: :all } do
+describe SearchController, "GET to #certificate_search", type: :controller, vcr: { cassette_name: 'search#certificate_search' } do
   before(:each) do
     Rails.cache.clear
   end
