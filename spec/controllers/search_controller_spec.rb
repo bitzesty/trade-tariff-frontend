@@ -362,22 +362,8 @@ describe SearchController, "GET to #codes", type: :controller do
 end
 
 describe SearchController, "GET to #quota_search", type: :controller, vcr: { cassette_name: 'search#quota_search', allow_playback_repeats: true } do
-
   before(:each) do
     Rails.cache.clear
-  end
-
-  context 'without search params' do
-    render_views
-
-    before(:each) do
-      get :quota_search, format: :html
-    end
-
-    it { should respond_with(:success) }
-    it 'should display no results' do
-      expect(response.body).not_to match /Quota search results/
-    end
   end
 
   context 'without search params' do
@@ -468,6 +454,51 @@ describe SearchController, "GET to #quota_search", type: :controller, vcr: { cas
     it { should respond_with(:success) }
     it 'should display results' do
       expect(response.body).to match /Quota search results/
+    end
+  end
+end
+
+describe SearchController, "GET to #additional_code_search", type: :controller, vcr: { cassette_name: 'search#additional_code_search' } do
+  before(:each) do
+    Rails.cache.clear
+  end
+
+  context 'without search params' do
+    render_views
+
+    before(:each) do
+      get :additional_code_search, format: :html
+    end
+
+    it { should respond_with(:success) }
+    it 'should display no results' do
+      expect(response.body).not_to match /Additional code search results/
+    end
+  end
+
+  context 'search by code' do
+    render_views
+
+    before(:each) do
+      get :additional_code_search, params: {code: '119'}, format: :html
+    end
+
+    it { should respond_with(:success) }
+    it 'should display results' do
+      expect(response.body).to match /Additional code search results/
+    end
+  end
+
+  context 'search by description' do
+    render_views
+
+    before(:each) do
+      get :additional_code_search, params: {description: 'shanghai'}, format: :html
+    end
+
+    it { should respond_with(:success) }
+    it 'should display results' do
+      expect(response.body).to match /Additional code search results/
     end
   end
 end

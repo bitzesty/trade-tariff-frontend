@@ -18,6 +18,7 @@ class Measure
   has_many :excluded_countries, class_name: 'GeographicalArea'
   has_many :measure_conditions
   has_many :footnotes
+  has_one :goods_nomenclature
 
   def relevant_for_country?(country_code)
     return false if excluded_countries.map(&:geographical_area_id).include?(country_code)
