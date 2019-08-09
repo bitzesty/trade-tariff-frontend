@@ -503,6 +503,51 @@ describe SearchController, "GET to #additional_code_search", type: :controller, 
   end
 end
 
+describe SearchController, "GET to #footnote_search", type: :controller do
+  before(:each) do
+    Rails.cache.clear
+  end
+
+  context 'without search params' do
+    render_views
+
+    before(:each) do
+      get :footnote_search, format: :html
+    end
+
+    it { should respond_with(:success) }
+    it 'should display no results' do
+      expect(response.body).not_to match /Footnote search results/
+    end
+  end
+
+  context 'search by code', vcr: { cassette_name: 'search#footnote_search_by_code' } do
+    render_views
+
+    before(:each) do
+      get :footnote_search, params: {code: '133'}, format: :html
+    end
+
+    it { should respond_with(:success) }
+    it 'should display results' do
+      expect(response.body).to match /Footnote search results/
+    end
+  end
+
+  context 'search by description', vcr: { cassette_name: 'search#footnote_search_by_description' } do
+    render_views
+
+    before(:each) do
+      get :footnote_search, params: {description: 'copper'}, format: :html
+    end
+
+    it { should respond_with(:success) }
+    it 'should display results' do
+      expect(response.body).to match /Footnote search results/
+    end
+  end
+end
+
 describe SearchController, "GET to #certificate_search", type: :controller, vcr: { cassette_name: 'search#certificate_search' } do
   before(:each) do
     Rails.cache.clear

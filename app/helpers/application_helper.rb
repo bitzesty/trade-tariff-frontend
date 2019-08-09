@@ -41,6 +41,10 @@ module ApplicationHelper
     "active" if params[:action] == 'additional_code_search'
   end
 
+  def footnote_search_class
+    "active" if params[:action] == 'footnote_search'
+  end
+
   def certificate_search_class
     "active" if params[:action] == 'certificate_search'
   end

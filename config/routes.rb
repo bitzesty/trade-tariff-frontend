@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   get 'quota_search', to: 'search#quota_search', as: :quota_search
   get 'additional_code_search', to: 'search#additional_code_search', as: :additional_code_search
   get 'certificate_search', to: 'search#certificate_search', as: :certificate_search
+  get 'footnote_search', to: 'search#footnote_search', as: :footnote_search
   match "a-z-index/:letter",
         to: "search_references#show",
         via: :get,
