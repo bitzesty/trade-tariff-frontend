@@ -17,7 +17,7 @@
               <%= render partial: 'search/common/goods_nomenclature', object: measure.goods_nomenclature %>
             <% end %>
           <% else %>
-            <div class="commodity">No valid goods nomenclatures associated</div>
+            <div class="commodity">No valid goods nomenclatures are associated with certificate <a class="inline" href="<%= certificate_search_path(code: certificate.certificate_code) %>"><%= certificate.code %></a>.</div>
           <% end %>
         </li>
       <% end %>
