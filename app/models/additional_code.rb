@@ -5,7 +5,7 @@ class AdditionalCode
 
   collection_path '/additional_codes'
 
-  attr_accessor :code, :description, :formatted_description
+  attr_accessor :additional_code_type_id, :additional_code, :code, :description, :formatted_description
 
   has_many :measures
 

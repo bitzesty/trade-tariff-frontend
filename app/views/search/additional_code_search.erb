@@ -14,10 +14,10 @@
           </div>
           <% if additional_code.measures.any? %>
             <% additional_code.measures.sort_by(&:goods_nomenclature_item_id).each do |measure| %>
-              <%= render partial: 'search/additional_codes/goods_nomenclature', object: measure.goods_nomenclature %>
+              <%= render partial: 'search/common/goods_nomenclature', object: measure.goods_nomenclature %>
             <% end %>
           <% else %>
-            <div class="commodity">No valid goods nomenclatures associated</div>
+            <div class="commodity">No valid commodities are associated with additional code <a class="inline" href="<%= additional_code_search_path(code: additional_code.additional_code) %>"><%= additional_code.code %></a>.</div>
           <% end %>
         </li>
       <% end %>

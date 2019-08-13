@@ -18,7 +18,7 @@
           <% if goods_nomenclatures.empty? %>
             <div class="commodity">No valid commodities are associated with footnote <a class="inline" href="<%= footnote_search_path(code: footnote.code) %>"><%= footnote.code %></a>.</div>
           <% else %>
-            <%= render partial: 'search/footnotes/goods_nomenclature', collection: goods_nomenclatures %>
+            <%= render partial: 'search/common/goods_nomenclature', collection: goods_nomenclatures %>
           <% end %>
         </li>
       <% end %>
