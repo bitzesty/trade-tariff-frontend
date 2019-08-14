@@ -489,6 +489,19 @@ describe SearchController, "GET to #additional_code_search", type: :controller, 
     end
   end
 
+  context 'search by type' do
+    render_views
+
+    before(:each) do
+      get :additional_code_search, params: {type: '4'}, format: :html
+    end
+
+    it { should respond_with(:success) }
+    it 'should display results' do
+      expect(response.body).to match /Additional code search results/
+    end
+  end
+
   context 'search by description' do
     render_views
 
