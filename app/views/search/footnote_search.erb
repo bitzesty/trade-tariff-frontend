@@ -24,4 +24,9 @@
       <% end %>
     </ul>
   </article>
+<% elsif @result.search_form.present? %>
+  <br/>
+  <article class="search-results">
+    <h1 class="heading-medium">There are no matching results</h1>
+  </article>
 <% end %>
