@@ -13,7 +13,7 @@
             <%= certificate.description %>
           </div>
           <% if certificate.measures.any? %>
-            <% certificate.measures.sort_by(&:goods_nomenclature_item_id).each do |measure| %>
+            <% certificate.measures&.uniq(&:goods_nomenclature_item_id)&.sort_by(&:goods_nomenclature_item_id)&.each do |measure| %>
               <%= render partial: 'search/common/goods_nomenclature', object: measure.goods_nomenclature %>
             <% end %>
           <% else %>

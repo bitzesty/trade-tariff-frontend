@@ -5,7 +5,7 @@
     <h1 class="heading-medium">Footnote search results</h1>
     <ul class="results-subset js-results-subset">
       <% @result.search_result.each do |footnote|
-          goods_nomenclatures = footnote.measures.map(&:goods_nomenclature) | footnote.goods_nomenclatures
+          goods_nomenclatures = (footnote.measures.map(&:goods_nomenclature) | footnote.goods_nomenclatures)&.uniq(&:goods_nomenclature_item_id)
       %>
         <li>
           <div>

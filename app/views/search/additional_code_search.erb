@@ -13,7 +13,7 @@
             <%= additional_code.formatted_description %>
           </div>
           <% if additional_code.measures.any? %>
-            <% additional_code.measures.sort_by(&:goods_nomenclature_item_id).each do |measure| %>
+            <% additional_code.measures&.uniq(&:goods_nomenclature_item_id)&.sort_by(&:goods_nomenclature_item_id)&.each do |measure| %>
               <%= render partial: 'search/common/goods_nomenclature', object: measure.goods_nomenclature %>
             <% end %>
           <% else %>
