@@ -153,6 +153,7 @@ describe "Search", js: true do
           expect(page).to have_content('Additional code')
 
           expect(page.find('#code')).to be_present
+          expect(page.find('#type')).to be_present
           expect(page.find('#description')).to be_present
           expect(page.find('input[name="new_search"]')).to be_present
 
@@ -204,6 +205,7 @@ describe "Search", js: true do
           expect(page).to have_content('Certificate')
 
           expect(page.find('#code')).to be_present
+          expect(page.find('#type')).to be_present
           expect(page.find('#description')).to be_present
           expect(page.find('input[name="new_search"]')).to be_present
 

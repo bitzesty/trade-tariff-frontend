@@ -592,6 +592,19 @@ describe SearchController, "GET to #certificate_search", type: :controller, vcr:
     end
   end
 
+  context 'search by type' do
+    render_views
+
+    before(:each) do
+      get :certificate_search, params: {type: 'A'}, format: :html
+    end
+
+    it { should respond_with(:success) }
+    it 'should display results' do
+      expect(response.body).to match /Certificate search results/
+    end
+  end
+
   context 'search by description' do
     render_views
 
