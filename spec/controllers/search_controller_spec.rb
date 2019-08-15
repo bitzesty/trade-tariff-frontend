@@ -508,7 +508,7 @@ describe SearchController, "GET to #footnote_search", type: :controller do
     Rails.cache.clear
   end
 
-  context 'without search params' do
+  context 'without search params', vcr: { cassette_name: 'search#footnote_search_without_params' } do
     render_views
 
     before(:each) do
@@ -525,7 +525,20 @@ describe SearchController, "GET to #footnote_search", type: :controller do
     render_views
 
     before(:each) do
-      get :footnote_search, params: {code: '133'}, format: :html
+      get :footnote_search, params: {code: 'TM133'}, format: :html
+    end
+
+    it { should respond_with(:success) }
+    it 'should display results' do
+      expect(response.body).to match /Footnote search results/
+    end
+  end
+
+  context 'search by type', vcr: { cassette_name: 'search#footnote_search_by_type' } do
+    render_views
+
+    before(:each) do
+      get :footnote_search, params: {type: 'TN'}, format: :html
     end
 
     it { should respond_with(:success) }

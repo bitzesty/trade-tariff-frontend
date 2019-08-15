@@ -2,57 +2,6 @@
 http_interactions:
 - request:
     method: get
-    uri: http://localhost:3018/footnotes/search?code=TM133&description&type
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      Accept:
-      - application/vnd.uktt.v2
-      User-Agent:
-      - Faraday v0.11.0
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      X-Frame-Options:
-      - SAMEORIGIN
-      X-Xss-Protection:
-      - 1; mode=block
-      X-Content-Type-Options:
-      - nosniff
-      Content-Type:
-      - application/json; charset=utf-8
-      Etag:
-      - W/"9898e7dda6f5fcb4cc1d244b91a5a885"
-      Cache-Control:
-      - max-age=0, private, must-revalidate
-      X-Request-Id:
-      - b22fea88-91ce-4530-a1be-fe653441dd58
-      X-Runtime:
-      - '0.260679'
-      Transfer-Encoding:
-      - chunked
-    body:
-      encoding: UTF-8
-      string: '{"data":[{"id":"TM133","type":"footnote","attributes":{"code":"TM133","footnote_type_id":"TM","footnote_id":"133","description":"The
-        rate of duty is applicable to the net free-at-Community frontier price before
-        duty.!1!This price shall be net if the actual conditions of payment provide
-        for payment within 30 days of the arrival of the goods on the customs territory
-        of the Community.!1!It shall be increased by 1|% for each further month by
-        which the period for payment is extended.","formatted_description":"The rate
-        of duty is applicable to the net free-at-Community frontier price before duty.\u003cbr
-        /\u003eThis price shall be net if the actual conditions of payment provide
-        for payment within 30 days of the arrival of the goods on the customs territory
-        of the Community.\u003cbr /\u003eIt shall be increased by 1% for each further
-        month by which the period for payment is extended."},"relationships":{"measures":{"data":[]},"goods_nomenclatures":{"data":[]}}}],"included":[]}'
-    http_version: 
-  recorded_at: Thu, 15 Aug 2019 12:13:29 GMT
-- request:
-    method: get
     uri: http://localhost:3018/footnote_types
     body:
       encoding: US-ASCII
@@ -82,9 +31,9 @@ http_interactions:
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 51eaa464-5450-4969-b57c-17ce6a4cae1b
+      - 1f51503c-d5d2-4c40-ac0b-04ac4c6dccdb
       X-Runtime:
-      - '0.014742'
+      - '0.016221'
       Transfer-Encoding:
       - chunked
     body:
@@ -117,5 +66,5 @@ http_interactions:
         substances"}},{"id":"IS","type":"footnote_type","attributes":{"footnote_type_id":"IS","description":"Invasive
         alien species"}}]}'
     http_version: 
-  recorded_at: Thu, 15 Aug 2019 12:13:29 GMT
+  recorded_at: Thu, 15 Aug 2019 12:13:28 GMT
 recorded_with: VCR 3.0.3
