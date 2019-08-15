@@ -2,6 +2,14 @@
   <h1 class="heading-large">Search by Certificate</h1>
   <div class="grid-row">
     <div class="column-one-eighth">
+      <%= label_tag :type, 'Type' %>
+    </div>
+    <div class="column-seven-eighth">
+      <%= select_tag :type, options_for_select(search_form.certificate_types, search_form.type), include_blank: true, class: "form-control form-control--large" %>
+    </div>
+  </div>
+  <div class="grid-row">
+    <div class="column-one-eighth">
       <%= label_tag :code, 'Code' %>
     </div>
     <div class="column-seven-eighth">

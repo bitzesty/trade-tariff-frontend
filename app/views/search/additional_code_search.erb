@@ -17,7 +17,7 @@
               <%= render partial: 'search/common/goods_nomenclature', object: measure.goods_nomenclature %>
             <% end %>
           <% else %>
-            <div class="commodity">No valid commodities are associated with additional code <a class="inline" href="<%= additional_code_search_path(code: additional_code.additional_code) %>"><%= additional_code.code %></a>.</div>
+            <div class="commodity">No valid commodities are associated with additional code <a class="inline" href="<%= additional_code_search_path(type: additional_code.additional_code_type_id, code: additional_code.additional_code) %>"><%= additional_code.code %></a>.</div>
           <% end %>
         </li>
       <% end %>
