@@ -10,7 +10,7 @@
             <strong>
               <%= additional_code.code %>
             </strong>
-            <%= additional_code.formatted_description %>
+            <%= additional_code.formatted_description.html_safe %>
           </div>
           <% if additional_code.measures.any? %>
             <% additional_code.measures&.uniq(&:goods_nomenclature_item_id)&.sort_by(&:goods_nomenclature_item_id)&.each do |measure| %>

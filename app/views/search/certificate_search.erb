@@ -10,7 +10,7 @@
             <strong>
               <%= certificate.code %>
             </strong>
-            <%= certificate.description %>
+            <%= certificate.formatted_description.html_safe %>
           </div>
           <% if certificate.measures.any? %>
             <% certificate.measures&.uniq(&:goods_nomenclature_item_id)&.sort_by(&:goods_nomenclature_item_id)&.each do |measure| %>
