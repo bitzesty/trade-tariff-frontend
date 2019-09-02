@@ -28,6 +28,13 @@
           margin-left: $chapter-code-width + $heading-code-width + $commodity-code-width-desktop + $standard-margin;
         }
       }
+      a.inline {
+        display: inline;
+        margin-left: 0;
+        @media (min-width: $desktop-min-width) {
+          margin-left: 0;
+        }
+      }
     }
     .heading {
       display: block;

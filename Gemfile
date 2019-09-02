@@ -27,7 +27,7 @@ gem "govuk_elements_rails", ">= 3.1.3"
 
 gem "connection_pool", "~> 2.2"
 
-gem "nokogiri", "~>1.8.1"
+gem "nokogiri", ">= 1.10.4"
 
 # Logging
 gem "logstash-event"

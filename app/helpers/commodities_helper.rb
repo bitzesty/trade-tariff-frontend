@@ -32,9 +32,9 @@ module CommoditiesHelper
     code = commodity.code.to_s
     "#{chapter_and_heading_codes(code)}
     <div class='commodity-code'>
-      <div class='code-text'>#{code[4..5]}</div>
-      <div class='code-text'>#{code[6..7]}</div>
-      <div class='code-text'>#{code[8..9]}</div>
+      <div class='code-text pull-left'>#{code[4..5]}</div>
+      <div class='code-text pull-left'>#{code[6..7]}</div>
+      <div class='code-text pull-left'>#{code[8..9]}</div>
     </div>".html_safe
   end
 
