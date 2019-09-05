@@ -5,7 +5,12 @@ class Footnote
 
   ECO_CODE = '05002'.freeze
 
-  attr_accessor :code, :description, :formatted_description
+  collection_path '/footnotes'
+
+  attr_accessor :code, :footnote_type_id, :footnote_id, :description, :formatted_description
+
+  has_many :measures
+  has_many :goods_nomenclatures
 
   def id
     @id ||= "#{casted_by.destination}-#{casted_by.id}-footnote-#{code}"

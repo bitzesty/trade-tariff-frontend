@@ -25,4 +25,31 @@ class GoodsNomenclature
   def validity_end_date
     @attributes['validity_end_date'].presence || NullObject.new
   end
+
+  def chapter?
+    goods_nomenclature_item_id.ends_with?('00000000')
+  end
+
+  def heading?
+    goods_nomenclature_item_id.ends_with?('000000') && goods_nomenclature_item_id.slice(2, 2) != '00'
+  end
+
+  def commodity?
+    !goods_nomenclature_item_id.ends_with?('000000')
+  end
+
+  def type
+    return 'chapter' if chapter?
+    return 'heading' if heading?
+    return 'commodity' if commodity?
+    'goods_nomenclature'
+  end
+
+  def id
+    goods_nomenclature_item_id
+  end
+
+  def code
+    goods_nomenclature_item_id
+  end
 end

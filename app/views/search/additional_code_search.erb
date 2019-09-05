@@ -1,0 +1,31 @@
+<%= render partial: 'search/additional_codes/form', locals: { search_form: @result.search_form } %>
+<% if @result.search_result&.any? %>
+  <br/>
+  <article class="search-results">
+    <h1 class="heading-medium">Additional code search results</h1>
+    <ul class="results-subset js-results-subset">
+      <% @result.search_result.each do |additional_code| %>
+        <li>
+          <div>
+            <strong>
+              <%= additional_code.code %>
+            </strong>
+            <%= additional_code.formatted_description.html_safe %>
+          </div>
+          <% if additional_code.measures.any? %>
+            <% additional_code.measures&.uniq(&:goods_nomenclature_item_id)&.sort_by(&:goods_nomenclature_item_id)&.each do |measure| %>
+              <%= render partial: 'search/common/goods_nomenclature', object: measure.goods_nomenclature %>
+            <% end %>
+          <% else %>
+            <div class="commodity">No valid commodities are associated with additional code <a class="inline" href="<%= additional_code_search_path(type: additional_code.additional_code_type_id, code: additional_code.additional_code) %>"><%= additional_code.code %></a>.</div>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </article>
+<% elsif @result.search_form.present? %>
+  <br/>
+  <article class="search-results">
+    <h1 class="heading-medium">There are no matching results</h1>
+  </article>
+<% end %>

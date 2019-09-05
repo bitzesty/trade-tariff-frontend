@@ -71,7 +71,6 @@ describe "Search", js: true do
   end
 
   context 'quota search' do
-
     before(:each) do
       Rails.cache.clear
     end
@@ -126,6 +125,110 @@ describe "Search", js: true do
             expect(page).to have_content('090671')
             expect(page).to have_content('0301919011')
             expect(page).to have_content('Faroe Islands (FO)')
+          end
+        end
+      end
+    end
+  end
+
+  context 'additional code search' do
+    before(:each) do
+      Rails.cache.clear
+    end
+
+    context 'additional code search link on page header' do
+      it 'should contain link to additional code search page' do
+        VCR.use_cassette('search#additional_code_search_header', record: :new_episodes) do
+          visit sections_path
+          expect(page).to have_content('Additional code')
+        end
+      end
+    end
+
+    context 'additional code search form' do
+      it 'should contain additional code search params inputs' do
+        VCR.use_cassette('search#additional_code_search_form', record: :new_episodes) do
+          visit additional_code_search_path
+
+          expect(page).to have_content('Additional code')
+
+          expect(page.find('#code')).to be_present
+          expect(page.find('#type')).to be_present
+          expect(page.find('#description')).to be_present
+          expect(page.find('input[name="new_search"]')).to be_present
+
+          expect(page).not_to have_content('Additional code search results')
+        end
+      end
+    end
+
+    context 'additional code search results' do
+      it 'should perform search and render results' do
+        VCR.use_cassette('search#additional_code_search_results', record: :new_episodes) do
+          visit additional_code_search_path
+
+          expect(page).to have_content('Additional code')
+
+          page.find('#code').set('119')
+          page.find('input[name="new_search"]').click
+
+          using_wait_time 10 do
+            expect(page).to have_content('Additional code search results')
+            expect(page).to have_content('B119')
+            expect(page).to have_content('Wenzhou Jiangnan Steel Pipe Manufacturing, Co. Ltd., Yongzhong')
+            expect(page).to have_content('Of stainless steel')
+          end
+        end
+      end
+    end
+  end
+  
+  context 'certificate search' do
+    before(:each) do
+      Rails.cache.clear
+    end
+
+    context 'certificate search link on page header' do
+      it 'should contain link to certificate search page' do
+        VCR.use_cassette('search#certificate_search_header', record: :new_episodes) do
+          visit sections_path
+          expect(page).to have_content('Certificate')
+        end
+      end
+    end
+
+    context 'certificate search form' do
+      it 'should contain certificate search params inputs' do
+        VCR.use_cassette('search#certificate_search_form', record: :new_episodes) do
+          visit certificate_search_path
+
+          expect(page).to have_content('Certificate')
+
+          expect(page.find('#code')).to be_present
+          expect(page.find('#type')).to be_present
+          expect(page.find('#description')).to be_present
+          expect(page.find('input[name="new_search"]')).to be_present
+
+          expect(page).not_to have_content('Certificate search results')
+        end
+      end
+    end
+
+    context 'certificate search results' do
+      it 'should perform search and render results' do
+        VCR.use_cassette('search#certificate_search_results', record: :new_episodes) do
+          visit certificate_search_path
+
+          expect(page).to have_content('Certificate')
+
+          page.find('#code').set('119')
+          page.find('input[name="new_search"]').click
+
+          using_wait_time 10 do
+            expect(page).to have_content('Certificate search results')
+            expect(page).to have_content('C119')
+            expect(page).to have_content('Authorised Release Certificate — EASA Form 1 (Appendix I to Annex I to Regulation (EU) No 748/2012), or equivalent certificate')
+            expect(page).to have_content('Carbon dioxide')
           end
         end
       end

@@ -1,0 +1,29 @@
+class CertificateSearchForm
+  attr_accessor :code, :type, :description
+
+  def initialize(params)
+    params.each do |key, value|
+      public_send("#{key}=", value) if respond_to?("#{key}=") && value.present?
+    end
+  end
+
+  def certificate_types
+    Rails.cache.fetch('cached_certificate_types', expires_in: 24.hours) do
+      CertificateType.all&.sort_by(&:certificate_type_code).map do |type|
+        [ "#{type&.certificate_type_code} - #{type&.description}", type&.certificate_type_code ]
+      end.to_h
+    end
+  end
+
+  def present?
+    instance_variables.present?
+  end
+
+  def to_params
+    {
+      code: code,
+      type: type,
+      description: description,
+    }
+  end
+end

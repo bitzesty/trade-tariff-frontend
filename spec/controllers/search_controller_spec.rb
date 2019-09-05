@@ -362,22 +362,8 @@ describe SearchController, "GET to #codes", type: :controller do
 end
 
 describe SearchController, "GET to #quota_search", type: :controller, vcr: { cassette_name: 'search#quota_search', allow_playback_repeats: true } do
-
   before(:each) do
     Rails.cache.clear
-  end
-
-  context 'without search params' do
-    render_views
-
-    before(:each) do
-      get :quota_search, format: :html
-    end
-
-    it { should respond_with(:success) }
-    it 'should display no results' do
-      expect(response.body).not_to match /Quota search results/
-    end
   end
 
   context 'without search params' do
@@ -468,6 +454,180 @@ describe SearchController, "GET to #quota_search", type: :controller, vcr: { cas
     it { should respond_with(:success) }
     it 'should display results' do
       expect(response.body).to match /Quota search results/
+    end
+  end
+end
+
+describe SearchController, "GET to #additional_code_search", type: :controller, vcr: { cassette_name: 'search#additional_code_search' } do
+  before(:each) do
+    Rails.cache.clear
+  end
+
+  context 'without search params' do
+    render_views
+
+    before(:each) do
+      get :additional_code_search, format: :html
+    end
+
+    it { should respond_with(:success) }
+    it 'should display no results' do
+      expect(response.body).not_to match /Additional code search results/
+    end
+  end
+
+  context 'search by code' do
+    render_views
+
+    before(:each) do
+      get :additional_code_search, params: {code: '119'}, format: :html
+    end
+
+    it { should respond_with(:success) }
+    it 'should display results' do
+      expect(response.body).to match /Additional code search results/
+    end
+  end
+
+  context 'search by type' do
+    render_views
+
+    before(:each) do
+      get :additional_code_search, params: {type: '4'}, format: :html
+    end
+
+    it { should respond_with(:success) }
+    it 'should display results' do
+      expect(response.body).to match /Additional code search results/
+    end
+  end
+
+  context 'search by description' do
+    render_views
+
+    before(:each) do
+      get :additional_code_search, params: {description: 'shanghai'}, format: :html
+    end
+
+    it { should respond_with(:success) }
+    it 'should display results' do
+      expect(response.body).to match /Additional code search results/
+    end
+  end
+end
+
+describe SearchController, "GET to #footnote_search", type: :controller do
+  before(:each) do
+    Rails.cache.clear
+  end
+
+  context 'without search params', vcr: { cassette_name: 'search#footnote_search_without_params' } do
+    render_views
+
+    before(:each) do
+      get :footnote_search, format: :html
+    end
+
+    it { should respond_with(:success) }
+    it 'should display no results' do
+      expect(response.body).not_to match /Footnote search results/
+    end
+  end
+
+  context 'search by code', vcr: { cassette_name: 'search#footnote_search_by_code' } do
+    render_views
+
+    before(:each) do
+      get :footnote_search, params: {code: 'TM133'}, format: :html
+    end
+
+    it { should respond_with(:success) }
+    it 'should display results' do
+      expect(response.body).to match /Footnote search results/
+    end
+  end
+
+  context 'search by type', vcr: { cassette_name: 'search#footnote_search_by_type' } do
+    render_views
+
+    before(:each) do
+      get :footnote_search, params: {type: 'TN'}, format: :html
+    end
+
+    it { should respond_with(:success) }
+    it 'should display results' do
+      expect(response.body).to match /Footnote search results/
+    end
+  end
+
+  context 'search by description', vcr: { cassette_name: 'search#footnote_search_by_description' } do
+    render_views
+
+    before(:each) do
+      get :footnote_search, params: {description: 'copper'}, format: :html
+    end
+
+    it { should respond_with(:success) }
+    it 'should display results' do
+      expect(response.body).to match /Footnote search results/
+    end
+  end
+end
+
+describe SearchController, "GET to #certificate_search", type: :controller, vcr: { cassette_name: 'search#certificate_search' } do
+  before(:each) do
+    Rails.cache.clear
+  end
+
+  context 'without search params' do
+    render_views
+
+    before(:each) do
+      get :certificate_search, format: :html
+    end
+
+    it { should respond_with(:success) }
+    it 'should display no results' do
+      expect(response.body).not_to match /Certificate search results/
+    end
+  end
+
+  context 'search by code' do
+    render_views
+
+    before(:each) do
+      get :certificate_search, params: {code: '119'}, format: :html
+    end
+
+    it { should respond_with(:success) }
+    it 'should display results' do
+      expect(response.body).to match /Certificate search results/
+    end
+  end
+
+  context 'search by type' do
+    render_views
+
+    before(:each) do
+      get :certificate_search, params: {type: 'A'}, format: :html
+    end
+
+    it { should respond_with(:success) }
+    it 'should display results' do
+      expect(response.body).to match /Certificate search results/
+    end
+  end
+
+  context 'search by description' do
+    render_views
+
+    before(:each) do
+      get :certificate_search, params: {description: 'import licence'}, format: :html
+    end
+
+    it { should respond_with(:success) }
+    it 'should display results' do
+      expect(response.body).to match /Certificate search results/
     end
   end
 end
