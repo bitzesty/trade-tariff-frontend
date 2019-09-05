@@ -15,7 +15,7 @@
       </div>
     <% end %>
   </header>
-<% elsif controller_name != 'search' && action_name != 'quota_search' %>
+<% elsif %w(search search_references exchange_rates).exclude?(controller_name) && action_name != 'quota_search' %>
   <header>
     <h1 class="heading-large"><a href="<%= sections_path %>">Trade Tariff: look up commodity codes, duty and VAT rates</a></h1>
   </header>
