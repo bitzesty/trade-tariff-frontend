@@ -13,6 +13,11 @@
     cookieDomain: cookieDomain
   });
 
+  ga('create', 'UA-97208357-1', 'auto', 'govuk_shared', {'allowLinker': true});
+  ga('govuk_shared.require', 'linker');
+  ga('govuk_shared.linker.set', 'anonymizeIp', true);
+  ga('govuk_shared.linker:autoLink', [cookieDomain]);
+
   // Activate any event plugins eg. print intent, error tracking
   GOVUK.analyticsPlugins.error();
   GOVUK.analyticsPlugins.printIntent();

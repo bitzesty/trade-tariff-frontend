@@ -22,7 +22,7 @@ gem "bootsnap", require: false
 # gov UK
 gem "govspeak", "~> 3.6", ">= 3.6.2"
 gem "govuk_template", ">= 0.23.0"
-gem "govuk_frontend_toolkit", ">= 6.0.2"
+gem "govuk_frontend_toolkit", "8.2.0"
 gem "govuk_elements_rails", ">= 3.1.3"
 
 gem "connection_pool", "~> 2.2"
