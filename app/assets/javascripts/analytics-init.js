@@ -9,11 +9,11 @@
   // Configure profiles and make interface public
   // for custom dimensions, virtual pageviews and events
   GOVUK.analytics = new GOVUK.Analytics({
-    universalId: 'UA-97208357-1',
+    universalId: 'UA-145652997-1',
     cookieDomain: cookieDomain
   });
 
-  ga('create', 'UA-97208357-1', 'auto', 'govuk_shared', {'allowLinker': true});
+  ga('create', 'UA-145652997-1', 'auto', 'govuk_shared', {'allowLinker': true});
   ga('govuk_shared.require', 'linker');
   ga('govuk_shared.linker.set', 'anonymizeIp', true);
   ga('govuk_shared.linker:autoLink', [cookieDomain]);
