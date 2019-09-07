@@ -9,7 +9,7 @@
   // Configure profiles and make interface public
   // for custom dimensions, virtual pageviews and events
   GOVUK.analytics = new GOVUK.Analytics({
-    universalId: 'UA-145652997-1',
+    universalId: 'UA-97208357-1',
     cookieDomain: cookieDomain
   });
 
