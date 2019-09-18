@@ -25,7 +25,10 @@
   // Track initial pageview
   GOVUK.analytics.trackPageview();
 
-  // clicks on data-analytics-event
+  // Cross domain event tracking
+  GOVUK.analytics.addLinkedTrackerDomain('UA-145652997-1', 'govuk_shared', cookieDomain);
+
+  // Clicks on data-analytics-event
   $(document).on('click', '[data-analytics-event]', function(e){
     var $target = $(e.target);
     GOVUK.analytics.trackEvent('click', $target.data('analytics-event'), {

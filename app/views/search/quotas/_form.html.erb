@@ -45,14 +45,14 @@
   </div>
   <div class="grid-row">
     <div class="column-quarter">
-      <%= label_tag :year, 'Years' %>
+      <%= label_tag :years, 'Years' %>
     </div>
     <div class="column-three-quarters">
       <fieldset>
-        <% QuotaSearchForm::YEAR_VALUES.each do |year| %>
+        <% QuotaSearchForm::YEARS_VALUES.each do |year| %>
           <div class="multiple-choice multiple-choice--inline">
-            <%= check_box_tag 'year[]', year, year.in?(search_form.year), id: "quota-search-year-#{year}" %>
-            <label for="quota-search-year-<%= year %>">
+            <%= check_box_tag 'years[]', year, year.in?(search_form.years), id: "quota-search-years-#{year}" %>
+            <label for="quota-search-years-<%= year %>">
               <%= year %>
             </label>
           </div>
