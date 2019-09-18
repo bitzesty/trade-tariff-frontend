@@ -1,10 +1,10 @@
 class QuotaSearchForm
   CRITICAL_VALUES = { 'Yes' => 'Y', 'No' => 'N' }.freeze
   STATUS_VALUES = %w(Blocked Exhausted Not\ blocked Not\ exhausted).freeze
-  YEAR_VALUES = %w(2016 2017 2018 2019 2020).freeze
-  DEFAULT_YEAR_VALUE = Date.current.year.to_s.freeze
+  YEARS_VALUES = %w(2016 2017 2018 2019 2020).freeze
+  DEFAULT_YEARS_VALUE = Date.current.year.to_s.freeze
 
-  attr_accessor :goods_nomenclature_item_id, :geographical_area_id, :order_number, :critical, :status, :year
+  attr_accessor :goods_nomenclature_item_id, :geographical_area_id, :order_number, :critical, :status, :years
 
   def initialize(params)
     params.each do |key, value|
@@ -12,8 +12,8 @@ class QuotaSearchForm
     end
   end
 
-  def year
-    Array.wrap(@year || DEFAULT_YEAR_VALUE)
+  def years
+    Array.wrap(@years || DEFAULT_YEARS_VALUE)
   end
 
   def present?
@@ -33,7 +33,7 @@ class QuotaSearchForm
       order_number: order_number,
       critical: critical,
       status: status,
-      year: year
+      years: years
     }
   end
 end

@@ -448,7 +448,7 @@ describe SearchController, "GET to #quota_search", type: :controller, vcr: { cas
     render_views
 
     before(:each) do
-      get :quota_search, params: {year: %w(2018 2019)}, format: :html
+      get :quota_search, params: {years: %w(2018 2019)}, format: :html
     end
 
     it { should respond_with(:success) }
