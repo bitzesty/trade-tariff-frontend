@@ -96,11 +96,11 @@ describe "Search", js: true do
           expect(page.find('#order_number')).to be_present
           expect(page.find('#critical')).to be_present
           expect(page.find('#status')).to be_present
-          expect(page.find('#quota-search-year-2016', visible: :all)).to be_present
-          expect(page.find('#quota-search-year-2017', visible: :all)).to be_present
-          expect(page.find('#quota-search-year-2018', visible: :all)).to be_present
-          expect(page.find('#quota-search-year-2019', visible: :all)).to be_present
-          expect(page.find('#quota-search-year-2020', visible: :all)).to be_present
+          expect(page.find('#quota-search-years-2016', visible: :all)).to be_present
+          expect(page.find('#quota-search-years-2017', visible: :all)).to be_present
+          expect(page.find('#quota-search-years-2018', visible: :all)).to be_present
+          expect(page.find('#quota-search-years-2019', visible: :all)).to be_present
+          expect(page.find('#quota-search-years-2020', visible: :all)).to be_present
           expect(page.find('input[name="new_search"]')).to be_present
 
           expect(page).not_to have_content('Quota search results')
@@ -117,7 +117,7 @@ describe "Search", js: true do
 
           page.find('#goods_nomenclature_item_id').set('0301')
           page.find('#order_number').set('0906')
-          page.find('#quota-search-year-2019', visible: :all).click
+          page.find('#quota-search-years-2019', visible: :all).click
           page.find('input[name="new_search"]').click
 
           using_wait_time 10 do
