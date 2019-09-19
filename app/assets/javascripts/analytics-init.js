@@ -13,10 +13,12 @@
     cookieDomain: cookieDomain
   });
 
+  // Cross domain event tracking
   ga('create', 'UA-145652997-1', 'auto', 'govuk_shared', {'allowLinker': true});
   ga('govuk_shared.require', 'linker');
   ga('govuk_shared.linker.set', 'anonymizeIp', true);
   ga('govuk_shared.linker:autoLink', [cookieDomain]);
+  ga('govuk_shared.send', 'pageview');
 
   // Activate any event plugins eg. print intent, error tracking
   GOVUK.analyticsPlugins.error();
@@ -24,9 +26,6 @@
 
   // Track initial pageview
   GOVUK.analytics.trackPageview();
-
-  // Cross domain event tracking
-  GOVUK.analytics.addLinkedTrackerDomain('UA-145652997-1', 'govuk_shared', cookieDomain);
 
   // Clicks on data-analytics-event
   $(document).on('click', '[data-analytics-event]', function(e){
