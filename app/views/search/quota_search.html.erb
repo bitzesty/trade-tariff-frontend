@@ -18,4 +18,13 @@
       </tbody>
     </table>
   </article>
+<% elsif @result.search_form.large_result? || @result.with_errors %>
+  <article class="search-results">
+    <h1 class="heading-medium">Sorry, there is a problem with the search query. Please specify one or more search criteria.</h1>
+  </article>
+<% elsif @result.search_form.present? %>
+  <br/>
+  <article class="search-results">
+    <h1 class="heading-medium">There are no matching results</h1>
+  </article>
 <% end %>

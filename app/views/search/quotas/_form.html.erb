@@ -48,16 +48,7 @@
       <%= label_tag :years, 'Years' %>
     </div>
     <div class="column-three-quarters">
-      <fieldset>
-        <% QuotaSearchForm::YEARS_VALUES.each do |year| %>
-          <div class="multiple-choice multiple-choice--inline">
-            <%= check_box_tag 'years[]', year, year.in?(search_form.years), id: "quota-search-years-#{year}" %>
-            <label for="quota-search-years-<%= year %>">
-              <%= year %>
-            </label>
-          </div>
-        <% end %>
-      </fieldset>
+      <%= select_tag 'years[]', options_for_select(QuotaSearchForm::YEARS_VALUES, search_form.years.first), include_blank: true, class: "form-control form-control--tiny" %>
     </div>
   </div>
   <input class="button" type="submit" name="new_search" value="Search">
