@@ -17,7 +17,11 @@ class QuotaSearchForm
   end
 
   def present?
-    instance_variables.present?
+    (instance_variables - [:@years]).present?
+  end
+
+  def large_result?
+    instance_variables == [:@years]
   end
 
   def geographical_area

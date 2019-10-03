@@ -452,8 +452,8 @@ describe SearchController, "GET to #quota_search", type: :controller, vcr: { cas
     end
 
     it { should respond_with(:success) }
-    it 'should display results' do
-      expect(response.body).to match /Quota search results/
+    it 'should restrict search by years only' do
+      expect(response.body).to match /Sorry, there is a problem with the search query. Please specify one or more search criteria./
     end
   end
 end
