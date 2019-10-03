@@ -119,7 +119,7 @@ class ApplicationController < ActionController::Base
       rescue ArgumentError
         now
       end
-      brexit_date = Date.parse(ENV['BREXIT_DATE'] || '19-5-22')
+      brexit_date = Date.parse(ENV['BREXIT_DATE'] || '19-10-31')
       if (search_date >= brexit_date) && (now < brexit_date)
         params[:year] = now.year
         params[:month] = now.month
