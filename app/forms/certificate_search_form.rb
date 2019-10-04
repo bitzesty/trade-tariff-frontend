@@ -1,5 +1,7 @@
 class CertificateSearchForm
-  attr_accessor :code, :type, :description
+  NON_SIGNIFICANT_PARAMS = [:@page]
+
+  attr_accessor :code, :type, :description, :page
 
   def initialize(params)
     params.each do |key, value|
@@ -15,8 +17,12 @@ class CertificateSearchForm
     end
   end
 
+  def page
+    @page || 1
+  end
+
   def present?
-    instance_variables.present?
+    (instance_variables - NON_SIGNIFICANT_PARAMS).present?
   end
 
   def to_params
@@ -24,6 +30,7 @@ class CertificateSearchForm
       code: code,
       type: type,
       description: description,
+      page: page,
     }
   end
 end
