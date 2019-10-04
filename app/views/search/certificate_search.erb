@@ -22,6 +22,7 @@
         </li>
       <% end %>
     </ul>
+    <%= paginate @result.search_result %>
   </article>
 <% elsif @result.with_errors %>
   <article class="search-results">
