@@ -83,8 +83,10 @@ module ApiEntity
         when 502
           raise ApiEntity::Error, "502 Bad Gateway"
         end
-        resp = TariffJsonapiParser.new(resp.body).parse
-        resp.map { |entry_data| new(entry_data) }
+        collection = TariffJsonapiParser.new(resp.body).parse
+        collection = collection.map { |entry_data| new(entry_data) }
+        collection = paginate_collection(collection, resp.body.dig('meta', 'pagination')) if resp.body.is_a?(Hash) && resp.body.dig('meta', 'pagination').present?
+        collection
       rescue StandardError
         if retries < Rails.configuration.x.http.max_retry
           retries += 1
@@ -154,6 +156,13 @@ module ApiEntity
           @#{associations} << record
         end
       METHODS
+    end
+
+    def paginate_collection(collection, pagination)
+      Kaminari.paginate_array(
+        collection,
+        total_count: pagination['total_count']
+      ).page(pagination['page']).per(pagination['per_page'])
     end
 
     def collection_path(path = nil)
