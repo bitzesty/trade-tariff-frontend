@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://localhost:3018/additional_codes/search?code=119&description
+    uri: http://localhost:3018/additional_codes/search?code=119&description&page=1&type
     body:
       encoding: US-ASCII
       string: ''
@@ -27,31 +27,31 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"db6db567785ed1dda190ff99d989c842"
+      - W/"84b04f5b19640ace43fbe9bb7e302da1"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - a68dd2ad-5632-4a3a-90c9-f4a8a3175747
+      - e344762b-905d-40d9-8a3e-8b2e10189815
       X-Runtime:
-      - '0.108257'
+      - '0.097483'
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"data":[{"id":"5990","type":"additional_code","attributes":{"code":"3119","description":"Soldered
+      string: '{"data":[{"id":"5990","type":"additional_code","attributes":{"additional_code_type_id":"3","additional_code":"119","code":"3119","description":"Soldered
         cupro nickel solids (Delta): segregated cupro nickel solids, soldered, brazed
         or sweated","formatted_description":"Soldered cupro nickel solids (Delta):
-        segregated cupro nickel solids, soldered, brazed or sweated"},"relationships":{"measures":{"data":[]}}},{"id":"11545","type":"additional_code","attributes":{"code":"B119","description":"Wenzhou
+        segregated cupro nickel solids, soldered, brazed or sweated"},"relationships":{"measures":{"data":[]}}},{"id":"11545","type":"additional_code","attributes":{"additional_code_type_id":"B","additional_code":"119","code":"B119","description":"Wenzhou
         Jiangnan Steel Pipe Manufacturing, Co. Ltd., Yongzhong","formatted_description":"Wenzhou
-        Jiangnan Steel Pipe Manufacturing, Co. Ltd., Yongzhong"},"relationships":{"measures":{"data":[{"id":"3625237","type":"measure"},{"id":"3625270","type":"measure"},{"id":"3625303","type":"measure"},{"id":"3625336","type":"measure"},{"id":"3625368","type":"measure"},{"id":"3625401","type":"measure"},{"id":"3625434","type":"measure"},{"id":"3625467","type":"measure"},{"id":"3625500","type":"measure"}]}}}],"included":[{"id":"3625237","type":"measure","attributes":{"id":3625237,"validity_start_date":"2018-03-07T00:00:00.000Z","validity_end_date":null},"relationships":{"goods_nomenclature":{"data":{"id":"86594","type":"goods_nomenclature"}}}},{"id":"3625270","type":"measure","attributes":{"id":3625270,"validity_start_date":"2018-03-07T00:00:00.000Z","validity_end_date":null},"relationships":{"goods_nomenclature":{"data":{"id":"86607","type":"goods_nomenclature"}}}},{"id":"3625303","type":"measure","attributes":{"id":3625303,"validity_start_date":"2018-03-07T00:00:00.000Z","validity_end_date":null},"relationships":{"goods_nomenclature":{"data":{"id":"86609","type":"goods_nomenclature"}}}},{"id":"3625336","type":"measure","attributes":{"id":3625336,"validity_start_date":"2018-03-07T00:00:00.000Z","validity_end_date":null},"relationships":{"goods_nomenclature":{"data":{"id":"103876","type":"goods_nomenclature"}}}},{"id":"3625368","type":"measure","attributes":{"id":3625368,"validity_start_date":"2018-03-07T00:00:00.000Z","validity_end_date":null},"relationships":{"goods_nomenclature":{"data":{"id":"46104","type":"goods_nomenclature"}}}},{"id":"3625401","type":"measure","attributes":{"id":3625401,"validity_start_date":"2018-03-07T00:00:00.000Z","validity_end_date":null},"relationships":{"goods_nomenclature":{"data":{"id":"103877","type":"goods_nomenclature"}}}},{"id":"3625434","type":"measure","attributes":{"id":3625434,"validity_start_date":"2018-03-07T00:00:00.000Z","validity_end_date":null},"relationships":{"goods_nomenclature":{"data":{"id":"103878","type":"goods_nomenclature"}}}},{"id":"3625467","type":"measure","attributes":{"id":3625467,"validity_start_date":"2018-03-07T00:00:00.000Z","validity_end_date":null},"relationships":{"goods_nomenclature":{"data":{"id":"103879","type":"goods_nomenclature"}}}},{"id":"3625500","type":"measure","attributes":{"id":3625500,"validity_start_date":"2018-03-07T00:00:00.000Z","validity_end_date":null},"relationships":{"goods_nomenclature":{"data":{"id":"93768","type":"goods_nomenclature"}}}},{"id":"86594","type":"goods_nomenclature","attributes":{"goods_nomenclature_item_id":"7304110000","goods_nomenclature_sid":86594,"description":"Of
-        stainless steel","number_indents":2,"productline_suffix":"80"}},{"id":"86607","type":"goods_nomenclature","attributes":{"goods_nomenclature_item_id":"7304220000","goods_nomenclature_sid":86607,"description":"Drill
-        pipe of stainless steel","number_indents":2,"productline_suffix":"80"}},{"id":"86609","type":"goods_nomenclature","attributes":{"goods_nomenclature_item_id":"7304240000","goods_nomenclature_sid":86609,"description":"Other,
-        of stainless steel","number_indents":2,"productline_suffix":"80"}},{"id":"103876","type":"goods_nomenclature","attributes":{"goods_nomenclature_item_id":"7304410090","goods_nomenclature_sid":103876,"description":"Other","number_indents":3,"productline_suffix":"80"}},{"id":"46104","type":"goods_nomenclature","attributes":{"goods_nomenclature_item_id":"7304491000","goods_nomenclature_sid":46104,"description":"Unworked,
+        Jiangnan Steel Pipe Manufacturing, Co. Ltd., Yongzhong"},"relationships":{"measures":{"data":[{"id":"3625237","type":"measure"},{"id":"3625303","type":"measure"},{"id":"3625401","type":"measure"},{"id":"3625336","type":"measure"},{"id":"3625368","type":"measure"},{"id":"3625500","type":"measure"},{"id":"3625467","type":"measure"},{"id":"3625434","type":"measure"},{"id":"3625270","type":"measure"}]}}}],"included":[{"id":"3625237","type":"measure","attributes":{"id":3625237,"validity_start_date":"2018-03-07T00:00:00.000Z","validity_end_date":null,"goods_nomenclature_item_id":"7304110000"},"relationships":{"goods_nomenclature":{"data":{"id":"86594","type":"goods_nomenclature"}}}},{"id":"3625303","type":"measure","attributes":{"id":3625303,"validity_start_date":"2018-03-07T00:00:00.000Z","validity_end_date":null,"goods_nomenclature_item_id":"7304240000"},"relationships":{"goods_nomenclature":{"data":{"id":"86609","type":"goods_nomenclature"}}}},{"id":"3625401","type":"measure","attributes":{"id":3625401,"validity_start_date":"2018-03-07T00:00:00.000Z","validity_end_date":null,"goods_nomenclature_item_id":"7304499390"},"relationships":{"goods_nomenclature":{"data":{"id":"103877","type":"goods_nomenclature"}}}},{"id":"3625336","type":"measure","attributes":{"id":3625336,"validity_start_date":"2018-03-07T00:00:00.000Z","validity_end_date":null,"goods_nomenclature_item_id":"7304410090"},"relationships":{"goods_nomenclature":{"data":{"id":"103876","type":"goods_nomenclature"}}}},{"id":"3625368","type":"measure","attributes":{"id":3625368,"validity_start_date":"2018-03-07T00:00:00.000Z","validity_end_date":null,"goods_nomenclature_item_id":"7304491000"},"relationships":{"goods_nomenclature":{"data":{"id":"46104","type":"goods_nomenclature"}}}},{"id":"3625500","type":"measure","attributes":{"id":3625500,"validity_start_date":"2018-03-07T00:00:00.000Z","validity_end_date":null,"goods_nomenclature_item_id":"7304900091"},"relationships":{"goods_nomenclature":{"data":{"id":"93768","type":"goods_nomenclature"}}}},{"id":"3625467","type":"measure","attributes":{"id":3625467,"validity_start_date":"2018-03-07T00:00:00.000Z","validity_end_date":null,"goods_nomenclature_item_id":"7304499990"},"relationships":{"goods_nomenclature":{"data":{"id":"103879","type":"goods_nomenclature"}}}},{"id":"3625434","type":"measure","attributes":{"id":3625434,"validity_start_date":"2018-03-07T00:00:00.000Z","validity_end_date":null,"goods_nomenclature_item_id":"7304499590"},"relationships":{"goods_nomenclature":{"data":{"id":"103878","type":"goods_nomenclature"}}}},{"id":"3625270","type":"measure","attributes":{"id":3625270,"validity_start_date":"2018-03-07T00:00:00.000Z","validity_end_date":null,"goods_nomenclature_item_id":"7304220000"},"relationships":{"goods_nomenclature":{"data":{"id":"86607","type":"goods_nomenclature"}}}},{"id":"86594","type":"goods_nomenclature","attributes":{"goods_nomenclature_item_id":"7304110000","goods_nomenclature_sid":86594,"number_indents":2,"description":"Of
+        stainless steel","productline_suffix":"80"}},{"id":"86609","type":"goods_nomenclature","attributes":{"goods_nomenclature_item_id":"7304240000","goods_nomenclature_sid":86609,"number_indents":2,"description":"Other,
+        of stainless steel","productline_suffix":"80"}},{"id":"103877","type":"goods_nomenclature","attributes":{"goods_nomenclature_item_id":"7304499390","goods_nomenclature_sid":103877,"number_indents":5,"description":"Other","productline_suffix":"80"}},{"id":"103876","type":"goods_nomenclature","attributes":{"goods_nomenclature_item_id":"7304410090","goods_nomenclature_sid":103876,"number_indents":3,"description":"Other","productline_suffix":"80"}},{"id":"46104","type":"goods_nomenclature","attributes":{"goods_nomenclature_item_id":"7304491000","goods_nomenclature_sid":46104,"number_indents":3,"description":"Unworked,
         straight and of uniform wall thickness, for use solely in the manufacture
-        of tubes and pipes with other cross-sections and wall thicknesses","number_indents":3,"productline_suffix":"80"}},{"id":"103877","type":"goods_nomenclature","attributes":{"goods_nomenclature_item_id":"7304499390","goods_nomenclature_sid":103877,"description":"Other","number_indents":5,"productline_suffix":"80"}},{"id":"103878","type":"goods_nomenclature","attributes":{"goods_nomenclature_item_id":"7304499590","goods_nomenclature_sid":103878,"description":"Other","number_indents":5,"productline_suffix":"80"}},{"id":"103879","type":"goods_nomenclature","attributes":{"goods_nomenclature_item_id":"7304499990","goods_nomenclature_sid":103879,"description":"Other","number_indents":5,"productline_suffix":"80"}},{"id":"93768","type":"goods_nomenclature","attributes":{"goods_nomenclature_item_id":"7304900091","goods_nomenclature_sid":93768,"description":"Tubes
-        and pipes, of stainless steel","number_indents":3,"productline_suffix":"80"}}]}'
+        of tubes and pipes with other cross-sections and wall thicknesses","productline_suffix":"80"}},{"id":"93768","type":"goods_nomenclature","attributes":{"goods_nomenclature_item_id":"7304900091","goods_nomenclature_sid":93768,"number_indents":3,"description":"Tubes
+        and pipes, of stainless steel","productline_suffix":"80"}},{"id":"103879","type":"goods_nomenclature","attributes":{"goods_nomenclature_item_id":"7304499990","goods_nomenclature_sid":103879,"number_indents":5,"description":"Other","productline_suffix":"80"}},{"id":"103878","type":"goods_nomenclature","attributes":{"goods_nomenclature_item_id":"7304499590","goods_nomenclature_sid":103878,"number_indents":5,"description":"Other","productline_suffix":"80"}},{"id":"86607","type":"goods_nomenclature","attributes":{"goods_nomenclature_item_id":"7304220000","goods_nomenclature_sid":86607,"number_indents":2,"description":"Drill
+        pipe of stainless steel","productline_suffix":"80"}}],"meta":{"pagination":{"page":1,"per_page":5,"total_count":2}}}'
     http_version: 
-  recorded_at: Wed, 07 Aug 2019 16:24:43 GMT
+  recorded_at: Fri, 04 Oct 2019 12:36:09 GMT
 - request:
     method: get
     uri: http://localhost:3018/additional_code_types
@@ -83,9 +83,9 @@ http_interactions:
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 606fb061-473a-416e-b6c7-e2d7832d88f7
+      - a1f1859a-bfc9-4dd4-9a86-f17c9e368571
       X-Runtime:
-      - '0.021775'
+      - '0.033286'
       Transfer-Encoding:
       - chunked
     body:
@@ -99,5 +99,5 @@ http_interactions:
         for basic products"}},{"id":"B","type":"additional_code_type","attributes":{"additional_code_type_id":"B","description":"Anti-dumping/countervailing"}},{"id":"C","type":"additional_code_type","attributes":{"additional_code_type_id":"C","description":"Anti-dumping/countervailing"}},{"id":"F","type":"additional_code_type","attributes":{"additional_code_type_id":"F","description":"Reference
         prices fishery products"}}]}'
     http_version: 
-  recorded_at: Wed, 14 Aug 2019 11:36:07 GMT
+  recorded_at: Fri, 04 Oct 2019 12:36:09 GMT
 recorded_with: VCR 3.0.3

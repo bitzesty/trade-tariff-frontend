@@ -31,9 +31,9 @@ http_interactions:
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - '06484408-65ef-4f63-9353-682e3ee453e9'
+      - d74a0080-372c-4714-bfd0-db778ba8f675
       X-Runtime:
-      - '0.036204'
+      - '0.034247'
       Transfer-Encoding:
       - chunked
     body:
@@ -47,5 +47,5 @@ http_interactions:
         for basic products"}},{"id":"B","type":"additional_code_type","attributes":{"additional_code_type_id":"B","description":"Anti-dumping/countervailing"}},{"id":"C","type":"additional_code_type","attributes":{"additional_code_type_id":"C","description":"Anti-dumping/countervailing"}},{"id":"F","type":"additional_code_type","attributes":{"additional_code_type_id":"F","description":"Reference
         prices fishery products"}}]}'
     http_version: 
-  recorded_at: Wed, 14 Aug 2019 13:40:22 GMT
+  recorded_at: Fri, 04 Oct 2019 12:36:07 GMT
 recorded_with: VCR 3.0.3
