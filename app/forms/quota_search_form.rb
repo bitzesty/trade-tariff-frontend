@@ -3,7 +3,7 @@ class QuotaSearchForm
   STATUS_VALUES = %w(Blocked Exhausted Not\ blocked Not\ exhausted).freeze
   YEARS_VALUES = %w(2016 2017 2018 2019 2020).freeze
   DEFAULT_YEARS_VALUE = Date.current.year.to_s.freeze
-  NON_SIGNIFICANT_PARAMS = [:@years, :@page]
+  OPTIONAL_PARAMS = [:@years, :@page]
 
   attr_accessor :goods_nomenclature_item_id, :geographical_area_id, :order_number, :critical, :status, :years, :page
 
@@ -22,7 +22,7 @@ class QuotaSearchForm
   end
 
   def present?
-    (instance_variables - NON_SIGNIFICANT_PARAMS).present?
+    (instance_variables - OPTIONAL_PARAMS).present?
   end
 
   def large_result?

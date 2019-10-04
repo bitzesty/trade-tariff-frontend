@@ -1,5 +1,5 @@
 class AdditionalCodeSearchForm
-  NON_SIGNIFICANT_PARAMS = [:@page]
+  OPTIONAL_PARAMS = [:@page]
 
   attr_accessor :code, :type, :description, :page
 
@@ -22,7 +22,7 @@ class AdditionalCodeSearchForm
   end
 
   def present?
-    (instance_variables - NON_SIGNIFICANT_PARAMS).present?
+    (instance_variables - OPTIONAL_PARAMS).present?
   end
 
   def to_params
