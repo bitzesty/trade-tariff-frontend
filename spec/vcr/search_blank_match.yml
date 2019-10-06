@@ -5,14 +5,16 @@ http_interactions:
     uri: http://localhost:3018/search
     body:
       encoding: UTF-8
-      string: q=&as_of=2008-01-01&currency=EUR
+      string: as_of=2019-10-03&currency=EUR&q
     headers:
+      Accept:
+      - application/vnd.uktt.v2
+      User-Agent:
+      - Faraday v0.11.0
+      Content-Type:
+      - application/x-www-form-urlencoded
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      User-Agent:
-      - Ruby
   response:
     status:
       code: 200
@@ -27,18 +29,18 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"761873dc9573450067b00bab692dcae9"
+      - W/"1a5843fb75a698e9a368db9681212cfd"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 5a8915eb-1ceb-4945-835a-199a57bcb330
+      - 5c488678-83f4-4ee0-a3a3-5366fa945870
       X-Runtime:
-      - '0.005827'
+      - '0.012112'
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"q":["can''t be blank"]}'
+      string: '{"errors":[{"title":"q","detail":"can''t be blank"}]}'
     http_version: 
-  recorded_at: Thu, 15 Nov 2018 14:59:36 GMT
+  recorded_at: Thu, 03 Oct 2019 13:36:34 GMT
 recorded_with: VCR 3.0.3

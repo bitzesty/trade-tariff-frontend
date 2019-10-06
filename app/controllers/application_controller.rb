@@ -113,9 +113,13 @@ class ApplicationController < ActionController::Base
 
   def preprocess_raw_params
     if TradeTariffFrontend.block_searching_past_march? && params[:year] && params[:month] && params[:day]
-      search_date = Date.new(*[params[:year], params[:month], params[:day]].map(&:to_i))
-      brexit_date = Date.parse(ENV['BREXIT_DATE'] || '19-5-22')
       now = Date.today
+      search_date = begin
+        Date.new(*[params[:year], params[:month], params[:day]].map(&:to_i))
+      rescue ArgumentError
+        now
+      end
+      brexit_date = Date.parse(ENV['BREXIT_DATE'] || '19-10-31')
       if (search_date >= brexit_date) && (now < brexit_date)
         params[:year] = now.year
         params[:month] = now.month
