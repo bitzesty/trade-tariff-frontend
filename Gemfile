@@ -18,6 +18,7 @@ gem "sass-rails", "~> 5.0.6"
 gem "uglifier", "~> 2.7"
 gem "responders", "~> 2.1", ">= 2.1.0"
 gem "bootsnap", require: false
+gem "kaminari", "~> 1.0"
 
 # gov UK
 gem "govspeak", "~> 3.6", ">= 3.6.2"

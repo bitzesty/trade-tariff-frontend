@@ -31,9 +31,9 @@ http_interactions:
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 539cde87-b262-4c82-b984-51c91a73ac11
+      - '03944d5e-d4f0-4e54-b009-cb60b8a58f40'
       X-Runtime:
-      - '0.011555'
+      - '0.016777'
       Transfer-Encoding:
       - chunked
     body:
@@ -55,5 +55,5 @@ http_interactions:
         refunds"}},{"id":"9","type":"certificate_type","attributes":{"certificate_type_code":"9","description":"National
         Document"}}]}'
     http_version: 
-  recorded_at: Wed, 14 Aug 2019 13:41:25 GMT
+  recorded_at: Fri, 04 Oct 2019 11:23:30 GMT
 recorded_with: VCR 3.0.3
