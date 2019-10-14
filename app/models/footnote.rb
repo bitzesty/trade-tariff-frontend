@@ -7,7 +7,7 @@ class Footnote
 
   collection_path '/footnotes'
 
-  attr_accessor :code, :footnote_type_id, :footnote_id, :description, :formatted_description
+  attr_accessor :code, :footnote_type_id, :footnote_id, :description, :formatted_description, :extra_large_measures
 
   has_many :measures
   has_many :goods_nomenclatures
