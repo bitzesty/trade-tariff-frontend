@@ -60,7 +60,8 @@ module TradeTariffFrontend
     end
 
     def request_uri_for(rackreq)
-      api_request_path_for(rackreq.env["PATH_INFO"] + "?" + rackreq.env["QUERY_STRING"])
+      query_string = URI.parse(rackreq.env["HTTP_REFERER"]).query
+      api_request_path_for(rackreq.env["PATH_INFO"] + "?" + query_string)
     end
 
     def request_headers_for(env)
