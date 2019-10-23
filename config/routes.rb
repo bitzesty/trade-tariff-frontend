@@ -2,8 +2,8 @@ require 'trade_tariff_frontend'
 
 Rails.application.routes.draw do
   get "/trade-tariff/*path", to: redirect('/%{path}', status: 301)
-  get "/v1/(*path).json", to: redirect('/api/v1/%{path}.json', status: 301)
-  get "/v2/(*path).json", to: redirect('/api/v2/%{path}.json', status: 301)
+  get "/v1/(*path).json", to: redirect { |params, request| "/api#{request.path}?#{request.query_string}" }
+  get "/v2/(*path).json", to: redirect { |params, request| "/api#{request.path}?#{request.query_string}" }
   get "/api/v1/quotas/search(:format)", to: redirect('/api/v2/quotas/search(:format)', status: 301)
 
   get "/", to: redirect("https://www.gov.uk/trade-tariff", status: 302)
