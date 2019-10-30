@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   get "/trade-tariff/*path", to: redirect('/%{path}', status: 301)
   get "/v1/(*path).json", to: redirect { |params, request| "/api#{request.path}?#{request.query_string}" }
   get "/v2/(*path).json", to: redirect { |params, request| "/api#{request.path}?#{request.query_string}" }
+  get "/api/:version/commodities/:id.json", to: redirect { |_, request| request.url.gsub('commodities', 'chapters').gsub('00000000', '') }, constraints: { id: /\d{2}00000000/ }
+  get "/api/:version/commodities/:id.json", to: redirect { |_, request| request.url.gsub('commodities', 'headings').gsub('000000', '') }, constraints: { id: /\d{4}000000/ }
   get "/api/v1/quotas/search(:format)", to: redirect('/api/v2/quotas/search(:format)', status: 301)
 
   get "/", to: redirect("https://www.gov.uk/trade-tariff", status: 302)
