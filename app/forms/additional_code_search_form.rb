@@ -1,5 +1,7 @@
 class AdditionalCodeSearchForm
-  attr_accessor :code, :type, :description
+  OPTIONAL_PARAMS = [:@page]
+
+  attr_accessor :code, :type, :description, :page
 
   def initialize(params)
     params.each do |key, value|
@@ -15,8 +17,12 @@ class AdditionalCodeSearchForm
     end
   end
 
+  def page
+    @page || 1
+  end
+
   def present?
-    instance_variables.present?
+    (instance_variables - OPTIONAL_PARAMS).present?
   end
 
   def to_params
@@ -24,6 +30,7 @@ class AdditionalCodeSearchForm
       code: code,
       type: type,
       description: description,
+      page: page,
     }
   end
 end

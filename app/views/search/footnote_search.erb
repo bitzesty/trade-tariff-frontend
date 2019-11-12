@@ -15,7 +15,9 @@
             <%= footnote.formatted_description.html_safe %>
           </div>
 
-          <% if goods_nomenclatures.empty? %>
+          <% if footnote.extra_large_measures %>
+            <div class="commodity">Too many commodities are associated with footnote <a class="inline" href="<%= footnote_search_path(type: footnote.footnote_type_id, code: footnote.footnote_id) %>"><%= footnote.code %></a>.</div>
+          <% elsif goods_nomenclatures.empty? %>
             <div class="commodity">No valid commodities are associated with footnote <a class="inline" href="<%= footnote_search_path(type: footnote.footnote_type_id, code: footnote.footnote_id) %>"><%= footnote.code %></a>.</div>
           <% else %>
             <%= render partial: 'search/common/goods_nomenclature', collection: goods_nomenclatures %>
@@ -23,6 +25,7 @@
         </li>
       <% end %>
     </ul>
+    <%= paginate @result.search_result %>
   </article>
 <% elsif @result.with_errors %>
   <article class="search-results">
