@@ -17,6 +17,7 @@
         <%= render partial: 'search/quotas/definition', collection: @result.search_result %>
       </tbody>
     </table>
+    <%= paginate @result.search_result %>
   </article>
 <% elsif @result.search_form.large_result? || @result.with_errors %>
   <article class="search-results">

@@ -444,11 +444,11 @@ describe SearchController, "GET to #quota_search", type: :controller, vcr: { cas
     end
   end
 
-  context 'search by multiple years' do
+  context 'search by year' do
     render_views
 
     before(:each) do
-      get :quota_search, params: {years: %w(2018 2019)}, format: :html
+      get :quota_search, params: {years: '2019'}, format: :html
     end
 
     it { should respond_with(:success) }
@@ -538,7 +538,7 @@ describe SearchController, "GET to #footnote_search", type: :controller do
     render_views
 
     before(:each) do
-      get :footnote_search, params: {code: 'TM133'}, format: :html
+      get :footnote_search, params: {code: '133'}, format: :html
     end
 
     it { should respond_with(:success) }

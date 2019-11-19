@@ -3,8 +3,9 @@ class QuotaSearchForm
   STATUS_VALUES = %w(Blocked Exhausted Not\ blocked Not\ exhausted).freeze
   YEARS_VALUES = %w(2016 2017 2018 2019 2020).freeze
   DEFAULT_YEARS_VALUE = Date.current.year.to_s.freeze
+  OPTIONAL_PARAMS = [:@years, :@page]
 
-  attr_accessor :goods_nomenclature_item_id, :geographical_area_id, :order_number, :critical, :status, :years
+  attr_accessor :goods_nomenclature_item_id, :geographical_area_id, :order_number, :critical, :status, :years, :page
 
   def initialize(params)
     params.each do |key, value|
@@ -12,16 +13,20 @@ class QuotaSearchForm
     end
   end
 
+  def page
+    @page || 1
+  end
+
   def years
     Array.wrap(@years || DEFAULT_YEARS_VALUE)
   end
 
   def present?
-    (instance_variables - [:@years]).present?
+    (instance_variables - OPTIONAL_PARAMS).present?
   end
 
   def large_result?
-    instance_variables == [:@years]
+    !present? && instance_variables.present?
   end
 
   def geographical_area
@@ -37,7 +42,8 @@ class QuotaSearchForm
       order_number: order_number,
       critical: critical,
       status: status,
-      years: years
+      years: years,
+      page: page,
     }
   end
 end

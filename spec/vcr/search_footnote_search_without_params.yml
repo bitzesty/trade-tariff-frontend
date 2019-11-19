@@ -31,9 +31,9 @@ http_interactions:
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 1f51503c-d5d2-4c40-ac0b-04ac4c6dccdb
+      - 4f5e838d-07dc-4178-9e04-82d8ea598e72
       X-Runtime:
-      - '0.016221'
+      - '0.016216'
       Transfer-Encoding:
       - chunked
     body:
@@ -66,5 +66,5 @@ http_interactions:
         substances"}},{"id":"IS","type":"footnote_type","attributes":{"footnote_type_id":"IS","description":"Invasive
         alien species"}}]}'
     http_version: 
-  recorded_at: Thu, 15 Aug 2019 12:13:28 GMT
+  recorded_at: Fri, 04 Oct 2019 12:36:32 GMT
 recorded_with: VCR 3.0.3
