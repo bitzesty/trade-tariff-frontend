@@ -1,6 +1,9 @@
 class QuotaSearchForm
   CRITICAL_VALUES = { 'Yes' => 'Y', 'No' => 'N' }.freeze
-  STATUS_VALUES = %w(Blocked Exhausted Not\ blocked Not\ exhausted).freeze
+  STATUS_VALUES = [['Blocked', 'blocked'],
+                   ['Exhausted', 'exhausted'],
+                   ['Not blocked', 'not_blocked'],
+                   ['Not exhausted', 'not_exhausted']].freeze
   YEARS_VALUES = %w(2016 2017 2018 2019 2020).freeze
   DEFAULT_YEARS_VALUE = Date.current.year.to_s.freeze
   OPTIONAL_PARAMS = [:@years, :@page]
