@@ -80,6 +80,7 @@ module TradeTariffFrontend
 
     def cache_control_value(response)
       return 'no-cache' if @uri.path =~ /\/search_references\.(json|csv)/
+      return 'no-cache' if @uri.path =~ /\/(quotas|additional_codes|certificates|footnotes)\/search.*/
       "max-age=#{cache_max_age(response.status.to_i)}"
     end
 
