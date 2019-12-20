@@ -2,6 +2,7 @@ require 'trade_tariff_frontend'
 
 Rails.application.routes.draw do
   get "/trade-tariff/*path", to: redirect('/%{path}', status: 301)
+  get "/api/(*path)", constraints: { path: /[^v\d+].*/ }, to: redirect { |_params, request| request.url.gsub('/api/', "/api/v2/") }
   get "/v1/(*path)", to: redirect { |_params, request| "/api#{request.path}?#{request.query_string}" }
   get "/v2/(*path)", to: redirect { |_params, request| "/api#{request.path}?#{request.query_string}" }
   get "/api/:version/commodities/:id", to: redirect { |_params, request| request.url.gsub('commodities', 'chapters').gsub('00000000', '') }, constraints: { id: /\d{2}00000000/ }
