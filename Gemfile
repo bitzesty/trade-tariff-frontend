@@ -21,7 +21,8 @@ gem "bootsnap", require: false
 gem "kaminari", "~> 1.0"
 
 # gov UK
-gem "govspeak", "~> 3.6", ">= 3.6.2"
+gem "govspeak", "~> 5.6.0"
+gem "i18n", "~> 0.7"
 gem "govuk_template", ">= 0.23.0"
 gem "govuk_frontend_toolkit", "8.2.0"
 gem "govuk_elements_rails", ">= 3.1.3"
