@@ -1,6 +1,7 @@
-<% content_for :page_title, content_for?(:title) ? yield(:title) : "Trade Tariff: look up commodity codes, duty and VAT rates - GOV.UK" %>
+<% content_for :pageTitle, content_for?(:title) ? yield(:title) : "Trade Tariff: look up commodity codes, duty and VAT rates - GOV.UK" %>
 
 <% content_for :head do %>
+  <%# TODO REMOVE? %>
   <!--[if gt IE 8]><!--><%= stylesheet_link_tag "application.css" %><!--<![endif]-->
   <!--[if IE 6]><%= stylesheet_link_tag "application-ie6.css" %><![endif]-->
   <!--[if IE 7]><%= stylesheet_link_tag "application-ie7.css" %><![endif]-->
@@ -25,23 +26,38 @@
 
 <% content_for :header_class, 'with-proposition' %>
 <% content_for :proposition_header do %>
-  <div class="header-proposition">
-    <div class="content">
-      <a href="#proposition-links" class="js-header-toggle menu">Menu</a>
-      <nav id="proposition-menu">
-        <a href="<%= sections_path %>" id="proposition-name">Trade Tariff</a>
-        <ul id="proposition-links">
-          <li><%= link_to "Search", sections_path, class: search_active_class %></li>
-          <li><%= link_to "Additional code", additional_code_search_path, class: additional_code_search_class %></li>
-          <li><%= link_to "Certificate", certificate_search_path, class: certificate_search_class %></li>
-          <li><%= link_to "Footnotes", footnote_search_path, class: footnote_search_class %></li>
-          <li><%= link_to "Quotas", quota_search_path, class: quota_search_active_class %></li>
-          <li><%= link_to "A-Z", a_z_index_path(letter: "a"), class: a_z_active_class %></li>
-          <li><%= link_to "Exchange rates", exchange_rates_path, class: exchange_rates_active_class %></li>
-          <li><%= link_to "Forum", "https://forum.trade-tariff.service.gov.uk/", target: "_blank", data: { analytics_event: "forums" } %></li>
-        </ul>
-      </nav>
-    </div>
+  <div class="govuk-header__content">
+    <a href="<%= sections_path %>" class="govuk-header__link govuk-header__link--service-name" id="proposition-name">
+      Trade Tariff
+    </a>
+    <button type="button" class="govuk-header__menu-button govuk-js-header-toggle js-header-toggle menu" aria-controls="navigation" aria-label="Show or hide Top Level Navigation">Menu</button>
+    <nav id="proposition-menu">
+      <ul id="proposition-links" class="govuk-header__navigation " aria-label="Top Level Navigation">
+        <%= govuk_header_navigation_item(search_active_class) do %>
+          <%= link_to "Search", sections_path, class: "govuk-header__link" %>
+        <% end %>
+        <%= govuk_header_navigation_item(additional_code_search_class) do %>
+          <%= link_to "Additional code", additional_code_search_path, class: "govuk-header__link" %>
+        <% end %>
+        <%= govuk_header_navigation_item(certificate_search_class) do %>
+          <%= link_to "Certificate", certificate_search_path, class: "govuk-header__link" %>
+        <% end %>
+        <%= govuk_header_navigation_item(footnote_search_class) do %>
+          <%= link_to "Footnotes", footnote_search_path, class: "govuk-header__link" %>
+        <% end %>
+        <%= govuk_header_navigation_item(quota_search_active_class) do %>
+          <%= link_to "Quotas", quota_search_path, class: "govuk-header__link" %>
+        <% end %>
+        <%= govuk_header_navigation_item(a_z_active_class) do %>
+          <%= link_to "A-Z", a_z_index_path(letter: "a"), class: "govuk-header__link" %>
+        <% end %>
+        <%= govuk_header_navigation_item(exchange_rates_active_class) do %>
+          <%= link_to "Exchange rates", exchange_rates_path, class: "govuk-header__link" %>
+        <% end %>
+        <%= govuk_header_navigation_item do %>
+          <%= link_to "Forum", "https://forum.trade-tariff.service.gov.uk/", target: "_blank", class: "govuk-header__link", data: { analytics_event: "forums" } %>
+        <% end %>
+    </nav>
   </div>
 <% end %>
 
@@ -105,6 +121,6 @@
   </ul>
 <% end %>
 
-<% content_for :body_end do %>
-  <%= javascript_include_tag "application" %>
+<% content_for :bodyEnd do %>
+  <%%= javascript_include_tag "application" %>
 <% end %>

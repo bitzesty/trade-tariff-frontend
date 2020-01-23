@@ -3,7 +3,7 @@
   <link rel='alternate' type='application/json' href='<%= heading_url(@heading, format: :json) %>' title='Heading information page in JSON format' />
 <% end %>
 
-<% content_for :body_classes, "page--wide" %>
+<% content_for :bodyClasses, "page--wide" %>
 
 <% if @heading.declarable? %>
   <%= render 'declarables/declarable', declarable: @heading %>

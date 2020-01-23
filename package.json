@@ -1,0 +1,17 @@
+{
+  "dependencies": {
+    "@rails/webpacker": "^4.0.7",
+    "alphagov-static": "github:alphagov/static.git#release_3266",
+    "govuk-frontend": "^3.3.0",
+    "jquery": "1.12.4",
+    "jquery-debouncedresize": "^0.0.2",
+    "jquery-migrate": "1.4.1",
+    "jquery-tabs": "^0.5.3",
+    "mark.js": "^8.11.1",
+    "rails-erb-loader": "^5.5.2",
+    "select2": "^4.0.10"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "^3.8.2"
+  }
+}

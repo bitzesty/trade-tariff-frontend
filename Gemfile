@@ -11,14 +11,12 @@ gem "addressable", "~> 2.3"
 gem "hashie", "~> 3.4"
 
 # Assets
-gem "coffee-rails", "~> 4.2.2", ">= 4.1.0"
-gem "jquery-rails", "~> 4.2.2"
-gem "jquery-migrate-rails"
 gem "sass-rails", "~> 5.0.6"
 gem "uglifier", "~> 2.7"
 gem "responders", "~> 2.1", ">= 2.1.0"
 gem "bootsnap", require: false
 gem "kaminari", "~> 1.0"
+gem "webpacker", "~> 4.0"
 
 # gov UK
 gem "govspeak", "~> 3.6", ">= 3.6.2"

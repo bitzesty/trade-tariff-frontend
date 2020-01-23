@@ -25,6 +25,12 @@ module ApplicationHelper
     content_tag(:ol, crumbs.join('').html_safe, role: "breadcrumbs")
   end
 
+  def govuk_header_navigation_item(active_class = false)
+    base_classname = "govuk-header__navigation-item"
+    classname = "#{base_classname} #{active_class ? "#{base_classname}--active" : ''}"
+    content_tag(:li, class: classname) { yield }
+  end
+
   def search_active_class
     active_class_for(controller_methods: %w[sections chapters headings commodities])
   end

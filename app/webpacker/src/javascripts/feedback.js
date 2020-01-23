@@ -1,4 +1,6 @@
 (function() {
+  console.log('feedbackForm');
+  console.log($('.feedback-form'));
   $('.feedback-form').submit(function() {
       $('.error-message').remove();
       var msg = $('#message');
