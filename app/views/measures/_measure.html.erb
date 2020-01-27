@@ -3,12 +3,12 @@
     <% if measure.has_children_geographical_areas? %>
       <dl>
         <dt class="has_children">
-          <%= measure.geographical_area.description %>
+          <%= measure.geographical_area.long_description %>
         </dt>
         <dd>
           <ul>
             <% measure.children_geographical_areas.each do |children_geographical_area| %>
-              <li><%= children_geographical_area.description %> (<%= children_geographical_area.id %>)</li>
+              <li><%= children_geographical_area.long_description %></li>
             <% end %>
           </ul>
         </dd>
