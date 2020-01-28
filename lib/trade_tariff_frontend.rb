@@ -61,6 +61,10 @@ module TradeTariffFrontend
     ENV.fetch('ALLOW_SEARCH') != 'true'
   end
 
+  def download_pdf_enabled?
+    ENV.fetch('DOWNLOAD_PDF_ENABLED', 'false') == 'true'
+  end
+
   # CDS locking and authentication
   module Locking
     module_function
