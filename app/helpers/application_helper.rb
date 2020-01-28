@@ -63,6 +63,18 @@ module ApplicationHelper
     search_date_in_future_month? ? "for a future date" : "Change currency"
   end
 
+  def download_chapter_pdf_url(section_position, chapter_code)
+    pdf_urls = Rails.cache.fetch('cached_chapters_pdf_urls', expires_in: 24.hours) do
+      TariffPdf.chapters.map(&:url)
+    end
+
+    currency = @search.attributes['currency'] || 'EUR'
+
+    pdf_urls.find do |url|
+      url =~ /chapters\/#{currency.downcase}\/#{section_position.rjust(2, '0')}-#{chapter_code}\.pdf/
+    end
+  end
+
   private
 
   def active_class_for(controller_methods:)

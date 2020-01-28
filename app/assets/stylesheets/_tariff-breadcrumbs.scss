@@ -100,5 +100,32 @@
         }
       }
     }
+
+    .download {
+      display: inline;
+      &::before {
+        content: '(';
+      }
+      &::after {
+        content: ')';
+      }
+      @media (min-width: $desktop-min-width) {
+        float: right;
+        margin-right: 0.3em;
+        &::before, &::after {
+          content: '';
+        }
+      }
+      a {
+        background: image-url('icon-file-download') 0.2em 0.1em no-repeat;
+        background-size: 14px 14px;
+        padding-left: 20px;
+        @media (min-width: $desktop-min-width) {
+          background: image-url('icon-file-download') 0.2em 0.2em no-repeat;
+          background-size: 16px 16px;
+          padding-left: 25px;
+        }
+      }
+    }
   }
 }
