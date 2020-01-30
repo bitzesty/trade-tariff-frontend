@@ -3,7 +3,7 @@ module ApplicationHelper
     text = text['content'] || text[:content] if text.is_a?(Hash)
     return '' if text.nil?
 
-    Govspeak::Document.new(text).to_sanitized_html.html_safe
+    Govspeak::Document.new(text, sanitize: true).to_html.html_safe
   end
 
   def a_z_index(letter = 'a')
