@@ -15,10 +15,10 @@ describe ApplicationHelper, type: :helper do
     context 'string contains Javascript code' do
       let(:string) { "<script type='text/javascript'>alert('hello');</script>" }
 
-      it '<script> tags are filtered' do
+      it '<script> tags with a content are filtered' do
         expect(
           helper.govspeak(string).strip
-        ).to eq "alert('hello');"
+        ).to eq ""
       end
     end
 
