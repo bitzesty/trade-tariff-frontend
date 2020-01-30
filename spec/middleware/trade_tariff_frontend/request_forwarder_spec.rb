@@ -28,7 +28,7 @@ describe TradeTariffFrontend::RequestForwarder do
 
     status, env, body = middleware.call env_for(request_path)
 
-    expect(body.body).to include response_body
+    expect(body).to include response_body
   end
 
   it 'forwards response from upstream backend host for HEADs' do
@@ -41,7 +41,7 @@ describe TradeTariffFrontend::RequestForwarder do
     status, env, body = middleware.call env_for(request_path, method: :head)
 
     expect(status).to eq 200
-    expect(body.body).to eq [""]
+    expect(body).to eq [""]
   end
 
   it 'forwards response status code from upstream backend host' do

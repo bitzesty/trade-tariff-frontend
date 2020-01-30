@@ -72,8 +72,8 @@ module TradeTariffFrontend
     end
 
     config.middleware.insert_before 0, TradeTariffFrontend::BasicAuth do |name, password|
-      ActiveSupport::SecurityUtils.variable_size_secure_compare(name, TradeTariffFrontend::Locking.user) &
-        ActiveSupport::SecurityUtils.variable_size_secure_compare(password, TradeTariffFrontend::Locking.password)
+      ActiveSupport::SecurityUtils.secure_compare(name, TradeTariffFrontend::Locking.user) &
+        ActiveSupport::SecurityUtils.secure_compare(password, TradeTariffFrontend::Locking.password)
     end
 
     config.middleware.insert_before 0, Rack::Cors do
