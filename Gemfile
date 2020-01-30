@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 ruby "~> 2.6.2"
 
-gem "rails", "5.1.6.2"
+gem "rails", "5.2.4.1"
 
 gem "yajl-ruby", "~> 1.3.1", require: "yajl"
 gem "multi_json", "~> 1.11"
@@ -16,7 +16,7 @@ gem "jquery-rails", "~> 4.2.2"
 gem "jquery-migrate-rails"
 gem "sass-rails", "~> 5.0.6"
 gem "uglifier", "~> 2.7"
-gem "responders", "~> 2.1", ">= 2.1.0"
+gem "responders", "~> 3.0.0"
 gem "bootsnap", require: false
 gem "kaminari", "~> 1.0"
 
@@ -33,7 +33,7 @@ gem "nokogiri", ">= 1.10.4"
 
 # Logging
 gem "logstash-event"
-gem "lograge", ">= 0.3.6"
+gem "lograge"
 
 # Web Server
 gem 'puma', '~> 3.4'
