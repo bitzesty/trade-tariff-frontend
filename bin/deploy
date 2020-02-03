@@ -26,7 +26,7 @@ export CF_BUILDPACK="https://github.com/cloudfoundry/ruby-buildpack.git#v1.8.4"
 cf create-app-manifest $CF_APP
 
 # "patch" the manifest so it has "buildpack", not "buildpacks":
-CF_BUILDPACK=$CF_BUILDPACK ruby -ryaml -e 'm = YAML.load(STDIN); m["applications"].map{ |x| x["buildpack"] = ENV["CF_BUILDPACK"; x.delete("buildpacks") }; puts YAML.dump(m)' \
+CF_BUILDPACK=$CF_BUILDPACK ruby -ryaml -e 'm = YAML.load(STDIN); m["applications"].map{ |x| x["buildpack"] = ENV["CF_BUILDPACK"]; x.delete("buildpacks") }; puts YAML.dump(m)' \
   < "$CF_APP"_manifest.yml \
   > "$CF_APP"_patched_manifest.yml
 
