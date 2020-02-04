@@ -71,7 +71,7 @@ module ApplicationHelper
     currency = @search.attributes['currency'] || 'EUR'
 
     pdf_urls.find do |url|
-      url =~ /chapters\/#{currency.downcase}\/#{section_position.rjust(2, '0')}-#{chapter_code}\.pdf/
+      url =~ /chapters\/#{currency.downcase}\/#{section_position.to_s.rjust(2, '0')}-#{chapter_code}\.pdf/
     end
   end
 
