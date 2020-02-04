@@ -27,6 +27,7 @@ test:
     - chmod 644 ~/.ssh/known_hosts
     - echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
     - chmod 400 ~/.ssh/id_rsa
+    - export OPENSSL_CONF=/etc/ssl/
     - wget https://bitbucket.org/ariya/phantomjs/downloads/$PHANTOM_JS.tar.bz2
     - tar xvjf $PHANTOM_JS.tar.bz2
     - sudo mv $PHANTOM_JS /usr/local/share
