@@ -53,6 +53,7 @@ include:
 
 deploy_dev:
   stage: deploy
+  resource_group: paas
   script:
     - curl -v -L -o cf-cli_amd64.deb 'https://cli.run.pivotal.io/stable?release=debian64&source=github'
     - sudo dpkg -i cf-cli_amd64.deb
@@ -65,6 +66,7 @@ deploy_dev:
 
 deploy_staging:
   stage: deploy
+  resource_group: paas
   script:
     - curl -v -L -o cf-cli_amd64.deb 'https://cli.run.pivotal.io/stable?release=debian64&source=github'
     - sudo dpkg -i cf-cli_amd64.deb
@@ -77,6 +79,7 @@ deploy_staging:
 
 deploy_production:
   stage: deploy
+  resource_group: paas
   script:
     - curl -v -L -o cf-cli_amd64.deb 'https://cli.run.pivotal.io/stable?release=debian64&source=github'
     - sudo dpkg -i cf-cli_amd64.deb
