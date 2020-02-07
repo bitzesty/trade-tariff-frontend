@@ -1,5 +1,5 @@
 image:
-  name: circleci/ruby:2.6.2-node-browsers
+  name: circleci/ruby:2.6.5-node-browsers
 
 variables:
   GOVUK_APP_DOMAIN: test
@@ -27,6 +27,7 @@ test:
     - chmod 644 ~/.ssh/known_hosts
     - echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
     - chmod 400 ~/.ssh/id_rsa
+    - export OPENSSL_CONF=/etc/ssl/
     - wget https://bitbucket.org/ariya/phantomjs/downloads/$PHANTOM_JS.tar.bz2
     - tar xvjf $PHANTOM_JS.tar.bz2
     - sudo mv $PHANTOM_JS /usr/local/share
@@ -52,6 +53,7 @@ include:
 
 deploy_dev:
   stage: deploy
+  resource_group: paas
   script:
     - curl -v -L -o cf-cli_amd64.deb 'https://cli.run.pivotal.io/stable?release=debian64&source=github'
     - sudo dpkg -i cf-cli_amd64.deb
@@ -64,6 +66,7 @@ deploy_dev:
 
 deploy_staging:
   stage: deploy
+  resource_group: paas
   script:
     - curl -v -L -o cf-cli_amd64.deb 'https://cli.run.pivotal.io/stable?release=debian64&source=github'
     - sudo dpkg -i cf-cli_amd64.deb
@@ -76,6 +79,7 @@ deploy_staging:
 
 deploy_production:
   stage: deploy
+  resource_group: paas
   script:
     - curl -v -L -o cf-cli_amd64.deb 'https://cli.run.pivotal.io/stable?release=debian64&source=github'
     - sudo dpkg -i cf-cli_amd64.deb
