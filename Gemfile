@@ -33,6 +33,7 @@ gem "i18n", '~> 0.7'
 gem "govuk_template", ">= 0.23.0"
 gem "govuk_frontend_toolkit", "8.2.0"
 gem "govuk_elements_rails", ">= 3.1.3"
+gem "plek", "~> 1.11"
 
 gem "connection_pool", "~> 2.2"
 
