@@ -12,7 +12,7 @@ describe 'GET to #index - getting commodity change feed', type: :request do
 
     it 'assumes atom format' do
       expect(response.status).to eq 200
-      expect(response.content_type).to eq 'application/atom+xml'
+      expect(response.content_type).to eq 'application/atom+xml; charset=utf-8'
     end
 
     it 'returns commodity changes' do
