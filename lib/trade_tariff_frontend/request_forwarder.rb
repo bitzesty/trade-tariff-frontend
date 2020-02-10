@@ -49,7 +49,7 @@ module TradeTariffFrontend
         #
         # 405 METHOD NOT ALLOWED
 
-        Rack::Response.new([], 405, {})
+        Rack::Response.new([], 405, {}).finish
       end
     end
 
