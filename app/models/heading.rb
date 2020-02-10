@@ -1,10 +1,8 @@
 require 'api_entity'
-require 'declarable'
-require 'changeable'
 
 class Heading < GoodsNomenclature
-  include Models::Changeable
-  include Models::Declarable
+  include Changeable
+  include Declarable
 
   collection_path "/headings"
 

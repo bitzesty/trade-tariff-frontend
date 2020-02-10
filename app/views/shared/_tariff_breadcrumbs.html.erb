@@ -155,7 +155,10 @@ declarable ||= false %>
                 <div class="code-text"><%= chapter.short_code %></div>
               </div>
               <h1><%= chapter %></h1>
-              <div class="feed"><%= link_to 'Changes', chapter_changes_path(@chapter, format: :atom), rel: "nofollow" %></div>
+              <div class="feed"><%= link_to 'Changes', chapter_changes_path(@chapter, format: :atom), rel: 'nofollow' %></div>
+              <% if TradeTariffFrontend.download_pdf_enabled? %>
+                <div class="download"><%= link_to 'Download', download_chapter_pdf_url(chapter.section.position, chapter.short_code), rel: 'nofollow', target: '_blank' %></div>
+              <% end %>
             </li>
           </ul>
         </li>
