@@ -18,30 +18,30 @@ gem "addressable", "~> 2.3"
 gem "hashie", "~> 3.4"
 
 # Assets
-gem "coffee-rails", "~> 4.2.2", ">= 4.1.0"
+gem "coffee-rails", "~> 4.2.2"
 gem "jquery-rails", "~> 4.2.2"
 gem "jquery-migrate-rails"
-gem "sass-rails"
+gem "sass-rails", ">= 6.0.0"
 gem "uglifier", "~> 2.7"
 gem "responders", "~> 3.0.0"
 gem "bootsnap", require: false
-gem "kaminari", "~> 1.0"
+gem "kaminari", "~> 1.0", ">= 1.0.1"
 
 # gov UK
-gem "govspeak", '~> 6.5.2'
+gem "govspeak", "~> 6.5.2"
 gem "i18n", '~> 0.7'
-gem "govuk_template", ">= 0.23.0"
+gem "govuk_template", ">= 0.25.0"
 gem "govuk_frontend_toolkit", "8.2.0"
 gem "govuk_elements_rails", ">= 3.1.3"
 gem "plek", "~> 1.11"
 
 gem "connection_pool", "~> 2.2"
 
-gem "nokogiri", ">= 1.10.4"
+gem "nokogiri", ">= 1.10.8"
 
 # Logging
 gem "logstash-event"
-gem "lograge"
+gem "lograge", ">= 0.11.2"
 
 # Web Server
 gem 'puma', '~> 3.4'
@@ -50,7 +50,7 @@ gem 'rack-attack'
 gem "scout_apm"
 
 # Redis
-gem "redis-rails"
+gem "redis-rails", ">= 5.0.2"
 
 # AWS
 gem "aws-sdk", "~> 2"
@@ -64,11 +64,11 @@ end
 
 group :development, :test do
   gem "pry-rails"
-  gem "dotenv-rails"
+  gem "dotenv-rails", ">= 2.7.5"
 end
 
 group :test do
-  gem "rails-controller-testing"
+  gem "rails-controller-testing", ">= 1.0.4"
   gem "webmock", "~> 3.5.0"
   gem "factory_girl_rails", "~> 4.8.0"
   gem "forgery"
