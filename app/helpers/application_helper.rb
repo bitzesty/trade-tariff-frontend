@@ -75,6 +75,18 @@ module ApplicationHelper
     end
   end
 
+  def download_latest_pdf_url
+    pdf_urls = Rails.cache.fetch('cached_latest_pdf_urls', expires_in: 24.hours) do
+      TariffPdf.latest.map(&:url)
+    end
+
+    currency = @search.attributes['currency'] || 'EUR'
+
+    pdf_urls.find do |url|
+      url =~ /#{currency.downcase}\//
+    end
+  end
+
   private
 
   def active_class_for(controller_methods:)
