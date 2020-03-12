@@ -2,7 +2,7 @@
   position: relative;
   padding: 1em;
   margin: 0 0 30px 0;
-  background-color: $grey-4;
+  background-color: $govuk-grey-4;
   &::after {
     content:"";
     display:block;
@@ -92,10 +92,10 @@
         }
       }
       a {
-        background: image-url('feed-icon-black') 0.2em 0.1em no-repeat;
+        // background: image-url('../../assets/images/feed-icon-black.png') 0.2em 0.1em no-repeat;
         padding-left: 20px;
         @media (min-width: $desktop-min-width) {
-          background: image-url('feed-icon-black') 0.2em 0.2em no-repeat;
+          // background: image-url('../../assets/images/feed-icon-black.png') 0.2em 0.2em no-repeat;
           padding-left: 25px;
         }
       }

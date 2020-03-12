@@ -1,0 +1,38 @@
+.header-wrapper {
+  max-width: 1140px !important;
+  padding-bottom: 8px;
+}
+
+.govuk-header__content {
+  #proposition-name {
+    margin-bottom: 0;
+  }
+
+  #proposition-links {
+    margin: 2px 0 0 0;
+  }
+}
+
+#content,
+#global-header-bar,
+#global-cookie-message p,
+#footer .footer-wrapper {
+  max-width: 1140px !important;
+
+  @media (min-width: 1020px) {
+    margin: 0 30px !important;
+  }
+
+  @media (min-width: 1190px) {
+    margin: 0 auto !important;
+  }
+}
+
+.heading-large a {
+  // color: $text-colour;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+  @include govuk-link-style-text;
+}

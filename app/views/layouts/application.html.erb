@@ -62,20 +62,20 @@
 
   <% #content_for :main do
   %>
-    <div id="wrapper" class="tariff service govuk-width-container">
-      <main class="govuk-main-wrapper " id="content" role="main">
+    <div id="content" class="tariff service govuk-width-container">
+      <main class="govuk-main-wrapper" role="main">
         <%= render 'shared/phase_banner' if ENV['NOTICE_BANNER'] %>
         <%= render 'shared/header' %>
         <%= yield %>
       <% if @tariff_last_updated %>
-        <div id="last-updated-at" class="related-module font-xsmall">Last updated: <%= @tariff_last_updated.strftime("%e %B %Y") %>&emsp;<a href="https://www.gov.uk/government/collections/tariff-stop-press-notices" target="_blank">View latest amendments</a></div>
+        <div id="last-updated-at" class="related-module govuk-!-font-size-16">Last updated: <%= @tariff_last_updated.strftime("%e %B %Y") %>&emsp;<a href="https://www.gov.uk/government/collections/tariff-stop-press-notices" target="_blank">View latest amendments</a></div>
       <% end %>
       </main>
     </div>
 
   <div class="">
     <main class="govuk-main-wrapper " id="main-content" role="main">
-      <h1 class="govuk-heading-xl">Default page template</h1>
+      <h1 class="heading-large govuk-heading-l">Default page template</h1>
     </main>
   </div>
 
