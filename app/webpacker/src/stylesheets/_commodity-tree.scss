@@ -58,7 +58,7 @@ article.tariff {
     left: 0;
     right: 0;
     margin: 15px;
-    color: $secondary-text-colour;
+    color: $govuk-secondary-text-colour;
     font-size: 14px;
 
     &:after {
@@ -173,7 +173,7 @@ article.tariff {
       position:relative;
       word-wrap: break-word;
       @media (min-width: $desktop-min-width) {
-        background-image: image-url("commodity-indents.png");
+        background-image: image-url("../../assets/images/commodity-indents.png");
         background-repeat: no-repeat;
       }
 
@@ -233,7 +233,7 @@ article.tariff {
           display: none;
           float: left;
           margin-right: 15px;
-          color: $text-colour;
+          color: $govuk-text-colour;
           font-weight: normal;
           font-size: 0.9em;
 
@@ -307,7 +307,7 @@ article.tariff {
   }
 
   li:not(.has_children) .description {
-    color: $link-colour;
+    color: $govuk-link-colour;
     padding-left: px($expand-arrow-space);
     margin-left: -1 * px($expand-arrow-space);
     cursor:pointer;
@@ -329,10 +329,10 @@ article.tariff {
 
   li.has_children {
     .description {
-      color: $link-colour;
+      color: $govuk-link-colour;
       padding-left: px($expand-arrow-space);
       margin-left: -1 * px($expand-arrow-space);
-      background-image: image-url("expand-collapse-transparent_commodity-tree.png");
+      background-image: image-url("../../assets/images/expand-collapse-transparent_commodity-tree.png");
       background-position: 0 4px;
       background-repeat: no-repeat;
       cursor:pointer;
@@ -354,7 +354,7 @@ article.tariff {
 
    .description:hover,
    .description-hover {
-      color: $link-hover-colour;
+      color: $govuk-link-hover-colour;
     }
 
     a .description {

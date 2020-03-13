@@ -37,7 +37,7 @@ $identifier-width-desktop: $chapter-code-width+$heading-code-width+$commodity-co
 $table-row-standard-height: 1.31579em;
 $small-table-breakpoint: 840px;
 
-
-// NOTE
-// pulling from https://github.com/alphagov/govuk-frontend/blob/v0.0.31-alpha/package/settings/_colours-applied.scss
-$border-colour: $govuk-grey-2;
+// deprecated colours
+$page-colour: #fff;
+$highlight-colour: #f8f8f8;
+$panel-colour: #dee0e2;
