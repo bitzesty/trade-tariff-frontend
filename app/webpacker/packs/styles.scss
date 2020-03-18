@@ -24,6 +24,8 @@ $govuk-fonts-path: "~govuk-frontend/govuk/assets/fonts/";
 @import "../src/stylesheets/legacy-base";
 @import "../src/stylesheets/legacy-colours-palette";
 @import "../src/stylesheets/legacy-colours-applied";
+@import "../src/stylesheets/legacy-grid-layout-conditionals";
+@import "../src/stylesheets/legacy-device-pixels";
 
 // Trade Tariff components
 @import "../src/stylesheets/variables";
@@ -44,12 +46,12 @@ $govuk-fonts-path: "~govuk-frontend/govuk/assets/fonts/";
 @import "../src/stylesheets/current_rate";
 @import "../src/stylesheets/exchange_rate";
 @import "../src/stylesheets/header_hero";
-// @import "../src/stylesheets/
-// @import "../src/stylesheets/
-// @import "../src/stylesheets/
-// @import "../src/stylesheets/
-// @import "../src/stylesheets/
-// @import "../src/stylesheets/
+@import "../src/stylesheets/popup";
+@import "../src/stylesheets/search-results";
+@import "../src/stylesheets/index-page";
+@import "../src/stylesheets/index-page-right-column";
+@import "../src/stylesheets/feedback";
+@import "../src/stylesheets/quota-search";
 // @import "../src/stylesheets/
 // @import "../src/stylesheets/
 
