@@ -26,7 +26,11 @@
           <%= condition.requirement.to_s.html_safe %>
         </td>
       <% end %>
-      <td><%= condition.action %></td>
+      <td class="numerical">
+        <%= condition.action %>
+        <br/>
+        <%= condition.duty_expression.to_s.html_safe %>
+      </td>
     </tr>
   <% end %>
   </tbody>
