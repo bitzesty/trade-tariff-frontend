@@ -37,7 +37,7 @@ gem "plek", "~> 1.11"
 
 gem "connection_pool", "~> 2.2"
 
-gem "nokogiri", ">= 1.10.4"
+gem "nokogiri", ">= 1.10.9"
 
 # Logging
 gem "logstash-event"
