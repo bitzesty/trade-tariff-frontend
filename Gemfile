@@ -22,7 +22,7 @@ gem "coffee-rails", "~> 4.2.2", ">= 4.1.0"
 gem "jquery-rails", "~> 4.2.2"
 gem "jquery-migrate-rails"
 gem "sass-rails"
-gem "uglifier", "~> 2.7"
+gem "uglifier", "~> 2.7", ">= 2.7.2"
 gem "responders", "~> 3.0.0"
 gem "bootsnap", require: false
 gem "kaminari", "~> 1.0"
@@ -44,7 +44,7 @@ gem "logstash-event"
 gem "lograge"
 
 # Web Server
-gem 'puma', '~> 3.4'
+gem 'puma', '~> 3.12', '>= 3.12.4'
 gem 'rack-cors'
 gem 'rack-attack'
 gem "scout_apm"
@@ -74,7 +74,7 @@ group :test do
   gem "forgery"
   gem "shoulda-matchers", "~> 3.1.1"
   gem "vcr", "~> 3.0.3"
-  gem "simplecov", "~> 0.15.0", require: false
+  gem "simplecov", "~> 0.15.1", require: false
   gem "rspec-rails", "~> 3.5.2"
   gem "capybara", "~> 2.18.0"
   gem "poltergeist", "~> 1.14.0"
