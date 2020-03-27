@@ -8,7 +8,7 @@ end
 
 ruby "~> 2.6.2"
 
-gem "rails", "6.0.2.1"
+gem "rails", "6.0.2.2"
 
 gem "yajl-ruby", "~> 1.3.1", require: "yajl"
 gem "multi_json", "~> 1.11"
@@ -44,7 +44,7 @@ gem "logstash-event"
 gem "lograge"
 
 # Web Server
-gem 'puma', '~> 3.4'
+gem 'puma', '~> 3.12.4'
 gem 'rack-cors'
 gem 'rack-attack'
 gem "scout_apm"
