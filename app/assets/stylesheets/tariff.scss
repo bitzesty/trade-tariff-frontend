@@ -1,13 +1,17 @@
 // GOV.UK Frontend Toolkit (alphagov/govuk_frontend_toolkit)
-@import 'colours';
-@import 'font_stack';
-@import 'measurements';
-@import 'conditionals';
-@import 'device-pixels';
-@import 'grid_layout';
+@import 'colours'; // importing 2 separate stylesheets
+@import 'font_stack'; // to check if fonts are set in the new framework
+@import 'measurements'; // I think we're not using any of these
+@import 'conditionals'; // importing already
+@import 'device-pixels'; // replacing with legacy-grid-layout-conditionals
+@import 'grid_layout'; // imported
+
+// not sure we're using these two:
 @import 'typography';
 @import 'shims';
 
+// not sure if we're using these or we already have them as part of the new framework
+// it seems that these provide some mixins which don't appear to be used for now in this project
 @import 'design-patterns/alpha-beta';
 @import 'design-patterns/buttons';
 @import 'design-patterns/breadcrumbs';
@@ -15,16 +19,18 @@
 // GOV.UK elements (alphagov/govuk_elements)
 
 // Helper functions and classes
-@import "elements/helpers";
+@import "elements/helpers"; // copied
 
 // Generic (normalize/reset.css)
-@import "elements/reset";
+@import "elements/reset"; // copied
 
 // Base (unclassed HTML elements)
 // These are predefined by govuk_template
 // If you're not using govuk_template, uncomment the line below.
 // @import "elements/govuk-template-base"
 
+// this elements styles needs to be migrated to the new framework
+// as them classes are now prepended with govuk- prefix
 // Main content container. Grid layout - rows and column widths
 @import "elements/layout";
 

@@ -1,15 +1,15 @@
 <%= form_tag quota_search_path, method: :get, class: "tariff-search quota-search #{@section_css}", id: 'new_search' do |f| %>
   <h1 class="heading-large">Search the Quotas</h1>
-  <div class="grid-row">
-    <div class="column-quarter">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-quarter">
       <%= label_tag :goods_nomenclature_item_id, 'Commodity code' %>
     </div>
     <div class="column-three-quarters">
       <%= text_field_tag :goods_nomenclature_item_id, search_form.goods_nomenclature_item_id, class: "form-control form-control--small" %>
     </div>
   </div>
-  <div class="grid-row">
-    <div class="column-quarter">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-quarter">
       <%= label_tag :geographical_area_id, 'Country' %>
     </div>
     <div class="column-three-quarters">
@@ -19,32 +19,32 @@
       </fieldset>
     </div>
   </div>
-  <div class="grid-row">
-    <div class="column-quarter">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-quarter">
       <%= label_tag :order_number, 'Order number' %>
     </div>
     <div class="column-three-quarters">
       <%= text_field_tag :order_number, search_form.order_number, class: "form-control form-control--tiny" %>
     </div>
   </div>
-  <div class="grid-row">
-    <div class="column-quarter">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-quarter">
       <%= label_tag :critical, 'Critical state' %>
     </div>
     <div class="column-three-quarters">
       <%= select_tag :critical, options_for_select(QuotaSearchForm::CRITICAL_VALUES, search_form.critical), include_blank: true, class: "form-control form-control--tiny" %>
     </div>
   </div>
-  <div class="grid-row">
-    <div class="column-quarter">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-quarter">
       <%= label_tag :status, 'Status' %>
     </div>
     <div class="column-three-quarters">
       <%= select_tag :status, options_for_select(QuotaSearchForm::STATUS_VALUES, search_form.status), include_blank: true, class: "form-control form-control--small" %>
     </div>
   </div>
-  <div class="grid-row">
-    <div class="column-quarter">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-quarter">
       <%= label_tag :years, 'Years' %>
     </div>
     <div class="column-three-quarters">
