@@ -1,5 +1,5 @@
 image:
-  name: circleci/ruby:2.6.2-node-browsers
+  name: circleci/ruby:2.6.5-node-browsers
 
 variables:
   GOVUK_APP_DOMAIN: test
@@ -27,6 +27,7 @@ test:
     - chmod 644 ~/.ssh/known_hosts
     - echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
     - chmod 400 ~/.ssh/id_rsa
+    - export OPENSSL_CONF=/etc/ssl/
     - wget https://bitbucket.org/ariya/phantomjs/downloads/$PHANTOM_JS.tar.bz2
     - tar xvjf $PHANTOM_JS.tar.bz2
     - sudo mv $PHANTOM_JS /usr/local/share
@@ -34,7 +35,7 @@ test:
     - phantomjs --version
     - sudo apt-get update -qy
     - sudo apt-get install -y build-essential nodejs rake
-    - gem install bundler
+    - gem install bundler --version "<= $BUNDLER_VERSION"
     - bundle install --jobs 4 --retry 3 --path vendor
     - bundle exec rails assets:precompile
   script:
@@ -47,26 +48,12 @@ test:
     paths:
       - vendor/ruby
 
-code_quality:
-  image: docker:stable
-  variables:
-    DOCKER_DRIVER: overlay2
-  allow_failure: true
-  services:
-    - docker:stable-dind
-  script:
-    - export DOCKER_HOST=tcp://localhost:2375
-    - export SP_VERSION=$(echo "$CI_SERVER_VERSION" | sed 's/^\([0-9]*\)\.\([0-9]*\).*/\1-\2-stable/')
-    - docker run
-        --env SOURCE_CODE="$PWD"
-        --volume "$PWD":/code
-        --volume /var/run/docker.sock:/var/run/docker.sock
-        "registry.gitlab.com/gitlab-org/security-products/codequality:$SP_VERSION" /code
-  artifacts:
-      paths: [gl-code-quality-report.json]
+include:
+  - template: Code-Quality.gitlab-ci.yml
 
 deploy_dev:
   stage: deploy
+  resource_group: paas
   script:
     - curl -v -L -o cf-cli_amd64.deb 'https://cli.run.pivotal.io/stable?release=debian64&source=github'
     - sudo dpkg -i cf-cli_amd64.deb
@@ -79,6 +66,7 @@ deploy_dev:
 
 deploy_staging:
   stage: deploy
+  resource_group: paas
   script:
     - curl -v -L -o cf-cli_amd64.deb 'https://cli.run.pivotal.io/stable?release=debian64&source=github'
     - sudo dpkg -i cf-cli_amd64.deb
@@ -91,6 +79,7 @@ deploy_staging:
 
 deploy_production:
   stage: deploy
+  resource_group: paas
   script:
     - curl -v -L -o cf-cli_amd64.deb 'https://cli.run.pivotal.io/stable?release=debian64&source=github'
     - sudo dpkg -i cf-cli_amd64.deb

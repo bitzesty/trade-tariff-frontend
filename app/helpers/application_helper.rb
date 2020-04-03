@@ -3,7 +3,7 @@ module ApplicationHelper
     text = text['content'] || text[:content] if text.is_a?(Hash)
     return '' if text.nil?
 
-    Govspeak::Document.new(text).to_sanitized_html.html_safe
+    Govspeak::Document.new(text, sanitize: true).to_html.html_safe
   end
 
   def a_z_index(letter = 'a')
@@ -67,6 +67,30 @@ module ApplicationHelper
 
   def change_currency_message
     search_date_in_future_month? ? "for a future date" : "Change currency"
+  end
+
+  def download_chapter_pdf_url(section_position, chapter_code)
+    pdf_urls = Rails.cache.fetch('cached_chapters_pdf_urls', expires_in: 24.hours) do
+      TariffPdf.chapters.map(&:url)
+    end
+
+    currency = @search.attributes['currency'] || 'EUR'
+
+    pdf_urls.find do |url|
+      url =~ /chapters\/#{currency.downcase}\/#{section_position.to_s.rjust(2, '0')}-#{chapter_code}\.pdf/
+    end
+  end
+
+  def download_latest_pdf_url
+    pdf_urls = Rails.cache.fetch('cached_latest_pdf_urls', expires_in: 24.hours) do
+      TariffPdf.latest.map(&:url)
+    end
+
+    currency = @search.attributes['currency'] || 'EUR'
+
+    pdf_urls.find do |url|
+      url =~ /#{currency.downcase}\//
+    end
   end
 
   private

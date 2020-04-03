@@ -41,7 +41,7 @@ module TradeTariffFrontend
             response.headers.
                      except(*IGNORED_UPSTREAM_HEADERS).
                      merge('X-Slimmer-Skip' => true).
-                     merge('Cache-Control' => "max-age=#{cache_max_age(response.status.to_i)}")
+                     merge('Cache-Control' => cache_control_value(response))
           )
         ).finish
       else
@@ -49,7 +49,7 @@ module TradeTariffFrontend
         #
         # 405 METHOD NOT ALLOWED
 
-        Rack::Response.new([], 405, {})
+        Rack::Response.new([], 405, {}).finish
       end
     end
 
@@ -76,6 +76,12 @@ module TradeTariffFrontend
     def api_request_path_for(path)
       @uri = URI.parse(path)
       @api_request_path_formatter.call(path)
+    end
+
+    def cache_control_value(response)
+      return 'no-cache' if @uri.path =~ /\/search_references\.(json|csv)/
+      return 'no-cache' if @uri.path =~ /\/(quotas|additional_codes|certificates|footnotes)\/search.*/
+      "max-age=#{cache_max_age(response.status.to_i)}"
     end
 
     def cache_max_age(response_code, now=nil)

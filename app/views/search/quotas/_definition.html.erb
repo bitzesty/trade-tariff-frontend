@@ -73,7 +73,7 @@
     <% end %>
   </td>
   <td>
-    <% definition.geographical_areas.uniq.each do |geographical_area| %>
+    <% definition.geographical_areas.uniq(&:id).select { |geographical_area| geographical_area.id.present? }.each do |geographical_area| %>
       <%= geographical_area&.long_description %>
       <br>
     <% end %>

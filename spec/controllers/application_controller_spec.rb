@@ -40,6 +40,7 @@ describe ApplicationController, type: :controller do
 
     after do
       ENV['BREXIT_DATE'] = nil
+      ENV['ALLOW_SEARCH'] = 'true'
     end
 
     context 'when search date is not valid' do

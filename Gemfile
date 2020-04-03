@@ -1,7 +1,14 @@
 source "https://rubygems.org"
+ruby "~> 2.6.5"
+
+git_source(:github) do |repo_name|
+  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
+  "https://github.com/#{repo_name}.git"
+end
+
 ruby "~> 2.6.2"
 
-gem "rails", "5.1.6.2"
+gem "rails", "6.0.2.2"
 
 gem "yajl-ruby", "~> 1.3.1", require: "yajl"
 gem "multi_json", "~> 1.11"
@@ -13,27 +20,29 @@ gem "hashie", "~> 3.4"
 # Assets
 gem "sass-rails", "~> 5.0.6"
 gem "uglifier", "~> 2.7"
-gem "responders", "~> 2.1", ">= 2.1.0"
+gem "responders", "~> 3.0.0"
 gem "bootsnap", require: false
 gem "kaminari", "~> 1.0"
 gem "webpacker", "~> 4.0"
 
 # gov UK
-gem "govspeak", "~> 3.6", ">= 3.6.2"
+gem "govspeak", '~> 6.5.2'
+gem "i18n", '~> 0.7'
 gem "govuk_template", ">= 0.23.0"
 gem "govuk_frontend_toolkit", "8.2.0"
 gem "govuk_elements_rails", ">= 3.1.3"
+gem "plek", "~> 1.11"
 
 gem "connection_pool", "~> 2.2"
 
-gem "nokogiri", ">= 1.10.4"
+gem "nokogiri", ">= 1.10.9"
 
 # Logging
 gem "logstash-event"
-gem "lograge", ">= 0.3.6"
+gem "lograge"
 
 # Web Server
-gem "puma"
+gem 'puma', '~> 3.12.4'
 gem 'rack-cors'
 gem 'rack-attack'
 gem "scout_apm"

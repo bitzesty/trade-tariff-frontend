@@ -11,11 +11,12 @@ module TradeTariffFrontend
   # API Endpoints of the Tariff API app that can be reached
   # via Frontend
   def accessible_api_endpoints
-    %w[sections chapters headings commodities updates monetary_exchange_rates quotas goods_nomenclatures]
+    %w[sections chapters headings commodities updates monetary_exchange_rates quotas goods_nomenclatures search_references geographical_areas]
   end
 
   def public_api_endpoints
-    %w[sections chapters headings commodities monetary_exchange_rates quotas goods_nomenclatures]
+    %w[sections chapters headings commodities monetary_exchange_rates quotas
+       goods_nomenclatures search_references additional_codes certificates footnotes geographical_areas]
   end
 
   def production?
@@ -58,6 +59,10 @@ module TradeTariffFrontend
     return true unless ENV['ALLOW_SEARCH']
 
     ENV.fetch('ALLOW_SEARCH') != 'true'
+  end
+
+  def download_pdf_enabled?
+    ENV.fetch('DOWNLOAD_PDF_ENABLED', 'false') == 'true'
   end
 
   # CDS locking and authentication

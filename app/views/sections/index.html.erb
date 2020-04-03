@@ -10,7 +10,12 @@
       <tr>
         <th scope="col">Section</th>
         <th scope="col">Chapters</th>
-        <th scope="col">Section title</th>
+        <th scope="col">
+          Section title
+          <% if TradeTariffFrontend.download_pdf_enabled? %>
+            <div class="download-pdf pull-right"><%= link_to 'Download', download_latest_pdf_url, rel: 'nofollow', target: '_blank' %></div>
+          <% end %>
+        </th>
       </tr>
     </thead>
     <tbody>
