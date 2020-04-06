@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   get 'additional_code_search', to: 'search#additional_code_search', as: :additional_code_search
   get 'certificate_search', to: 'search#certificate_search', as: :certificate_search
   get 'footnote_search', to: 'search#footnote_search', as: :footnote_search
+  get 'chemical_search', to: 'search#chemical_search', as: :chemical_search
   match "a-z-index/:letter",
         to: "search_references#show",
         via: :get,
@@ -76,7 +77,7 @@ Rails.application.routes.draw do
     end
   end
 
-  constraints(TradeTariffFrontend::ApiPubConstraints.new(TradeTariffFrontend.public_api_endpoints)) do
+  constraints TradeTariffFrontend::ApiPubConstraints.new(TradeTariffFrontend.public_api_endpoints) do
     scope 'api' do
       get ":version/*path", to: TradeTariffFrontend::RequestForwarder.new(
         host: Rails.application.config.api_host,
