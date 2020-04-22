@@ -136,7 +136,7 @@ describe "Search", js: true do
       it 'should contain link to additional code search page' do
         VCR.use_cassette('search#additional_code_search_header', record: :new_episodes) do
           visit sections_path
-          expect(page).to have_content('Add\'l Code')
+          expect(page).to have_content('Additional Code')
         end
       end
     end
@@ -146,7 +146,7 @@ describe "Search", js: true do
         VCR.use_cassette('search#additional_code_search_form', record: :new_episodes) do
           visit additional_code_search_path
 
-          expect(page).to have_content('Add\'l Code')
+          expect(page).to have_content('Additional Code')
 
           expect(page.find('#code')).to be_present
           expect(page.find('#type')).to be_present
@@ -164,7 +164,7 @@ describe "Search", js: true do
           visit additional_code_search_path
           # puts page.html
 
-          expect(page).to have_content('Add\'l Code')
+          expect(page).to have_content('Additional Code')
 
           page.find('#code').set('119')
           page.find('input[name="new_search"]').click
@@ -237,7 +237,7 @@ describe "Search", js: true do
       Rails.cache.clear
     end
 
-    let(:name) { "Chemicals" }
+    let(:name) { "CAS" }
 
     context 'chemical search link on page header' do
       it 'should contain link to certificate search page' do
