@@ -15,8 +15,7 @@ module TradeTariffFrontend
   end
 
   def public_api_endpoints
-    %w[sections chapters headings commodities monetary_exchange_rates quotas
-       goods_nomenclatures search_references additional_codes certificates footnotes geographical_areas]
+    %w[sections chapters headings commodities monetary_exchange_rates quotas goods_nomenclatures search_references additional_codes certificates footnotes geographical_areas chemicals]
   end
 
   def production?
