@@ -21,23 +21,13 @@ class SearchController < ApplicationController
             return_to = sections_url
           end
 
-          anchor = if params.dig(:search, :anchor).present?
-                     if params[:search][:anchor] == 'import'
-                       '#import'
-                     else
-                       '#export'
-                     end
-                   else
-                     ''
-          end
-
           redirect_to(return_to + anchor)
         end
       end
 
-      format.json {
+      format.json do
         render json: SearchPresenter.new(@search, @results)
-      }
+      end
 
       format.atom
     end
@@ -80,6 +70,29 @@ class SearchController < ApplicationController
     @result = CertificateSearchPresenter.new(form)
     respond_to do |format|
       format.html
+    end
+  end
+
+  def chemical_search
+    form = ChemicalSearchForm.new(params)
+    @result = ChemicalSearchPresenter.new(form)
+
+    respond_to do |format|
+      format.html
+    end
+  end
+
+  private
+
+  def anchor
+    if params.dig(:search, :anchor).present?
+      if params[:search][:anchor] == 'import'
+        '#import'
+      else
+        '#export'
+      end
+    else
+      ''
     end
   end
 end

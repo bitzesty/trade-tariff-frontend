@@ -1,0 +1,32 @@
+<%= render partial: 'search/chemicals/form', locals: { search_form: @result.search_form } %>
+<% if @result.search_result&.any? %>
+    <br />
+    <article class="search-results">
+    <h1 class="heading-medium">Chemical search results for `<em><%= "#{@result.search_form.cas || @result.search_form.name}" %></em>`</h1>
+    <ul class="results-subset js-results-subset">
+      <% @result.search_result.each do |chemical| %>
+        <li>
+          <div>
+            <strong>
+              <%= chemical.cas %>
+            </strong>
+            <%= chemical.name %>
+          </div>
+
+          <%= render partial: 'search/common/goods_nomenclature', collection: @result.search_result.first.goods_nomenclatures.map{|gn| GoodsNomenclature.new(gn)} %>
+
+        </li>
+      <% end %>
+    </ul>
+    <%= paginate @result.search_result %>
+  </article>
+<% elsif @result.with_errors %>
+  <article class="search-results">
+    <h1 class="heading-medium">Sorry, there is a problem with the search query. Please specify one or more search criteria.</h1>
+  </article>
+<% elsif @result.search_form.present? %>
+  <br/>
+  <article class="search-results">
+    <h1 class="heading-medium">There are no matching results</h1>
+  </article>
+<% end %>
