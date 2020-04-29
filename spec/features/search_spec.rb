@@ -136,7 +136,7 @@ describe "Search", js: true do
       it 'should contain link to additional code search page' do
         VCR.use_cassette('search#additional_code_search_header', record: :new_episodes) do
           visit sections_path
-          expect(page).to have_content('Additional code')
+          expect(page).to have_content('Additional Code')
         end
       end
     end
@@ -146,7 +146,7 @@ describe "Search", js: true do
         VCR.use_cassette('search#additional_code_search_form', record: :new_episodes) do
           visit additional_code_search_path
 
-          expect(page).to have_content('Additional code')
+          expect(page).to have_content('Additional Code')
 
           expect(page.find('#code')).to be_present
           expect(page.find('#type')).to be_present
@@ -162,8 +162,9 @@ describe "Search", js: true do
       it 'should perform search and render results' do
         VCR.use_cassette('search#additional_code_search_results', record: :new_episodes) do
           visit additional_code_search_path
+          # puts page.html
 
-          expect(page).to have_content('Additional code')
+          expect(page).to have_content('Additional Code')
 
           page.find('#code').set('119')
           page.find('input[name="new_search"]').click
@@ -225,6 +226,77 @@ describe "Search", js: true do
             expect(page).to have_content('C119')
             expect(page).to have_content('Authorised Release Certificate — EASA Form 1 (Appendix I to Annex I to Regulation (EU) No 748/2012), or equivalent certificate')
             expect(page).to have_content('Carbon dioxide')
+          end
+        end
+      end
+    end
+  end
+  
+  context 'chemical search' do
+    before(:each) do
+      Rails.cache.clear
+    end
+
+    let(:name) { "CAS" }
+
+    context 'chemical search link on page header' do
+      it 'should contain link to certificate search page' do
+        VCR.use_cassette('search#chemical_search_header', record: :new_episodes) do
+          visit sections_path
+          expect(page).to have_content(name)
+        end
+      end
+    end
+
+    context 'chemical search form' do
+      it 'should contain chemical search params inputs' do
+        VCR.use_cassette('search#chemical_search_form', record: :new_episodes) do
+          visit chemical_search_path
+
+          expect(page).to have_content(name)
+
+          expect(page.find('#cas')).to be_present
+          expect(page.find('#name')).to be_present
+          expect(page.find('input[name="new_search"]')).to be_present
+
+          expect(page).not_to have_content('Chemical search results')
+        end
+      end
+    end
+
+    context 'chemical search results' do
+      it 'should perform search by CAS number and render results' do
+        VCR.use_cassette('search#chemical_cas_search_results', record: :new_episodes) do
+          visit chemical_search_path
+
+          expect(page).to have_content(name)
+
+          page.find('#cas').set('121-17-5')
+          page.find('input[name="new_search"]').click
+
+          using_wait_time 10 do
+            expect(page).to have_content('Chemical search results for `121-17-5`')
+            expect(page).to have_content('4-chloro-alpha,alpha,alpha-trifluoro-3-nitrotoluene')
+            expect(page).to have_content('2904990000')
+            expect(page).to have_content('Other')
+          end
+        end
+      end
+
+      it 'should perform search by chemical name and render results' do
+        VCR.use_cassette('search#chemical_name_search_results', record: :new_episodes) do
+          visit chemical_search_path
+
+          expect(page).to have_content(name)
+
+          page.find('#name').set('benzene')
+          page.find('input[name="new_search"]').click
+
+          using_wait_time 10 do
+            expect(page).to have_content('Chemical search results for `benzene`')
+            expect(page).to have_content('22199-08-2')
+            expect(page).to have_content('4-amino-N-(pyrimidin-2(1H)-ylidene-κN 1)benzenesulfonamidato-κOsilver')
+            expect(page).to have_content('2843290000')
           end
         end
       end
