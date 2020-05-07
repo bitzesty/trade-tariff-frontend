@@ -631,3 +631,50 @@ describe SearchController, "GET to #certificate_search", type: :controller, vcr:
     end
   end
 end
+
+describe SearchController, "GET to #chemical_search", type: :controller, vcr: { cassette_name: 'search#chemical_search', record: :new_episodes } do
+  before(:each) do
+    Rails.cache.clear
+  end
+
+  context 'without search params' do
+    render_views
+
+    before(:each) do
+      get :chemical_search, format: :html
+    end
+
+    it { should respond_with(:success) }
+    it 'should display no results' do
+      expect(response.body).not_to match /Chemical search results/
+    end
+  end
+
+  context 'search by CAS number' do
+    render_views
+
+    before(:each) do
+      get :chemical_search, params: {cas: '121-17-5'}, format: :html
+    end
+
+    it { should respond_with(:success) }
+    it 'should display results' do
+      expect(response.body).to match /Chemical search results/
+      expect(response.body).to match /121-17-5/
+    end
+  end
+
+  context 'search by (partial) chemical name' do
+    render_views
+
+    before(:each) do
+      get :chemical_search, params: {name: 'isopropyl'}, format: :html
+    end
+
+    it { should respond_with(:success) }
+    it 'should display results' do
+      expect(response.body).to match /Chemical search results/
+      expect(response.body).to match /isopropyl/
+    end
+  end
+end

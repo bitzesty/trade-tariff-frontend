@@ -61,6 +61,10 @@ module ApplicationHelper
     "active" if params[:action] == 'quota_search'
   end
 
+  def chemical_search_active_class
+    "active" if params[:action] == 'chemical_search'
+  end
+
   def currency_options
     options = [%w[Euro EUR]]
     options << ['British Pound', 'GBP'] unless search_date_in_future_month?
