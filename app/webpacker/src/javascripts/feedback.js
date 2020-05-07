@@ -1,6 +1,4 @@
 (function() {
-  console.log('feedbackForm');
-  console.log($('.feedback-form'));
   $('.feedback-form').submit(function() {
       $('.error-message').remove();
       var msg = $('#message');
@@ -16,10 +14,10 @@
           data: data
       }).success(function(json){
           form[0].reset();
-          $('<h1 class="heading-large thanks">Thanks you for your feedback</h1>')
+          $('<h1 class="govuk-heading-l thanks">Thanks you for your feedback</h1>')
               .hide().prependTo(form).fadeIn(1000);
           setTimeout(function(){
-              $(".heading-large.thanks").fadeOut("slow");
+              $(".govuk-heading-l.thanks").fadeOut("slow");
           }, 10000)
       });
       return false;

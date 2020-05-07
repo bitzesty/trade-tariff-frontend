@@ -1,5 +1,5 @@
-<tr>
-  <td class="numeral"><%= section.numeral %></td>
-  <td class="chapters"><%= section.chapters_title %></td>
-  <td class="title"><%= link_to section, section_path(section, request.query_parameters.symbolize_keys), title: "Section #{section.position}" %></td>
+<tr class="govuk-table__row">
+  <td class="numeral govuk-table__cell"><%= section.numeral %></td>
+  <td class="chapters govuk-table__cell"><%= section.chapters_title %></td>
+  <td class="title govuk-table__cell"><%= link_to section, section_path(section, request.query_parameters.symbolize_keys), title: "Section #{section.position}" %></td>
 </tr>

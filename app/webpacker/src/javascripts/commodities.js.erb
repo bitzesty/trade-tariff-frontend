@@ -48,7 +48,7 @@
                     listAction = (action === 'open') ? 'removeClass' : 'addClass',
                     branchAction = (action === 'open') ? 'addClass' : 'removeClass';
 
-                $childList[listAction]('visuallyhidden');
+                $childList[listAction]('govuk-visually-hidden');
                 $branch[branchAction]('open').attr('title',  titleTxt[action]);
               };
 
@@ -110,13 +110,13 @@
 
                   // hide all child lists
                   if (!isCommodityTree) {
-                      $childList.addClass('visuallyhidden');
+                      $childList.addClass('govuk-visually-hidden');
                   }
 
                   // allow expansion based on clicking
                   $branchSwitches.eq(idx).on('click', function(e) {
                       e.stopPropagation();
-                      if ($childList.is('.visuallyhidden')) {
+                      if ($childList.is('.govuk-visually-hidden')) {
                           clickBranch($(this), $childList, 'open');
                           adjustCommodityInfoHeights();
                       }
@@ -255,7 +255,7 @@
         @description Adds popup behaviour to tariff table cells
       */
       tablePopup : {
-          html : ['<div class="info-content"><h2 id="dialog-title" class="visuallyhidden">',
+          html : ['<div class="info-content"><h2 id="dialog-title" class="govuk-visually-hidden">',
                   '</h2>' +
                       '<p class="close"><a href="#">Close</a></p>' +
                       '<div class="info-inner">' +

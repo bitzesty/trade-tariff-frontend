@@ -1,7 +1,7 @@
 <% if controller_name == 'commodities' && action_name == 'show' || controller_name == 'headings' && action_name == 'show' && @heading.declarable? %>
   <header>
-    <a class="back-to-previous" href="<%= @back_path %>">Back <span class="visuallyhidden"> to the list of commodities</span></a>
-    <h1 class="heading-large">Commodity information for <%= (@commodity || @heading).code %></h1>
+    <a class="govuk-back-link" href="<%= @back_path %>">Back <span class="govuk-visually-hidden"> to the list of commodities</span></a>
+    <h1 class="govuk-heading-l">Commodity information for <%= (@commodity || @heading).code %></h1>
     <%= form_tag perform_search_path, method: :get, class: "tariff-search #{@section_css}", id: "new_search" do |f| %>
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-full">
@@ -15,27 +15,27 @@
       </div>
     <% end %>
   </header>
-<% elsif %w(search search_references exchange_rates).exclude?(controller_name) && action_name != 'quota_search' %>
+<% elsif %w(search search_references exchange_rates pages errors feedback).exclude?(controller_name) && action_name != 'quota_search' %>
   <header>
-    <h1 class="heading-large govuk-heading-l"><a href="<%= sections_path %>">Trade Tariff: look up commodity codes, duty and VAT rates</a></h1>
+    <h1 class="govuk-heading-l govuk-heading-l"><a href="<%= sections_path %>">Trade Tariff: look up commodity codes, duty and VAT rates</a></h1>
   </header>
   <%= form_tag perform_search_path, method: :get, class: "tariff-search #{@section_css}", id: "new_search" do |f| %>
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
         <div class="search-header js-search-header">
           <div class="searchfield govuk-form-group">
-            <fieldset class="govuk-search-input">
+            <fieldset class="govuk-fieldset govuk-search-input">
               <%= label_tag :q, "Search the tariff", class: 'govuk-label' %>
-              <%= select_tag :q, options_for_select([@search.q ]), name: 'q', class: 'js-commodity-picker-select form-control' %>
+              <%= select_tag :q, options_for_select([@search.q ]), name: 'q', class: 'js-commodity-picker-select govuk-input' %>
             </fieldset>
-            <fieldset class="search-submit">
+            <fieldset class="govuk-fieldset search-submit">
               <input class="govuk-button" type="submit" name="new_search" value="Search">
             </fieldset>
           </div>
           <%= render 'shared/search_date_picker' %>
           <%= render 'shared/currency_picker' %>
         </div>
-        <fieldset class="flash">
+        <fieldset class="govuk-fieldset flash">
           <% flash.each do |key, value| %>
             <div class="alert alert-<%= key %>"><%= value %></div>
           <% end %>
@@ -44,3 +44,5 @@
     </div>
   <% end %>
 <% end %>
+
+<%= breadcrumbs %>

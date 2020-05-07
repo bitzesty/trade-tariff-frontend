@@ -2,7 +2,7 @@
   li {
     display: inline-block;
     a {
-      @extend .bold-small;
+      @include govuk-font(16, $weight: bold);
       color: #005EA5;
       display: inline-block;
       padding: 15px 5px 10px 5px;
@@ -29,6 +29,7 @@
 
 .pagination {
   padding: 0;
+  text-align: center;
 }
 .pagination__item {
   display: inline-block;

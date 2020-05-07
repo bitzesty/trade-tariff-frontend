@@ -18,7 +18,7 @@
     var queryTerm = s2Params.term,
         synonymsCount = s2Data.results.length;
 
-    this.trackEvent('synonyms', queryTerm, synonymsCount);
+    GOVUK.analytics.trackEvent('synonyms', queryTerm, synonymsCount);
   };
 
   SearchQueriesLogger.prototype.chooseQueryOption = function(e, select2Event){
@@ -27,7 +27,7 @@
 
     var actionName = synonymHit ? 'SynonymHit' : 'NoSynonymHit';
 
-    this.trackEvent(actionName, optionChosen);
+    GOVUK.analytics.trackEvent(actionName, optionChosen);
   };
 
   SearchQueriesLogger.prototype.trackEvent = function(action, label, value){

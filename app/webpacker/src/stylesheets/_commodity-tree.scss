@@ -158,6 +158,7 @@ article.tariff {
 
   ul.commodities {
     @include contain-float;
+    padding: 0;
     margin: 1em;
     position:relative;
     font-size: 14px;
@@ -173,7 +174,7 @@ article.tariff {
       position:relative;
       word-wrap: break-word;
       @media (min-width: $desktop-min-width) {
-        background-image: image-url("../../assets/images/commodity-indents.png");
+        background-image: url("../images/commodity-indents.png");
         background-repeat: no-repeat;
       }
 
@@ -306,7 +307,12 @@ article.tariff {
     background-position: 0 -100px;
   }
 
+  em {
+    @include govuk-font($size: 14, $weight: normal);
+  }
+
   li:not(.has_children) .description {
+    @include govuk-font($size: 16, $weight: normal);
     color: $govuk-link-colour;
     padding-left: px($expand-arrow-space);
     margin-left: -1 * px($expand-arrow-space);
@@ -329,10 +335,11 @@ article.tariff {
 
   li.has_children {
     .description {
+      @include govuk-font($size: 16, $weight: normal);
       color: $govuk-link-colour;
       padding-left: px($expand-arrow-space);
       margin-left: -1 * px($expand-arrow-space);
-      background-image: image-url("../../assets/images/expand-collapse-transparent_commodity-tree.png");
+      background-image: url("../images/expand-collapse-transparent_commodity-tree.png");
       background-position: 0 4px;
       background-repeat: no-repeat;
       cursor:pointer;

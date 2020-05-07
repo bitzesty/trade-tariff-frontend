@@ -15,26 +15,24 @@
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
-// import jQuery from 'jquery'
-// window.$ = jQuery
-// window.jQuery = jQuery
-console.log('==jQuery.fn.jquery');
-console.log(jQuery.fn.jquery);
+import jQuery from 'jquery'
+window.$ = jQuery;
+window.jQuery = jQuery;
 
 require('popup');
 require('select2');
 require('jquery-migrate');
 require('jquery.history');
+require('jquery-next-id/jquery.nextid');
+require('jquery-roving-tabindex/jquery.rovingtabindex');
 require('jquery-tabs/jquery.tabs');
 require('mark.js/dist/jquery.mark');
+require('alphagov-static/app/assets/javascripts/analytics/pii');
 require('alphagov-static/app/assets/javascripts/analytics_toolkit/google-analytics-universal-tracker');
 require('alphagov-static/app/assets/javascripts/analytics_toolkit/analytics');
 require('alphagov-static/app/assets/javascripts/analytics_toolkit/govuk-tracker');
 require('alphagov-static/app/assets/javascripts/analytics_toolkit/print-intent');
 require('alphagov-static/app/assets/javascripts/analytics_toolkit/error-tracking');
-
-console.log('==$.fn.mark');
-console.log($.fn.mark);
 
 
 
@@ -52,15 +50,14 @@ console.log($.fn.mark);
 // require('../../../node_modules/jquery-history/dist/jquery.history');
 // require('jquery-history/dist/jquery.history');
 
-// require('../src/analytics-init.js');
+require('../src/javascripts/analytics-init.js');
 require('../src/javascripts/analytics-search-queries.js');
 require('../src/javascripts/commodities.js');
 // TODO test:
 require('../src/javascripts/exchange_rate.js');
 require('../src/javascripts/feedback.js');
 require('../src/javascripts/quota-search.js');
-// CANT IMPORT!
-// require('../src/stop-scrolling-at-footer.js');
+require('../src/javascripts/stop-scrolling-at-footer.js');
 
 import { initAll } from 'govuk-frontend';
 
@@ -81,5 +78,3 @@ $(window).on("debouncedresize", function( event ) {
 $(window).on("resize", function( event ) {
     console.log('NoDebounced');
 });
-
-console.log('Hello World from Webpacker')

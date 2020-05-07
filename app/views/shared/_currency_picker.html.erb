@@ -1,5 +1,5 @@
 <% if TradeTariffFrontend.currency_picker_enabled? %>
-  <fieldset class="js-currency-picker govuk-!-font-size-16 govuk-form-group inline">
+  <fieldset class="govuk-fieldset js-currency-picker govuk-!-font-size-16 govuk-form-group inline">
     <span class="fields">
       <select id="tariff_currency" name="currency">
         <%= options_for_select(currency_options, @search.currency) %>

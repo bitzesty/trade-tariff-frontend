@@ -1,5 +1,5 @@
 .chapter-code, .heading-code, .commodity-code {
-  font-size: 14px;
+  @include govuk-font($size: 14, $weight: normal);
   display: inline-block;
   position: relative;
   height: 1.5625em;

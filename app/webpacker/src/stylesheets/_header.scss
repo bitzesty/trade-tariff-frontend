@@ -1,3 +1,7 @@
+.tariff-search {
+  margin-bottom: 20px;
+}
+
 .search-header {
   .searchfield {
     position: relative;
@@ -42,7 +46,7 @@
     width: 50px;
     height: 50px;
     text-indent: -5000px;
-    background-image: url('../../assets/images/search-button.png');
+    background-image: url('../images/search-button.png');
     background-repeat: no-repeat;
     background-position: -12.5% 50%;
   }
@@ -58,26 +62,6 @@
     @include govuk-font(false);
     padding-top: 0;
     padding-bottom: 0;
-  }
-}
-
-a.back-to-previous {
-  @include govuk-text-colour;
-
-  font-size: 14px;
-  display: block;
-  text-decoration: none;
-  border-bottom: #0b0c0c 1px solid;
-  width: 2.25em;
-  background: image-url('../../assets/images/icon-caret-left.png') left 0.2em no-repeat;
-  padding-left: 0.75em;
-  text-align: right;
-  margin: 2em 0 0 0;
-  overflow: hidden;
-  &:active, &:hover, &:focus {
-    color: $govuk-text-colour;
-  }
-  @media (min-width: mq-get-breakpoint-width(desktop)) {
-    font-size: 16px;
+    border: none;
   }
 }

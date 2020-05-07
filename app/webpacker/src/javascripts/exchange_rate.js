@@ -17,7 +17,7 @@ $(document).ready(function() {
     $("html,body").animate({
       scrollTop: $(".contents-list h2").offset().top - 50
     }, 500);
-  })
+  });
 
   $(window).scroll(function() {
     var target = $(".contents-list h2");

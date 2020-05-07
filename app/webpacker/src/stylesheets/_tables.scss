@@ -34,9 +34,16 @@ table.tariff-zebra {
 table.small-table {
   @include tariff-zebra();
   margin: 0 0 30px 0;
+  caption {
+    margin-top: 40px;
+  }
+  p {
+    @include govuk-font($size: 14, $weight: normal);
+  }
   th, td {
     font-size: 12px;
     padding: 0.63158em 0.526315em 0.47368em 0.526315em;
+    text-align: left;
     @media (min-width: $small-table-breakpoint) {
       font-size: 14px;
     }
@@ -119,12 +126,14 @@ table.small-table {
 
     /* Expanding table-cell content */
     dl {
+      margin: 0;
+
       dt {
         cursor:pointer;
         &.has_children {
           padding-left: px($expand-arrow-space);
-          background-image: image-url("../../assets/images/expand-collapse-transparent.png");
-          background-position: 0px 2px;
+          background-image: url("../images/expand-collapse-transparent.png");
+          background-position: 0 4px;
           background-repeat: no-repeat;
         }
         &.open {
@@ -132,9 +141,11 @@ table.small-table {
         }
       }
       dd {
+        margin: 0;
         ul {
           margin-top: 1em;
           margin-left: px($expand-arrow-space);
+          font-size: 14px;
           li {
             margin-top: 0.5em;
           }
@@ -154,22 +165,22 @@ table.small-table {
     }
   }
 }
-table.section-browser {
-  @include tariff-table();
-  tr {
-    &:first-of-type {
-      .heading-subtitle {
-        padding-top: 0;
-      }
-    }
-    .heading-subtitle {
-      padding-top: 2em;
-    }
-    td:nth-of-type(2) {
-      padding: 0.85em 0;
-      @media (min-width: $desktop-min-width) {
-        padding: 0.75em 0;
-      }
-    }
-  }
-}
+//table.section-browser {
+//  @include tariff-table();
+//  tr {
+//    &:first-of-type {
+//      .heading-subtitle {
+//        padding-top: 0;
+//      }
+//    }
+//    .heading-subtitle {
+//      padding-top: 2em;
+//    }
+//    td:nth-of-type(2) {
+//      padding: 0.85em 0;
+//      @media (min-width: $desktop-min-width) {
+//        padding: 0.75em 0;
+//      }
+//    }
+//  }
+//}

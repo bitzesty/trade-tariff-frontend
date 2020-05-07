@@ -1,17 +1,17 @@
 <% if heading.leaf? %>
-  <tr>
-    <td>
+  <tr class="govuk-table__row">
+    <td class="govuk-table__cell">
       <div class="heading-code">
         <div class="code-text"><%= heading.display_short_code %></div>
       </div>
     </td>
-    <td>
+    <td class="govuk-table__cell">
       <%= link_to heading.formatted_description.html_safe, heading_path(heading, request.query_parameters.symbolize_keys) %>
     </td>
   </tr>
 <% else %>
-  <tr>
-    <td class="heading-subtitle" colspan="2"><%= heading %></td>
+  <tr class="govuk-table__row">
+    <td class="heading-subtitle govuk-table__cell" colspan="2"><%= heading %></td>
   </tr>
   <%= render heading.children %>
 <% end %>

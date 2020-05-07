@@ -15,24 +15,19 @@
 }
 
 .notes {
+  @include govuk-font($size: 19, $weight: normal);
+  margin-bottom: 60px;
+
   h2, li {
     margin-bottom: 1em;
+    @include govuk-font($size: 19, $weight: normal);
   }
   ul {
     margin: 1em 0;
     padding: 0 0 0 1.25em;
+    list-style: none;
     @media (min-width: $desktop-min-width) {
       padding: 0 0 0 2.5em;
     }
   }
-}
-
-// Match styles to GOV.UK toolkit
-article.notes h2 {
-  @extend .heading-small;
-}
-
-table caption.heading-medium,
-table caption.heading-small {
-  display: table-caption;
 }

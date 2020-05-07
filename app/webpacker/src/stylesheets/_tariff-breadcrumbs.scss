@@ -1,7 +1,7 @@
 .tariff-breadcrumbs {
   position: relative;
   padding: 1em;
-  margin: 0 0 30px 0;
+  margin: 0 0 20px 0;
   background-color: $govuk-grey-4;
   &::after {
     content:"";
@@ -16,6 +16,7 @@
       position: relative;
       list-style: none;
       padding-left: $breadcrumb-indent;
+      margin: 0;
       @media (min-width: $desktop-min-width) {
         padding-left: $breadcrumb-indent-desktop;
       }
@@ -68,6 +69,11 @@
         h1 {
           display: inline;
         }
+        p {
+          display: inline;
+          margin-bottom: 0;
+          @include govuk-typography-responsive(16, $important: true);
+        }
       }
     }
     @media (max-width: $mobile-max-width) {
@@ -92,10 +98,10 @@
         }
       }
       a {
-        background: image-url('../../assets/images/feed-icon-black.png') 0.2em 0.1em no-repeat;
+        background: url('../images/feed-icon-black.png') 0.2em 0.1em no-repeat;
         padding-left: 20px;
         @media (min-width: $desktop-min-width) {
-          background: image-url('../../assets/images/feed-icon-black.png') 0.2em 0.2em no-repeat;
+          background: url('../images/feed-icon-black.png') 0.2em 0.2em no-repeat;
           padding-left: 25px;
         }
       }
@@ -119,11 +125,11 @@
     }
   }
   a {
-    background: image-url('icon-file-download') 0.2em 0.1em no-repeat;
+    background: url('../images/icon-file-download.png') 0.2em 0.1em no-repeat;
     background-size: 14px 14px;
     padding-left: 20px;
     @media (min-width: $desktop-min-width) {
-      background: image-url('icon-file-download') 0.2em 0.2em no-repeat;
+      background: url('../images/icon-file-download.png') 0.2em 0.2em no-repeat;
       background-size: 16px 16px;
       padding-left: 25px;
     }

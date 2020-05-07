@@ -1,5 +1,4 @@
 .country-picker.box {
-  width: 100%;
   margin-bottom: 30px;
   .country-picker-container {
     display: table;
@@ -17,10 +16,10 @@
     select, .select2 {
       display: table-cell;
       width: 100%; /* Also set in JavaScript for Select2 compatibility */
-      font-size: 14px;
+      @include govuk-font(14, $weight: normal);
       float:left;
       @media (min-width: $desktop-min-width) {
-        font-size: 16px;
+        @include govuk-font(16, $weight: normal);
         float: none;
       }
       .select2-selection__rendered {
@@ -54,5 +53,12 @@
   .search-submit {
     width: auto;
     margin-top: 0.5em;
+  }
+}
+
+.select2-container {
+  @include govuk-font(16, $weight: normal);
+  .select2-search__field {
+    @include govuk-font(16, $weight: normal);
   }
 }

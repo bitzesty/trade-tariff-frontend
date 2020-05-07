@@ -1,22 +1,22 @@
-<h1 class="heading-medium">Search results for &lsquo;<%= @search.q %>&rsquo;</h1>
+<h1 class="govuk-heading-m">Search results for &lsquo;<%= @search.q %>&rsquo;</h1>
 <article class="search-results">
   <% if @results.any? %>
     <% if @results.reference_match.commodities.any? %>
-      <h2 class="heading-small">Commodities matching &lsquo;<%= @search %>&rsquo;</h2>
+      <h2 class="govuk-heading-s">Commodities matching &lsquo;<%= @search %>&rsquo;</h2>
       <ul class="results-subset js-results-subset">
         <%= render partial: 'search/commodity', collection: @results.reference_match.commodities %>
       </ul>
     <% end %>
 
     <% if @results.reference_matches_by_chapter.any? %>
-      <h2 class="heading-small">Results matching &lsquo;<%= @search %>&rsquo;</h2>
+      <h2 class="govuk-heading-s">Results matching &lsquo;<%= @search %>&rsquo;</h2>
       <ul class="results-subset js-results-subset">
         <%= render partial: 'search/result', collection: @results.reference_matches_by_chapter %>
       </ul>
     <% end %>
 
     <% if @results.gn_matches_without_duplicates_by_chapter.any? %>
-      <h2 class="heading-small">Other results containing the term &lsquo;<%= @search %>&rsquo;</h2>
+      <h2 class="govuk-heading-s">Other results containing the term &lsquo;<%= @search %>&rsquo;</h2>
       <ul class="results-subset js-results-subset">
         <%= render partial: 'search/result', collection: @results.gn_matches_without_duplicates_by_chapter %>
 
@@ -24,14 +24,14 @@
     <% end %>
 
     <% if @results.reference_match.sections.any? %>
-      <h2 class="heading-small">Sections matching &lsquo;<%= @search %>&rsquo;</h2>
+      <h2 class="govuk-heading-s">Sections matching &lsquo;<%= @search %>&rsquo;</h2>
       <ul class="results-subset js-results-subset">
         <%= render partial: 'search/section', collection: @results.reference_match.sections %>
       </ul>
     <% end %>
   <% else %>
     <p>There are no results matching your query.</p>
-    <div class="panel panel-border-wide">
+    <div class="panel panel-border-wide govuk-panel">
       <p><strong>Please search again and consider:</strong></p>
       <ul class="list list-bullet">
         <li>Searching what the item is used for or made from</li>
@@ -42,7 +42,7 @@
     </div>
   <% end %>
   <div>
-    <h1 class="heading-medium">Can't find what you are looking for?</h1>
+    <h1 class="govuk-heading-m">Can't find what you are looking for?</h1>
     <p>Please let us know in the <a href="https://forum.trade-tariff.service.gov.uk">Trade Tariff Forum</a>.</p>
   </div>
 </article>

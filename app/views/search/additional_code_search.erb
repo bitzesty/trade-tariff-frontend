@@ -2,7 +2,7 @@
 <% if @result.search_result&.any? %>
   <br/>
   <article class="search-results">
-    <h1 class="heading-medium">Additional code search results</h1>
+    <h1 class="govuk-heading-m">Additional code search results</h1>
     <ul class="results-subset js-results-subset">
       <% @result.search_result.each do |additional_code| %>
         <li>
@@ -26,11 +26,11 @@
   </article>
 <% elsif @result.with_errors %>
   <article class="search-results">
-    <h1 class="heading-medium">Sorry, there is a problem with the search query. Please specify one or more search criteria.</h1>
+    <h1 class="govuk-heading-m">Sorry, there is a problem with the search query. Please specify one or more search criteria.</h1>
   </article>
 <% elsif @result.search_form.present? %>
   <br/>
   <article class="search-results">
-    <h1 class="heading-medium">There are no matching results</h1>
+    <h1 class="govuk-heading-m">There are no matching results</h1>
   </article>
 <% end %>

@@ -1,8 +1,10 @@
 class PagesController < ApplicationController
-  layout "pages"
+  before_action do
+    @tariff_last_updated = nil
+  end
 
   def index
-    @section_css = 'visuallyhidden'
+    @section_css = 'govuk-visually-hidden'
     @meta_description = I18n.t('meta_description')
   end
 

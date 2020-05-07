@@ -1,71 +1,45 @@
-/*
-  NOTE
-  copying this mixing from legacy framework
-  this is what docs say:
-  Deprecated: you cannot apply grid properties to other elements using GOV.UK Frontend
-
-  https://github.com/alphagov/govuk-frontend/blob/v0.0.32/src/helpers/_grid.scss
-*/
-
-@mixin govuk-grid-column(
-  $width: null,
-  $float: null,
-  $at: null,
-  $class: null) {
-
-  $class: "govuk-grid-column" !default;
-
-  $width: if($width != null, $width, full);
-  $float: if($float != null, $float, left) !default;
-  $at: if($at != null, $at, tablet) !default;
 
 
-  .#{$class}-#{$width} {
-    box-sizing: border-box;
-    @if $at != desktop {
-      width: 100%;
-    }
-    padding: 0 $govuk-gutter-half;
-    @include mq($from: $at) {
-      width: grid-width($width);
-      float: $float;
-    }
-  }
-}
-
-// TODO remove comment?
-// what is happening with these?
-// should be migrated -
-// used only once?
-@mixin govuk-media-query($args...) {
-  @include mq($args...) {
-    @content;
-  };
-}
+$govuk-grid-widths: map-merge($govuk-grid-widths, (one-eighth: 12.5%, seven-eighth: 87.5%));
 
 .column-two-quarters {
-  @include govuk-grid-column(2 / 4);
+  @include govuk-grid-column(one-half);
+}
+
+.column-one-half {
+  @include govuk-grid-column(one-half);
+}
+
+.column-two-thirds {
+  @include govuk-grid-column(two-thirds);
 }
 
 .column-three-quarters {
-  @include govuk-grid-column(3 / 4);
+  @include govuk-grid-column(three-quarters);
 }
 
 .column-one-quarter-desktop-only {
   @media (min-width: $desktop-min-width) {
-    @include govuk-grid-column(1 / 4);
+    @include govuk-grid-column(one-quarter, $at: desktop);
   }
 }
 
 .column-three-quarters-desktop-only {
   @media (min-width: $desktop-min-width) {
-    @include govuk-grid-column(3 / 4);
+    @include govuk-grid-column(three-quarters, $at: desktop);
   }
 }
 
-
 .column-full-mobile-only {
   @include govuk-media-query(false, $desktop-min-width - 1px) {
-    @include govuk-grid-column(1);
+    @include govuk-grid-column(full, $at: mobile);
   }
+}
+
+.column-one-eighth {
+  @include govuk-grid-column(one-eighth);
+}
+
+.column-seven-eighth {
+  @include govuk-grid-column(seven-eighth);
 }

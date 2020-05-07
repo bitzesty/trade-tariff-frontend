@@ -1,28 +1,11 @@
 
-
-// .column-eighth,
-// .column-one-eighth {
-//   @include grid-column(1 / 8);
-// }.column-seven-eighth {
-//   @include grid-column(7 / 8);
-// }
- .pagination {
-   text-align: center;
- }
-
 $govuk-global-styles: true;
 $govuk-fonts-path: "~govuk-frontend/govuk/assets/fonts/";
-// $govuk-fonts-path: "govuk-frontend/govuk/assets/fonts/";
 
 @import "govuk-frontend/govuk/all";
 
 // Third party
 @import "select2";
-@import "../src/stylesheets/vendor/sass-mq";
-
-// TODO
-// maybe change the naming of the following?
-// maybe put them in a single folder
 
 // 'legacy' GOVUK styles
 // TODO not using this anymore:
@@ -31,10 +14,6 @@ $govuk-fonts-path: "~govuk-frontend/govuk/assets/fonts/";
 @import "../src/stylesheets/legacy-colours-applied";
 @import "../src/stylesheets/legacy-grid-layout-conditionals";
 @import "../src/stylesheets/legacy-device-pixels";
-
-// 'legacy' GOVUK elements styles
-@import "../src/stylesheets/vendor/elements/helpers";
-@import "../src/stylesheets/vendor/elements/reset";
 
 // Trade Tariff components
 @import "../src/stylesheets/variables";
@@ -61,10 +40,6 @@ $govuk-fonts-path: "~govuk-frontend/govuk/assets/fonts/";
 @import "../src/stylesheets/index-page-right-column";
 @import "../src/stylesheets/feedback";
 @import "../src/stylesheets/quota-search";
-// @import "../src/stylesheets/
-// @import "../src/stylesheets/
-
-
-@import "../src/stylesheets/mask";
-@import "../src/stylesheets/tariff-reloaded"; // TODO rename me
-// @import "tariff.scss";
+@import "../src/stylesheets/panel";
+@import "../src/stylesheets/pagination";
+@import "../src/stylesheets/tariff-custom";

@@ -1,8 +1,8 @@
 <%= render partial: 'search/quotas/form', locals: { search_form: @result.search_form } %>
 <% if @result.search_result&.any? %>
   <article class="search-results">
-    <table class="small-table quota-results">
-      <h1 class="heading-medium">Quota search results</h1>
+    <table class="small-table quota-results govuk-table">
+      <h1 class="govuk-heading-m">Quota search results</h1>
       <thead>
         <tr>
           <th>Order number</th>
@@ -21,11 +21,11 @@
   </article>
 <% elsif @result.search_form.large_result? || @result.with_errors %>
   <article class="search-results">
-    <h1 class="heading-medium">Sorry, there is a problem with the search query. Please specify one or more search criteria.</h1>
+    <h1 class="govuk-heading-m">Sorry, there is a problem with the search query. Please specify one or more search criteria.</h1>
   </article>
 <% elsif @result.search_form.present? %>
   <br/>
   <article class="search-results">
-    <h1 class="heading-medium">There are no matching results</h1>
+    <h1 class="govuk-heading-m">There are no matching results</h1>
   </article>
 <% end %>

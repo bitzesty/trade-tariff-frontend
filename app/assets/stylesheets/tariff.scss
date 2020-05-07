@@ -61,7 +61,7 @@
 @import "colors";
 // @import "header";
 // @import "footer";
-@import "grid_extensions";
+// @import "grid_extensions";
 // @import "commodity-codes";
 // @import "tariff-breadcrumbs";
 // @import "sections-list";
@@ -137,11 +137,6 @@ section, article {
   }
 }
 
-// Other
-.related-module {
-  margin-top: 30px;
-}
-
 .button-start {
   @media(max-width: $mobile-max-width) {
     width: auto !important;
@@ -152,14 +147,6 @@ section, article {
 .visible-print {
   display: none;
   visibility: hidden;
-}
-
-.pull-left {
-  float: left;
-}
-
-.pull-right {
-  float: right;
 }
 
 #content,

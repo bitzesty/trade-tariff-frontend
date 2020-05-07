@@ -2,7 +2,7 @@
 <% if @result.search_result&.any? %>
   <br/>
   <article class="search-results">
-    <h1 class="heading-medium">Footnote search results</h1>
+    <h1 class="govuk-heading-m">Footnote search results</h1>
     <ul class="results-subset js-results-subset">
       <% @result.search_result.each do |footnote|
           goods_nomenclatures = (footnote.measures.map(&:goods_nomenclature) | footnote.goods_nomenclatures)&.uniq(&:goods_nomenclature_item_id).sort_by(&:goods_nomenclature_item_id)
@@ -29,11 +29,11 @@
   </article>
 <% elsif @result.with_errors %>
   <article class="search-results">
-    <h1 class="heading-medium">Sorry, there is a problem with the search query. Please specify one or more search criteria.</h1>
+    <h1 class="govuk-heading-m">Sorry, there is a problem with the search query. Please specify one or more search criteria.</h1>
   </article>
 <% elsif @result.search_form.present? %>
   <br/>
   <article class="search-results">
-    <h1 class="heading-medium">There are no matching results</h1>
+    <h1 class="govuk-heading-m">There are no matching results</h1>
   </article>
 <% end %>

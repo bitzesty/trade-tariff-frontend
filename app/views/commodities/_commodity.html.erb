@@ -6,7 +6,7 @@
       <%= format_commodity_code_based_on_level(commodity) %>
     </div>
 
-    <ul><%= render commodity.children %></ul>
+    <ul class="govuk-list"><%= render commodity.children %></ul>
   </li>
 <% else %>
   <li class="<%= commodity_level(commodity)%><%= leaf_position(commodity) %>">

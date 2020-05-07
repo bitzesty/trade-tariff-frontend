@@ -1,7 +1,7 @@
 <%= form_tag feedback_path, class: 'feedback-form' do %>
-  <h1 class="heading-large">Send your feedback</h1>
+  <h1 class="govuk-heading-l">Send your feedback</h1>
 
-  <p class="form-hint">
+  <p class="form-hint govuk-hint">
     Don't include any personal information. This form is for submitting feedback on the website. If you have a question
     related to classifying a good then
     <%= link_to 'please contact HMRC', 'https://www.gov.uk/government/organisations/hm-revenue-customs/contact/vat-enquiries', target: '_blank' %>.
@@ -9,29 +9,29 @@
     <%= link_to 'please see this page', 'https://www.gov.uk/guidance/complain-to-hm-revenue-and-customs', target: '_blank' %>.
   </p>
 
-  <fieldset>
+  <fieldset class="govuk-fieldset">
     <div class="govuk-form-group">
-      <%= label_tag :message, 'Did something go wrong? What went well? How can we improve the service?' %>
-      <%= text_area_tag :message, '', maxlength: 500, rows: 5 %>
+      <%= label_tag :message, 'Did something go wrong? What went well? How can we improve the service?', class: 'govuk-label' %>
+      <%= text_area_tag :message, '', maxlength: 500, rows: 5, class: 'govuk-textarea' %>
       <p>(Max 500 characters).</p>
     </div>
   </fieldset>
 
   <p>Leave your name and email address in case we need to contact you.</p>
 
-  <fieldset>
+  <fieldset class="govuk-fieldset">
     <div class="govuk-form-group">
-      <%= label_tag :name, 'Name (optional)' %>
-      <%= text_field_tag :name %>
+      <%= label_tag :name, 'Name (optional)', class: 'govuk-label' %>
+      <%= text_field_tag :name, nil, class: 'govuk-input' %>
     </div>
   </fieldset>
 
-  <fieldset>
+  <fieldset class="govuk-fieldset">
     <div class="govuk-form-group">
-      <%= label_tag :email, 'Email (optional)' %>
-      <%= text_field_tag :email %>
+      <%= label_tag :email, 'Email (optional)', class: 'govuk-label' %>
+      <%= text_field_tag :email, nil, class: 'govuk-input' %>
     </div>
   </fieldset>
 
-  <%= submit_tag 'Submit feedback', class: 'button' %>
+  <%= submit_tag 'Submit feedback', class: 'button govuk-button' %>
 <% end %>

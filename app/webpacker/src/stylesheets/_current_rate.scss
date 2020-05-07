@@ -27,7 +27,7 @@
 .current-rate__big-arrow {
   height: 0.666666666em;
   width: 0.666666666em;
-  background: image-url("../../assets/images/arrow-right.png") no-repeat center center;
+  background: url("../images/arrow-right.png") no-repeat center center;
   background-size: 100%;
   margin: 0 10px;
   display: inline-block;
@@ -36,7 +36,7 @@
 .current-rate__small-arrow {
   height: 0.666666666em;
   width: 0.666666666em;
-  background: image-url("../../assets/images/arrow-right-small.png") no-repeat center center;
+  background: url("../images/arrow-right-small.png") no-repeat center center;
   background-size: 100%;
   margin: 0 7px;
   display: inline-block;

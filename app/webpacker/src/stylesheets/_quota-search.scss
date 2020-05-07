@@ -16,24 +16,6 @@
     margin-right: 10px;
   }
 
-  .form-control--100 {
-    @media (min-width: 641px) {
-      width: 100%;
-    }
-  }
-
-  .form-control--small {
-    @media (min-width: 641px) {
-      width: 200px;
-    }
-  }
-
-  .form-control--tiny {
-    @media (min-width: 641px) {
-      width: 100px;
-    }
-  }
-
   input[type="submit"] {
     margin-top: 1.5em;
 

@@ -40,12 +40,12 @@
     }
 
     @include govuk-media-query(false, $desktop-min-width - 1px) {
-      @include govuk-grid-column(1);
+      @include govuk-grid-column(full);
       margin: 1em 0;
       position: static;
     }
 
-    @include govuk-media-query (desktop) {
+    @include govuk-media-query(desktop) {
       font-size: 0.85em;
 
       position: fixed;

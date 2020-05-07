@@ -6,7 +6,7 @@
           <%= measure.geographical_area.long_description %>
         </dt>
         <dd>
-          <ul>
+          <ul class="govuk-list">
             <% measure.children_geographical_areas.each do |children_geographical_area| %>
               <li><%= children_geographical_area.long_description %></li>
             <% end %>
