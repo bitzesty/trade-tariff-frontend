@@ -157,7 +157,7 @@ declarable ||= false %>
               <h1><%= chapter %></h1>
               <div class="feed"><%= link_to 'Changes', chapter_changes_path(@chapter, format: :atom), rel: 'nofollow' %></div>
               <% if TradeTariffFrontend.download_pdf_enabled? %>
-                <div class="download-pdf"><%= link_to 'Download', download_chapter_pdf_url(chapter.section.position, chapter.short_code), rel: 'nofollow', target: '_blank' %></div>
+                <div class="download-pdf"><%= link_to "Chapter #{chapter.short_code} PDF", download_chapter_pdf_url(chapter.section.position, chapter.short_code), rel: 'nofollow', target: '_blank' %></div>
               <% end %>
             </li>
           </ul>
