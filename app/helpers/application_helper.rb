@@ -68,7 +68,7 @@ module ApplicationHelper
   end
 
   def download_chapter_pdf_url(section_position, chapter_code)
-    pdf_urls = Rails.cache.fetch('cached_chapters_pdf_urls', expires_in: 24.hours) do
+    pdf_urls = Rails.cache.fetch('cached_chapters_pdf_urls', expires_in: 1.hours) do
       TariffPdf.chapters.map(&:url)
     end
 
@@ -80,7 +80,7 @@ module ApplicationHelper
   end
 
   def download_latest_pdf_url
-    pdf_urls = Rails.cache.fetch('cached_latest_pdf_urls', expires_in: 24.hours) do
+    pdf_urls = Rails.cache.fetch('cached_latest_pdf_urls', expires_in: 1.hours) do
       TariffPdf.latest.map(&:url)
     end
 
