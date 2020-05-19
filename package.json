@@ -1,6 +1,8 @@
 {
+  "name": "trade-tariff-frontend",
+  "private": true,
   "dependencies": {
-    "@rails/webpacker": "5.0.1",
+    "@rails/webpacker": "5.1.1",
     "alphagov-static": "github:alphagov/static.git#release_3463",
     "govuk-frontend": "^3.6.0",
     "jquery": "1.12.4",

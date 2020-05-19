@@ -18,17 +18,4 @@ Rails.application.config.assets.prefix = "/assets#{ENV['ASSETS_VERSION']}"
 
 Rails.application.config.assets.precompile += %w{
   favicon.ico
-  ui-icons_222222_256x240.png
-  application.css
-  application.js
-  application-ie8.css
-  application-ie7.css
-  application-ie6.css
-  tariff.css
-  tariff-print.css
-  gov.uk_logotype_crown.svg
-  apple-touch-icon.png
-  apple-touch-icon-180x180.png
-  apple-touch-icon-167x167.png
-  apple-touch-icon-152x152.png
 }

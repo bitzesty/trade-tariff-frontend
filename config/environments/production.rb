@@ -31,7 +31,9 @@ Rails.application.configure do
   # config.assets.css_compressor = :sass
 
   # Don't fallback to assets pipeline if a precompiled asset is missed
-  config.assets.compile = true
+  config.assets.compile = false
+
+  config.webpacker.check_yarn_integrity = false
 
   # Generate digests for assets URLs
   config.assets.digest = true
@@ -74,9 +76,6 @@ Rails.application.configure do
   config.action_controller.default_url_options = {
     host: ENV['HOST'] || "www.trade-tariff.service.gov.uk"
   }
-
-  # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
-  config.assets.precompile += %w( tariff-print.css.scss )
 
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
