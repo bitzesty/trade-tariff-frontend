@@ -1,5 +1,5 @@
 #footer {
-  border-top: 10px solid $govuk-blue;
+  border-top: 10px solid govuk-colour("blue");
   @media (min-width: $desktop-min-width) {
     padding-bottom: 30px;
   }

@@ -3,9 +3,9 @@
   @return mix($color, #fff, 25%);
 }
 
-$chapter-code-bg: tint($govuk-mauve);
-$heading-code-bg: tint($govuk-light-blue);
-$commodity-code-bg: tint($govuk-turquoise);
+$chapter-code-bg: tint(govuk-colour("light-purple"));
+$heading-code-bg: tint(govuk-colour("light-blue"));
+$commodity-code-bg: tint(govuk-colour("turquoise"));
 $table-header-bg: #e1e8e8;
 $table-sub-border: tint($govuk-border-colour);
 

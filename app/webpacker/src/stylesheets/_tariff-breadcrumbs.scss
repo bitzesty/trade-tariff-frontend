@@ -2,7 +2,7 @@
   position: relative;
   padding: 1em;
   margin: 0 0 20px 0;
-  background-color: $govuk-grey-4;
+  background-color: govuk-colour("mid-grey", "grey-4");
   &::after {
     content:"";
     display:block;

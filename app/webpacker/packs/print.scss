@@ -1,32 +1,17 @@
-/*
-*= require_self
-*/
 
-@import 'colours';
-//@import 'colors';
-//@import "variables";
-//@import "functions";
-@import 'font_stack';
-@import 'measurements';
-@import 'conditionals';
-@import 'device-pixels';
-@import 'grid_layout';
-@import 'typography';
-@import 'shims';
+@import "govuk-frontend/govuk/all";
 
-// Generic (normalize/reset.css)
-@import "elements/reset";
+@import "../src/stylesheets/legacy-grid-layout-conditionals";
+@import "../src/stylesheets/colors";
+@import "../src/stylesheets/variables";
+@import "../src/stylesheets/functions";
+//@import 'font_stack';
+//@import 'measurements';
+//@import 'conditionals';
+//@import 'grid_layout';
+//@import 'typography';
+//@import 'shims';
 
-// Base (unclassed HTML elements)
-// These are predefined by govuk_template
-// If you're not using govuk_template, uncomment the line below.
-// @import "elements/govuk-template-base"
-
-// Main content container. Grid layout - rows and column widths
-// @import "elements/layout";
-
-// MIGRATED ALREADY:
-// @import "tariff-breadcrumbs";
 
 caption {
 	margin: 0 0 2em;
@@ -211,7 +196,7 @@ article.tariff {
     left: 0;
     right: 0;
     margin: 15px;
-    color: $secondary-text-colour;
+    color: $govuk-secondary-text-colour;
     font-size: 14px;
 
     &:after {
@@ -324,7 +309,7 @@ article.tariff {
       word-wrap: break-word;
 
       @media (min-width: $desktop-min-width) {
-        background-image: image-url("commodity-indents.png");
+        background-image: url("../images/commodity-indents.png");
         background-repeat: no-repeat;
       }
 
@@ -385,7 +370,7 @@ article.tariff {
           display: none;
           float: left;
           margin-right: 15px;
-          color: $text-colour;
+          color: $govuk-text-colour;
           font-weight: normal;
           font-size: 14px;
           display: block;
@@ -503,7 +488,7 @@ li.open {
   }
 
   li:not(.has_children) .description {
-    color: $link-colour;
+    color: $govuk-link-colour;
     padding-left: px($expand-arrow-space);
     margin-left: -1 * px($expand-arrow-space);
     cursor:pointer;
@@ -521,10 +506,10 @@ li.open {
 
   li.has_children {
     .description {
-      color: $link-colour;
+      color: $govuk-link-colour;
       padding-left: px($expand-arrow-space);
       margin-left: -1 * px($expand-arrow-space);
-      background-image: image-url("expand-collapse-transparent_commodity-tree.png");
+      background-image: url("../images/expand-collapse-transparent_commodity-tree.png");
       background-position: 0 4px;
       background-repeat: no-repeat;
       cursor:pointer;
@@ -542,7 +527,7 @@ li.open {
 
    .description:hover,
    .description-hover {
-      color: $link-hover-colour;
+      color: $govuk-link-hover-colour;
     }
 
     a .description {

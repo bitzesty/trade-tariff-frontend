@@ -45,7 +45,7 @@
         &:nth-child(#{$i}) {
           background-image: image-url("../../../vendor/assets/images/icon-steps/icon-step-#{$i}.png");
 
-          @include device-pixel-ratio() {
+          @include govuk-device-pixel-ratio() {
             background-image: image-url("../../../vendor/assets/images/icon-steps/icon-step-#{$i}-2x.png");
             background-size: 24px 24px;
           }

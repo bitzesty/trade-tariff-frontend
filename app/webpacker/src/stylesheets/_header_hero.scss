@@ -1,6 +1,6 @@
 .header-hero {
-  background: $govuk-blue;
-  color: $govuk-white;
+  background: govuk-colour("blue");
+  color: govuk-colour("white");
   padding: 3em 1.5em 1.5em;
   margin-bottom: 2em;
 }

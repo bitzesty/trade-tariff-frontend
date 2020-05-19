@@ -1,7 +1,6 @@
 <% content_for :pageTitle, content_for?(:title) ? yield(:title) : "Trade Tariff: look up commodity codes, duty and VAT rates - GOV.UK" %>
 
 <% content_for :head do %>
-  <%= stylesheet_link_tag 'tariff-print', media: 'print' %>
   <%= csrf_meta_tags %>
 
   <meta name="x-section-name" content="Business" />
