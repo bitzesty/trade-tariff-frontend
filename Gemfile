@@ -8,7 +8,7 @@ end
 
 ruby "~> 2.6.2"
 
-gem "rails", "6.0.2.2"
+gem "rails", ">= 6.0.3.1"
 
 gem "yajl-ruby", "~> 1.3.1", require: "yajl"
 gem "multi_json", "~> 1.11"
