@@ -17,6 +17,5 @@ Rails.application.config.assets.prefix = "/assets#{ENV['ASSETS_VERSION']}"
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
 
 Rails.application.config.assets.precompile += [
-  Rails.root.join("node_modules", "govuk-frontend", "govuk", "assets"),
   "favicon.ico"
 ]

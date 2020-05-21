@@ -1,7 +1,8 @@
 
 $govuk-global-styles: true;
-$govuk-use-legacy-palette: true;
+$govuk-use-legacy-palette: false;
 $govuk-fonts-path: "~govuk-frontend/govuk/assets/fonts/";
+$govuk-images-path: "~govuk-frontend/govuk/assets/images/";
 
 @import "govuk-frontend/govuk/all";
 
