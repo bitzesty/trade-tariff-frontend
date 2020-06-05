@@ -76,7 +76,7 @@
 @import "quota-search";
 
 .phase-banner  {
-  @include phase-banner(beta);
+  @include phase-banner();
 }
 
 .highlight {
