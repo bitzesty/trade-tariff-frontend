@@ -9,5 +9,5 @@ $commodity-code-bg: tint(govuk-colour("turquoise"));
 $table-header-bg: #e1e8e8;
 $table-sub-border: tint($govuk-border-colour);
 
-$current-rate-accent-color: #5fb857;
-$current-rate-secondary-color: #869baa;
+$current-rate-accent-color: govuk-colour("green");
+$current-rate-secondary-color: $govuk-secondary-text-colour;

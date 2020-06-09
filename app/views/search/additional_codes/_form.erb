@@ -1,28 +1,16 @@
 <%= form_tag additional_code_search_path, method: :get, class: "tariff-search quota-search #{@section_css}", id: 'new_search' do |f| %>
   <h1 class="govuk-heading-l">Search by Additional Code</h1>
-  <div class="govuk-grid-row">
-    <div class="column-one-eighth">
-      <%= label_tag :type, 'Type', class: 'govuk-label' %>
-    </div>
-    <div class="column-seven-eighth">
-      <%= select_tag :type, options_for_select(search_form.additional_code_types, search_form.type), include_blank: true, class: "govuk-input govuk-!-width-one-half" %>
-    </div>
+  <div class="govuk-form-group">
+    <%= label_tag :type, 'Type', class: 'govuk-label' %>
+    <%= select_tag :type, options_for_select(search_form.additional_code_types, search_form.type), include_blank: true, class: "govuk-select govuk-select--width-20" %>
   </div>
-  <div class="govuk-grid-row">
-    <div class="column-one-eighth">
-      <%= label_tag :code, 'Code', class: 'govuk-label' %>
-    </div>
-    <div class="column-seven-eighth">
-      <%= text_field_tag :code, search_form.code, class: "govuk-input govuk-!-width-one-quarter" %>
-    </div>
+  <div class="govuk-form-group">
+    <%= label_tag :code, 'Code', class: 'govuk-label' %>
+    <%= text_field_tag :code, search_form.code, class: "govuk-input govuk-input--width-10" %>
   </div>
-  <div class="govuk-grid-row">
-    <div class="column-one-eighth">
-      <%= label_tag :code, 'Description', class: 'govuk-label' %>
-    </div>
-    <div class="column-seven-eighth">
-      <%= text_field_tag :description, search_form.description, class: "govuk-input govuk-input--width-100" %>
-    </div>
+  <div class="govuk-form-group">
+    <%= label_tag :description, 'Description', class: 'govuk-label' %>
+    <%= text_field_tag :description, search_form.description, class: "govuk-input govuk-input--width-20" %>
   </div>
   <input class="button govuk-button" type="submit" name="new_search" value="Search">
 <% end %>

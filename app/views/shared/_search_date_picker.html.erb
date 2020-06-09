@@ -1,11 +1,11 @@
 <fieldset class="govuk-fieldset js-date-picker date-picker govuk-!-font-size-16 govuk-form-group inline">
   <span class="fields">This tariff is for
     <label class="govuk-visually-hidden" for="tariff_date_day">Day</label>
-    <%= select_day(@search.date, {}, { id: 'tariff_date_day', name: 'day' }) %>
+    <%= select_day(@search.date, {}, { id: 'tariff_date_day', name: 'day', class: "govuk-select" }) %>
     <label class="govuk-visually-hidden" for="tariff_date_month">Month</label>
-    <%= select_month(@search.date, {}, { id: 'tariff_date_month', name: 'month' }) %>
+    <%= select_month(@search.date, {}, { id: 'tariff_date_month', name: 'month', class: "govuk-select" }) %>
     <label class="govuk-visually-hidden" for="tariff_date_year">Year</label>
-    <%= select_year(@search.date, {end_year: 2008, start_year: Date.current.year + 1 }, { id: 'tariff_date_year', name: 'year' }) %>&emsp;
+    <%= select_year(@search.date, {end_year: 2008, start_year: Date.current.year + 1 }, { id: 'tariff_date_year', name: 'year', class: "govuk-select" }) %>&emsp;
     <a class="submit" role="button" href="#set-date" title="set date" rel="nofollow">Set date</a>&emsp;
   </span>
   <span class="text <%= @section_css %>">
