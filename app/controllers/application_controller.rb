@@ -35,7 +35,7 @@ class ApplicationController < ActionController::Base
     render plain: '404', status: 404
   end
 
-  rescue_from(ActionView::MissingTemplate) do |_e|
+  rescue_from(ActionView::MissingTemplate, ActionController::UnknownFormat) do |_e|
     request.format = :html
     render_404
   end
