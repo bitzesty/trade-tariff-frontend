@@ -75,7 +75,7 @@ group :test do
   gem "simplecov", "~> 0.15.0", require: false
   gem "rspec-rails", "~> 3.5.2"
   gem "capybara", "~> 3"
-  gem "poltergeist", "~> 1.18.1"
+  gem "selenium-webdriver"
   gem "timecop", "~> 0.8.1"
   gem "rspec_junit_formatter"
   gem 'rack-test'
