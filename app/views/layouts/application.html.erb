@@ -64,8 +64,10 @@
   </header>
 
   <div class="tariff service govuk-width-container">
+    <%= render 'shared/phase_banner' if ENV['NOTICE_BANNER'] %>
+    <%= yield :before_main_content %>
+
     <main id="content" class="govuk-main-wrapper" role="main">
-      <%= render 'shared/phase_banner' if ENV['NOTICE_BANNER'] %>
       <%= render 'shared/header' %>
       <%= yield %>
       <% if @tariff_last_updated %>

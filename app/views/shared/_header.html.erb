@@ -1,6 +1,5 @@
 <% if controller_name == 'commodities' && action_name == 'show' || controller_name == 'headings' && action_name == 'show' && @heading&.declarable? %>
   <header>
-    <a class="govuk-back-link" href="<%= @back_path %>">Back <span class="govuk-visually-hidden"> to the list of commodities</span></a>
     <h1 class="govuk-heading-l">Commodity information for <%= (@commodity || @heading).code %></h1>
     <%= form_tag perform_search_path, method: :get, class: "tariff-search #{@section_css}", id: "new_search" do |f| %>
       <div class="govuk-grid-row">
