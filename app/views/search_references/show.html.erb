@@ -1,12 +1,12 @@
 <section class="a-z">
   <h1 class="govuk-heading-l">A&ndash;Z of Classified Goods</h1>
   <div class="inner">
-    <ol class="index govuk-list">
+    <ol class="index govuk-list govuk-!-margin-bottom-8">
       <%= a_z_index(letter) %>
     </ol>
 
-    <table class="tariff-zebra index govuk-table">
-      <caption class="govuk-heading-m"><%= letter.upcase %></caption>
+    <table class="govuk-table">
+      <caption class="govuk-table__caption"><%= letter.upcase %></caption>
       <tbody class="govuk-table__body">
       <% @search_references.each do |search_reference| %>
         <tr class="govuk-table__row">
