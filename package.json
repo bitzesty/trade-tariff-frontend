@@ -4,7 +4,7 @@
   "dependencies": {
     "@rails/webpacker": "5.1.1",
     "alphagov-static": "github:alphagov/static.git#release_3463",
-    "govuk-frontend": "^3.6.0",
+    "govuk-frontend": "^3.7.0",
     "jquery": "1.12.4",
     "jquery-common-keydown": "^1.0.1",
     "jquery-debouncedresize": "^0.0.2",
