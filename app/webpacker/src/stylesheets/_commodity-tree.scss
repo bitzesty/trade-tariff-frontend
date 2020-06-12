@@ -200,10 +200,6 @@ article.tariff {
         text-decoration:none;
         font-weight: normal;
         position: relative;
-
-        &:hover {
-          background-color: $highlight-colour;
-        }
       }
 
       .commodity__info {
