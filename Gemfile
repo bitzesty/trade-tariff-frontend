@@ -68,15 +68,15 @@ end
 group :test do
   gem "rails-controller-testing", github: "rails/rails-controller-testing", branch: "master"
   gem "webmock", "~> 3.8.0"
-  gem "factory_girl_rails", "~> 4.8.0"
+  gem "factory_bot_rails"
   gem "forgery"
-  gem "shoulda-matchers", "~> 3.1.1"
+  gem "shoulda-matchers", "~> 4"
   gem "vcr", "~> 3.0.3"
-  gem "simplecov", "~> 0.15.0", require: false
-  gem "rspec-rails", "~> 3.5.2"
+  gem "simplecov", "~> 0.18", require: false
+  gem "rspec-rails", "~> 4"
   gem "capybara", "~> 3"
   gem "selenium-webdriver"
-  gem "timecop", "~> 0.8.1"
+  gem "timecop", "~> 0.9.1"
   gem "rspec_junit_formatter"
   gem 'rack-test'
 end
