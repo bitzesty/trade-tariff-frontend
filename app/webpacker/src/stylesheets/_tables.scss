@@ -34,9 +34,6 @@ table.tariff-zebra {
 table.small-table {
   @include tariff-zebra();
   margin: 0 0 30px 0;
-  caption {
-    margin-top: 40px;
-  }
   p {
     @include govuk-font($size: 14, $weight: normal);
   }
