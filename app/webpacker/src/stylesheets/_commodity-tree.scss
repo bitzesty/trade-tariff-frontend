@@ -288,6 +288,7 @@ article.tariff {
         @include contain-float;
         margin-left: 0;
         padding-left: 0;
+        min-height: 1.6rem;
       }
     }
 
@@ -300,10 +301,6 @@ article.tariff {
 }
 
 .js-enabled {
-  li.open {
-    background-position: 0 -100px;
-  }
-
   em {
     @include govuk-font($size: 14, $weight: normal);
   }
@@ -336,10 +333,6 @@ article.tariff {
       color: $govuk-link-colour;
       padding-left: px($expand-arrow-space);
       margin-left: -1 * px($expand-arrow-space);
-      background-image: url("../images/expand-collapse-transparent_commodity-tree.png");
-      background-position: 0 4px;
-      background-repeat: no-repeat;
-      cursor:pointer;
       position:relative; /* to give z-index */
 
       @media (min-width: 641px) {
@@ -356,6 +349,28 @@ article.tariff {
       }
     }
 
+    > .description {
+      padding-left: 25px;
+      cursor: pointer;
+
+      &:before {
+        content: "";
+        position: absolute;
+        top: 3px;
+        bottom: 0;
+        left: 0;
+        display: block;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-color: transparent;
+        -webkit-clip-path: polygon(0% 0%, 100% 50%, 0% 100%);
+        clip-path: polygon(0% 0%, 100% 50%, 0% 100%);
+        border-width: 7px 0 7px 12.124px;
+        border-left-color: inherit;
+      }
+    }
+
    .description:hover,
    .description-hover {
       color: $govuk-link-hover-colour;
@@ -368,7 +383,17 @@ article.tariff {
     }
 
     .open {
-      background-position:0 -386px;
+      &:before {
+        display: block;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-color: transparent;
+        -webkit-clip-path: polygon(0% 0%, 50% 100%, 100% 0%);
+        clip-path: polygon(0% 0%, 50% 100%, 100% 0%);
+        border-width: 12.124px 7px 0 7px;
+        border-top-color: inherit;
+      }
     }
 
     .sub_heading_commodity_code_block {
