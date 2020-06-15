@@ -93,6 +93,7 @@
 .select2-selection__rendered {
   line-height: 38px !important;
   height: auto !important;
+  max-width: calc(100% - 2em);
 }
 
 .select2-container--open .select2-dropdown--below {

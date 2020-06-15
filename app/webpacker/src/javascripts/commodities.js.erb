@@ -113,6 +113,8 @@
                       $childList.addClass('govuk-visually-hidden');
                   }
 
+                  $branchSwitches.attr("tabindex", 0);
+
                   // allow expansion based on clicking
                   $branchSwitches.eq(idx).on('click', function(e) {
                       e.stopPropagation();

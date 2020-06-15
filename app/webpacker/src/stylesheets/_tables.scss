@@ -130,14 +130,40 @@ table.small-table {
 
       dt {
         cursor:pointer;
+        position: relative;
+        
         &.has_children {
-          padding-left: px($expand-arrow-space);
-          background-image: url("../images/expand-collapse-transparent.png");
-          background-position: 0 4px;
-          background-repeat: no-repeat;
+          padding-left: 25px;
+
+          &:before {
+            content: "";
+            position: absolute;
+            top: 4px;
+            bottom: 0;
+            left: 0;
+            display: block;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-color: transparent;
+            -webkit-clip-path: polygon(0% 0%, 100% 50%, 0% 100%);
+            clip-path: polygon(0% 0%, 100% 50%, 0% 100%);
+            border-width: 6px 0 6px 10.124px;
+            border-left-color: inherit;
+          }
         }
         &.open {
-          background-position:0 -389px;
+          &:before {
+            display: block;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-color: transparent;
+            -webkit-clip-path: polygon(0% 0%, 50% 100%, 100% 0%);
+            clip-path: polygon(0% 0%, 50% 100%, 100% 0%);
+            border-width: 10.124px 6px 0 6px;
+            border-top-color: inherit;
+          }
         }
       }
       dd {
