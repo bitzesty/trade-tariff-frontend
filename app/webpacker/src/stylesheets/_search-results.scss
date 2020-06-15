@@ -2,6 +2,15 @@
   .results-subset {
     position: relative;
     margin-bottom: 60px;
+    list-style-type: none;
+    padding: 0;
+    font-size: 1.25em;
+    
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
     .chapter, .commodity {
       display: block;
       min-height: $chapter-code-height;

@@ -8,6 +8,10 @@
 
     max-width: 70ex;
   }
+
+  .select2-selection__arrow {
+    display: none;
+  }
   
   .search-submit {
     position: absolute;
@@ -69,9 +73,17 @@
   .select2-selection__rendered {
     height: 40px;
     @include govuk-font(19);
+    color: $govuk-text-colour !important;
   }
-  .select2-selection__arrow {
-    display: none;
+}
+
+.select2-selection__arrow {
+  height: 100% !important;
+  right: 10px !important;
+
+  b {
+    border-color: $govuk-input-border-colour transparent transparent transparent !important;
+    border-width: 8px 7px 0 7px !important;
   }
 }
 

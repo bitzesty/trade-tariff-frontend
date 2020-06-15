@@ -1,24 +1,22 @@
-<table class="small-table govuk-table">
-  <caption>
-    <h5 class="govuk-heading-s"><%= condition_group[:condition] %></h5>
-  </caption>
-  <thead>
-  <tr>
-    <th>Document code</th>
-    <th>Requirement</th>
-    <th>Action</th>
-    <th>Duty expression</th>
+<table class="govuk-table">
+  <caption class="govuk-table__caption"><%= condition_group[:condition] %></caption>
+  <thead class="govuk-table__head">
+  <tr class="govuk-table__row">
+    <th scope="col" class="govuk-table__header">Document code</th>
+    <th scope="col" class="govuk-table__header">Requirement</th>
+    <th scope="col" class="govuk-table__header">Action</th>
+    <th scope="col" class="govuk-table__header">Duty expression</th>
   </tr>
   </thead>
-  <tbody>
+  <tbody class="govuk-table__body">
   <% conditions.each do |condition| %>
-    <tr>
-      <td class="numerical"><%= condition.document_code %></td>
-      <td>
+    <tr class="govuk-table__row">
+      <td class="govuk-table__cell numerical"><%= condition.document_code %></td>
+      <td class="govuk-table__cell">
         <%= condition.requirement.to_s.html_safe %>
       </td>
-      <td><%= condition.action %></td>
-      <td class="numerical">
+      <td class="govuk-table__cell"><%= condition.action %></td>
+      <td class="govuk-table__cell numerical">
         <%= condition.duty_expression.to_s.html_safe %>
       </td>
     </tr>

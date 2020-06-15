@@ -1,7 +1,7 @@
 <% if measure.has_measure_conditions? %>
 <div class='conditions' id='<%= measure.id %>' data-popup='<%= measure.destination %>-<%= measure.id %>-conditions'>
   <article>
-    <h2 class="govuk-heading-m"><%= measure.measure_type.description %> for <%= measure.geographical_area.description %></h2>
+    <h2 class="govuk-heading-l"><%= measure.measure_type.description %> for <%= measure.geographical_area.description %></h2>
     <% measure.grouped_measure_conditions.each do |condition_group, conditions| %>
       <%= render partial: "measure_conditions/measure_condition_code_#{condition_group[:partial_type]}", locals: { condition_group: condition_group, conditions: conditions } %>
       <br>
@@ -13,31 +13,31 @@
 <% if !measure.national? && measure.legal_acts.present? && TradeTariffFrontend.regulations_enabled? %>
   <div class='regulations' id='<%= measure.id %>' data-popup='<%= measure.id %>-regulations'>
     <article>
-      <table class="small-table govuk-table">
-        <caption>
+      <table class="govuk-table">
+        <caption class="govuk-table__caption">
           <h2>Legal base</h2>
         </caption>
-        <thead>
-          <tr>
-            <th>Regulation No.</th>
-            <th>Start date</th>
-            <th>End date</th>
-            <th>Publication date</th>
-            <th>Journal No.</th>
-            <th>Journal page</th>
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header">Regulation No.</th>
+            <th scope="col" class="govuk-table__header">Start date</th>
+            <th scope="col" class="govuk-table__header">End date</th>
+            <th scope="col" class="govuk-table__header">Publication date</th>
+            <th scope="col" class="govuk-table__header">Journal No.</th>
+            <th scope="col" class="govuk-table__header">Journal page</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody class="govuk-table__body">
           <% measure.legal_acts.each do |legal_act| %>
-            <tr>
-              <td>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">
                 <%= link_to legal_act.regulation_code, legal_act.regulation_url, target: '_blank', rel: 'external', class: 'print-link-without-description' %>
               </td>
-              <td><%= legal_act.validity_start_date %></td>
-              <td><%= legal_act.validity_end_date %></td>
-              <td><%= legal_act.published_date %></td>
-              <td><%= legal_act.officialjournal_number %></td>
-              <td><%= legal_act.officialjournal_page %></td>
+              <td class="govuk-table__cell"><%= legal_act.validity_start_date %></td>
+              <td class="govuk-table__cell"><%= legal_act.validity_end_date %></td>
+              <td class="govuk-table__cell"><%= legal_act.published_date %></td>
+              <td class="govuk-table__cell"><%= legal_act.officialjournal_number %></td>
+              <td class="govuk-table__cell"><%= legal_act.officialjournal_page %></td>
             </tr>
           <% end %>
         </tbody>
@@ -49,18 +49,18 @@
 <% if measure.has_measure_footnotes? %>
   <div class='footnotes' id='<%= measure.id %>' data-popup='<%= measure.destination %>-<%= measure.id %>-footnotes'>
     <article>
-      <table class="small-table govuk-table">
-        <caption>
-          <h2 class="govuk-heading-m"><%= measure.measure_type.description %> for <%= measure.geographical_area.description %></h2>
+      <table class="govuk-table">
+        <caption class="govuk-table__caption">
+          <h2><%= measure.measure_type.description %> for <%= measure.geographical_area.description %></h2>
         </caption>
-        <thead>
-        <tr>
-          <th>Code</th>
-          <th>Description</th>
-        </tr>
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header" width="100">Code</th>
+            <th scope="col" class="govuk-table__header">Description</th>
+          </tr>
         </thead>
-        <tbody>
-        <%= render partial: "footnotes/footnote", collection: measure.footnotes, locals: { measure: measure } %>
+        <tbody class="govuk-table__body">
+          <%= render partial: "footnotes/footnote", collection: measure.footnotes, locals: { measure: measure } %>
         </tbody>
       </table>
     </article>
