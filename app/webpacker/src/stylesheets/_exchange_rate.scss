@@ -39,6 +39,15 @@
       visibility: hidden;
     }
 
+    svg {
+      display: inline-block;
+      width: .8em;
+      height: 1em;
+      margin-top: -5px;
+      margin-right: 10px;
+      vertical-align: middle;
+    }
+
     @include govuk-media-query(false, $desktop-min-width - 1px) {
       @include govuk-grid-column(full);
       margin: 1em 0;
@@ -46,8 +55,6 @@
     }
 
     @include govuk-media-query(desktop) {
-      font-size: 0.85em;
-
       position: fixed;
       bottom: 20px;
     }

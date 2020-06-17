@@ -10,3 +10,35 @@
   }
 }
 
+#tariff_date_date {
+  width: 140px;
+  margin-left: 15px;
+}
+
+#search-datepicker-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: transparent;
+  border: none;
+  display: inline-block;
+  position: relative;
+  top: 5px;
+  margin-right: 15px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  padding: 3px 6px;
+  
+  svg {
+    height: 2em;
+    width: auto;
+  }
+
+  &:focus {
+    background: $govuk-focus-colour;
+    border-color: $govuk-input-border-colour;
+  }
+}
+
+.datepickerDialog {
+}

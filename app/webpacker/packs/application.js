@@ -33,7 +33,7 @@ require('alphagov-static/app/assets/javascripts/analytics_toolkit/analytics');
 require('alphagov-static/app/assets/javascripts/analytics_toolkit/govuk-tracker');
 require('alphagov-static/app/assets/javascripts/analytics_toolkit/print-intent');
 require('alphagov-static/app/assets/javascripts/analytics_toolkit/error-tracking');
-
+require("imask");
 
 
 
@@ -49,6 +49,9 @@ require('alphagov-static/app/assets/javascripts/analytics_toolkit/error-tracking
 // require('./node_modules/jquery-history/dist/jquery.history');
 // require('../../../node_modules/jquery-history/dist/jquery.history');
 // require('jquery-history/dist/jquery.history');
+require('../src/javascripts/datepicker-day.js');
+require('../src/javascripts/calendar-button.js');
+require('../src/javascripts/datepicker.js');
 
 require('../src/javascripts/analytics-init.js');
 require('../src/javascripts/analytics-search-queries.js');

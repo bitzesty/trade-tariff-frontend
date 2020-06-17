@@ -25,7 +25,10 @@
           <div class="searchfield govuk-form-group">
             <fieldset class="govuk-fieldset govuk-search-input">
               <%= label_tag :q, "Search the tariff", class: 'govuk-label' %>
-              <%= select_tag :q, options_for_select([@search.q ]), name: 'q', class: 'js-commodity-picker-select govuk-input' %>
+              <%= select_tag :q, options_for_select([@search.q ]), name: 'q', class: 'js-commodity-picker-select govuk-input js-show' %>
+              <noscript>
+                <%= text_field_tag(:q, @search.q, {class: "govuk-input", name: :q}) %>
+              </noscript>
             </fieldset>
             <fieldset class="govuk-fieldset search-submit">
               <input class="govuk-button" type="submit" name="new_search" value="Search">

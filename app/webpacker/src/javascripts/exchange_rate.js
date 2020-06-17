@@ -15,12 +15,12 @@ $(document).ready(function() {
     e.stopPropagation();
 
     $("html,body").animate({
-      scrollTop: $(".contents-list h2").offset().top - 50
+      scrollTop: $(".contents-list h3").offset().top - 50
     }, 500);
   });
 
   $(window).scroll(function() {
-    var target = $(".contents-list h2");
+    var target = $(".contents-list h3");
 
     if (target[0].getBoundingClientRect().top < 0) {
       $("[data-sticky-element]").removeClass("sticky--hidden");
