@@ -17,14 +17,18 @@ Dir[Rails.root.join("app/models/*.rb")].each { |f| require f }
 require 'capybara/rails'
 require 'capybara/rspec'
 
-require 'capybara/poltergeist'
+Capybara.register_driver(:selenium_chrome_headless) do |app|
+  options = Selenium::WebDriver::Chrome::Options.new
+  options.add_argument('--headless')
 
-# Allow any SSL protocol, we override the default SSLv3 PhantomJS SSL Protocol
-# as it is not supported by our servers
-Capybara.register_driver :poltergeist do |app|
-  Capybara::Poltergeist::Driver.new(app, phantomjs_options: ['--ssl-protocol=any'])
+  Capybara::Selenium::Driver.new(
+    app,browser: :chrome, options: options
+  )
 end
-Capybara.javascript_driver = :poltergeist
+
+Capybara.javascript_driver = :selenium_chrome_headless
+
+Capybara.ignore_hidden_elements = false
 
 Shoulda::Matchers.configure do |config|
   config.integrate do |with|
@@ -42,7 +46,7 @@ RSpec.configure do |config|
   config.filter_run focus: true
   config.run_all_when_everything_filtered = true
 
-  config.include FactoryGirl::Syntax::Methods
+  config.include FactoryBot::Syntax::Methods
   config.include Rails.application.routes.url_helpers
   config.include Capybara::DSL
 
