@@ -6,7 +6,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem "rails", ">= 6.0.3.1"
+gem "rails", ">= 6.0.3.2"
 
 gem "yajl-ruby", "~> 1.3.1", require: "yajl"
 gem "multi_json", "~> 1.11"
