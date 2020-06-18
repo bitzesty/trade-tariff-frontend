@@ -132,3 +132,7 @@ a.back-to-previous {
     font-size: 16px;
   }
 }
+
+.select2-container--default .select2-selection--single .select2-selection__placeholder {
+  color: $govuk-secondary-text-colour !important;
+}
