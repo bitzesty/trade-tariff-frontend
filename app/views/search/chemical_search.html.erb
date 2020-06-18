@@ -2,7 +2,7 @@
 <% if @result.search_result&.any? %>
   <br />
   <article class="search-results">
-    <h1 class="govuk-heading-m">Chemical search results for `<em><%= "#{@result.search_form.cas || @result.search_form.name}" %></em>`</h1>
+    <h1 class="govuk-heading-m">Chemical search results for &ldquo;<em><%= "#{@result.search_form.cas || @result.search_form.name}" %></em>&rdquo;</h1>
     <ul class="results-subset js-results-subset">
       <% @result.search_result.each do |chemical| %>
         <li>
