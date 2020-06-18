@@ -15,6 +15,7 @@
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
+import IMask from 'imask';
 import jQuery from 'jquery'
 window.$ = jQuery;
 window.jQuery = jQuery;
@@ -33,7 +34,6 @@ require('alphagov-static/app/assets/javascripts/analytics_toolkit/analytics');
 require('alphagov-static/app/assets/javascripts/analytics_toolkit/govuk-tracker');
 require('alphagov-static/app/assets/javascripts/analytics_toolkit/print-intent');
 require('alphagov-static/app/assets/javascripts/analytics_toolkit/error-tracking');
-require("imask");
 
 
 

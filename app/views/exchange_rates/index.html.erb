@@ -27,14 +27,14 @@
             <% if @current_rate.present? %>
               <div class="current-rate">
                 <div class="data">
-                  <span class="data-item govuk-!-font-size-48 govuk-!-font-weight-bold current-rate__pound">
+                  <span class="data-item govuk-body govuk-!-font-size-48 govuk-!-font-weight-bold current-rate__pound">
                     1 GBP
                     <span class="current-rate__big-arrow"></span>
                     <span class="current-rate__accent">
                       <%= @current_rate.inverse_rate %> EUR
                     </span>
                   </span>
-                  <span class="data-item 	govuk-!-font-size-36 govuk-!-font-weight-bold current-rate__inverse">
+                  <span class="data-item 	govuk-body govuk-!-font-size-36 govuk-!-font-weight-bold current-rate__inverse">
                     1 EUR
                     <span class="current-rate__small-arrow"></span>
                     <%= @current_rate.exchange_rate %> GBP
