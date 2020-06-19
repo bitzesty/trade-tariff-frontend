@@ -112,6 +112,7 @@ article.tariff {
     .duty {
       width: 145px;
       display: none;
+      text-align: right;
 
       @media (min-width: $headings-large-viewport) {
         display: block;
@@ -247,6 +248,7 @@ article.tariff {
 
         .duty {
           width: 145px;
+          text-align: right;
         }
 
         .supplementary-units {
