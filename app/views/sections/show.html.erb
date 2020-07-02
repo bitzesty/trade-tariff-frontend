@@ -5,12 +5,13 @@
 
 <% content_for :bodyClasses, "page--wide" %>
 
-<h2 class="govuk-heading-s">Choose the chapter that best matches your goods</h2>
+<h2 class="govuk-heading-m">Choose the chapter that best matches your goods</h2>
 
 <%= render 'shared/tariff_breadcrumbs', section: @section %>
 
 <section class="chapters">
   <table class="section-browser govuk-table">
+    <caption class="govuk-visually-hidden">Chapters for <%= @section %></caption>
     <tbody>
       <%= render @chapters %>
     </tbody>

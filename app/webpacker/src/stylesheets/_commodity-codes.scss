@@ -12,20 +12,22 @@
     transform: translateY(-50%);
     width: 100%;
     text-align: center;
+    color: $govuk-text-colour;
   }
 }
 .chapter-code {
   background-color: $chapter-code-bg;
   width: $chapter-code-width;
   height: $chapter-code-height;
+  margin-right: 5px;
 }
 .heading-code {
   background-color: $heading-code-bg;
   width: $heading-code-width;
   height: $chapter-code-height;
+  margin-right: 5px;
 }
 .commodity-code {
-  background-color: $commodity-code-bg;
   width: $commodity-code-width;
   @media (min-width: $desktop-min-width) {
     width: $commodity-code-width-desktop;
@@ -34,7 +36,13 @@
 
   > .code-text {
     position: relative;
-    width: 33.333%;
+    width: calc(33.333% - 5px);
+    background-color: $commodity-code-bg;
+    height: 25px;
+
+    & + .code-text {
+      margin-left: 5px;
+    }
   }
 }
 .chapter-guide, .forum-link {

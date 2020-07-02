@@ -3,3 +3,7 @@
 
 en:
   meta_description: "Search for import and export commodity codes and for tax, duty and licences that apply to your goods"
+
+  geographical_areas:
+    descriptions:
+      erga_omnes: "All countries"

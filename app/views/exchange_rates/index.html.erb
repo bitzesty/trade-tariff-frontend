@@ -2,8 +2,8 @@
   <h1 class="govuk-heading-l">Exchange rates</h1>
   <div class="govuk-grid-row sidebar-with-body" data-module="sticky-element-container" id="contents">
     <div class="column-full-mobile-only column-one-quarter-desktop-only">
-      <nav role="navigation" class="contents-list" data-module="track-click">
-        <h3 class="govuk-heading-m">Contents</h3>
+      <nav role="navigation" class="contents-list" data-module="track-click" aria-labelledby="exchange-rates-contents-title">
+        <h3 class="govuk-heading-m" id="exchange-rates-contents-title">Contents</h3>
 
         <ol class="contents-list__list govuk-list">
           <% @years.each do |year| %>
@@ -60,6 +60,7 @@
               <h2 class="govuk-heading-m" id="rates-for-<%= year %>">Rates for <%= year %></h2>
 
               <table class="govuk-table">
+                <caption class="govuk-visually-hidden">Rates for <%= year %></caption>
                 <thead class="govuk-table__head">
                   <tr class="govuk-table__row">
                     <th class="govuk-table__header">Effective date</th>

@@ -37,3 +37,7 @@
     list-style: none;
   }
 }
+
+dt.has_children + dd[aria-hidden="true"] {
+  display: none;
+}

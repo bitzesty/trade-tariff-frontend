@@ -6,18 +6,20 @@
     </ol>
 
     <table class="govuk-table">
-      <caption class="govuk-table__caption"><%= letter.upcase %></caption>
+      <caption class="govuk-table__caption"><span class="govuk-visually-hidden">Classified Goods starting with letter </span><%= letter.upcase %></caption>
       <tbody class="govuk-table__body">
       <% @search_references.each do |search_reference| %>
         <tr class="govuk-table__row">
           <td class="govuk-table__cell">
-            <%= link_to search_reference, search_reference.link %>
+            <%= link_to search_reference.link do %>
+              <%= search_reference %><span class="govuk-visually-hidden"> (code: <%= search_reference.referenced_id %>)</span>
+            <% end %>
           </td>
           <td class="govuk-table__cell">
-            <%= search_reference.referenced_class %>
+            <span class="govuk-visually-hidden">Class: </span><%= search_reference.referenced_class %>
           </td>
           <td class="govuk-table__cell govuk-table__cell--numeric">
-           <%= search_reference.referenced_id %>
+           <span class="govuk-visually-hidden">Code: </span><%= search_reference.referenced_id %>
           </td>
         </tr>
       <% end %>

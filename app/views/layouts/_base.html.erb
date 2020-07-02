@@ -31,8 +31,8 @@
       Trade Tariff
     </a>
     <button type="button" class="govuk-header__menu-button govuk-js-header-toggle" aria-controls="proposition-links" aria-label="Show or hide Top Level Navigation">Menu</button>
-    <nav id="proposition-menu">
-      <ul id="proposition-links" class="govuk-header__navigation " aria-label="Top Level Navigation">
+    <nav id="proposition-menu"  aria-label="Top Level Navigation">
+      <ul id="proposition-links" class="govuk-header__navigation ">
         <%= govuk_header_navigation_item(search_active_class) do %>
           <%= link_to "Search", sections_path, class: "govuk-header__link" %>
         <% end %>

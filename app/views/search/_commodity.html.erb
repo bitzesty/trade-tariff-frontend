@@ -1,6 +1,8 @@
 <li>
   <div class="commodity">
     <%= format_full_code(commodity) %>
-    <a href="<%= commodity_path(commodity) %>"><%= commodity.description.html_safe %></a>
+    <a href="<%= commodity_path(commodity) %>">
+      <span class="govuk-visually-hidden">Code: <%= commodity.code %></span> <%= commodity.description.html_safe %>
+    </a>
   </div>
 </li>

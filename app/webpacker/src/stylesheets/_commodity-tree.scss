@@ -54,6 +54,10 @@ article.tariff {
 .commodity-tree {
   border: 1px solid $panel-colour;
 
+  .govuk-list[aria-hidden="true"] {
+    display: none;
+  }
+
   .commodity-tree-note {
     left: 0;
     right: 0;
@@ -87,7 +91,7 @@ article.tariff {
 
   .commodity-tree__additional-info {
     float: right;
-    width: 540px;
+    width: 560px;
 
     em {
       font-style: normal;
@@ -130,7 +134,7 @@ article.tariff {
     }
 
     .commcode {
-      width: 145px;
+      width: 165px;
       float: right;
       text-align: right;
       display: none;
@@ -207,7 +211,7 @@ article.tariff {
         font-size: 16px;
         @media (min-width: 641px) {
           float: right;
-          width: 540px;
+          width: 560px;
 
           @supports(display: flex) {
             display: flex;
@@ -265,7 +269,7 @@ article.tariff {
         border: 0;
         padding: 0;
         @media (min-width: $desktop-min-width) {
-          width: 150px;
+          width: 170px;
           position: absolute;
           right: 0;
           bottom: 0;
@@ -400,7 +404,7 @@ article.tariff {
 
     .sub_heading_commodity_code_block {
       color: #696969;
-      width: 150px;
+      width: 170px;
       font-weight: normal;
       font-family: ntatabularnumbers, "Helvetica Neue", Arial, Helvetica, sans-serif;
 

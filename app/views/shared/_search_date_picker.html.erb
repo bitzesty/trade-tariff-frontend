@@ -1,4 +1,4 @@
-<fieldset class="govuk-fieldset js-date-picker datepicker date-picker govuk-!-font-size-16 govuk-form-group inline">
+<fieldset class="govuk-fieldset js-date-picker datepicker date-picker govuk-!-font-size-16 govuk-form-group inline"  aria-live="polite">
   <span class="fields">This tariff is for
     <label class="govuk-visually-hidden" for="tariff_date_date">Date</label>
     <span class="js-search-date js-show">
@@ -9,6 +9,7 @@
       <%= render "shared/datepicker_dialog" %>
     </span>
     <span class="no-js-search-date">
+      <label class="govuk-visually-hidden" for="tariff_date_day">Day</label>
       <%= text_field_tag(:day, @search.date.day, { id: 'tariff_date_day', name: 'day', class: "govuk-input govuk-input--width-2", maxlength: 2, placeholder: "DD" }) %>
       <label class="govuk-visually-hidden" for="tariff_date_month">Month</label>
       <%= text_field_tag(:month, @search.date.month, { id: 'tariff_date_month', name: 'month', class: "govuk-input govuk-input--width-2", maxlength: 2, placeholder: "MM" }) %>
@@ -23,6 +24,6 @@
   </span>
   <span class="text <%= @section_css %> js-show">
     This tariff is for <%= @search.date.to_formatted_s(:long) %>&emsp;
-    <a href="#change-date" title="change date" rel="nofollow">Change date</a>&emsp;
+    <a href="#change-date" title="change date" rel="nofollow" role="button">Change date</a>&emsp;
   </span>
 </fieldset>

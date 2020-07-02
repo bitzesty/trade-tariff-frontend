@@ -6,7 +6,9 @@
       </div>
     </td>
     <td class="govuk-table__cell">
-      <%= link_to heading.formatted_description.html_safe, heading_path(heading, request.query_parameters.symbolize_keys) %>
+      <%= link_to heading_path(heading, request.query_parameters.symbolize_keys)  do %>
+        <span class="govuk-visually-hidden">Heading <%= heading.display_short_code %>: </span> <%= heading.formatted_description.html_safe %>
+      <% end %>
     </td>
   </tr>
 <% else %>

@@ -48,8 +48,15 @@
                     listAction = (action === 'open') ? 'removeClass' : 'addClass',
                     branchAction = (action === 'open') ? 'addClass' : 'removeClass';
 
-                $childList[listAction]('govuk-visually-hidden');
+                $childList.attr("aria-hidden", action === "open" ? "false" : "true");
                 $branch[branchAction]('open').attr('title',  titleTxt[action]);
+                $branch.attr("aria-expanded", action === "open" ? "true" : "false")
+
+                if ($childList.is("ul")) {
+                  $childList.find("li").first().focus();
+                } else {
+                  $childList.find("ul li").first().focus();
+                }
               };
 
 
@@ -59,7 +66,7 @@
                       $subTree;
 
                   if (!isCommodityTree) {
-                      $subTree = $branchNode.siblings('dd').find('ul');
+                      $subTree = $branchNode.siblings('dd');
                       defaultTitle = 'Click to open';
                       $branchSwitch = $branchNode;
                   } else {
@@ -110,20 +117,48 @@
 
                   // hide all child lists
                   if (!isCommodityTree) {
-                      $childList.addClass('govuk-visually-hidden');
+                      $childList.attr("aria-hidden", "true");
                   }
 
                   $branchSwitches.attr("tabindex", 0);
 
-                  // allow expansion based on clicking
-                  $branchSwitches.eq(idx).on('click', function(e) {
+                  $branchSwitches.eq(idx).on("keydown", function(e) {
+                    if (e.which == 13 || e.which == 32) {
+                      e.preventDefault();
                       e.stopPropagation();
-                      if ($childList.is('.govuk-visually-hidden')) {
+
+                      if ($childList.attr("aria-hidden") == "true") {
                           clickBranch($(this), $childList, 'open');
                           adjustCommodityInfoHeights();
                       }
                       else {
                           clickBranch($(this), $childList, 'close');
+                      }
+
+                      return false;
+                    }
+                  })
+
+
+                  if ($branchSwitches.eq(idx).is("dt")) {
+                    $branchSwitches.eq(idx).parent().on("keydown", function(e) {
+                      if ($branchSwitches.eq(idx).hasClass("open") && e.which == 27) {
+                        clickBranch($branchSwitches.eq(idx), $childList, 'close');
+                        $branchSwitches.eq(idx).focus();
+                      }
+                    });
+                  }
+
+                  // allow expansion based on clicking
+                  $branchSwitches.eq(idx).on('click', function(e) {
+                      e.stopPropagation();
+                      if ($childList.attr("aria-hidden") == "true") {
+                          clickBranch($(this), $childList, 'open');
+                          adjustCommodityInfoHeights();
+                      }
+                      else {
+                          clickBranch($(this), $childList, 'close');
+                          $childList.attr("aria-hidden", "true")
                       }
 
                       return false;
@@ -445,6 +480,11 @@
                 $controlForm.on('click', 'a', function (e) {
                     $infoPara.toggle();
                     $fields.toggle();
+
+                    if ($fields.is(":visible")) {
+                      $fields.find("input, select").filter(":visible").first().focus();
+                    }
+
                     return false;
                 });
 
