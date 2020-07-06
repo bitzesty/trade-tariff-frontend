@@ -36,9 +36,10 @@
 
   > .code-text {
     position: relative;
-    width: calc(33.333% - 5px);
+    width: 30px;
     background-color: $commodity-code-bg;
-    height: 25px;
+    height: 30px;
+    line-height: 30px;
 
     & + .code-text {
       margin-left: 5px;
@@ -46,8 +47,6 @@
   }
 }
 .chapter-guide, .forum-link {
-  font-size: 80%;
-  margin-top: 1em;
   a {
     display: inline !important;
     margin-left: inherit !important;

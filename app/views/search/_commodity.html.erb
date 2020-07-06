@@ -1,8 +1,14 @@
-<li>
-  <div class="commodity">
-    <%= format_full_code(commodity) %>
-    <a href="<%= commodity_path(commodity) %>">
-      <span class="govuk-visually-hidden">Code: <%= commodity.code %></span> <%= commodity.description.html_safe %>
+<tr class="govuk-table__row">
+  <td class="govuk-table__cell">
+    <a href="<%= commodity_path(commodity) %>" aria-describedby="code-for-commodity-<%= commodity.id %>">
+      <%= commodity.description.html_safe %>
+      <span class="govuk-visually-hidden">
+        (code <%= commodity.code %>)
+      </span>    
     </a>
-  </div>
-</li>
+  </td>
+
+  <td class="govuk-table__cell text-right" id="code-for-commodity-<%= commodity.id %>">
+    <%= format_full_code(commodity) %>
+  </td>
+</tr>

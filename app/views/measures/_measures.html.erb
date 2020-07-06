@@ -81,6 +81,9 @@
     <%= render partial: 'shared/country_picker', locals: { controller: @search, url: perform_search_path, anchor: 'import' } %>
 
     <% if declarable.import_measures.for_country(@search.country).any? %>
+  
+      <%= render "shared/measure_types_help" %>
+
       <table class="small-table measures govuk-table">
         <% if @search.filtered_by_country? %>
           <caption class="govuk-table__caption">Measures for <%= @search.geographical_area %></caption>
@@ -108,7 +111,18 @@
     <% else %>
       <p>There are no import measures for this commodity on this date.</p>
     <% end %>
-    <%= render 'headings/footnote', footnotes: declarable.footnotes %>
+    <details class="govuk-details" data-module="govuk-details">
+      <summary class="govuk-details__summary">
+        <span class="govuk-details__summary-text">
+          Notes
+        </span>
+      </summary>
+      <div class="govuk-details__text">
+        <%= render partial: 'chapters/chapter_guides', locals: {chapter: declarable.chapter} %>
+        <br>
+        <%= render 'headings/footnote', footnotes: declarable.footnotes %>
+      </div>
+    </details>
   </div>
 
   <!-- Export tab -->

@@ -3,7 +3,7 @@
   <article class="search-results">
     <table class="quota-results govuk-table">
       <caption class="govuk-table__caption">
-        <h1 class="govuk-heading-m">Quota search results</h1>
+        <h1 class="govuk-heading-l">Quota search results</h1>
       </caption>
       <thead class="govuk-table__head">
         <tr class="govuk-table__row">
@@ -23,11 +23,11 @@
   </article>
 <% elsif @result.search_form.large_result? || @result.with_errors %>
   <article class="search-results">
-    <h1 class="govuk-heading-m">Sorry, there is a problem with the search query. Please specify one or more search criteria.</h1>
+    <h1 class="govuk-heading-l">Sorry, there is a problem with the search query. Please specify one or more search criteria.</h1>
   </article>
 <% elsif @result.search_form.present? %>
   <br/>
   <article class="search-results">
-    <h1 class="govuk-heading-m">There are no matching results</h1>
+    <h1 class="govuk-heading-l">There are no matching results</h1>
   </article>
 <% end %>

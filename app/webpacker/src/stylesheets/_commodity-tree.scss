@@ -268,11 +268,14 @@ article.tariff {
         width: $identifier-width;
         border: 0;
         padding: 0;
+        margin-top: 0.5em;
+
         @media (min-width: $desktop-min-width) {
-          width: 170px;
+          width: 172px;
           position: absolute;
           right: 0;
           bottom: 0;
+          margin-top: 0;
         }
         div {
           text-align: center;
@@ -410,6 +413,7 @@ article.tariff {
 
       .chapter-code, .heading-code, .commodity-code {
         float: left;
+        line-height: 30px;
       }
 
       .code-text {

@@ -9,9 +9,6 @@
     clear:both;
   }
   nav {
-    @media (min-width: $desktop-min-width) {
-      margin-right: $breadcrumb-changes-link-width;
-    }
     ul {
       position: relative;
       list-style: none;
@@ -23,9 +20,12 @@
       li {
         position: relative;
         display: block;
-        line-height: 25px;
+        line-height: 30px;
         margin-top: 5px;
         word-wrap: break-word;
+        font-size: 1rem;
+        min-height: 30px;
+
         &::before, &::after {
           content: "";
           position: absolute;
@@ -33,7 +33,7 @@
         }
         &::before {
           border-top: 1px solid #000;
-          top: 9px;
+          top: 15px;
           width: 8px;
           height: 0;
         }
@@ -41,15 +41,18 @@
           border-left: 1px solid #000;
           height: 100%;
           width: 0px;
-          top: 2px;
+          top: 7px;
         }
         &:last-child::after {
           height: 8px;
         }
-        .chapter-code, .heading-code, .commodity-code {
-          float: left;
-          margin-right: $small-margin;
+
+        .line-text {
+          line-height: 30px;
+          min-height: 30px;
+          padding-right: 200px;
         }
+
         &.chapter-and-heading-li {
           .chapter-code {
             margin-right: 0;
@@ -82,8 +85,13 @@
       }
     }
 
+    p:last-child {
+      margin-bottom: 0;
+    }
+
     .feed {
-      display: inline;
+      margin-top: 1.5em;
+
       &::before {
         content: '(';
       }
@@ -92,16 +100,19 @@
       }
       @media (min-width: $desktop-min-width) {
         float: right;
-        margin-right: -$breadcrumb-changes-link-width;
         &::before, &::after {
           content: '';
         }
       }
       a {
-        background: url('../images/feed-icon-black.png') 0.2em 0.1em no-repeat;
+        background-image: url('../images/feed-icon-black.png');
+        background-position: 0.2em 0.1em;
+        background-repeat: no-repeat;
         padding-left: 20px;
         @media (min-width: $desktop-min-width) {
-          background: url('../images/feed-icon-black.png') 0.2em 0.2em no-repeat;
+          background-image: url('../images/feed-icon-black.png');
+          background-position: 0.2em 0.2em;
+          background-repeat: no-repeat;
           padding-left: 25px;
         }
       }
@@ -132,6 +143,49 @@
       background: url('../images/icon-file-download.png') 0.2em 0.2em no-repeat;
       background-size: 16px 16px;
       padding-left: 25px;
+    }
+  }
+}
+
+
+.full-code {
+  width: 172px;
+
+  @media (min-width: 601px) {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
+  > div {
+    margin-top: 0;
+    vertical-align: top;
+    display: inline-block;
+  }
+
+  .chapter-code,
+  .heading-code {
+    width: 30px;
+    height: 30px;
+    margin-right: 2px !important;
+  }
+
+  .commodity-code {
+    width: 101px;
+    height: 30px;
+
+    .code-text {
+      width: 30px;
+      height: 30px;
+      display: inline-block;
+      text-align: center;
+      line-height: 30px;
+      margin: 0 !important;
+
+      &:nth-child(2) {
+        margin-left: 2px !important;
+        margin-right: 2px !important;
+      }
     }
   }
 }

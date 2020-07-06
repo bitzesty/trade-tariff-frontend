@@ -70,7 +70,8 @@ module CommoditiesHelper
   end
 
   def code_text(code)
-    "<div class='code-text pull-left'>#{code}</div>" if code.present?
+    str = code || "&nbsp;"
+    "<div class='code-text pull-left'>#{str}</div>"
   end
 
   def tree_node(main_commodity, commodities, depth)
