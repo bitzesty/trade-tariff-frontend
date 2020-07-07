@@ -33,7 +33,7 @@ describe "Search", js: true, vcr: {
     expect(page.find("#select2-import_search_country-container").text).to eq("United States of America (US)")
     expect(page).to have_content("Measures for United States of America")
 
-    page.find(".reset-country-picker").click
+    page.find(".reset-country-picker", visible: true).click
 
     sleep 2
     expect(page.find("#select2-import_search_country-container").text).to eq("All countries")

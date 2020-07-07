@@ -15,18 +15,18 @@ describe PagesController, "GET to #opensearch", type: :controller do
   end
 
   context 'when asked with no format' do
-    it "raises ActionController::UnknownFormat as per rails 4" do
-      expect {
-        get :opensearch
-      }.to raise_error(ActionController::UnknownFormat)
+    subject { get :opensearch }
+
+    it "does not raise ActionController::UnknownFormat" do
+      expect(subject).to render_template('errors/not_found')
     end
   end
 
   context 'with unsupported format' do
-    it "raises ActionController::UnknownFormat as per rails 4" do
-      expect {
-        get :opensearch, format: :json
-      }.to raise_error(ActionController::UnknownFormat)
+    subject { get :opensearch, format: :json }
+
+    it "does not raise ActionController::UnknownFormat" do
+      expect(subject).to render_template('errors/not_found')
     end
   end
 end

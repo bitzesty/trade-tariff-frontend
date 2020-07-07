@@ -277,8 +277,7 @@ describe "Search", js: true do
           using_wait_time 10 do
             expect(page).to have_content('Chemical search results for `121-17-5`')
             expect(page).to have_content('4-chloro-alpha,alpha,alpha-trifluoro-3-nitrotoluene')
-            expect(page).to have_content('2904990000')
-            expect(page).to have_content('Other')
+            expect(page).to have_link("Other", href: "/commodities/2904990000")
           end
         end
       end
@@ -296,7 +295,7 @@ describe "Search", js: true do
             expect(page).to have_content('Chemical search results for `benzene`')
             expect(page).to have_content('22199-08-2')
             expect(page).to have_content('4-amino-N-(pyrimidin-2(1H)-ylidene-κN 1)benzenesulfonamidato-κOsilver')
-            expect(page).to have_content('2843290000')
+            expect(page).to have_link("Other", href: "/commodities/2843290000")
           end
         end
       end

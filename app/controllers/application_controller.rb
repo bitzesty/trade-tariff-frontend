@@ -35,7 +35,7 @@ class ApplicationController < ActionController::Base
     render plain: '404', status: 404
   end
 
-  rescue_from(ActionView::MissingTemplate) do |_e|
+  rescue_from(ActionView::MissingTemplate, ActionController::UnknownFormat) do |_e|
     request.format = :html
     render_404
   end
@@ -117,7 +117,7 @@ class ApplicationController < ActionController::Base
       rescue ArgumentError
         now
       end
-      brexit_date = Date.parse(ENV['BREXIT_DATE'] || '19-10-31')
+      brexit_date = Date.parse(ENV['BREXIT_DATE'] || '2021-01-01')
       if (search_date >= brexit_date) && (now < brexit_date)
         params[:year] = now.year
         params[:month] = now.month

@@ -1,24 +1,25 @@
 source "https://rubygems.org"
-ruby "~> 2.6.5"
+ruby "~> 2.7.1"
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
   "https://github.com/#{repo_name}.git"
 end
 
-ruby "~> 2.6.2"
-
-gem "rails", "6.0.2.2"
+gem "rails", ">= 6.0.3.2"
 
 gem "yajl-ruby", "~> 1.3.1", require: "yajl"
 gem "multi_json", "~> 1.11"
 gem "faraday"
-gem "faraday_middleware"
+gem "faraday_middleware", "~> 1"
 gem "addressable", "~> 2.3"
 gem "hashie", "~> 3.4"
 
 # Assets
-gem "sass-rails", "~> 5.0.6"
+gem "coffee-rails", "~> 5"
+gem "jquery-rails", "~> 4.3.4"
+gem "jquery-migrate-rails"
+gem "sass-rails"
 gem "uglifier", "~> 2.7"
 gem "responders", "~> 3.0.0"
 gem "bootsnap", require: false
@@ -39,7 +40,7 @@ gem "logstash-event"
 gem "lograge"
 
 # Web Server
-gem 'puma', '~> 3.12.4'
+gem 'puma', '~> 3.12.6'
 gem 'rack-cors'
 gem 'rack-attack'
 gem "scout_apm"
@@ -48,8 +49,8 @@ gem "scout_apm"
 gem "redis-rails"
 
 # AWS
-gem "aws-sdk", "~> 2"
-gem "aws-sdk-rails", ">= 1.0.1"
+gem "aws-sdk", "~> 3"
+gem "aws-sdk-rails", "~> 3"
 
 group :development do
   gem "web-console", ">= 3.3.0"
@@ -63,22 +64,21 @@ group :development, :test do
 end
 
 group :test do
-  gem "rails-controller-testing"
-  gem "webmock", "~> 3.5.0"
-  gem "factory_girl_rails", "~> 4.8.0"
+  gem "rails-controller-testing", github: "rails/rails-controller-testing", branch: "master"
+  gem "webmock", "~> 3.8.0"
+  gem "factory_bot_rails"
   gem "forgery"
-  gem "shoulda-matchers", "~> 3.1.1"
+  gem "shoulda-matchers", "~> 4"
   gem "vcr", "~> 3.0.3"
-  gem "simplecov", "~> 0.15.0", require: false
-  gem "rspec-rails", "~> 3.5.2"
-  gem "capybara", "~> 2.18.0"
-  gem "poltergeist", "~> 1.14.0"
-  gem "timecop", "~> 0.8.1"
+  gem "simplecov", "~> 0.18", require: false
+  gem "rspec-rails", "~> 4"
+  gem "capybara", "~> 3"
+  gem "selenium-webdriver"
+  gem "timecop", "~> 0.9.1"
   gem "rspec_junit_formatter"
   gem 'rack-test'
 end
 
 group :production do
-  gem "rails_12factor"
   gem "sentry-raven"
 end
