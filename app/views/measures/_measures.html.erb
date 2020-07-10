@@ -105,7 +105,7 @@
           </tr>
         </thead>
         <tbody>
-          <%= render partial: 'measures/measure', collection: declarable.import_measures.for_country(@search.country) %>
+          <%= render partial: 'measures/measure', collection: declarable.import_measures.for_country(@search.country).sort_by(&:key) %>
         </tbody>
       </table>
     <% else %>
@@ -144,7 +144,7 @@
           </tr>
         </thead>
         <tbody>
-          <%= render partial: 'measures/measure', collection: declarable.export_measures.for_country(@search.country) %>
+          <%= render partial: 'measures/measure', collection: declarable.export_measures.for_country(@search.country).sort_by(&:key) %>
         </tbody>
       </table>
     <% else %>
