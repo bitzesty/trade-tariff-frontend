@@ -90,7 +90,7 @@
     }
 
     .feed {
-      margin-top: 1.5em;
+      margin-top: 2em;
 
       &::before {
         content: '(';
@@ -180,11 +180,11 @@
       display: inline-block;
       text-align: center;
       line-height: 30px;
-      margin: 0 !important;
+      //margin: 0 !important;
 
       &:nth-child(2) {
-        margin-left: 2px !important;
-        margin-right: 2px !important;
+        //margin-left: 2px !important;
+        //margin-right: 2px !important;
       }
     }
   }

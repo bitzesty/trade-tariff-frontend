@@ -2,8 +2,6 @@ module CommoditiesHelper
   def leaf_position(commodity)
     if commodity.last_child?
       " last-child"
-    else
-      ""
     end
   end
 
@@ -16,7 +14,7 @@ module CommoditiesHelper
       content_tag(:ul, class: 'commodities') do
         content_tag(:li) do
           content_tag(:p, commodities.first.to_s.html_safe) +
-            tree_node(main_commodity, commodities, commodities.first.number_indents)
+          tree_node(main_commodity, commodities, commodities.first.number_indents)
         end
       end
     else
@@ -26,19 +24,40 @@ module CommoditiesHelper
     end
   end
 
-  def format_commodity_code(commodity)
-    code = commodity.display_short_code.to_s
-    "#{code[0..1]}&nbsp;#{code[2..3]}&nbsp;#{code[4..-1]}".html_safe
+  def tree_chapter_code(chapter)
+    code = chapter.short_code
+    tree_code(code)
+  end
+
+  def tree_heading_code(heading)
+    code = heading.short_code
+    tree_code(code)
+  end
+
+  def tree_commodity_code(declarable)
+    code = declarable.code.to_s
+    tree_code(code)
+  end
+
+  def tree_code(code, klass: 'full-code')
+    "<div class='#{klass}'>
+      #{chapter_and_heading_codes(code)}
+      <div class='commodity-code'>
+        #{code_text(code[4..5])}
+        #{code_text(code[6..7])}
+        #{code_text(code[8..9])}
+      </div>
+    </div>".html_safe
   end
 
   def format_full_code(commodity)
     code = commodity.code.to_s
-    "#{chapter_and_heading_codes(code)}
-    <div class='commodity-code'>
-      <div class='code-text pull-left'>#{code[4..5]}</div>
-      <div class='code-text pull-left'>#{code[6..7]}</div>
-      <div class='code-text pull-left'>#{code[8..9]}</div>
-    </div>".html_safe
+    tree_code(code, klass: nil)
+  end
+
+  def format_commodity_code(commodity)
+    code = commodity.display_short_code.to_s
+    "#{code[0..1]}&nbsp;#{code[2..3]}&nbsp;#{code[4..-1]}".html_safe
   end
 
   def format_commodity_code_based_on_level(commodity)
@@ -48,13 +67,7 @@ module CommoditiesHelper
     if commodity.number_indents > 1 || display_full_code
       # remove trailing pairs of zeros for non declarable
       code = code.gsub(/[0]{2}+$/, '') if commodity.has_children?
-
-      "#{chapter_and_heading_codes(code)}
-      <div class='commodity-code'>
-        <div class='code-text pull-left'>#{code[4..5]}</div>
-        #{code_text(code[6..7])}
-        #{code_text(code[8..9])}
-      </div>".html_safe
+      tree_code(code, klass: nil)
     end
   end
 
@@ -62,11 +75,11 @@ module CommoditiesHelper
 
   def chapter_and_heading_codes(code)
     "<div class='chapter-code'>
-      <div class='code-text'>#{code[0..1]}</div>
+      #{code_text(code[0..1])}
     </div>
     <div class='heading-code'>
-      <div class='code-text'>#{code[2..3]}</div>
-    </div>"
+      #{code_text(code[2..3])}
+    </div>".html_safe
   end
 
   def code_text(code)
@@ -80,7 +93,10 @@ module CommoditiesHelper
       content_tag(:ul) do
         content_tag(:li) do
           content_tag(:p, deeper_node.to_s.html_safe) +
-            tree_node(main_commodity, commodities, deeper_node.number_indents)
+          if deeper_node.producline_suffix == '80'
+            tree_code(deeper_node.code.gsub(/[0]{2}+$/, ''))
+          end +
+          tree_node(main_commodity, commodities, deeper_node.number_indents)
         end
       end
     else
@@ -99,9 +115,10 @@ module CommoditiesHelper
         content_tag(:div, format_commodity_code(commodity), class: 'code-text')
       end
       content_tag(:p, commodity.to_s.html_safe) +
-        content_tag(:div, class: 'feed') do
-          link_to('Changes', commodity_changes_path(commodity.declarable, format: :atom), rel: "nofollow")
-        end
+      tree_commodity_code(commodity) +
+      content_tag(:div, class: 'feed') do
+        link_to('Changes', commodity_changes_path(commodity.declarable, format: :atom), rel: "nofollow")
+      end
     end
   end
 

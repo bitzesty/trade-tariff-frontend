@@ -13,35 +13,11 @@ declarable ||= false %>
 
         <ul>
           <li class="chapter-li">
-            <div class="full-code">
-              <div class="chapter-code">
-                <div class="code-text"><%= declarable.chapter.short_code %></div>
-              </div>
-              <div class="heading-code">&nbsp;</div>
-              <div class="commodity-code">
-                <div class="code-text">&nbsp;</div>
-                <div class="code-text">&nbsp;</div>
-                <div class="code-text">&nbsp;</div>
-              </div>
-            </div>
+            <%= tree_chapter_code(declarable.chapter) %>
             <%= link_to declarable.chapter, chapter_path(declarable.chapter, request.query_parameters.symbolize_keys) %>
             <ul>
               <li class="heading-li">
-                <div class="full-code">
-                  <div class="chapter-code">
-                    <div class="code-text"><%= declarable.chapter.short_code %></div>
-                  </div>
-                  <div class="heading-code">
-                    <div class="code-text">
-                      <%= declarable.heading_display_short_code %>
-                    </div>
-                  </div>
-                  <div class="commodity-code">
-                    <div class="code-text">&nbsp;</div>
-                    <div class="code-text">&nbsp;</div>
-                    <div class="code-text">&nbsp;</div>
-                  </div>
-                </div>
+                <%= tree_heading_code(declarable.heading) %>
                 <% if declarable.show_commodity_tree? %>
                   <%= link_to declarable.heading.to_s.html_safe, heading_path(declarable.heading, request.query_parameters.symbolize_keys) %>
                   <%= commodity_tree(declarable, declarable.ancestors) %>
@@ -103,35 +79,13 @@ declarable ||= false %>
       <div class="desktop-only">
         <ul>
           <li class="chapter-li">
-            <div class="full-code">
-              <div class="chapter-code">
-                <div class="code-text"><%= heading.chapter.short_code %></div>
-              </div>
-              <div class="heading-code">&nbsp;</div>
-              <div class="commodity-code">
-                <div class="code-text">&nbsp;</div>
-                <div class="code-text">&nbsp;</div>
-                <div class="code-text">&nbsp;</div>
-              </div>
-            </div>
+            <%= tree_chapter_code(heading.chapter) %>
             <div class="line-text">
               <%= link_to heading.chapter, chapter_path(heading.chapter, request.query_parameters.symbolize_keys) %>
             </div>
             <ul>
               <li class="heading-li">
-                <div class="full-code">
-                  <div class="chapter-code">
-                    <div class="code-text"><%= heading.chapter.short_code %></div>
-                  </div>
-                  <div class="heading-code">
-                    <div class="code-text"><%= heading.heading_display_short_code %></div>
-                  </div>
-                  <div class="commodity-code">
-                    <div class="code-text">&nbsp;</div>
-                    <div class="code-text">&nbsp;</div>
-                    <div class="code-text">&nbsp;</div>
-                  </div>
-                </div>
+                <%= tree_heading_code(heading) %>
                 <div class="line-text">
                   <%= heading.formatted_description.html_safe %>
                 </div>
@@ -144,17 +98,7 @@ declarable ||= false %>
       <div class="mobile-only">
         <ul class="js-full-tree">
           <li class="chapter-li">
-            <div class="full-code">
-              <div class="chapter-code">
-                <div class="code-text"><%= heading.chapter.short_code %></div>
-              </div>
-              <div class="heading-code">&nbsp;</div>
-              <div class="commodity-code">
-                <div class="code-text">&nbsp;</div>
-                <div class="code-text">&nbsp;</div>
-                <div class="code-text">&nbsp;</div>
-              </div>
-            </div>
+            <%= tree_chapter_code(heading.chapter) %>
             <%= link_to heading.chapter, chapter_path(heading.chapter, request.query_parameters.symbolize_keys) %>
             <ul>
               <li class="heading-li">
@@ -191,17 +135,7 @@ declarable ||= false %>
       </p>
       <ul>
         <li class="chapter-li">
-          <div class="full-code">
-            <div class="chapter-code">
-              <div class="code-text"><%= chapter.short_code %></div>
-            </div>
-            <div class="heading-code">&nbsp;</div>
-            <div class="commodity-code">
-              <div class="code-text">&nbsp;</div>
-              <div class="code-text">&nbsp;</div>
-              <div class="code-text">&nbsp;</div>
-            </div>
-          </div>
+          <%= tree_chapter_code(chapter) %>
           <%= chapter %>
         </li>
       </ul>
