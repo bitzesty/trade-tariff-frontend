@@ -17,7 +17,7 @@ gem "hashie", "~> 3.4"
 
 # Assets
 gem "coffee-rails", "~> 5"
-gem "jquery-rails", "~> 4.3.4"
+gem "jquery-rails", "~> 4.4"
 gem "jquery-migrate-rails"
 gem "sass-rails"
 gem "uglifier", "~> 2.7"

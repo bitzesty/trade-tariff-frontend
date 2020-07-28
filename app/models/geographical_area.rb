@@ -54,7 +54,11 @@ class GeographicalArea
   end
 
   def description
-    attributes['description'].presence || ''
+    if geographical_area_id == "1011"
+      "All countries"
+    else
+      attributes['description'].presence || ''
+    end
   end
 
   def long_description

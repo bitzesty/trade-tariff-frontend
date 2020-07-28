@@ -44,6 +44,10 @@ class Measure
     measure_type.id == "103"
   end
 
+  def tariff_preference?
+    measure_type.id == "142"
+  end
+
   def supplementary?
     options = %w[109 110 111]
     options.include?(measure_type.id)
@@ -73,9 +77,19 @@ class Measure
     @additional_code.presence || NullObject.new(code: '')
   end
 
+  def key
+    "#{ vat? ? 0 : 1 }
+     #{ third_country? ? 0 : 1 }
+     #{ supplementary? ? 0 : 1 }
+     #{ excise ? 0 : 1 }
+     #{ geographical_area.children_geographical_areas.any? ? 0 : 1 }
+     #{ tariff_preference? ? 0 : 1 }
+     #{ geographical_area.description }#{ additional_code_sort }"
+  end
+
   # _999 is the master additional code and should come first
   def additional_code_sort
-    if additional_code && additional_code.to_s.include?("999")
+    if additional_code && additional_code.code.to_s.include?("999")
       "A000"
     else
       additional_code.code.to_s

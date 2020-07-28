@@ -81,7 +81,7 @@
     <%= render partial: 'shared/country_picker', locals: { controller: @search, url: perform_search_path, anchor: 'import' } %>
 
     <% if declarable.import_measures.for_country(@search.country).any? %>
-  
+
       <%= render "shared/measure_types_help" %>
 
       <table class="small-table measures govuk-table">
@@ -105,7 +105,7 @@
         </tr>
         </thead>
         <tbody>
-        <%= render partial: 'measures/measure', collection: declarable.import_measures.for_country(@search.country) %>
+          <%= render partial: 'measures/measure', collection: declarable.import_measures.for_country(@search.country).sort_by(&:key) %>
         </tbody>
       </table>
     <% else %>
@@ -154,7 +154,7 @@
         </tr>
         </thead>
         <tbody>
-        <%= render partial: 'measures/measure', collection: declarable.export_measures.for_country(@search.country) %>
+          <%= render partial: 'measures/measure', collection: declarable.export_measures.for_country(@search.country).sort_by(&:key) %>
         </tbody>
       </table>
     <% else %>
