@@ -48,7 +48,7 @@ CalendarButtonInput.prototype.handleKeyDown = function (event) {
   }
 };
 
-CalendarButtonInput.prototype.handleClick = function () {
+CalendarButtonInput.prototype.handleClick = function (event) {
   if (!this.datepicker.isOpen()) {
     this.datepicker.show();
     this.datepicker.setFocusDay();

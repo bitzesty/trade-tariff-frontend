@@ -25,7 +25,11 @@
   GOVUK.analyticsPlugins.printIntent();
 
   // Track initial pageview
-  GOVUK.analytics.trackPageview();
+  try {
+    GOVUK.analytics.trackPageview();
+  } catch (e) {
+    
+  }
 
   // Clicks on data-analytics-event
   $(document).on('click', '[data-analytics-event]', function(e){

@@ -15,10 +15,14 @@
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
+import "core-js/stable";
+import "regenerator-runtime/runtime";
+
 import IMask from 'imask';
 import jQuery from 'jquery'
 window.$ = jQuery;
 window.jQuery = jQuery;
+
 
 require('popup');
 require('select2');
