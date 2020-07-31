@@ -14,6 +14,7 @@ module CommoditiesHelper
       content_tag(:ul, class: 'commodities') do
         content_tag(:li) do
           content_tag(:p, commodities.first.to_s.html_safe) +
+          tree_code(commodities.first.code) + 
           tree_node(main_commodity, commodities, commodities.first.number_indents)
         end
       end
@@ -93,9 +94,10 @@ module CommoditiesHelper
       content_tag(:ul) do
         content_tag(:li) do
           content_tag(:p, deeper_node.to_s.html_safe) +
-          if deeper_node.producline_suffix == '80'
-            tree_code(deeper_node.code.gsub(/[0]{2}+$/, ''))
-          end +
+          tree_code(deeper_node.code.gsub(/[0]{2}+$/, '')) + 
+          # if deeper_node.producline_suffix == '80'
+          #   tree_code(deeper_node.code.gsub(/[0]{2}+$/, ''))
+          # end +
           tree_node(main_commodity, commodities, deeper_node.number_indents)
         end
       end
@@ -141,7 +143,8 @@ module CommoditiesHelper
     content_tag(:p) do
       content_tag(:p, commodity.formatted_description.html_safe,
                           class: 'description',
-                          id: "commodity-#{commodity.code}")
+                          id: "commodity-#{commodity.code}") +
+      tree_code(commodity.code)
     end
   end
 

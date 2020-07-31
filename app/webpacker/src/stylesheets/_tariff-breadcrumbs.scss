@@ -13,7 +13,7 @@
       position: relative;
       list-style: none;
       padding-left: $breadcrumb-indent;
-      margin: 0;
+      margin: 5px 0 0;
       @media (min-width: $desktop-min-width) {
         padding-left: $breadcrumb-indent-desktop;
       }
@@ -21,10 +21,29 @@
         position: relative;
         display: block;
         line-height: 30px;
-        margin-top: 5px;
         word-wrap: break-word;
-        font-size: 1rem;
+        font-size: 1.11111rem;
         min-height: 30px;
+
+        p,
+        a {
+          display: block !important;
+          max-width: calc(100% - 200px);
+          font-size: 16px;
+          font-size: 1rem;
+          min-height: 30px;
+
+          @media (min-width: $desktop-min-width) {
+            font-size: 1em;
+          }
+        }
+
+        .download-pdf,
+        .feed {
+          a {
+            display: inline-block !important;
+          }
+        }
 
         &::before, &::after {
           content: "";
@@ -75,7 +94,6 @@
         p {
           display: inline;
           margin-bottom: 0;
-          @include govuk-typography-responsive(16, $important: true);
         }
       }
     }
@@ -90,8 +108,6 @@
     }
 
     .feed {
-      margin-top: 2em;
-
       &::before {
         content: '(';
       }
@@ -100,18 +116,24 @@
       }
       @media (min-width: $desktop-min-width) {
         float: right;
+        margin-top: 2em;
+
         &::before, &::after {
           content: '';
         }
       }
       a {
         background-image: url('../images/feed-icon-black.png');
-        background-position: 0.2em 0.1em;
+        background-position: 0.2em center;
         background-repeat: no-repeat;
         padding-left: 20px;
+        max-width: none;
+        display: inline-block !important;
+        font-size: 1rem;
+        
         @media (min-width: $desktop-min-width) {
           background-image: url('../images/feed-icon-black.png');
-          background-position: 0.2em 0.2em;
+          background-position: 0.2em center;
           background-repeat: no-repeat;
           padding-left: 25px;
         }
@@ -121,7 +143,6 @@
 }
 
 .download-pdf {
-  display: inline;
   &::before {
     content: '(';
   }
@@ -130,17 +151,23 @@
   }
   @media (min-width: $desktop-min-width) {
     float: right;
-    margin-right: 0.3em;
+    margin-right: 1.25em;
+    margin-top: 2em;
+
     &::before, &::after {
       content: '';
     }
   }
   a {
-    background: url('../images/icon-file-download.png') 0.2em 0.1em no-repeat;
+    background: url('../images/icon-file-download.png') 0.2em center no-repeat;
     background-size: 14px 14px;
     padding-left: 20px;
+    max-width: none;
+    display: inline-block !important;
+    font-size: 1rem;
+    
     @media (min-width: $desktop-min-width) {
-      background: url('../images/icon-file-download.png') 0.2em 0.2em no-repeat;
+      background: url('../images/icon-file-download.png') 0.2em center no-repeat;
       background-size: 16px 16px;
       padding-left: 25px;
     }
@@ -150,6 +177,8 @@
 
 .full-code {
   width: 172px;
+  font-size: 16px;
+  font-size: 1rem;
 
   @media (min-width: 601px) {
     position: absolute;
