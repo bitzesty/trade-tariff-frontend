@@ -90,6 +90,7 @@
         <% else %>
           <caption class="govuk-table__caption">Measures for all countries</caption>
         <% end %>
+
         <thead>
         <tr>
           <th>Country</th>
@@ -104,6 +105,7 @@
           <th>Footnotes</th>
         </tr>
         </thead>
+
         <tbody>
           <%= render partial: 'measures/measure', collection: declarable.import_measures.for_country(@search.country).sort_by(&:key) %>
         </tbody>
@@ -135,10 +137,11 @@
     <% if declarable.export_measures.for_country(@search.country).any? %>
       <table class="small-table measures govuk-table">
         <% if @search.filtered_by_country? %>
-          <caption class="govuk-heading-s">Measures for <%= @search.geographical_area %></caption>
+          <caption class="govuk-table__caption">Measures for <%= @search.geographical_area %></caption>
         <% else %>
-          <caption class="govuk-heading-s">Measures for all countries</caption>
+          <caption class="govuk-table__caption">Measures for all countries</caption>
         <% end %>
+
         <thead>
         <tr>
           <th>Country</th>
@@ -153,6 +156,7 @@
           <th>Footnotes</th>
         </tr>
         </thead>
+
         <tbody>
           <%= render partial: 'measures/measure', collection: declarable.export_measures.for_country(@search.country).sort_by(&:key) %>
         </tbody>
