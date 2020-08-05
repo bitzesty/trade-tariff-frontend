@@ -3,6 +3,7 @@
   display: inline-block;
   position: relative;
   height: 1.5625em;
+  float: left;
   @media (min-width: $desktop-min-width) {
     font-size: 16px;
   }
