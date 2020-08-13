@@ -26,6 +26,19 @@
   }
 }
 
+.govuk-back-link + .govuk-main-wrapper {
+  padding-top: 20px !important;
+
+  header h1 {
+    margin-bottom: 10px !important;
+  }
+
+  .search-header fieldset {
+    margin-top: 5px !important;
+    margin-bottom: 10px !important;
+  }
+}
+
 #content,
 #global-header-bar,
 #global-cookie-message p,
