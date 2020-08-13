@@ -91,7 +91,7 @@ article.tariff {
 
   .commodity-tree__additional-info {
     float: right;
-    width: 560px;
+    width: 570px;
 
     em {
       font-style: normal;
@@ -211,7 +211,7 @@ article.tariff {
         font-size: 16px;
         @media (min-width: 641px) {
           float: right;
-          width: 560px;
+          width: 570px;
 
           @supports(display: flex) {
             display: flex;
@@ -271,7 +271,7 @@ article.tariff {
         margin-top: 0.5em;
 
         @media (min-width: $desktop-min-width) {
-          width: 172px;
+          width: 180px;
           position: absolute;
           right: 0;
           bottom: 0;
@@ -407,7 +407,7 @@ article.tariff {
 
     .sub_heading_commodity_code_block {
       color: #696969;
-      width: 170px;
+      width: 180px;
       font-weight: normal;
       font-family: ntatabularnumbers, "Helvetica Neue", Arial, Helvetica, sans-serif;
 

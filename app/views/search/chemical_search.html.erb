@@ -2,7 +2,7 @@
 <% if @result.search_result&.any? %>
   <br />
   <article class="search-results">
-    <h1 class="govuk-heading-l">Chemical search results for &ldquo;<em><%= "#{@result.search_form.cas || @result.search_form.name}" %></em>&rdquo;</h1>
+    <h1 class="govuk-heading-l">Chemical search results for &ldquo;<em><%= "#{@result.search_form.cas || @result.search_form.name}" %></em>&nbsp;&rdquo;</h1>
     <% @result.search_result.each do |chemical| %>
       <table class="govuk-table">
         <colgroup>
