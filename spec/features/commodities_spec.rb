@@ -132,7 +132,7 @@ describe 'JS behaviour', js: true do
 end
 
 def click_import_tab
-  within '.nav-tabs' do
+  within '.govuk-tabs' do
     click_on 'Import'
   end
 end
