@@ -1,4 +1,4 @@
-class FuzzyMatchResultsPresenter
+class NullMatchResultsPresenter
   def initialize(_search, search_results)
     @search_results = search_results
   end
