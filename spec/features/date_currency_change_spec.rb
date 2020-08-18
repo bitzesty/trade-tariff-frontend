@@ -22,8 +22,8 @@ describe "Date & Currency change", js: true, vcr: {
 
     expect(page).to have_content "Set date"
 
-    select 'December', from: 'tariff_date_month'
-    select '2018', from: 'tariff_date_year'
+    page.execute_script("$('#tariff_date_year').val('2018')")
+    page.execute_script("$('#tariff_date_month').val('12')")
 
     click_link "Set date"
 

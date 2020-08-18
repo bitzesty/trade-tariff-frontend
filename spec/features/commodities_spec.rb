@@ -10,12 +10,16 @@ describe 'JS behaviour', js: true do
   end
 
   context 'when clicking tabs' do
+    before do
+      click_overview_tab
+    end
+
     it '*overview* tab is shown' do
-      expect(page).to have_selector('#overview-enhanced', visible: true)
+      expect(page).to have_selector('#overview.govuk-tabs__panel', visible: true)
     end
 
     it '*import* tab is hidden' do
-      expect(page).not_to have_selector('#import-enhanced', visible: true)
+      expect(page).not_to have_selector('#import.govuk-tabs__panel', visible: true)
     end
 
     describe 'switch tabs' do
@@ -24,11 +28,11 @@ describe 'JS behaviour', js: true do
       end
 
       it '*overview* tab is hidden' do
-        expect(page).not_to have_selector('#overview-enhanced', visible: true)
+        expect(page).not_to have_selector('#overview.govuk-tabs__panel', visible: true)
       end
 
       it '*import* tab is shown' do
-        expect(page).to have_selector('#import-enhanced', visible: true)
+        expect(page).to have_selector('#import.govuk-tabs__panel', visible: true)
       end
     end
   end
@@ -129,10 +133,16 @@ describe 'JS behaviour', js: true do
       end
     end
   end
-end
 
-def click_import_tab
-  within '.govuk-tabs' do
-    click_on 'Import'
+  def click_import_tab
+    within '.govuk-tabs' do
+      click_on 'Import'
+    end
+  end
+
+  def click_overview_tab
+    within '.govuk-tabs' do
+      click_on 'Overview'
+    end
   end
 end
