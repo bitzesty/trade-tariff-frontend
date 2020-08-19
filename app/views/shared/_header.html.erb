@@ -40,12 +40,12 @@
         <div class="govuk-grid-column-full">
           <%= render 'shared/search_date_picker' %>
           <%= render 'shared/currency_picker' %>
+          <fieldset class="govuk-fieldset flash">
+            <% flash.each do |key, value| %>
+              <div class="alert alert-<%= key %>"><%= value %></div>
+            <% end %>
+          </fieldset>
         </div>
-        <fieldset class="govuk-fieldset flash">
-          <% flash.each do |key, value| %>
-            <div class="alert alert-<%= key %>"><%= value %></div>
-          <% end %>
-        </fieldset>
       </div>
     </div>
   <% end %>
