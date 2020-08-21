@@ -34,35 +34,35 @@ module ApplicationHelper
   end
 
   def search_active_class
-    active_class_for(controller_methods: %w[sections chapters headings commodities])
+    'active' if params[:action] == 'search' || (params[:controller] == 'sections' && params[:action] == 'index')
   end
 
   def exchange_rates_active_class
-    active_class_for(controller_methods: %w[exchange_rates])
+    'active' if params[:controller] == 'exchange_rates'
   end
 
   def a_z_active_class
-    active_class_for(controller_methods: %w[search_references])
+    'active' if params[:controller] == 'search_references'
   end
 
   def additional_code_search_class
-    "active" if params[:action] == 'additional_code_search'
+    'active' if params[:action] == 'additional_code_search'
   end
 
   def footnote_search_class
-    "active" if params[:action] == 'footnote_search'
+    'active' if params[:action] == 'footnote_search'
   end
 
   def certificate_search_class
-    "active" if params[:action] == 'certificate_search'
+    'active' if params[:action] == 'certificate_search'
   end
 
   def quota_search_active_class
-    "active" if params[:action] == 'quota_search'
+    'active' if params[:action] == 'quota_search'
   end
 
   def chemical_search_active_class
-    "active" if params[:action] == 'chemical_search'
+    'active' if params[:action] == 'chemical_search'
   end
 
   def currency_options
@@ -100,10 +100,6 @@ module ApplicationHelper
   end
 
   private
-
-  def active_class_for(controller_methods:)
-    return "active" if controller_methods.include?(params[:controller])
-  end
 
   def search_date_in_future_month?
     @search&.date.date >= Date.today.at_beginning_of_month.next_month
