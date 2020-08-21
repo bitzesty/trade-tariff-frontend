@@ -24,7 +24,7 @@ gem "uglifier", "~> 2.7"
 gem "responders", "~> 3.0.0"
 gem "bootsnap", require: false
 gem "kaminari", "~> 1.0"
-gem "webpacker", "~> 5.1"
+gem "webpacker", "~> 5.2"
 
 # gov UK
 gem "govspeak", '~> 6.5.2'
