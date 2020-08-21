@@ -25,6 +25,10 @@
     }
     td.title {
       display: block;
+      border-bottom: 0;
+    }
+    .govuk-table__row {
+      border-bottom: 1px solid $govuk-border-colour;
     }
     .govuk-table__row:first-child {
       padding-top: 0;
