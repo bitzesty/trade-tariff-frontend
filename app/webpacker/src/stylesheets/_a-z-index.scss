@@ -2,6 +2,10 @@
   ol.index {
     margin-bottom: 1.25em;
 
+    @media (max-width: $mobile-max-width) {
+      margin-bottom: govuk-spacing(6);
+    }
+
     li {
       font-size: 24px;
       display: inline;
