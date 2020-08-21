@@ -64,6 +64,9 @@ article.tariff {
     margin: 15px;
     color: $govuk-secondary-text-colour;
     font-size: 14px;
+    @media (max-width: $mobile-max-width) {
+      margin-bottom: 0;
+    }
 
     &:after {
       content: "";
@@ -170,6 +173,10 @@ article.tariff {
     @media(min-width: $desktop-min-width) {
       font-size: 16px;
     }
+    @media(max-width: $mobile-max-width) {
+      margin-top: 1.5em;
+      margin-bottom: 1.5em;
+    }
 
     li {
       @include contain-float;
@@ -194,6 +201,12 @@ article.tariff {
 
       &.has_children, a {
         padding-top: 0.5em;
+        @media (max-width: $mobile-max-width) {
+          &:first-child {
+            padding-top: 0;
+          }
+          padding-top: 1em;
+        }
       }
 
       ul, a {
