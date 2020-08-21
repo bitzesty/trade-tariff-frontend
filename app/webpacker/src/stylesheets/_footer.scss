@@ -10,6 +10,10 @@
     column-gap: $govuk-gutter * 2;
   }
 
+  .govuk-footer__meta-item {
+    padding-left: $govuk-gutter-half;
+    padding-right: $govuk-gutter-half;
+  }
 
   .govuk-footer__row {
     width: 100%;
