@@ -26,5 +26,14 @@
     td.title {
       display: block;
     }
+    .govuk-table__row:first-child {
+      padding-top: 0;
+    }
+  }
+}
+
+.all-sections {
+  @media (max-width: $mobile-max-width) {
+    margin-bottom: 5px;
   }
 }
