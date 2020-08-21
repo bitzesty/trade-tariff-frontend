@@ -3,9 +3,9 @@
   "private": true,
   "dependencies": {
     "@babel/plugin-transform-object-assign": "^7.10.4",
-    "@rails/webpacker": "5.1.1",
+    "@rails/webpacker": "5.2.1",
     "alphagov-static": "github:alphagov/static.git#release_3463",
-    "govuk-frontend": "^3.7.0",
+    "govuk-frontend": "^3.8.1",
     "imask": "^6.0.5",
     "jquery": "1.12.4",
     "jquery-common-keydown": "^1.0.1",
@@ -24,6 +24,7 @@
     "webpack": "^4.0.0"
   },
   "devDependencies": {
+    "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.10.3"
   }
 }
