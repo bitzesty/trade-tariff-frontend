@@ -8,20 +8,12 @@
 
     li {
       font-size: 24px;
-      display: inline;
+      display: inline-block;
       margin-right: 0.6em;
-
-      &:nth-child(-n+13) {
-        float: left;
-      }
 
       a {
         font-weight: bold;
         text-decoration: none;
-      }
-
-      @media (max-width: 440px) {
-        float: left;
       }
     }
   }

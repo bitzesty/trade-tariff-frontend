@@ -12,7 +12,7 @@
     font-size: 1.25em;
 
     .chapter > .full-code {
-      @media (max-width: 600px) {
+      @media (max-width: $mobile-max-width) {
         margin: 0 1em;
         padding: 1em 0 0.5em;
       }
@@ -61,7 +61,7 @@
 
       .line-text {
         padding-left: 1em;
-        @media (min-width: 601px) {
+        @media (min-width: $desktop-min-width) {
           padding-right: 200px;
         }
       }
@@ -84,7 +84,7 @@
           .line-text {
             padding-left: 0 !important;
             
-            @media (min-width: 601px) {
+            @media (min-width: $desktop-min-width) {
               padding-left: 0;
               padding-top: 0em;
               padding-bottom: 0em;
@@ -96,7 +96,7 @@
             bottom: 0;
             right: 0;
 
-            @media (max-width: 600px) {
+            @media (max-width: $mobile-max-width) {
               margin-top: 0.5em;
             }
           }
