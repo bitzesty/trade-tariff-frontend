@@ -1,37 +1,68 @@
-<h1 class="heading-medium">Search results for &lsquo;<%= @search.q %>&rsquo;</h1>
+<h1 class="govuk-heading-l">Search results for &lsquo;<%= @search.q %>&rsquo;</h1>
 <article class="search-results">
   <% if @results.any? %>
     <% if @results.reference_match.commodities.any? %>
-      <h2 class="heading-small">Commodities matching &lsquo;<%= @search %>&rsquo;</h2>
-      <ul class="results-subset js-results-subset">
-        <%= render partial: 'search/commodity', collection: @results.reference_match.commodities %>
-      </ul>
+      <table class="govuk-table">
+        <colgroup>
+          <col width="*">
+          <col width="180">
+        </colgroup>
+        <caption class="govuk-table__caption govuk-heading-m govuk-!-margin-top-6">
+          Commodities matching &lsquo;<%= @search %>&rsquo;
+        </caption>
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th class="govuk-table__header" scope="col">Name</th>
+            <th class="govuk-table__header" scope="col">Code</th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+          <%= render partial: 'search/commodity', collection: @results.reference_match.commodities %>
+        </tbody>
+      </table>
     <% end %>
 
     <% if @results.reference_matches_by_chapter.any? %>
-      <h2 class="heading-small">Results matching &lsquo;<%= @search %>&rsquo;</h2>
+      <h2 class="govuk-heading-m govuk-!-margin-top-6">
+        Results matching &lsquo;<%= @search %>&rsquo;
+      </h2>
       <ul class="results-subset js-results-subset">
         <%= render partial: 'search/result', collection: @results.reference_matches_by_chapter %>
       </ul>
     <% end %>
 
     <% if @results.gn_matches_without_duplicates_by_chapter.any? %>
-      <h2 class="heading-small">Other results containing the term &lsquo;<%= @search %>&rsquo;</h2>
-      <ul class="results-subset js-results-subset">
+      <h2 class="govuk-heading-m govuk-!-margin-top-6">
+        Other results containing the term &lsquo;<%= @search %>&rsquo;
+      </h2>
+       <ul class="results-subset js-results-subset">
         <%= render partial: 'search/result', collection: @results.gn_matches_without_duplicates_by_chapter %>
-
       </ul>
     <% end %>
 
     <% if @results.reference_match.sections.any? %>
-      <h2 class="heading-small">Sections matching &lsquo;<%= @search %>&rsquo;</h2>
-      <ul class="results-subset js-results-subset">
-        <%= render partial: 'search/section', collection: @results.reference_match.sections %>
-      </ul>
+      <table class="govuk-table">
+        <colgroup>
+          <col width="*">
+          <col width="180">
+        </colgroup>
+        <caption class="govuk-table__caption govuk-heading-m govuk-!-margin-top-6">
+          Sections matching &lsquo;<%= @search %>&rsquo;
+        </caption>
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th class="govuk-table__header" scope="col">Name</th>
+            <th class="govuk-table__header" scope="col">Code</th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+          <%= render partial: 'search/section', collection: @results.reference_match.sections %>
+        </tbody>
+      </table>
     <% end %>
   <% else %>
-    <p>There are no results matching your query.</p>
-    <div class="panel panel-border-wide">
+    <h2 class="govuk-heading-l">There are no results matching your query.</h2>
+    <div class="panel panel-border-wide govuk-panel">
       <p><strong>Please search again and consider:</strong></p>
       <ul class="list list-bullet">
         <li>Searching what the item is used for or made from</li>
@@ -42,7 +73,7 @@
     </div>
   <% end %>
   <div>
-    <h1 class="heading-medium">Can't find what you are looking for?</h1>
+    <h1 class="govuk-heading-l">Can't find what you are looking for?</h1>
     <p>Please let us know in the <a href="https://forum.trade-tariff.service.gov.uk">Trade Tariff Forum</a>.</p>
   </div>
 </article>

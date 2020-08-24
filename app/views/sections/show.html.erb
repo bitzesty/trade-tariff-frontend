@@ -3,14 +3,15 @@
   <link rel='alternate' type='application/json' href='<%= section_url(@section, format: :json) %>' title='Section information page in JSON format' />
 <% end %>
 
-<% content_for :body_classes, "page--wide" %>
+<% content_for :bodyClasses, "page--wide" %>
 
-<h2 class="heading-small">Choose the chapter that best matches your goods</h2>
+<h2 class="govuk-heading-m">Choose the chapter that best matches your goods</h2>
 
 <%= render 'shared/tariff_breadcrumbs', section: @section %>
 
 <section class="chapters">
-  <table class="section-browser">
+  <table class="section-browser govuk-table">
+    <caption class="govuk-visually-hidden">Chapters for <%= @section %></caption>
     <tbody>
       <%= render @chapters %>
     </tbody>

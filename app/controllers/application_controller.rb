@@ -66,14 +66,12 @@ class ApplicationController < ActionController::Base
 
   def render_500
     render template: "errors/internal_server_error",
-           layout: "pages",
            status: 500
     false
   end
 
   def render_404
     render template: "errors/not_found",
-           layout: "pages",
            status: :not_found,
            formats: :html
     false

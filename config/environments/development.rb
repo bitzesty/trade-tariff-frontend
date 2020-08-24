@@ -30,6 +30,9 @@ Rails.application.configure do
   # Suppress logger output for asset requests.
   config.assets.quiet = true
 
+  # Verifies that versions and hashed value of the package contents in the project's package.json
+  config.webpacker.check_yarn_integrity = true
+
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 

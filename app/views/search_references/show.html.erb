@@ -1,23 +1,25 @@
 <section class="a-z">
-  <h1 class="heading-large">A&ndash;Z of Classified Goods</h1>
+  <h1 class="govuk-heading-l">A&ndash;Z of Classified Goods</h1>
   <div class="inner">
-    <ol class="index">
+    <ol class="index govuk-list govuk-!-margin-bottom-8">
       <%= a_z_index(letter) %>
     </ol>
 
-    <table class="tariff-zebra index">
-      <caption class="heading-medium"><%= letter.upcase %></caption>
-      <tbody>
+    <table class="govuk-table">
+      <caption class="govuk-table__caption"><span class="govuk-visually-hidden">Classified Goods starting with letter </span><%= letter.upcase %></caption>
+      <tbody class="govuk-table__body">
       <% @search_references.each do |search_reference| %>
-        <tr>
-          <td>
-            <%= link_to search_reference, search_reference.link %>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">
+            <%= link_to search_reference.link do %>
+              <%= search_reference %><span class="govuk-visually-hidden"> (code: <%= search_reference.referenced_id %>)</span>
+            <% end %>
           </td>
-          <td>
-            <%= search_reference.referenced_class %>
+          <td class="govuk-table__cell">
+            <span class="govuk-visually-hidden">Class: </span><%= search_reference.referenced_class %>
           </td>
-          <td class="numerical">
-           <%= search_reference.referenced_id %>
+          <td class="govuk-table__cell govuk-table__cell--numeric">
+           <span class="govuk-visually-hidden">Code: </span><%= search_reference.referenced_id %>
           </td>
         </tr>
       <% end %>

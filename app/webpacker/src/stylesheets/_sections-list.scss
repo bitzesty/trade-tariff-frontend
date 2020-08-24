@@ -1,0 +1,43 @@
+.sections {
+  @media (max-width: $mobile-max-width) {
+    tr {
+      display: block;
+      padding-top: 0.63158em;
+    }
+    thead tr:first-child {
+      display: none;
+    }
+    th {
+      display: none;
+    }
+    td.numeral, td.chapters {
+      display: inline;
+      border-bottom: 0;
+    }
+    td.numeral::before {
+      content: 'Section ';
+    }
+    td.numeral {
+      padding-right: 0;
+    }
+    td.chapters::before {
+      content: ' – Chapter ';
+    }
+    td.title {
+      display: block;
+      border-bottom: 0;
+    }
+    .govuk-table__row {
+      border-bottom: 1px solid $govuk-border-colour;
+    }
+    .govuk-table__row:first-child {
+      padding-top: 0;
+    }
+  }
+}
+
+.all-sections {
+  @media (max-width: $mobile-max-width) {
+    margin-bottom: 5px;
+  }
+}

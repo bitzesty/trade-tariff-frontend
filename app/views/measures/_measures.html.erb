@@ -1,28 +1,26 @@
-<div class="js-tabs nav-tabs">
-  <ul>
-    <li class='active'>
-      <a href="#overview">Overview</a>
+<div class="govuk-tabs" data-module="govuk-tabs">
+  <ul class="govuk-tabs__list">
+    <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+      <a class="govuk-tabs__tab" href="#overview">Overview</a>
     </li>
-    <li>
-      <a href="#import">Import</a>
+    <li class="govuk-tabs__list-item">
+      <a class="govuk-tabs__tab" href="#import">Import</a>
     </li>
-    <li>
-      <a href="#export">Export</a>
+    <li class="govuk-tabs__list-item"s>
+      <a class="govuk-tabs__tab" href="#export">Export</a>
     </li>
   </ul>
-</div>
 
-<div class="js-tab-content tab-content">
-<!-- Overview tab -->
-  <article class="js-tab-pane tab-pane active" id="overview">
+  <!-- Overview tab -->
+  <div class="govuk-tabs__panel" id="overview">
     <%= render partial: 'declarables/consigned', locals: { declarable: declarable } %>
     <%= render partial: 'declarables/filtered', locals: { search: @search } %>
     <div class="inner">
-      <h1 class="visuallyhidden">Overview</h1>
-      <div class="grid-row import-and-export-boxes">
+      <h1 class="govuk-visually-hidden">Overview</h1>
+      <div class="govuk-grid-row import-and-export-boxes">
         <div class="column-one-half">
           <div class="import box">
-            <h2 class="heading-medium">Import</h2>
+            <h2 class="govuk-heading-m">Import</h2>
             <p>The commodity code for importing is <strong><%= declarable.code %></strong>.</p>
             <% national_vat = declarable.import_measures.vat.national.to_a %>
             <% if national_vat.count > 0 %>
@@ -47,7 +45,7 @@
 
         <div class="column-one-half">
           <div class="export box">
-            <h2 class="heading-medium">Export</h2>
+            <h2 class="govuk-heading-m">Export</h2>
             <p>The commodity code for exporting and intrastat reporting is <strong><%= declarable.display_export_code %></strong>.</p>
 
             <% if declarable.all_footnotes.compact.select(&:eco?).any? %>
@@ -62,96 +60,113 @@
           </div>
         </div>
       </div>
-    <%= render 'headings/footnote', footnotes: declarable.footnotes %>
-    <% if declarable.meursing_code? %>
-      <h2 class="heading-medium">This commodity has a meursing code</h2>
-      <p>Use the <%= link_to "Look up Meursing code", "https://www.gov.uk/additional-commodity-code", rel: "external", target: "_blank", title: "Opens in a new window" %> tool to find the additional code required for importing and exporting. To calculate the duty rate, enter the meursing code (without the 7 at the start) into the <%= link_to "meursing calculator", declarable.meursing_tool_link_for(@search.date.to_taric_date), rel: "external", target: "_blank", title: "Opens in a new window" %>.</p>
-    <% end %>
-    <%= render 'shared/notes', section_note: declarable.section.section_note, chapter_note: declarable.chapter.chapter_note %>
-    <%- if TradeTariffFrontend.regulations_enabled? -%>
-      <h2 class="heading-medium">Binding tariff information</h2>
-      <p>You can search the EU EBTI-database for existing <%= link_to "Binding Tariff Information", declarable.bti_url, rel: "external", target: "_blank", title: "Opens in a new window" %> for commodity code <strong><%= declarable.code %></strong>.</p>
-    <% end %>
+      <%= render 'headings/footnote', footnotes: declarable.footnotes %>
+      <% if declarable.meursing_code? %>
+        <h2 class="govuk-heading-m">This commodity has a meursing code</h2>
+        <p>Use the <%= link_to "Look up Meursing code", "https://www.gov.uk/additional-commodity-code", rel: "external", target: "_blank", title: "Opens in a new window" %> tool to find the additional code required for importing and exporting. To calculate the duty rate, enter the meursing code (without the 7 at the start) into the <%= link_to "meursing calculator", declarable.meursing_tool_link_for(@search.date.to_taric_date), rel: "external", target: "_blank", title: "Opens in a new window" %>.</p>
+      <% end %>
+      <%= render 'shared/notes', section_note: declarable.section.section_note, chapter_note: declarable.chapter.chapter_note %>
+      <%- if TradeTariffFrontend.regulations_enabled? -%>
+        <h2 class="govuk-heading-m">Binding tariff information</h2>
+        <p>You can search the EU EBTI-database for existing <%= link_to "Binding Tariff Information", declarable.bti_url, rel: "external", target: "_blank", title: "Opens in a new window" %> for commodity code <strong><%= declarable.code %></strong>.</p>
+      <% end %>
     </div>
-  </article>
+  </div>
 
   <!-- Import tab -->
-  <article class="js-tab-pane tab-pane" id="import" data-id="<%= declarable.to_param %>" data-class="<%=declarable.class.name.downcase.pluralize %>">
-
-    <h2 class="heading-medium">Import measures and restrictions</h2>
+  <div class="govuk-tabs__panel" id="import">
+    <h2 class="govuk-heading-m">Import measures and restrictions</h2>
     <%= render partial: 'declarables/consigned', locals: { declarable: declarable } %>
     <%= render partial: 'declarables/filtered', locals: { search: @search } %>
     <%= render partial: 'shared/country_picker', locals: { controller: @search, url: perform_search_path, anchor: 'import' } %>
 
     <% if declarable.import_measures.for_country(@search.country).any? %>
-      <table class="small-table measures">
+
+      <%= render "shared/measure_types_help" %>
+
+      <table class="small-table measures govuk-table">
         <% if @search.filtered_by_country? %>
-          <caption class="heading-small">Measures for <%= @search.geographical_area %></caption>
+          <caption class="govuk-table__caption">Measures for <%= @search.geographical_area %></caption>
         <% else %>
-          <caption class="heading-small">Measures for all countries</caption>
+          <caption class="govuk-table__caption">Measures for all countries</caption>
         <% end %>
+
         <thead>
-          <tr>
-            <th>Country</th>
-            <th>Measure</th>
-            <th>Value</th>
-            <th>Conditions that apply</th>
-            <th>Exclusions</th>
-            <%- if TradeTariffFrontend.regulations_enabled? -%>
-              <th class="legal-act" title="Opens in a new window">Legal base</th>
-            <%- end -%>
-            <th>Start date<br>(End date)</th>
-            <th>Footnotes</th>
-          </tr>
+        <tr>
+          <th>Country</th>
+          <th>Measure</th>
+          <th>Value</th>
+          <th>Conditions that apply</th>
+          <th>Exclusions</th>
+          <%- if TradeTariffFrontend.regulations_enabled? -%>
+            <th class="legal-act" title="Opens in a new window">Legal base</th>
+          <%- end -%>
+          <th>Start date<br>(End date)</th>
+          <th>Footnotes</th>
+        </tr>
         </thead>
+
         <tbody>
           <%= render partial: 'measures/measure', collection: declarable.import_measures.for_country(@search.country).sort_by(&:key) %>
         </tbody>
       </table>
     <% else %>
-      <p>There are no measures for this commodity on this date.</p>
+      <p>There are no import measures for this commodity on this date.</p>
     <% end %>
-    <%= render 'headings/footnote', footnotes: declarable.footnotes %>
-  </article><!-- end .tab-pane -->
+    <details class="govuk-details" data-module="govuk-details">
+      <summary class="govuk-details__summary">
+        <span class="govuk-details__summary-text">
+          Notes
+        </span>
+      </summary>
+      <div class="govuk-details__text">
+        <%= render partial: 'chapters/chapter_guides', locals: {chapter: declarable.chapter} %>
+        <br>
+        <%= render 'headings/footnote', footnotes: declarable.footnotes %>
+      </div>
+    </details>
+  </div>
 
   <!-- Export tab -->
-  <article class="js-tab-pane tab-pane" id="export" data-id="<%= declarable.to_param %>" data-class="<%=declarable.class.name.downcase.pluralize %>">
-
-    <h2 class="heading-medium">Export measures and restrictions</h2>
+  <div class="govuk-tabs__panel" id="export">
+    <h2 class="govuk-heading-m">Export measures and restrictions</h2>
     <%= render partial: 'declarables/consigned', locals: { declarable: declarable } %>
     <%= render partial: 'declarables/filtered', locals: { search: @search } %>
     <%= render partial: 'shared/country_picker', locals: { controller: @search, url: perform_search_path, anchor: 'export' } %>
 
     <% if declarable.export_measures.for_country(@search.country).any? %>
-      <table class="small-table measures">
+      <table class="small-table measures govuk-table">
         <% if @search.filtered_by_country? %>
-          <caption class="heading-small">Measures for <%= @search.geographical_area %></caption>
+          <caption class="govuk-table__caption">Measures for <%= @search.geographical_area %></caption>
         <% else %>
-          <caption class="heading-small">Measures for all countries</caption>
+          <caption class="govuk-table__caption">Measures for all countries</caption>
         <% end %>
+
         <thead>
-          <tr>
-            <th>Country</th>
-            <th>Measure</th>
-            <th>Value</th>
-            <th>Conditions that apply</th>
-            <th>Exclusions</th>
-            <%- if TradeTariffFrontend.regulations_enabled? -%>
-               <th class="legal-act" title="Opens in a new window">Legal base</th>
-             <%- end -%>
-            <th>Start date<br>(End date, if any)</th>
-            <th>Footnotes</th>
-          </tr>
+        <tr>
+          <th>Country</th>
+          <th>Measure</th>
+          <th>Value</th>
+          <th>Conditions that apply</th>
+          <th>Exclusions</th>
+          <%- if TradeTariffFrontend.regulations_enabled? -%>
+            <th class="legal-act" title="Opens in a new window">Legal base</th>
+          <%- end -%>
+          <th>Start date<br>(End date, if any)</th>
+          <th>Footnotes</th>
+        </tr>
         </thead>
+
         <tbody>
           <%= render partial: 'measures/measure', collection: declarable.export_measures.for_country(@search.country).sort_by(&:key) %>
         </tbody>
       </table>
     <% else %>
-      <p>There are no measures for this commodity on this date.</p>
+      <p>There are no export measures for this commodity on this date.</p>
     <% end %>
     <%= render 'headings/footnote', footnotes: declarable.footnotes %>
-  </article><!-- end .tab-pane -->
+  </div>
+
   <!-- Footnote popups -->
   <div id="import-measure-references">
     <%= render partial: 'measures/measure_references', collection: declarable.import_measures.for_country(@search.country), as: 'measure' %>
@@ -159,5 +174,4 @@
   <div id="export-measure-references">
     <%= render partial: 'measures/measure_references', collection: declarable.export_measures.for_country(@search.country), as: 'measure' %>
   </div>
-
-</div><!-- end .tab-content -->
+</div>

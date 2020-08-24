@@ -2,26 +2,42 @@
 <% if @result.search_result&.any? %>
   <br/>
   <article class="search-results">
-    <h1 class="heading-medium">Footnote search results</h1>
-    <ul class="results-subset js-results-subset">
-      <% @result.search_result.each do |footnote|
-          goods_nomenclatures = footnote.measures.map(&:goods_nomenclature) | footnote.goods_nomenclatures
-      %>
-        <li>
-          <div>
-            <strong>
-              <%= footnote.code %>
-            </strong>
-            <%= footnote.formatted_description.html_safe %>
-          </div>
-
+    <h1 class="govuk-heading-l">Footnote search results</h1>
+    <% @result.search_result.each do |footnote|
+        goods_nomenclatures = footnote.measures.map(&:goods_nomenclature) | footnote.goods_nomenclatures
+    %>
+      <table class="govuk-table">
+        <colgroup>
+          <col width="*">
+          <col width="180">
+        </colgroup>
+        <caption class="govuk-table__caption govuk-heading-m govuk-!-margin-top-6">
+          <span class="govuk-visually-hidden">
+            Commodities associated with footnote
+          </span>
+          <strong>
+            <%= footnote.code %>
+          </strong>
+          <%= footnote.formatted_description.html_safe %>
+        </caption>
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th class="govuk-table__header" scope="col">Name</th>
+            <th class="govuk-table__header" scope="col">Code</th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
           <% if goods_nomenclatures.empty? %>
-            <div class="commodity">No valid commodities are associated with footnote <a class="inline" href="<%= footnote_search_path(code: footnote.code) %>"><%= footnote.code %></a>.</div>
+            <tr class="govuk-table__row">
+              <td colspan="2" class="govuk-table__cell">
+                No valid commodities are associated with footnote <a class="inline" href="<%= footnote_search_path(code: footnote.code) %>"><%= footnote.code %></a>.
+              </td>
+            </tr>
           <% else %>
             <%= render partial: 'goods_nomenclature', collection: goods_nomenclatures %>
           <% end %>
-        </li>
-      <% end %>
-    </ul>
+        </tbody>
+      </table>
+    <% end %>
   </article>
 <% end %>
