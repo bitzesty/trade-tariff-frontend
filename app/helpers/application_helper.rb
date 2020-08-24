@@ -15,46 +15,54 @@ module ApplicationHelper
   end
 
   def breadcrumbs
-    return nil if controller_name == 'feedback'
+    return nil if %w(pages errors).exclude?(controller_name)
 
     crumbs = [
-      content_tag(:li, link_to('Home', '/')),
-      content_tag(:li, link_to('Business and self-employed', 'https://www.gov.uk/browse/business')),
-      content_tag(:li, link_to('Imports and exports', 'https://www.gov.uk/browse/business/imports'))
+      content_tag(:li, link_to('Home', '/', class: "govuk-breadcrumbs__link"), class: "govuk-breadcrumbs__list-item"),
+      content_tag(:li, link_to('Business and self-employed', 'https://www.gov.uk/browse/business', class: "govuk-breadcrumbs__link"), class: "govuk-breadcrumbs__list-item"),
+      content_tag(:li, link_to('Imports and exports', 'https://www.gov.uk/browse/business/imports', class: "govuk-breadcrumbs__link"), class: "govuk-breadcrumbs__list-item")
     ]
-    content_tag(:ol, crumbs.join('').html_safe, role: "breadcrumbs")
+    content_tag(:div, class: "govuk-breadcrumbs") do
+      content_tag(:ol, crumbs.join('').html_safe, class: "govuk-breadcrumbs__list", role: "breadcrumbs")
+    end
+  end
+
+  def govuk_header_navigation_item(active_class = false)
+    base_classname = "govuk-header__navigation-item"
+    classname = "#{base_classname} #{active_class ? "#{base_classname}--active" : ''}"
+    content_tag(:li, class: classname) { yield }
   end
 
   def search_active_class
-    active_class_for(controller_methods: %w[sections chapters headings commodities])
+    'active' if params[:action] == 'search' || (params[:controller] == 'sections' && params[:action] == 'index')
   end
 
   def exchange_rates_active_class
-    active_class_for(controller_methods: %w[exchange_rates])
+    'active' if params[:controller] == 'exchange_rates'
   end
 
   def a_z_active_class
-    active_class_for(controller_methods: %w[search_references])
+    'active' if params[:controller] == 'search_references'
   end
 
   def additional_code_search_class
-    "active" if params[:action] == 'additional_code_search'
+    'active' if params[:action] == 'additional_code_search'
   end
 
   def footnote_search_class
-    "active" if params[:action] == 'footnote_search'
+    'active' if params[:action] == 'footnote_search'
   end
 
   def certificate_search_class
-    "active" if params[:action] == 'certificate_search'
+    'active' if params[:action] == 'certificate_search'
   end
 
   def quota_search_active_class
-    "active" if params[:action] == 'quota_search'
+    'active' if params[:action] == 'quota_search'
   end
 
   def chemical_search_active_class
-    "active" if params[:action] == 'chemical_search'
+    'active' if params[:action] == 'chemical_search'
   end
 
   def currency_options
@@ -92,10 +100,6 @@ module ApplicationHelper
   end
 
   private
-
-  def active_class_for(controller_methods:)
-    return "active" if controller_methods.include?(params[:controller])
-  end
 
   def search_date_in_future_month?
     @search&.date.date >= Date.today.at_beginning_of_month.next_month

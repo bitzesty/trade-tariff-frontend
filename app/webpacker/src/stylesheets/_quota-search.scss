@@ -1,0 +1,26 @@
+.quota-search {
+  .govuk-grid-row {
+    margin-bottom: 0.5em;
+
+    @media (min-width: 641px) {
+      margin-bottom: 1em;
+    }
+  }
+
+  [class*="column"] > label {
+    line-height: 2em;
+  }
+
+  .multiple-choice--inline {
+    clear: none;
+    margin-right: 10px;
+  }
+
+  input[type="submit"] {
+    margin-top: 1.5em;
+
+    @media (min-width: 641px) {
+      margin-top: 0;
+    }
+  }
+}

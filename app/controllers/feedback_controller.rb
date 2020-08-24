@@ -1,5 +1,7 @@
 class FeedbackController < ApplicationController
-  layout "pages"
+  before_action do
+    @tariff_last_updated = nil
+  end
 
   def new; end
 

@@ -59,3 +59,5 @@ var BetaPopup = {
     }
   }
 };
+
+module.exports = BetaPopup;

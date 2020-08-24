@@ -18,6 +18,8 @@ This application requires the Trade Tariff Backend API to be running and the fol
 Requires:
 * Ruby
 * Rails
+* node & npm
+* yarn
 
 Uses:
 * Memcache
@@ -25,6 +27,7 @@ Uses:
 Commands:
 
     ./bin/setup
+    yarn install
     foreman start
 
 ## Running the test suite

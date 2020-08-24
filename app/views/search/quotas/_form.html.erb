@@ -1,55 +1,34 @@
 <%= form_tag quota_search_path, method: :get, class: "tariff-search quota-search #{@section_css}", id: 'new_search' do |f| %>
-  <h1 class="heading-large">Search the Quotas</h1>
-  <div class="grid-row">
-    <div class="column-quarter">
-      <%= label_tag :goods_nomenclature_item_id, 'Commodity code' %>
-    </div>
-    <div class="column-three-quarters">
-      <%= text_field_tag :goods_nomenclature_item_id, search_form.goods_nomenclature_item_id, class: "form-control form-control--small" %>
-    </div>
+  <h1 class="govuk-heading-l">Search the Quotas</h1>
+  <div class="govuk-form-group">
+    <%= label_tag :goods_nomenclature_item_id, 'Commodity code', class: 'govuk-label' %>
+    <%= text_field_tag :goods_nomenclature_item_id, search_form.goods_nomenclature_item_id, class: "govuk-input govuk-input--width-10" %>
   </div>
-  <div class="grid-row">
-    <div class="column-quarter">
-      <%= label_tag :geographical_area_id, 'Country' %>
-    </div>
-    <div class="column-three-quarters">
-      <fieldset class="js-quota-country-picker">
-        <%= select_tag :geographical_area_id, options_from_collection_for_select(Array.wrap(search_form.geographical_area), 'id', 'long_description', search_form.geographical_area_id), include_blank: 'All countries', class: 'js-quota-country-picker-select form-control form-control--50' %>
+  <div class="govuk-form-group">
+    <%= label_tag :geographical_area_id, 'Country', class: 'govuk-label' %>
+    <div class="js-quota-country-picker">
+      <%= select_tag :geographical_area_id, options_from_collection_for_select(Array.wrap(search_form.geographical_area), 'id', 'long_description', search_form.geographical_area_id), include_blank: 'All countries', class: 'js-quota-country-picker-select govuk-select govuk-select--width-20' %>
+      <div class="govuk-!-margin-top-3">
         <a class="reset-country-picker" href="#reset-country-picker" title="Reset country picker" rel="nofollow">Reset<span class="long-text">&nbsp;to all countries</span></a>
-      </fieldset>
+      </div>
     </div>
   </div>
-  <div class="grid-row">
-    <div class="column-quarter">
-      <%= label_tag :order_number, 'Order number' %>
-    </div>
-    <div class="column-three-quarters">
-      <%= text_field_tag :order_number, search_form.order_number, class: "form-control form-control--tiny" %>
-    </div>
+  <div class="govuk-form-group">
+    <%= label_tag :order_number, 'Order number', class: 'govuk-label' %>
+    <%= text_field_tag :order_number, search_form.order_number, class: "govuk-input govuk-input--width-10" %>
   </div>
-  <div class="grid-row">
-    <div class="column-quarter">
-      <%= label_tag :critical, 'Critical state' %>
-    </div>
-    <div class="column-three-quarters">
-      <%= select_tag :critical, options_for_select(QuotaSearchForm::CRITICAL_VALUES, search_form.critical), include_blank: true, class: "form-control form-control--tiny" %>
-    </div>
+  <div class="govuk-form-group">
+    <%= label_tag :critical, 'Critical state', class: 'govuk-label' %>
+    <%= select_tag :critical, options_for_select(QuotaSearchForm::CRITICAL_VALUES, search_form.critical), include_blank: true, class: "govuk-select govuk-select--width-4" %>
   </div>
-  <div class="grid-row">
-    <div class="column-quarter">
-      <%= label_tag :status, 'Status' %>
-    </div>
-    <div class="column-three-quarters">
-      <%= select_tag :status, options_for_select(QuotaSearchForm::STATUS_VALUES, search_form.status), include_blank: true, class: "form-control form-control--small" %>
-    </div>
+  <div class="govuk-form-group">
+    <%= label_tag :status, 'Status', class: 'govuk-label' %>
+    <%= select_tag :status, options_for_select(QuotaSearchForm::STATUS_VALUES, search_form.status), include_blank: true, class: "govuk-select govuk-select--width-10" %>
   </div>
-  <div class="grid-row">
-    <div class="column-quarter">
-      <%= label_tag :years, 'Years' %>
-    </div>
-    <div class="column-three-quarters">
-      <%= select_tag 'years[]', options_for_select(QuotaSearchForm::YEARS_VALUES, search_form.years.first), include_blank: true, class: "form-control form-control--tiny" %>
-    </div>
+  <div class="govuk-form-group">
+    <%= label_tag :years, 'Years', class: 'govuk-label' %>
+    <%= select_tag 'years[]', options_for_select(QuotaSearchForm::YEARS_VALUES, search_form.years.first), include_blank: true, class: "govuk-select govuk-select--width-6" %>
   </div>
-  <input class="button" type="submit" name="new_search" value="Search">
+
+  <input class="button govuk-button" type="submit" name="new_search" value="Search">
 <% end %>

@@ -12,7 +12,7 @@ describe "Search", js: true, vcr: {
 
     sleep 2
 
-    within ".nav-tabs" do
+    within ".govuk-tabs" do
       click_on "Import"
     end
 

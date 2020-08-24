@@ -1,0 +1,13 @@
+// GOV.UK elements style guide specifies that 25% or 50% tints
+@function tint($color) {
+  @return mix($color, #fff, 25%);
+}
+
+$chapter-code-bg: #d1d2e6;
+$heading-code-bg: #b3d9ee;
+$commodity-code-bg: #abeae5;
+$table-header-bg: #e1e8e8;
+$table-sub-border: tint($govuk-border-colour);
+
+$current-rate-accent-color: govuk-colour("green");
+$current-rate-secondary-color: $govuk-secondary-text-colour;

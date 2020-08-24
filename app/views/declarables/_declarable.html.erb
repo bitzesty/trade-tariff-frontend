@@ -1,10 +1,7 @@
 <% content_for :title, "#{declarable.description_plain} - Trade Tariff - GOV.UK" %>
 
 <article class="tariff commodity">
-  <div class="panel panel-border-wide">
-    <p>Check the chapter notes to make sure this code is suitable for your product.</p>
-    <%= render partial: 'chapters/chapter_guides', locals: {chapter: declarable.chapter} %>
-  </div>
   <%= render 'shared/tariff_breadcrumbs', declarable: declarable %>
   <%= render 'measures/measures', declarable: declarable %>
 </article>
+

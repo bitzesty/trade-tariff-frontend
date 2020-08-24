@@ -1,0 +1,43 @@
+.import-and-export-boxes {
+  @media (min-width: $desktop-min-width) {
+    display: flex;
+    .column-one-half {
+      margin-bottom: 45px;
+    }
+  }
+  .import, .export {
+    height: 100%;
+    background-color: $highlight-colour;
+    @media (min-width: $desktop-min-width) {
+      margin-bottom: -30px;
+    }
+  }
+}
+
+.notes {
+  @include govuk-font($size: 19, $weight: normal);
+  margin-bottom: 60px;
+
+  h2, li {
+    margin-bottom: 1em;
+    @include govuk-font($size: 19, $weight: normal);
+  }
+  ul {
+    margin: 1em 0;
+    padding: 0 0 0 1.25em;
+    list-style: none;
+    @media (min-width: $desktop-min-width) {
+      padding: 0 0 0 2.5em;
+    }
+  }
+
+  ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+}
+
+dt.has_children + dd[aria-hidden="true"] {
+  display: none;
+}
