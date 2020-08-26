@@ -25,7 +25,8 @@
           <div class="searchfield govuk-form-group">
             <fieldset class="govuk-fieldset govuk-search-input">
               <%= label_tag :q, "Search the tariff", class: 'govuk-label' %>
-              <%= select_tag :q, options_for_select([@search.q ]), name: 'q', class: 'js-commodity-picker-select govuk-input js-show' %>
+              <%= hidden_field_tag :q, @search.q, { class: "js-commodity-picker-target" } %>
+              <div class='js-commodity-picker-select js-show'></div>
               <noscript>
                 <%= text_field_tag(:q, @search.q, {class: "govuk-input", name: :q}) %>
               </noscript>
@@ -40,13 +41,13 @@
         <div class="govuk-grid-column-full">
           <%= render 'shared/search_date_picker' %>
           <%= render 'shared/currency_picker' %>
-          <fieldset class="govuk-fieldset flash">
-            <% flash.each do |key, value| %>
-              <div class="alert alert-<%= key %>"><%= value %></div>
-            <% end %>
-          </fieldset>
         </div>
       </div>
+      <fieldset class="govuk-fieldset flash">
+        <% flash.each do |key, value| %>
+          <div class="alert alert-<%= key %>"><%= value %></div>
+        <% end %>
+      </fieldset>
     </div>
   <% end %>
 <% end %>
