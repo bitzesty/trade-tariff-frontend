@@ -6,6 +6,9 @@ Rails.application.configure do
   # since you don't have to restart the web server when you make code changes.
   config.cache_classes = false
 
+  # Going to leave this here so in the future we can use BrowserStack locally
+  config.hosts << "bs-local.com"
+
   # Do not eager load code on boot.
   config.eager_load = false
 

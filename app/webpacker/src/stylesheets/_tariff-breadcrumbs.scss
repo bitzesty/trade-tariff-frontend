@@ -137,6 +137,7 @@
 
         &::before, &::after {
           content: '';
+          display: none;
         }
       }
       a {
@@ -146,7 +147,6 @@
         padding-left: 20px;
         max-width: none;
         display: inline-block !important;
-        
         padding-right: 0 !important;
         
         @media (min-width: $desktop-min-width) {
@@ -155,31 +155,46 @@
           background-repeat: no-repeat;
           padding-left: 25px;
           font-size: 1rem;
+          padding-top: 5px !important;
         }
       }
+    }
+  }
+
+  .download-pdf {
+    margin-top: 10px;
+
+    @media (min-width: $desktop-min-width) {
+      margin-top: 2em;
+      padding-top: 5px !important;
     }
   }
 }
 
 .download-pdf {
-  margin-top: 10px;
+  &::before {
+    content: '(';
+  }
+  &::after {
+    content: ')';
+  }
 
   @media (min-width: $desktop-min-width) {
     float: right;
     margin-right: 1.25em;
-    margin-top: 2em;
 
     &::before, &::after {
       content: '';
+      display: none;
     }
   }
+
   a {
     background: url('../images/icon-file-download.png') 0.2em center no-repeat;
     background-size: 14px 14px;
     padding-left: 20px;
     max-width: none !important;
     display: inline-block !important;
-    
     
     @media (min-width: $desktop-min-width) {
       background: url('../images/icon-file-download.png') 0.2em center no-repeat;
