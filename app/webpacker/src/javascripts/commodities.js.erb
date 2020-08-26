@@ -3,6 +3,7 @@
  white: true */
 
 import IMask from 'imask';
+import debounce from "./debounce";
 
 "use strict";
 
@@ -463,9 +464,6 @@ import IMask from 'imask';
             });
 
             $('form').on('click', 'button[type=submit]', function(e) {
-              var val = $('#q').find('option[data-select2-tag=true]').val();
-              $('.js-commodity-picker-select').val(val).trigger('change');
-
               this.closest('form').submit();
             });
 
@@ -565,6 +563,11 @@ import IMask from 'imask';
 
           $controlForm.on('click', 'a.reset-country-picker', function (e) {
             $(this).parents('form:first').find('select').val('');
+            try {
+              $(this).parents('form:first').find('select').accessibleAutocomplete.clearSelection();
+            } catch (e) {
+
+            }
             $(this).parents('form:first').submit();
             return false;
           });
@@ -718,42 +721,133 @@ import IMask from 'imask';
       */
       selectBoxes : {
         initialize : function () {
-          $('.js-select').select2({
-            width: 'auto'
+          $('.js-select').each(function() {
+            accessibleAutocomplete.enhanceSelectElement({
+              selectElement: $(this)[0],
+              dropdownArrow: function() {
+                return "<span class='autocomplete__arrow'></span>";
+              },
+            });
           });
-          $('.js-country-picker-select').select2({
-            width: '100%',
-            minimumInputLength: 2,
-            ajax: {
-              delay: 300,
-              url: '<%= Rails.application.routes.url_helpers.geographical_areas_path(format: :json) %>'
-            }
+
+          $('.js-country-picker-select').each(function() {
+            (function(element) {
+              accessibleAutocomplete.enhanceSelectElement({
+                selectElement: element[0],
+                minLength: 2,
+                autoselect: true,
+                showAllValues: false,
+                confirmOnBlur: true,
+                displayMenu: "overlay",
+                alwaysDisplayArrow: true,
+                dropdownArrow: function() {
+                  return "<span class='autocomplete__arrow'></span>";
+                },
+                source: debounce(function(query, populateResults) {
+                  $.ajax({
+                    type: "GET",
+                    url: '<%= Rails.application.routes.url_helpers.geographical_areas_path(format: :json) %>',
+                    data: {
+                      term: query
+                    },
+                    success: function(data) {
+                      let results = data.results;
+
+                      var newOptions = [];
+                      results.forEach(function(result) {
+                        newOptions.push("<option value='" + result.id + "'>" + result.text + "</option>");
+                      });
+
+                      element.html(newOptions.join(""));
+
+                      var newSource = results.map(r => r.text);
+                      populateResults(newSource);
+                    },
+                    error: function() {
+                      populateResults([]);
+                    }
+                  });
+                }, 300, false)
+              });
+            })($(this));
           });
-          $('.js-commodity-picker-select').select2({
-            width: '100%',
-            minimumInputLength: 2,
-            placeholder: 'Enter the name of the goods or commodity code',
-            ajax: {
-              delay: 300,
-              url: '<%= Rails.application.routes.url_helpers.search_suggestions_path(format: :json) %>',
-              processResults: function(data, params){
-                $(document).trigger('tariff:searchQuery', arguments);
-                return data;
-              }
-            },
-            tags: true,
-            createTag: function (params) {
-              return {
-                id: params.term.toLowerCase(),
-                text: params.term.toLowerCase(),
-                newOption: true
-              }
-            }
-          }).on('change', function(e) {
-            $(this).parents('form:first').submit();
-          });
-          $('.js-commodity-picker-select').on('select2:select', function(e){
-            $(document).trigger('tariff:chooseSearchQueryOption', arguments);
+
+          $('.js-commodity-picker-select').each(function() {
+            (function(element) {
+              var options = [];
+
+              accessibleAutocomplete({
+                element: element[0],
+                id: "q",
+                minLength: 2,
+                autoselect: true,
+                showAllValues: false,
+                confirmOnBlur: true,
+                displayMenu: "overlay", 
+                defaultValue: $(".js-commodity-picker-target").val(),
+                placeholder: "Enter the name of the goods or commodity code",
+                onConfirm: function(text) {
+                  let obj = null;
+
+                  options.forEach(function(option) {
+                    if (option.text == text) {
+                      obj = option;
+                    }
+                  });
+
+                  if (obj) {
+                    $(".js-commodity-picker-target").val(obj.id);
+
+                    $(document).trigger('tariff:chooseSearchQueryOption', [{
+                      params: {
+                        data: obj
+                      }
+                    }]);
+                    $('.js-commodity-picker-select').parents('form:first').submit();
+                  }
+                },
+                source: debounce(function(query, populateResults) {
+                  let opts = {
+                    term: query
+                  };
+
+                  $.ajax({
+                    type: "GET",
+                    url: '<%= Rails.application.routes.url_helpers.search_suggestions_path(format: :json) %>',
+                    data: opts,
+                    success: function(data) {
+                      let results = data.results;
+                      var newSource = [];
+                      let exactMatch = false;
+                      options = [];
+
+                      newSource.push(query.toLowerCase());
+                      options.push({
+                        id: query.toLowerCase(),
+                        text: query.toLowerCase(),
+                        newOption: true
+                      });
+
+                      results.forEach(function(result) {
+                        newSource.push(result.text);
+                        options.push(result);
+
+                        if (result.text.toLowerCase() == query.toLowerCase()) {
+                          exactMatch = true;
+                        }
+                      });
+
+                      populateResults(newSource);
+
+                      $(document).trigger('tariff:searchQuery', [data, opts]);
+                    },
+                    error: function() {
+                      populateResults([]);
+                    }
+                  });
+                }, 300, false)
+              });
+            })($(this));
           });
         }
       },
