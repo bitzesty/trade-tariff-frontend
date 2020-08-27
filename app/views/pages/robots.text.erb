@@ -1,4 +1,4 @@
-<% if Rails.env.production? && TradeTariffFrontend.production_domain?(request.domain) %>
+<% if TradeTariffFrontend.production? && TradeTariffFrontend.robots_enabled? %>
   User-Agent: *
   Allow: /
   Disallow: /*changes$

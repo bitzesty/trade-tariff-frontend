@@ -25,14 +25,6 @@ module TradeTariffFrontend
     ENV["GOVUK_APP_DOMAIN"] == "tariff-frontend-production.cloudapps.digital"
   end
 
-  def production_domain?(domain)
-    domain == "www.trade-tariff.service.gov.uk"
-  end
-
-  def currency_picker_enabled?
-    ENV["CURRENCY_PICKER"].to_i == 1
-  end
-
   # Number of suggestions returned to select2
   def suggestions_count
     10
@@ -49,6 +41,14 @@ module TradeTariffFrontend
 
   def origin
     regulations_enabled? ? "EU" : "UK"
+  end
+
+  def robots_enabled?
+    ENV.fetch('ROBOTS_ENABLED', 'false') == 'true'
+  end
+
+  def currency_picker_enabled?
+    ENV["CURRENCY_PICKER"].to_i == 1
   end
 
   def regulations_enabled?
