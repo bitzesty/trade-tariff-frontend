@@ -1,8 +1,8 @@
 <h1 class="govuk-heading-l">Search results for &lsquo;<%= @search.q %>&rsquo;</h1>
-<article class="search-results">
+<article class="search-results govuk-!-padding-top-1">
   <% if @results.any? %>
     <% if @results.reference_match.commodities.any? %>
-      <table class="govuk-table">
+      <table class="govuk-table govuk-!-padding-bottom-7">
         <colgroup>
           <col width="*">
           <col width="180">
@@ -23,30 +23,30 @@
     <% end %>
 
     <% if @results.reference_matches_by_chapter.any? %>
-      <h2 class="govuk-heading-m govuk-!-margin-top-6">
+      <h2 class="govuk-heading-m govuk-!-margin-top-8">
         Results matching &lsquo;<%= @search %>&rsquo;
       </h2>
-      <ul class="results-subset js-results-subset">
+      <ul class="results-subset js-results-subset govuk-!-padding-bottom-7">
         <%= render partial: 'search/result', collection: @results.reference_matches_by_chapter %>
       </ul>
     <% end %>
 
     <% if @results.gn_matches_without_duplicates_by_chapter.any? %>
-      <h2 class="govuk-heading-m govuk-!-margin-top-6">
+      <h2 class="govuk-heading-m govuk-!-margin-top-8">
         Other results containing the term &lsquo;<%= @search %>&rsquo;
       </h2>
-       <ul class="results-subset js-results-subset">
+       <ul class="results-subset js-results-subset govuk-!-padding-bottom-7">
         <%= render partial: 'search/result', collection: @results.gn_matches_without_duplicates_by_chapter %>
       </ul>
     <% end %>
 
     <% if @results.reference_match.sections.any? %>
-      <table class="govuk-table">
+      <table class="govuk-table govuk-!-padding-bottom-7">
         <colgroup>
           <col width="*">
           <col width="180">
         </colgroup>
-        <caption class="govuk-table__caption govuk-heading-m govuk-!-margin-top-6">
+        <caption class="govuk-table__caption govuk-heading-m govuk-!-margin-top-8">
           Sections matching &lsquo;<%= @search %>&rsquo;
         </caption>
         <thead class="govuk-table__head">
