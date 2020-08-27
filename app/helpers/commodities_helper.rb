@@ -13,8 +13,8 @@ module CommoditiesHelper
     if commodities.any?
       content_tag(:ul, class: 'commodities') do
         content_tag(:li) do
-          content_tag(:p, commodities.first.to_s.html_safe) +
           tree_code(commodities.first.code) + 
+          content_tag(:p, commodities.first.to_s.html_safe) +
           tree_node(main_commodity, commodities, commodities.first.number_indents)
         end
       end
@@ -93,8 +93,8 @@ module CommoditiesHelper
     if deeper_node.present? && deeper_node.number_indents < main_commodity.number_indents
       content_tag(:ul) do
         content_tag(:li) do
-          content_tag(:p, deeper_node.to_s.html_safe) +
           tree_code(deeper_node.code.gsub(/[0]{2}+$/, '')) + 
+          content_tag(:p, deeper_node.to_s.html_safe) +
           # if deeper_node.producline_suffix == '80'
           #   tree_code(deeper_node.code.gsub(/[0]{2}+$/, ''))
           # end +
@@ -116,8 +116,8 @@ module CommoditiesHelper
                   'aria-describedby' => "commodity-#{commodity.code}") do
         content_tag(:div, format_commodity_code(commodity), class: 'code-text')
       end
-      content_tag(:p, commodity.to_s.html_safe) +
       tree_commodity_code(commodity) +
+      content_tag(:p, commodity.to_s.html_safe) +
       content_tag(:div, class: 'feed') do
         link_to('Changes', commodity_changes_path(commodity.declarable, format: :atom), rel: "nofollow")
       end
@@ -141,16 +141,16 @@ module CommoditiesHelper
 
   def declarable_heading(commodity)
     content_tag(:p) do
+      tree_code(commodity.code) + 
       content_tag(:p, commodity.formatted_description.html_safe,
-                          class: 'description',
-                          id: "commodity-#{commodity.code}") +
-      tree_code(commodity.code)
+                          class: '',
+                          id: "commodity-#{commodity.code}")
     end
   end
 
   def declarable_heading_full(commodity)
     content_tag(:li, class: 'commodity-li') do
-      content_tag(:p, format_full_code(commodity),
+      content_tag(:div, format_full_code(commodity),
                          title: "Full tariff code: #{commodity.code}",
                          class: 'full-code',
                          'aria-describedby' => "commodity-#{commodity.code}") +

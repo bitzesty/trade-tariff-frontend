@@ -2,7 +2,7 @@
   <h1 class="govuk-heading-l">Search by Certificate</h1>
   <div class="govuk-form-group">
     <%= label_tag :type, 'Type', class: 'govuk-label' %>
-    <%= select_tag :type, options_for_select(search_form.certificate_types, search_form.type), include_blank: true, class: "govuk-select govuk-select--width-20" %>
+    <%= select_tag :type, options_for_select(search_form.certificate_types, search_form.type), include_blank: true, class: "custom-select" %>
   </div>
   <div class="govuk-form-group">
     <%= label_tag :code, 'Code', class: 'govuk-label' %>

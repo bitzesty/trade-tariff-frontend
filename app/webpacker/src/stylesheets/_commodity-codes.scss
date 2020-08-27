@@ -9,11 +9,11 @@
   }
   > .code-text {
     position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
+    top: 0;
     width: 100%;
     text-align: center;
     color: $govuk-text-colour;
+    line-height: 30px;
   }
 }
 .chapter-code {

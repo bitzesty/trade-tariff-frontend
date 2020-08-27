@@ -31,23 +31,18 @@ declarable ||= false %>
       </div>
       <div class="mobile-only">
         <ul class="js-full-tree">
-          <li>
-            <%= link_to "Section #{declarable.section_numeral}: #{declarable.section}", section_path(declarable.section, request.query_parameters.symbolize_keys), class: "section-link" %>
+          <li class="chapter-li">
+            <%= tree_chapter_code(declarable.chapter) %>
+            <%= link_to declarable.chapter, chapter_path(declarable.chapter, request.query_parameters.symbolize_keys) %>
             <ul>
-              <li class="chapter-li">
-                <%= link_to declarable.chapter, chapter_path(declarable.chapter, request.query_parameters.symbolize_keys) %>
-                <%= tree_chapter_code(declarable.chapter) %>
-                <ul>
-                  <li class="heading-under-chapter-li">
-                    <% if declarable.show_commodity_tree? %>
-                      <%= link_to declarable.heading.to_s.html_safe, heading_path(declarable.heading, request.query_parameters.symbolize_keys) %>
-                      <%= tree_heading_code(declarable.heading) unless declarable.heading? %>
-                      <%= commodity_tree(declarable, declarable.ancestors) %>
-                    <% else %>
-                      <%= declarable_heading(declarable) %>
-                    <% end %>
-                  </li>
-                </ul>
+              <li class="heading-under-chapter-li">
+                <% if declarable.show_commodity_tree? %>
+                  <%= tree_heading_code(declarable.heading) unless declarable.heading? %>
+                  <%= link_to declarable.heading.to_s.html_safe, heading_path(declarable.heading, request.query_parameters.symbolize_keys) %>
+                  <%= commodity_tree(declarable, declarable.ancestors) %>
+                <% else %>
+                  <%= declarable_heading(declarable) %>
+                <% end %>
               </li>
             </ul>
           </li>
@@ -57,10 +52,10 @@ declarable ||= false %>
             <a href="#" class="show-full-tree-link js-show-full-tree-link">[Show all]</a>
             <ul>
               <% if declarable.show_commodity_tree? %>
-                  <%= commodity_heading_full(declarable) %>
-                <% else %>
-                  <%= declarable_heading_full(declarable) %>
-                <% end %>
+                <%= commodity_heading_full(declarable) %>
+              <% else %>
+                <%= declarable_heading_full(declarable) %>
+              <% end %>
             </ul>
           </li>
         </ul>
@@ -74,9 +69,7 @@ declarable ||= false %>
         <ul>
           <li class="chapter-li">
             <%= tree_chapter_code(heading.chapter) %>
-            <div class="line-text">
-              <%= link_to heading.chapter, chapter_path(heading.chapter, request.query_parameters.symbolize_keys) %>
-            </div>
+            <%= link_to heading.chapter, chapter_path(heading.chapter, request.query_parameters.symbolize_keys) %>
             <ul>
               <li class="heading-li">
                 <%= tree_heading_code(heading) %>
@@ -96,9 +89,7 @@ declarable ||= false %>
             <%= link_to heading.chapter, chapter_path(heading.chapter, request.query_parameters.symbolize_keys) %>
             <ul>
               <li class="heading-li">
-                <div class="heading-code">
-                  <div class="code-text"><%= heading.heading_display_short_code %></div>
-                </div>
+                <%= tree_heading_code(heading) %>
                 <p><%= heading.formatted_description.html_safe %></p>
                 <div class="feed"><%= link_to 'Changes', heading_changes_path(@heading.declarable, format: :atom), rel: "nofollow" %></div>
               </li>
@@ -110,11 +101,7 @@ declarable ||= false %>
             <a href="#" class="show-full-tree-link js-show-full-tree-link">[Show all]</a>
             <ul>
               <li class="chapter-and-heading-li">
-                <div class="chapter-code">
-                  <div class="code-text"><%= heading.chapter_short_code  %></div>
-                </div><div class="heading-code">
-                  <div class="code-text"><%= heading.heading_display_short_code %></div>
-                </div>
+                <%= tree_heading_code(heading) %>
                 <p><%= heading.formatted_description.html_safe %></p>
                 <div class="feed"><%= link_to 'Changes', heading_changes_path(@heading.declarable, format: :atom), rel: "nofollow" %></div>
               </li>
@@ -130,7 +117,9 @@ declarable ||= false %>
       <ul>
         <li class="chapter-li">
           <%= tree_chapter_code(chapter) %>
-          <%= chapter %>
+          <p>
+            <%= chapter %>
+          </p>
 
           <div class="feed"><%= link_to 'Changes', chapter_changes_path(@chapter, format: :atom), rel: 'nofollow' %></div>
           <% if TradeTariffFrontend.download_pdf_enabled? %>
