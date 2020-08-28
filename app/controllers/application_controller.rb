@@ -42,7 +42,10 @@ class ApplicationController < ActionController::Base
 
   def url_options
     return super unless search_invoked?
-    return { country: search_query.country, currency: search_query.currency }.merge(super) if search_query.date.today?
+
+    if search_query.date.today?
+      return { country: search_query.country, currency: search_query.currency }.merge(super)
+    end
 
     {
       year: search_query.date.year,
@@ -111,7 +114,7 @@ class ApplicationController < ActionController::Base
 
   def preprocess_raw_params
     if TradeTariffFrontend.block_searching_past_march? && params[:year] && params[:month] && params[:day]
-      now = Date.today
+      now = Date.current
       search_date = begin
         Date.new(*[params[:year], params[:month], params[:day]].map(&:to_i))
       rescue ArgumentError
@@ -128,9 +131,8 @@ class ApplicationController < ActionController::Base
   end
 
   def set_currency_for_date
-    search_query unless @search
     if search_date_in_future_month?
-      @search.attributes['currency'] = "EUR"
+      search_query.attributes['currency'] = "EUR"
       flash[:alert] = "Euro is the only currency supported for a search date in the future"
     end
   end
@@ -142,7 +144,9 @@ class ApplicationController < ActionController::Base
   end
 
   def bots_no_index_if_historical
-    response.headers["X-Robots-Tag"] = "none" unless @search.today?
+    return if search_query.today?
+
+    response.headers["X-Robots-Tag"] = "none"
   end
 
   def append_info_to_payload(payload)
