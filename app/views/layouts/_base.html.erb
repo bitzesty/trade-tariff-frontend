@@ -7,15 +7,8 @@
   <meta name="x-section-link" content="/browse/business" />
   <meta name="x-section-format" content="trade-tariff" />
   <meta name="format-detection" content="telephone=no">
-
-  <% if @meta_description %>
-    <meta name="description" content="<%= @meta_description %>">
-  <% end %>
-
   <meta name="govuk:section" content="business and self-employed">
-
   <link rel="search" type="application/opensearchdescription+xml" href="<%= opensearch_url(format: :xml) %>" title="Trade Tariff Search" />
-
 <% end %>
 
 <% if controller_name == 'commodities' && action_name == 'show' || controller_name == 'headings' && action_name == 'show' && @heading&.declarable? %>
