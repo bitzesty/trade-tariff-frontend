@@ -1,4 +1,5 @@
 <% content_for :head do %>
+  <meta name="description" content="<%= @commodity.description_plain %>">
   <link rel='alternate' type='application/json' href='<%= commodity_url(@commodity, format: :json) %>' title='Commodity information page in JSON format' />
 <% end %>
 
