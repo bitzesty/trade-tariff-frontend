@@ -22,7 +22,7 @@ module TradeTariffFrontend
   end
 
   def production?
-    ENV["GOVUK_APP_DOMAIN"] == "tariff-frontend-production.cloudapps.digital"
+    ENV["GOVUK_APP_DOMAIN"] == "tariff-frontend-production.london.cloudapps.digital"
   end
 
   # Number of suggestions returned to select2
