@@ -8,14 +8,14 @@ class TariffDate
 
   attr_reader :date
 
-  delegate :day, :month, :year, :to_formatted_s, :today?, to: :date
+  delegate :day, :month, :year, :to_formatted_s, :strftime, :today?, :>=, :<=, :==, to: :date
 
   def self.parse(date_param)
     new(
       if valid_date_param?(date_param)
         date_param.values_at(*DATE_KEYS).join('-')
       else
-        TariffUpdate.latest_applied_import_date
+        Date.current
       end
     )
   end

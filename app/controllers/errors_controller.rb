@@ -1,5 +1,7 @@
 class ErrorsController < ApplicationController
-  layout "pages"
+  before_action do
+    @tariff_last_updated = nil
+  end
 
   def not_found
     render status: 404

@@ -1,65 +1,65 @@
 Order No: <%= link_to order_number.number, "##{order_number.id}", class: 'reference numerical', title: 'Opens in a popup', 'data-popup-ref' => "#{order_number.id}" %>&nbsp;
-<div class='popup hidden' data-popup='<%= order_number.id %>'>
+<div class='popup govuk-visually-hidden' data-popup='<%= order_number.id %>'>
   <article>
     <% if order_number.has_definition? %>
-      <table>
-        <caption>
-          <%= order_number_info(order_number) %>
+      <table class="govuk-table">
+        <caption class="govuk-table__caption">
+          <h2><%= order_number_info(order_number) %></h2>
         </caption>
-        <tbody>
-          <tr>
-            <td>Order Number</td>
-            <td class="numerical"><%= order_number.number %></td>
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row">
+            <th scope="col" class='govuk-table__header'>Order Number</th>
+            <td class="numerical govuk-table__cell numerical"><%= order_number.number %></td>
           </tr>
-          <tr>
-            <td>Balance</td>
-            <td class="numerical"><%= order_number.definition.balance %></td>
+          <tr class="govuk-table__row">
+            <th scope="col" class='govuk-table__header'>Balance</th>
+            <td class="numerical govuk-table__cell numerical"><%= order_number.definition.balance %></td>
           </tr>
-          <tr>
-            <td>Initial amount</td>
-            <td class="numerical"><%= order_number.definition.initial_volume %></td>
+          <tr class="govuk-table__row">
+            <th scope="col" class='govuk-table__header'>Initial amount</th>
+            <td class="numerical govuk-table__cell numerical"><%= order_number.definition.initial_volume %></td>
           </tr>
-          <tr>
-            <td>Status</td>
-            <td><%= order_number.definition.status %></td>
+          <tr class="govuk-table__row">
+            <th scope="col" class='govuk-table__header'>Status</th>
+            <td class="numerical govuk-table__cell"><%= order_number.definition.status %></td>
           </tr>
-          <tr>
-            <td>Unit</td>
-            <td><%= order_number.definition.measurement_unit %></td>
+          <tr class="govuk-table__row">
+            <th scope="col" class='govuk-table__header'>Unit</th>
+            <td class="numerical govuk-table__cell"><%= order_number.definition.measurement_unit %></td>
           </tr>
-          <tr>
-            <td>Start date</td>
-            <td class="numerical"><%= order_number.definition.validity_start_date.to_formatted_s(:date) %></td>
+          <tr class="govuk-table__row">
+            <th scope="col" class='govuk-table__header'>Start date</th>
+            <td class="numerical govuk-table__cell numerical"><%= order_number.definition.validity_start_date.to_formatted_s(:date) %></td>
           </tr>
-          <tr>
-            <td>End date</td>
-            <td class="numerical"><%= order_number.definition.validity_end_date.to_formatted_s(:date) %></td>
+          <tr class="govuk-table__row">
+            <th scope="col" class='govuk-table__header'>End date</th>
+            <td class="numerical govuk-table__cell numerical"><%= order_number.definition.validity_end_date.to_formatted_s(:date) %></td>
           </tr>
-          <tr>
-            <td>Suspension period start</td>
-            <td class="numerical"><%= order_number.definition.suspension_period_start_date.to_formatted_s(:full) %></td>
+          <tr class="govuk-table__row">
+            <th scope="col" class='govuk-table__header'>Suspension period start</th>
+            <td class="numerical govuk-table__cell numerical"><%= order_number.definition.suspension_period_start_date.to_formatted_s(:full) %></td>
           </tr>
-          <tr>
-            <td>Suspension period end</td>
-            <td class="numerical"><%= order_number.definition.suspension_period_end_date.to_formatted_s(:full) %></td>
+          <tr class="govuk-table__row">
+            <th scope="col" class='govuk-table__header'>Suspension period end</th>
+            <td class="numerical govuk-table__cell numerical"><%= order_number.definition.suspension_period_end_date.to_formatted_s(:full) %></td>
           </tr>
-          <tr>
-            <td>Blocking period start</td>
-            <td class="numerical"><%= order_number.definition.blocking_period_start_date.to_formatted_s(:full) %></td>
+          <tr class="govuk-table__row">
+            <th scope="col" class='govuk-table__header'>Blocking period start</th>
+            <td class="numerical govuk-table__cell numerical"><%= order_number.definition.blocking_period_start_date.to_formatted_s(:full) %></td>
           </tr>
-          <tr>
-            <td>Blocking period end</td>
-            <td class="numerical"><%= order_number.definition.blocking_period_end_date.to_formatted_s(:full) %></td>
+          <tr class="govuk-table__row">
+            <th scope="col" class='govuk-table__header'>Blocking period end</th>
+            <td class="numerical govuk-table__cell numerical"><%= order_number.definition.blocking_period_end_date.to_formatted_s(:full) %></td>
           </tr>
-          <tr>
-            <td>Last allocation date</td>
-            <td class="numerical"><%= order_number.definition.last_allocation_date.to_formatted_s(:full) %></td>
+          <tr class="govuk-table__row">
+            <th scope="col" class='govuk-table__header'>Last allocation date</th>
+            <td class="numerical govuk-table__cell numerical"><%= order_number.definition.last_allocation_date.to_formatted_s(:full) %></td>
           </tr>
         </tbody>
       </table>
-      <p>In an effort to facilitate UK importers HMRC endeavours to keep quotas 'OPEN' where possible, therefore the information displayed above may differ slightly from the current UK position. If you require further information contact the Tariff Quota Management Team by email: <%= mail_to("tariff.management@hmrc.gsi.gov.uk", nil, subject: "Order number #{order_number.number}") %>.</p>
+      <p class="govuk-!-margin-top-4">In an effort to facilitate UK importers HMRC endeavours to keep quotas 'OPEN' where possible, therefore the information displayed above may differ slightly from the current UK position. If you require further information contact the Tariff Quota Management Team by email: <%= mail_to("tariff.management@hmrc.gsi.gov.uk", nil, subject: "Order number #{order_number.number}") %>.</p>
     <% else %>
-      <p>Information on the availability of this quota can be obtained from the Rural Payments Agency.</p>
+      <p class="govuk-!-margin-top-4">Information on the availability of this quota can be obtained from the Rural Payments Agency.</p>
     <% end %>
   </article>
 </div>

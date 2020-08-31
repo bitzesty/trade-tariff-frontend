@@ -1,84 +1,84 @@
-<tr>
-  <td>
+<tr class="govuk-table__row">
+  <td class="govuk-table__cell">
     <%= link_to definition.quota_order_number_id, "##{definition.quota_definition_sid}", class: 'reference numerical', title: 'Opens in a popup', 'data-popup-ref' => "#{definition.quota_definition_sid}" %>
-    <div class='popup hidden' data-popup='<%= definition.quota_definition_sid %>'>
+    <div class='popup govuk-visually-hidden' data-popup='<%= definition.quota_definition_sid %>'>
       <article>
         <% if definition.order_number.present? %>
-          <table>
-            <caption>
-              <%= definition.description %>
+          <table class="govuk-table">
+            <caption class="govuk-table__caption">
+              <h2><%= definition.description %></h2>
             </caption>
-            <tbody>
-            <tr>
-              <td>Order Number</td>
-              <td class="numerical"><%= definition.order_number.number %></td>
-            </tr>
-            <tr>
-              <td>Balance</td>
-              <td class="numerical"><%= definition.balance %></td>
-            </tr>
-            <tr>
-              <td>Initial amount</td>
-              <td class="numerical"><%= definition.initial_volume %></td>
-            </tr>
-            <tr>
-              <td>Status</td>
-              <td><%= definition.status %></td>
-            </tr>
-            <tr>
-              <td>Unit</td>
-              <td><%= definition.measurement_unit %></td>
-            </tr>
-            <tr>
-              <td>Start date</td>
-              <td class="numerical"><%= definition.validity_start_date.to_formatted_s(:date) %></td>
-            </tr>
-            <tr>
-              <td>End date</td>
-              <td class="numerical"><%= definition.validity_end_date.to_formatted_s(:date) %></td>
-            </tr>
-            <tr>
-              <td>Suspension period start</td>
-              <td class="numerical"><%= definition.suspension_period_start_date.to_formatted_s(:full) %></td>
-            </tr>
-            <tr>
-              <td>Suspension period end</td>
-              <td class="numerical"><%= definition.suspension_period_end_date.to_formatted_s(:full) %></td>
-            </tr>
-            <tr>
-              <td>Blocking period start</td>
-              <td class="numerical"><%= definition.blocking_period_start_date.to_formatted_s(:full) %></td>
-            </tr>
-            <tr>
-              <td>Blocking period end</td>
-              <td class="numerical"><%= definition.blocking_period_end_date.to_formatted_s(:full) %></td>
-            </tr>
-            <tr>
-              <td>Last allocation date</td>
-              <td class="numerical"><%= definition.last_allocation_date.to_formatted_s(:full) %></td>
-            </tr>
+            <tbody class="govuk-table__body">
+              <tr class="govuk-table__row">
+                <th scope="col" class='govuk-table__header'>Order Number</th>
+                <td class="numerical govuk-table__cell"><%= definition.order_number.number %></td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="col" class='govuk-table__header'>Balance</th>
+                <td class="numerical govuk-table__cell"><%= definition.balance %></td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="col" class='govuk-table__header'>Initial amount</th>
+                <td class="numerical govuk-table__cell"><%= definition.initial_volume %></td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="col" class='govuk-table__header'>Status</th>
+                <td class="govuk-table__cell"><%= definition.status %></td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="col" class='govuk-table__header'>Unit</th>
+                <td class="govuk-table__cell"><%= definition.measurement_unit %></td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="col" class='govuk-table__header'>Start date</th>
+                <td class="numerical govuk-table__cell"><%= definition.validity_start_date.to_formatted_s(:date) %></td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="col" class='govuk-table__header'>End date</th>
+                <td class="numerical govuk-table__cell"><%= definition.validity_end_date.to_formatted_s(:date) %></td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="col" class='govuk-table__header'>Suspension period start</th>
+                <td class="numerical govuk-table__cell"><%= definition.suspension_period_start_date.to_formatted_s(:full) %></td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="col" class='govuk-table__header'>Suspension period end</th>
+                <td class="numerical govuk-table__cell"><%= definition.suspension_period_end_date.to_formatted_s(:full) %></td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="col" class='govuk-table__header'>Blocking period start</th>
+                <td class="numerical govuk-table__cell"><%= definition.blocking_period_start_date.to_formatted_s(:full) %></td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="col" class='govuk-table__header'>Blocking period end</th>
+                <td class="numerical govuk-table__cell"><%= definition.blocking_period_end_date.to_formatted_s(:full) %></td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="col" class='govuk-table__header'>Last allocation date</th>
+                <td class="numerical govuk-table__cell"><%= definition.last_allocation_date.to_formatted_s(:full) %></td>
+              </tr>
             </tbody>
           </table>
-          <p>In an effort to facilitate UK importers HMRC endeavours to keep quotas 'OPEN' where possible, therefore the information displayed above may differ slightly from the current UK position. If you require further information contact the Tariff Quota Management Team by email: <%= mail_to("tariff.management@hmrc.gsi.gov.uk", nil, subject: "Order number #{definition.order_number.number}") %>.</p>
+          <p class="govuk-!-margin-top-4">In an effort to facilitate UK importers HMRC endeavours to keep quotas 'OPEN' where possible, therefore the information displayed above may differ slightly from the current UK position. If you require further information contact the Tariff Quota Management Team by email: <%= mail_to("tariff.management@hmrc.gsi.gov.uk", nil, subject: "Order number #{definition.order_number.number}") %>.</p>
         <% else %>
           <p>Information on the availability of this quota can be obtained from the Rural Payments Agency.</p>
         <% end %>
       </article>
     </div>
   </td>
-  <td>
+  <td class="govuk-table__cell">
     <% definition.measures&.map(&:goods_nomenclature_item_id)&.uniq&.each do |goods_nomenclature_item_id| %>
       <%= link_to goods_nomenclature_item_id, commodity_path(goods_nomenclature_item_id) %>
       <br>
     <% end %>
   </td>
-  <td>
+  <td class="govuk-table__cell">
     <% definition.geographical_areas.uniq(&:id).select { |geographical_area| geographical_area.id.present? }.each do |geographical_area| %>
       <%= geographical_area&.long_description %>
       <br>
     <% end %>
   </td>
-  <td><%= definition.validity_start_date&.strftime('%d %B %Y') %></td>
-  <td><%= definition.validity_end_date&.strftime('%d %B %Y') %></td>
-  <td class="numerical"><%= definition.balance %> <%= definition.measurement_unit %></td>
+  <td class="govuk-table__cell"><%= definition.validity_start_date&.strftime('%d %B %Y') %></td>
+  <td class="govuk-table__cell"><%= definition.validity_end_date&.strftime('%d %B %Y') %></td>
+  <td class="govuk-table__cell numerical"><%= definition.balance %> <%= definition.measurement_unit %></td>
 </tr>

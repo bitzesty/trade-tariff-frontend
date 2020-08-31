@@ -12,30 +12,36 @@ describe "Search", js: true, vcr: {
 
     sleep 2
 
-    within ".nav-tabs" do
+    within ".govuk-tabs" do
       click_on "Import"
     end
 
-    expect(page.find("#select2-import_search_country-container").text).to eq("All countries")
+    expect(page).to have_select("import_search_country-select", selected: "All countries")
 
-    page.find("#select2-import_search_country-container").click
+    within "#import_edit_search" do
 
-    page.find(".select2-search__field").set "United States of America"
-    sleep 2
+      page.find("#import_search_country").click
 
-    expect(page.find_all(".select2-results__option").length).to eq(1)
-    expect(page.find(".select2-results__option--highlighted").text).to eq("United States of America (US)");
+      fill_in "import_search_country", with: "United States of America"
+      expect(page.find("#import_search_country").value).to eq("United States of America")
 
-    page.find(".select2-results__option--highlighted").click
+      sleep 2
 
-    sleep 2
+      expect(page.find_all(".autocomplete__option").length).to eq(1)
+      expect(page.find_all(".autocomplete__option")[0].text).to eq("United States of America (US)");
 
-    expect(page.find("#select2-import_search_country-container").text).to eq("United States of America (US)")
+      page.find_all(".autocomplete__option")[0].click
+
+      sleep 2
+
+      expect(page.find("#import_search_country").value).to eq("United States of America (US)")
+    end
+
     expect(page).to have_content("Measures for United States of America")
 
     page.find(".reset-country-picker", visible: true).click
 
     sleep 2
-    expect(page.find("#select2-import_search_country-container").text).to eq("All countries")
+    expect(page.find("#import_search_country").value).to eq("All countries")
   end
 end

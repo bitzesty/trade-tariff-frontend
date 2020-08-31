@@ -1,17 +1,18 @@
 <% content_for :title, "#{@chapter} - Trade Tariff - GOV.UK" %>
 <% content_for :head do %>
+  <meta name="description" content="<%= @chapter  %>">
   <link rel='alternate' type='application/json' href='<%= chapter_url(@chapter, format: :json) %>' title='Chapter information page in JSON format' />
 <% end %>
 
-<% content_for :body_classes, "page--wide" %>
+<% content_for :bodyClasses, "page--wide" %>
 
-<h2 class="heading-small">Choose the heading that best matches your goods</h2>
+<h2 class="govuk-heading-s">Choose the heading that best matches your goods</h2>
 
 <%= render 'shared/tariff_breadcrumbs', chapter: @chapter %>
 <%= render 'shared/callout', chapter: @chapter %>
 
 <section class="headings">
-  <table class="section-browser">
+  <table class="section-browser govuk-table">
     <tbody>
       <%= render @headings %>
     </tbody>

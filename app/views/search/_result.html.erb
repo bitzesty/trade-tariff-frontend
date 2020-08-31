@@ -2,12 +2,31 @@
 <% headings = result[1][1] %>
 <li>
   <div class="chapter">
-    <div class="chapter-code">
-      <div class="code-text"><%= chapter.short_code %></div>
+    <div class="full-code">
+      <div class="chapter-code">
+        <div class="code-text"><%= chapter.short_code %></div>
+      </div>
+      <div class="heading-code">&nbsp;</div>
+      <div class="commodity-code">
+        <div class="code-text">&nbsp;</div>
+        <div class="code-text">&nbsp;</div>
+        <div class="code-text">&nbsp;</div>
+      </div>
     </div>
-    <a href="<%= chapter_path(chapter) %>"><%= chapter.description.html_safe %></a>
-    <div class="guides-container">
-      <%= render partial: 'chapters/chapter_guides', locals: {chapter: chapter} %>
+    <div class="line-text">
+      <h4 class="govuk-heading-s govuk-!-margin-bottom-2">
+        <a href="<%= chapter_path(chapter) %>"><%= chapter.description.html_safe %></a>
+      </h4>
+      <details class="govuk-details govuk-!-margin-bottom-0" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text govuk-!-font-size-16">
+            Notes
+          </span>
+        </summary>
+        <div class="govuk-details__text govuk-!-font-size-16">
+          <%= render partial: 'chapters/chapter_guides', locals: {chapter: chapter} %>
+        </div>
+      </details>
     </div>
   </div>
   <% if headings.any? %>
@@ -15,10 +34,22 @@
       <% headings.each do |heading| %>
         <li>
           <div class="heading">
-            <div class="heading-code">
-              <div class="code-text"><%= heading.heading_display_short_code %></div>
+            <div class="line-text">
+              <a href="<%= heading_path(heading) %>"><%= heading.description.html_safe %></a>
             </div>
-            <a href="<%= heading_path(heading) %>"><%= heading.description.html_safe %></a>
+            <div class="full-code">
+              <div class="chapter-code">
+                <div class="code-text"><%= heading.chapter.short_code %></div>
+              </div>
+              <div class="heading-code">
+                <div class="code-text"><%= heading.heading_display_short_code %></div>
+              </div>
+              <div class="commodity-code">
+                <div class="code-text">&nbsp;</div>
+                <div class="code-text">&nbsp;</div>
+                <div class="code-text">&nbsp;</div>
+              </div>
+            </div>
           </div>
         </li>
       <% end %>

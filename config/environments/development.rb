@@ -6,6 +6,9 @@ Rails.application.configure do
   # since you don't have to restart the web server when you make code changes.
   config.cache_classes = false
 
+  # Going to leave this here so in the future we can use BrowserStack locally
+  config.hosts << "bs-local.com"
+
   # Do not eager load code on boot.
   config.eager_load = false
 
@@ -29,6 +32,9 @@ Rails.application.configure do
 
   # Suppress logger output for asset requests.
   config.assets.quiet = true
+
+  # Verifies that versions and hashed value of the package contents in the project's package.json
+  config.webpacker.check_yarn_integrity = true
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true

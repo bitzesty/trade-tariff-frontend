@@ -1,7 +1,8 @@
 <% content_for :head do %>
+  <meta name="description" content="<%= @commodity.description_plain %>">
   <link rel='alternate' type='application/json' href='<%= commodity_url(@commodity, format: :json) %>' title='Commodity information page in JSON format' />
 <% end %>
 
-<% content_for :body_classes, "page--wide" %>
+<% content_for :bodyClasses, "page--wide" %>
 
 <%= render 'declarables/declarable', declarable: @commodity %>

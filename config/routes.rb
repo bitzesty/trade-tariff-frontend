@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   get "/api/:version/commodities/:id", to: redirect { |_params, request| request.url.gsub('commodities', 'headings').gsub('000000', '') }, constraints: { id: /\d{4}000000/ }
   get "/api/v1/quotas/search", to: redirect('/api/v2/quotas/search', status: 301)
 
-  get "/", to: redirect("https://www.gov.uk/trade-tariff", status: 302)
+  get "/", to: redirect(TradeTariffFrontend.production? ? "https://www.gov.uk/trade-tariff" : "/sections", status: 302)
   get "healthcheck", to: "healthcheck#check"
   get "opensearch", to: "pages#opensearch", constraints: { format: :xml }
   get "terms", to: "pages#terms"
@@ -95,7 +95,7 @@ Rails.application.routes.draw do
     end
   end
 
-  root to: redirect("https://www.gov.uk/trade-tariff", status: 302)
+  root to: redirect(TradeTariffFrontend.production? ? "https://www.gov.uk/trade-tariff" : "/sections", status: 302)
 
   get "/robots.:format", to: "pages#robots"
   match "/404", to: "errors#not_found", via: :all

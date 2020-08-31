@@ -3,34 +3,27 @@ chapter ||= false
 heading ||= false
 declarable ||= false %>
 
-<div class="tariff-breadcrumbs js-tariff-breadcrumbs clt font-xsmall">
+<div class="tariff-breadcrumbs js-tariff-breadcrumbs clt govuk-!-font-size-16">
   <nav>
-    <%= link_to "All sections", sections_path(request.query_parameters.symbolize_keys), class: "all-sections-link" %>
-
     <% if declarable %>
+      <p>
+        Section <%= declarable.section_numeral %>: <%= declarable.section %>
+      </p>
       <div class="desktop-only">
+
         <ul>
-          <li>
-            <%= link_to "Section #{declarable.section_numeral}: #{declarable.section}", section_path(declarable.section, request.query_parameters.symbolize_keys), class: "section-link" %>
+          <li class="chapter-li">
+            <%= tree_chapter_code(declarable.chapter) %>
+            <%= link_to declarable.chapter, chapter_path(declarable.chapter, request.query_parameters.symbolize_keys) %>
             <ul>
-              <li class="chapter-li">
-                <div class="chapter-code">
-                  <div class="code-text"><%= declarable.chapter_short_code %></div>
-                </div>
-                <%= link_to declarable.chapter, chapter_path(declarable.chapter, request.query_parameters.symbolize_keys) %>
-                <ul>
-                  <li class="heading-li">
-                    <div class="heading-code">
-                      <div class="code-text"><%= declarable.heading_display_short_code %></div>
-                    </div>
-                    <% if declarable.show_commodity_tree? %>
-                      <%= link_to declarable.heading.to_s.html_safe, heading_path(declarable.heading, request.query_parameters.symbolize_keys) %>
-                      <%= commodity_tree(declarable, declarable.ancestors) %>
-                    <% else %>
-                      <%= declarable_heading(declarable) %>
-                    <% end %>
-                  </li>
-                </ul>
+              <li class="heading-li">
+                <%= tree_heading_code(declarable.heading) unless declarable.heading? %>
+                <% if declarable.show_commodity_tree? %>
+                  <%= link_to declarable.heading.to_s.html_safe, heading_path(declarable.heading, request.query_parameters.symbolize_keys) %>
+                  <%= commodity_tree(declarable, declarable.ancestors) %>
+                <% else %>
+                  <%= declarable_heading(declarable) %>
+                <% end %>
               </li>
             </ul>
           </li>
@@ -38,27 +31,18 @@ declarable ||= false %>
       </div>
       <div class="mobile-only">
         <ul class="js-full-tree">
-          <li>
-            <%= link_to "Section #{declarable.section_numeral}: #{declarable.section}", section_path(declarable.section, request.query_parameters.symbolize_keys), class: "section-link" %>
+          <li class="chapter-li">
+            <%= tree_chapter_code(declarable.chapter) %>
+            <%= link_to declarable.chapter, chapter_path(declarable.chapter, request.query_parameters.symbolize_keys) %>
             <ul>
-              <li class="chapter-li">
-                <div class="chapter-code">
-                  <div class="code-text"><%= declarable.chapter_short_code  %></div>
-                </div>
-                <%= link_to declarable.chapter, chapter_path(declarable.chapter, request.query_parameters.symbolize_keys) %>
-                <ul>
-                  <li class="heading-under-chapter-li">
-                    <div class="heading-code">
-                      <div class="code-text"><%= declarable.heading_display_short_code %></div>
-                    </div>
-                    <% if declarable.show_commodity_tree? %>
-                      <%= link_to declarable.heading.to_s.html_safe, heading_path(declarable.heading, request.query_parameters.symbolize_keys) %>
-                      <%= commodity_tree(declarable, declarable.ancestors) %>
-                    <% else %>
-                      <%= declarable_heading(declarable) %>
-                    <% end %>
-                  </li>
-                </ul>
+              <li class="heading-under-chapter-li">
+                <% if declarable.show_commodity_tree? %>
+                  <%= tree_heading_code(declarable.heading) unless declarable.heading? %>
+                  <%= link_to declarable.heading.to_s.html_safe, heading_path(declarable.heading, request.query_parameters.symbolize_keys) %>
+                  <%= commodity_tree(declarable, declarable.ancestors) %>
+                <% else %>
+                  <%= declarable_heading(declarable) %>
+                <% end %>
               </li>
             </ul>
           </li>
@@ -67,62 +51,47 @@ declarable ||= false %>
           <li>
             <a href="#" class="show-full-tree-link js-show-full-tree-link">[Show all]</a>
             <ul>
-              <li class="commodity-li">
-                <% if declarable.show_commodity_tree? %>
-                  <%= commodity_heading_full(declarable) %>
-                <% else %>
-                  <%= declarable_heading_full(declarable) %>
-                <% end %>
-              </li>
+              <% if declarable.show_commodity_tree? %>
+                <%= commodity_heading_full(declarable) %>
+              <% else %>
+                <%= declarable_heading_full(declarable) %>
+              <% end %>
             </ul>
           </li>
         </ul>
       </div>
 
     <% elsif heading %>
+      <p>
+        Section <%= heading.section.numeral %>: <%= heading.section.title %>
+      </p>
       <div class="desktop-only">
         <ul>
-          <li>
-            <%= link_to "Section #{heading.section.numeral}: #{heading.section.title}", section_path(heading.section, request.query_parameters.symbolize_keys), class: "section-link" %>
+          <li class="chapter-li">
+            <%= tree_chapter_code(heading.chapter) %>
+            <%= link_to heading.chapter, chapter_path(heading.chapter, request.query_parameters.symbolize_keys) %>
             <ul>
-              <li class="chapter-li">
-                <div class="chapter-code">
-                  <div class="code-text"><%= heading.chapter_short_code  %></div>
+              <li class="heading-li">
+                <%= tree_heading_code(heading) %>
+                <div class="line-text">
+                  <%= heading.formatted_description.html_safe %>
                 </div>
-                <%= link_to heading.chapter, chapter_path(heading.chapter, request.query_parameters.symbolize_keys) %>
-                <ul>
-                  <li class="heading-li">
-                    <div class="heading-code">
-                      <div class="code-text"><%= heading.heading_display_short_code %></div>
-                    </div>
-                    <h1><%= heading.formatted_description.html_safe %></h1>
-                    <div class="feed"><%= link_to 'Changes', heading_changes_path(@heading.declarable, format: :atom), rel: "nofollow" %></div>
-                  </li>
-                </ul>
               </li>
             </ul>
           </li>
         </ul>
+        <div class="feed"><%= link_to 'Changes', heading_changes_path(@heading.declarable, format: :atom), rel: "nofollow" %></div>
       </div>
       <div class="mobile-only">
         <ul class="js-full-tree">
-          <li>
-            <%= link_to "Section #{heading.section.numeral}: #{heading.section.title}", section_path(heading.section, request.query_parameters.symbolize_keys), class: "section-link" %>
+          <li class="chapter-li">
+            <%= tree_chapter_code(heading.chapter) %>
+            <%= link_to heading.chapter, chapter_path(heading.chapter, request.query_parameters.symbolize_keys) %>
             <ul>
-              <li class="chapter-li">
-                <div class="chapter-code">
-                  <div class="code-text"><%= heading.chapter_short_code  %></div>
-                </div>
-                <%= link_to heading.chapter, chapter_path(heading.chapter, request.query_parameters.symbolize_keys) %>
-                <ul>
-                  <li class="heading-li">
-                    <div class="heading-code">
-                      <div class="code-text"><%= heading.heading_display_short_code %></div>
-                    </div>
-                    <h1><%= heading.formatted_description.html_safe %></h1>
-                    <div class="feed"><%= link_to 'Changes', heading_changes_path(@heading.declarable, format: :atom), rel: "nofollow" %></div>
-                  </li>
-                </ul>
+              <li class="heading-li">
+                <%= tree_heading_code(heading) %>
+                <p><%= heading.formatted_description.html_safe %></p>
+                <div class="feed"><%= link_to 'Changes', heading_changes_path(@heading.declarable, format: :atom), rel: "nofollow" %></div>
               </li>
             </ul>
           </li>
@@ -132,12 +101,8 @@ declarable ||= false %>
             <a href="#" class="show-full-tree-link js-show-full-tree-link">[Show all]</a>
             <ul>
               <li class="chapter-and-heading-li">
-                <div class="chapter-code">
-                  <div class="code-text"><%= heading.chapter_short_code  %></div>
-                </div><div class="heading-code">
-                  <div class="code-text"><%= heading.heading_display_short_code %></div>
-                </div>
-                <h1><%= heading.formatted_description.html_safe %></h1>
+                <%= tree_heading_code(heading) %>
+                <p><%= heading.formatted_description.html_safe %></p>
                 <div class="feed"><%= link_to 'Changes', heading_changes_path(@heading.declarable, format: :atom), rel: "nofollow" %></div>
               </li>
             </ul>
@@ -146,30 +111,25 @@ declarable ||= false %>
       </div>
 
     <% elsif chapter %>
+      <p>
+        Section <%= chapter.section_numeral %>: <%= chapter.section %>
+      </p>
       <ul>
-        <li>
-          <%= link_to "Section #{chapter.section_numeral}: #{chapter.section}", section_path(chapter.section, request.query_parameters.symbolize_keys), class: "section-link" %>
-          <ul>
-            <li class="chapter-li">
-              <div class="chapter-code">
-                <div class="code-text"><%= chapter.short_code %></div>
-              </div>
-              <h1><%= chapter %></h1>
-              <div class="feed"><%= link_to 'Changes', chapter_changes_path(@chapter, format: :atom), rel: 'nofollow' %></div>
-              <% if TradeTariffFrontend.download_pdf_enabled? %>
-                <div class="download-pdf"><%= link_to "[BETA] Chapter #{chapter.short_code} PDF", download_chapter_pdf_url(chapter.section.position, chapter.short_code), rel: 'nofollow', target: '_blank' %></div>
-              <% end %>
-            </li>
-          </ul>
+        <li class="chapter-li">
+          <%= tree_chapter_code(chapter) %>
+          <p>
+            <%= chapter %>
+          </p>
+
+          <div class="feed"><%= link_to 'Changes', chapter_changes_path(@chapter, format: :atom), rel: 'nofollow' %></div>
+          <% if TradeTariffFrontend.download_pdf_enabled? %>
+            <div class="download-pdf"><%= link_to 'Download PDF', download_chapter_pdf_url(chapter.section.position, chapter.short_code), rel: 'nofollow', target: '_blank' %></div>
+          <% end %>
         </li>
       </ul>
 
     <% elsif section %>
-      <ul>
-        <li>
-          <h1><%= "Section #{section.numeral}: #{section}" %></h1>
-        </li>
-      </ul>
+      <p><strong><%= "Section #{section.numeral}: #{section}" %></strong></p>
     <% end %>
   </nav>
 </div>

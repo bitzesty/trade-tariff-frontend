@@ -1,111 +1,132 @@
-<% content_for :page_title, content_for?(:title) ? yield(:title) : "Trade Tariff: look up commodity codes, duty and VAT rates - GOV.UK" %>
+<% content_for :pageTitle, content_for?(:title) ? yield(:title) : "Trade Tariff: look up commodity codes, duty and VAT rates - GOV.UK" %>
 
 <% content_for :head do %>
-  <!--[if gt IE 8]><!--><%= stylesheet_link_tag "application.css" %><!--<![endif]-->
-  <!--[if IE 6]><%= stylesheet_link_tag "application-ie6.css" %><![endif]-->
-  <!--[if IE 7]><%= stylesheet_link_tag "application-ie7.css" %><![endif]-->
-  <!--[if IE 8]><%= stylesheet_link_tag "application-ie8.css" %><![endif]-->
-  <%= stylesheet_link_tag 'tariff-print', media: 'print' %>
   <%= csrf_meta_tags %>
 
-  <meta name="x-section-name" content="Business" />
-  <meta name="x-section-link" content="/browse/business" />
-  <meta name="x-section-format" content="trade-tariff" />
   <meta name="format-detection" content="telephone=no">
-
-  <% if @meta_description %>
-    <meta name="description" content="<%= @meta_description %>">
-  <% end %>
-
   <meta name="govuk:section" content="business and self-employed">
-
   <link rel="search" type="application/opensearchdescription+xml" href="<%= opensearch_url(format: :xml) %>" title="Trade Tariff Search" />
+<% end %>
 
+<% if controller_name == 'commodities' && action_name == 'show' || controller_name == 'headings' && action_name == 'show' && @heading&.declarable? %>
+  <% content_for :before_main_content do %>
+    <a class="govuk-back-link" href="<%= @back_path %>">Back <span class="govuk-visually-hidden"> to the list of commodities</span></a>
+  <% end %>
 <% end %>
 
 <% content_for :header_class, 'with-proposition' %>
 <% content_for :proposition_header do %>
-  <div class="header-proposition">
-    <div class="content">
-      <a href="#proposition-links" class="js-header-toggle menu">Menu</a>
-      <nav id="proposition-menu">
-        <a href="<%= sections_path %>" id="proposition-name">Trade Tariff</a>
-        <ul id="proposition-links">
-          <li><%= link_to "Search", sections_path, class: search_active_class %></li>
-          <li><%= link_to "Additional Code", additional_code_search_path, class: additional_code_search_class %></li>
-          <li><%= link_to "Certificate", certificate_search_path, class: certificate_search_class %></li>
-          <li><%= link_to "Footnotes", footnote_search_path, class: footnote_search_class %></li>
-          <li><%= link_to "Quotas", quota_search_path, class: quota_search_active_class %></li>
-          <li><%= link_to "CAS", chemical_search_path, class: chemical_search_active_class %></li>
-          <li><%= link_to "A-Z", a_z_index_path(letter: "a"), class: a_z_active_class %></li>
-          <li><%= link_to "Exchange rates", exchange_rates_path, class: exchange_rates_active_class %></li>
-          <li><%= link_to "Forum", "https://forum.trade-tariff.service.gov.uk/", target: "_blank", data: { analytics_event: "forums" } %></li>
-        </ul>
-      </nav>
-    </div>
+  <div class="govuk-header__content">
+    <a href="<%= sections_path %>" class="govuk-header__link govuk-header__link--service-name" id="proposition-name">
+      Trade Tariff
+    </a>
+    <button type="button" class="govuk-header__menu-button govuk-js-header-toggle" aria-controls="proposition-links" aria-label="Show or hide Top Level Navigation">Menu</button>
+    <nav id="proposition-menu"  aria-label="Top Level Navigation">
+      <ul id="proposition-links" class="govuk-header__navigation ">
+        <%= govuk_header_navigation_item(search_active_class) do %>
+          <%= link_to "Search", sections_path, class: "govuk-header__link" %>
+        <% end %>
+        <%= govuk_header_navigation_item(additional_code_search_class) do %>
+          <%= link_to "Additional code", additional_code_search_path, class: "govuk-header__link" %>
+        <% end %>
+        <%= govuk_header_navigation_item(certificate_search_class) do %>
+          <%= link_to "Certificate", certificate_search_path, class: "govuk-header__link" %>
+        <% end %>
+        <%= govuk_header_navigation_item(footnote_search_class) do %>
+          <%= link_to "Footnotes", footnote_search_path, class: "govuk-header__link" %>
+        <% end %>
+        <%= govuk_header_navigation_item(quota_search_active_class) do %>
+          <%= link_to "Quotas", quota_search_path, class: "govuk-header__link" %>
+        <% end %>
+        <%= govuk_header_navigation_item(chemical_search_active_class) do %>
+          <%= link_to "CAS", chemical_search_path, class: "govuk-header__link" %>
+        <% end %>
+        <%= govuk_header_navigation_item(a_z_active_class) do %>
+          <%= link_to "A-Z", a_z_index_path(letter: "a"), class: "govuk-header__link" %>
+        <% end %>
+        <%= govuk_header_navigation_item(exchange_rates_active_class) do %>
+          <%= link_to "Exchange rates", exchange_rates_path, class: "govuk-header__link" %>
+        <% end %>
+        <%= govuk_header_navigation_item do %>
+          <%= link_to "Forum", "https://forum.trade-tariff.service.gov.uk/", target: "_blank", class: "govuk-header__link", data: { analytics_event: "forums" } %>
+        <% end %>
+      </ul>
+    </nav>
   </div>
 <% end %>
 
 <% content_for :footer_top do %>
-  <div class="footer-categories">
-    <div class="footer-explore">
-      <h2>Prepare for EU Exit</h2>
+  <div class="govuk-footer__row">
+    <div class="govuk-footer__section one-third">
+      <h2 class="govuk-footer__heading govuk-heading-m">The UK has left the EU</h2>
 
-      <ul>
-        <li><a href="https://www.gov.uk/business-uk-leaving-eu" target="_blank">Prepare your business for the UK leaving the EU</a></li>
-        <li><a href="https://www.gov.uk/prepare-eu-exit" target="_blank">Prepare for EU Exit if you live in the UK</a></li>
-      </ul>
-      <ul>
-        <li><a href="https://www.gov.uk/uk-nationals-living-eu" target="_blank">Living in Europe after the UK leaves the EU</a></li>
-        <li><a href="https://www.gov.uk/staying-uk-eu-citizen" target="_blank">Continue to live in the UK after it leaves the EU</a></li>
+      <ul class="govuk-footer__list">
+        <li class="govuk-footer__list-item"><a class="govuk-footer__link" href="https://www.gov.uk/transition" target="_blank">Check the new rules for January 2021</a></li>
       </ul>
     </div>
   </div>
-  <nav class="footer-categories">
-    <div class="footer-category">
-      <h2>Contact</h2>
-      <ul>
-        <li><a target="_blank" href="https://www.gov.uk/guidance/ask-hmrc-for-advice-on-classifying-your-goods">Ask HMRC for advice on classifying your goods</a></li>
-        <li><a target="_blank" href="https://www.gov.uk/government/organisations/hm-revenue-customs/contact/customs-international-trade-and-excise-enquiries">Imports and exports: general enquiries</a></li>
-        <li><%= link_to 'Feedback', feedback_path %></li>
+  <div class="govuk-footer__row govuk-!-margin-top-5">
+    <div class="govuk-footer__section one-third">
+      <h2 class="govuk-footer__heading govuk-heading-m">Contact</h2>
+      <ul class="govuk-footer__list">
+        <li class="govuk-footer__list-item"><a class="govuk-footer__link" target="_blank" href="https://www.gov.uk/guidance/ask-hmrc-for-advice-on-classifying-your-goods">Ask HMRC for advice on classifying your goods</a></li>
+        <li class="govuk-footer__list-item"><a class="govuk-footer__link" target="_blank" href="https://www.gov.uk/government/organisations/hm-revenue-customs/contact/customs-international-trade-and-excise-enquiries">Imports and exports: general enquiries</a></li>
+        <li class="govuk-footer__list-item"><%= link_to 'Feedback', feedback_path, class: "govuk-footer__link" %></li>
       </ul>
     </div>
 
-    <div class="footer-category">
-      <h2>Help</h2>
-      <ul>
+    <div class="govuk-footer__section one-third">
+      <h2 class="govuk-footer__heading govuk-heading-m">Help</h2>
+      <ul class="govuk-footer__list">
         <!-- <li><a href="#">How to use the Tariff</a></li> -->
-        <li><a target="_blank" href="https://www.gov.uk/guidance/finding-commodity-codes-for-imports-or-exports">Finding commodity codes for imports or exports</a></li>
-        <li><a target="_blank" href="https://www.gov.uk/guidance/using-the-trade-tariff-tool-to-find-a-commodity-code">Using the Trade Tariff tool to find a commodity code</a></li>
-        <li><a target="_blank" href="https://www.gov.uk/topic/business-tax/import-export">Import and export</a></li>
+        <li class="govuk-footer__list-item"><a class="govuk-footer__link" target="_blank" href="https://www.gov.uk/guidance/finding-commodity-codes-for-imports-or-exports">Finding commodity codes for imports or exports</a></li>
+        <li class="govuk-footer__list-item"><a class="govuk-footer__link" target="_blank" href="https://www.gov.uk/guidance/using-the-trade-tariff-tool-to-find-a-commodity-code">Using the Trade Tariff tool to find a commodity code</a></li>
+        <li class="govuk-footer__list-item"><a class="govuk-footer__link" target="_blank" href="https://www.gov.uk/topic/business-tax/import-export">Import and export</a></li>
       </ul>
     </div>
 
-    <div class="footer-category">
-      <h2>Related information</h2>
-      <ul>
-        <li><a target="_blank" href="https://www.gov.uk/government/collections/uk-trade-tariff-volume-1">UK Trade Tariff: Volume 1 &ndash; background information for importers and exporters</a></li>
-        <li><a target="_blank" href="https://www.gov.uk/government/collections/uk-trade-tariff-volume-3">UK Trade Tariff: Volume 3 &ndash; procedures, codes and declaration entry details</a></li>
+    <div class="govuk-footer__section one-third">
+      <h2 class="govuk-footer__heading govuk-heading-m">Related information</h2>
+      <ul class="govuk-footer__list">
+        <li class="govuk-footer__list-item"><a class="govuk-footer__link" target="_blank" href="https://www.gov.uk/government/collections/uk-trade-tariff-volume-1">UK Trade Tariff: Volume 1 &ndash; background information for importers and exporters</a></li>
+        <li class="govuk-footer__list-item"><a class="govuk-footer__link" target="_blank" href="https://www.gov.uk/government/collections/uk-trade-tariff-volume-3">UK Trade Tariff: Volume 3 &ndash; procedures, codes and declaration entry details</a></li>
         <%- if TradeTariffFrontend.regulations_enabled? -%>
-          <li><a target="_blank" href="http://ec.europa.eu/taxation_customs/dds2/taric/taric_consultation.jsp?Lang=en&Screen=0&Expand=true">Integrated tariff of the European Community (TARIC) database</a></li>
+          <li class="govuk-footer__list-item"><a class="govuk-footer__link" target="_blank" href="http://ec.europa.eu/taxation_customs/dds2/taric/taric_consultation.jsp?Lang=en&Screen=0&Expand=true">Integrated tariff of the European Community (TARIC) database</a></li>
         <% end %>
-        <li><a target="_blank" href="https://api.trade-tariff.service.gov.uk/#gov-uk-trade-tariff-api">API Documentation</a></li>
+        <li class="govuk-footer__list-item"><a class="govuk-footer__link" target="_blank" href="https://api.trade-tariff.service.gov.uk/#gov-uk-trade-tariff-api">API Documentation</a></li>
       </ul>
     </div>
-  </nav>
-  <hr>
+  </div>
 <% end %>
 
-<% content_for :footer_support_links do %>
-  <h2 class="visuallyhidden">Support links</h2>
-  <ul>
-    <li><a href="<%= terms_path %>">Terms and conditions</a></li>
-    <li><a href="<%= cookies_path %>">Cookies</a></li>
-    <li>Built by the <a href="https://www.gov.uk/government/organisations/government-digital-service">Government Digital Service</a>
-    </li>
-  </ul>
-<% end %>
+<% content_for :footer_bottom do %>
+  <hr class="govuk-footer__section-break govuk-footer__row">
+  <div class="govuk-footer__meta govuk-footer__row">
+    <div class="govuk-footer__meta-item govuk-footer__meta-item--grow">
+      <h2 class="govuk-visually-hidden">Support links</h2>
+      <ul class="govuk-footer__inline-list">
+        <li class="govuk-footer__inline-list-item">
+          <a class="govuk-footer__link" href="/cookies">
+            Cookies
+          </a>
+        </li>
+        <li class="govuk-footer__inline-list-item">
+          <a class="govuk-footer__link" href="/terms">
+            Terms and conditions
+          </a>
+        </li>
+      </ul>
 
-<% content_for :body_end do %>
-  <%= javascript_include_tag "application" %>
+      <svg aria-hidden="true" focusable="false" class="govuk-footer__licence-logo" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 483.2 195.7" height="17" width="41">
+        <path fill="currentColor" d="M421.5 142.8V.1l-50.7 32.3v161.1h112.4v-50.7zm-122.3-9.6A47.12 47.12 0 0 1 221 97.8c0-26 21.1-47.1 47.1-47.1 16.7 0 31.4 8.7 39.7 21.8l42.7-27.2A97.63 97.63 0 0 0 268.1 0c-36.5 0-68.3 20.1-85.1 49.7A98 98 0 0 0 97.8 0C43.9 0 0 43.9 0 97.8s43.9 97.8 97.8 97.8c36.5 0 68.3-20.1 85.1-49.7a97.76 97.76 0 0 0 149.6 25.4l19.4 22.2h3v-87.8h-80l24.3 27.5zM97.8 145c-26 0-47.1-21.1-47.1-47.1s21.1-47.1 47.1-47.1 47.2 21 47.2 47S123.8 145 97.8 145" />
+      </svg>
+      <span class="govuk-footer__licence-description">
+          All content is available under the
+          <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence v3.0</a>, except where otherwise stated
+        </span>
+    </div>
+    <div class="govuk-footer__meta-item">
+      <a class="govuk-footer__link govuk-footer__copyright-logo" href="https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/">© Crown copyright</a>
+    </div>
+  </div>
 <% end %>

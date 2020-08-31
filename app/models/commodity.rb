@@ -76,4 +76,8 @@ class Commodity < GoodsNomenclature
       false
     end
   end
+
+  def aria_label
+    "Commodity code #{code}, " + description
+  end
 end
