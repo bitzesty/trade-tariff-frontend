@@ -11,7 +11,7 @@ default: &default
 
   # Additional paths webpack should lookup modules
   # ['app/assets', 'engine/foo/app/assets']
-  resolved_paths:
+  additional_paths:
     - vendor/assets/javascripts
     - node_modules/govuk-frontend/govuk/assets/fonts
     - node_modules/govuk-frontend/govuk/assets/images
