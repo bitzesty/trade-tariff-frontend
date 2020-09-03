@@ -27,7 +27,7 @@ gem "kaminari", "~> 1.0"
 gem "webpacker", "~> 5.2"
 
 # gov UK
-gem "govspeak", '~> 6.5.2'
+gem "govspeak", '~> 6.5.6'
 gem "i18n", '~> 0.7'
 gem "plek", "~> 1.11"
 
