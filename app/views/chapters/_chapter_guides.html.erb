@@ -1,15 +1,11 @@
 <% if chapter.guides &&
       !chapter.guides.empty? %>
-<div class="chapter-guide">
+<div class="chapter-guide govuk-!-margin-top-4">
   Get guidance on this product area:
   <% chapter.guides.each do |guide| %>
     <% separator = chapter.guides.index(guide) < (chapter.guides.length - 1) ? ",&nbsp;".html_safe : "" %>
     <a href="<%= guide['url'] %>" class="chapter-guide-link" data-analytics-event="guidance"><%= guide['title'] %></a><%= separator %>
   <% end %>
-</div>
-<% end %>
-<% if chapter && chapter.short_code %>
-<div class="forum-link govuk-!-margin-top-3">
-  <a href="https://forum.trade-tariff.service.gov.uk/c/classification/<%= chapter.short_code %>" data-analytics-event="forums" title="Discuss chapter <%= chapter.short_code %> in the forums">Discuss this chapter in the forums</a>
+  <% if chapter && chapter.short_code %> or <a href="https://forum.trade-tariff.service.gov.uk/c/classification/<%= chapter.short_code %>" data-analytics-event="forums" title="Discuss chapter <%= chapter.short_code %> in the forums">Discuss this chapter in the forums</a><% end %>
 </div>
 <% end %>
