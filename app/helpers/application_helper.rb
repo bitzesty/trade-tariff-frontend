@@ -99,6 +99,10 @@ module ApplicationHelper
     end
   end
 
+  def current_url_without_parameters
+    request.base_url + request.path
+  end
+
   private
 
   def search_date_in_future_month?
