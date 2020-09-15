@@ -6,7 +6,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem "rails", ">= 6.0.3.2"
+gem "rails", ">= 6.0.3.3"
 
 gem "yajl-ruby", "~> 1.3.1", require: "yajl"
 gem "multi_json", "~> 1.11"
@@ -27,8 +27,7 @@ gem "kaminari", "~> 1.0"
 gem "webpacker", "~> 5.2"
 
 # gov UK
-gem "govspeak", '~> 6.5.2'
-gem "i18n", '~> 0.7'
+gem "govspeak", '~> 6.5.6'
 gem "plek", "~> 1.11"
 
 gem "connection_pool", "~> 2.2"
