@@ -16,11 +16,6 @@ gem "addressable", "~> 2.3"
 gem "hashie", "~> 3.4"
 
 # Assets
-gem "coffee-rails", "~> 5"
-gem "jquery-rails", "~> 4.4"
-gem "jquery-migrate-rails"
-gem "sass-rails"
-gem "uglifier", "~> 2.7"
 gem "responders", "~> 3.0.0"
 gem "bootsnap", require: false
 gem "kaminari", "~> 1.0"

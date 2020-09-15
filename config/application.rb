@@ -12,7 +12,7 @@ require "action_mailer/railtie"
 # require "action_text/engine"
 require "action_view/railtie"
 # require "action_cable/engine"
-require "sprockets/railtie"
+# require "sprockets/railtie"
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -101,11 +101,5 @@ module TradeTariffFrontend
     config.x.http.max_retry = 5
 
     config.middleware.use Rack::Attack
-
-    # Using a sass css compressor causes a scss file to be processed twice
-    # (once to build, once to compress) which breaks the usage of "unquote"
-    # to use CSS that has same function names as SCSS such as max.
-    # https://github.com/alphagov/govuk-frontend/issues/1350
-    config.assets.css_compressor = nil
   end
 end

@@ -27,22 +27,22 @@ Rails.application.configure do
   }
 
   # Compress JavaScripts and CSS
-  config.assets.js_compressor = :uglifier
+  # config.assets.js_compressor = :uglifier
   # config.assets.css_compressor = :sass
 
   # Don't fallback to assets pipeline if a precompiled asset is missed
-  config.assets.compile = false
+  # config.assets.compile = false
 
 
   # Rather than use a CSS compressor, use the SASS style to perform compression.
-  config.sass.style = :compressed
-  config.sass.line_comments = false
+  # config.sass.style = :compressed
+  # config.sass.line_comments = false
 
 
   config.webpacker.check_yarn_integrity = false
 
   # Generate digests for assets URLs
-  config.assets.digest = true
+  # config.assets.digest = true
 
   # Defaults to Rails.root.join("public/assets")
   # config.assets.manifest = YOUR_PATH
