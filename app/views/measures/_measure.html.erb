@@ -44,7 +44,7 @@
 
   <td>
     <% if measure.has_measure_conditions? %>
-      <%= link_to "Conditions",  "##{measure.destination}-#{measure.id}-conditions", class: 'reference', 'data-popup-ref' => "#{measure.destination}-#{measure.id}-conditions", "aria-label": "Click to open a dialog with the conditions for this measure" %>
+      <%= link_to "Conditions",  "#", class: 'reference', 'data-popup-ref' => "#{measure.destination}-#{measure.id}-conditions", "aria-label": "Click to open a dialog with the conditions for this measure", role: "button" %>
     <% end %>
   </td>
 
@@ -53,7 +53,7 @@
   <%- if TradeTariffFrontend.regulations_enabled? -%>
     <td class="numerical">
       <% if !measure.national? && measure.legal_acts.present? %>
-        <%= link_to measure.legal_acts.first.regulation_code, "##{measure.id}-regulations", class: 'reference', 'data-popup-ref' => "#{measure.id}-regulations", "aria-label": "Legal base: #{measure.legal_acts.first.regulation_code}. Click to open a dialog with all the legal bases for this measure" %>
+        <%= link_to measure.legal_acts.first.regulation_code, "#", class: 'reference', 'data-popup-ref' => "#{measure.id}-regulations", "aria-label": "Legal base: #{measure.legal_acts.first.regulation_code}. Click to open a dialog with all the legal bases for this measure", role: "button" %>
       <% end %>
     </td>
   <%- end -%>
@@ -77,7 +77,7 @@
 
   <td class="numerical">
     <% if measure.has_measure_footnotes? %>
-      <%= link_to measure.footnotes.size == 1 ? measure.footnotes.first.code : "Footnotes",  "##{measure.destination}-#{measure.id}-footnotes", class: 'reference', 'data-popup-ref' => "#{measure.destination}-#{measure.id}-footnotes", "aria-label": "Click to open a dialog with the footnotes for this measure" %>
+      <%= link_to measure.footnotes.size == 1 ? measure.footnotes.first.code : "Footnotes",  "#", class: 'reference', 'data-popup-ref' => "#{measure.destination}-#{measure.id}-footnotes", "aria-label": "Click to open a dialog with the footnotes for this measure", role: "button" %>
     <% end %>
   </td>
 </tr>
