@@ -57,7 +57,7 @@
     },
     initTimeout: function () {
       if (stopScrollingAtFooter._hasScrollEvt === false) {
-        $(window).scroll(stopScrollingAtFooter.onScroll)
+        $(window).on("scroll", stopScrollingAtFooter.onScroll)
         stopScrollingAtFooter._hasScrollEvt = true
       }
     },
@@ -133,7 +133,7 @@
 
   GOVUK.stopScrollingAtFooter = stopScrollingAtFooter
 
-  $(global).load(function () { $(global).trigger('govuk.pageSizeChanged') })
+  $(global).on("load", function () { $(global).trigger('govuk.pageSizeChanged') })
 
   global.GOVUK = GOVUK
 })(window)
