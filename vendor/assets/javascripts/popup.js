@@ -37,7 +37,7 @@ var BetaPopup = {
     var winW = $win.width();
 
     $popup.delay(100).fadeIn('fast', function(){
-      $popup.find("h2").attr("tabindex",-1).focus();
+      $popup.find("h2").attr("tabindex",-1).trigger("focus");
     });
     $popup.on('keydown', function (e) {
        if ( e.which == 27 ){
@@ -55,7 +55,7 @@ var BetaPopup = {
 
       GOVUK.tariff.tablePopup.scrollInPopup(false);
 
-      $(source).focus();
+      $(source).trigger("focus");
     }
   }
 };

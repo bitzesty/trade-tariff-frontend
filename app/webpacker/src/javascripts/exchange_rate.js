@@ -10,7 +10,7 @@ $(document).ready(function() {
     GOVUK.stopScrollingAtFooter.addEl($(el), $(el).height());
   });
 
-  $("[data-sticky-element]").click(function(e) {
+  $("[data-sticky-element]").on("click", function(e) {
     e.preventDefault();
     e.stopPropagation();
 
@@ -19,7 +19,7 @@ $(document).ready(function() {
     }, 500);
   });
 
-  $(window).scroll(function() {
+  $(window).on("scroll", function() {
     var target = $(".contents-list h3");
 
     if (target[0].getBoundingClientRect().top < 0) {

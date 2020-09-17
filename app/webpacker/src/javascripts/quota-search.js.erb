@@ -46,7 +46,7 @@ import debounce from "./debounce";
 
     return false;
   });
-  $('form.quota-search#new_search').submit(function(){
+  $('form.quota-search#new_search').on("submit", function(){
     $(this).find(':input[type=submit]').prop('disabled', true);
   });
 })();

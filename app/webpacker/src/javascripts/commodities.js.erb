@@ -56,9 +56,9 @@ import debounce from "./debounce";
                 $branch.attr("aria-expanded", action === "open" ? "true" : "false")
 
                 if ($childList.is("ul")) {
-                  $childList.find("li").first().focus();
+                  $childList.find("li").first().trigger("focus");
                 } else {
-                  $childList.find("ul li").first().focus();
+                  $childList.find("ul li").first().trigger("focus");
                 }
               };
 
@@ -147,7 +147,7 @@ import debounce from "./debounce";
                     $branchSwitches.eq(idx).parent().on("keydown", function(e) {
                       if ($branchSwitches.eq(idx).hasClass("open") && e.which == 27) {
                         clickBranch($branchSwitches.eq(idx), $childList, 'close');
-                        $branchSwitches.eq(idx).focus();
+                        $branchSwitches.eq(idx).trigger("focus");
                       }
                     });
                   }
@@ -254,7 +254,7 @@ import debounce from "./debounce";
                     entityId = matches[3];
 
                     $('#' + tabId + ' a').trigger('click');
-                    $('#' + entity + '-' + entityId).focus();
+                    $('#' + entity + '-' + entityId).trigger("focus");
               }
           }
       },
@@ -276,7 +276,7 @@ import debounce from "./debounce";
           */
           initialize : function () {
               this.hideTree();
-              this.showBtn.click(function() {
+              this.showBtn.on("click", function() {
                   GOVUK.tariff.breadcrumbs.showTree();
               });
           },
@@ -327,7 +327,7 @@ import debounce from "./debounce";
               // reset the tabindex of the heading
               $dialogTitle
                   .attr('tabindex', 0)
-                  .focus();
+                  .trigger("focus");
               $popup
                   .attr({
                       'tabindex' : -1,
@@ -352,12 +352,12 @@ import debounce from "./debounce";
                       $mask.slideUp('fast', function() { $(this).remove(); $popup.remove(); });
                   });
                   that.scrollInPopup(false);
-                  $linkElm.focus();
+                  $linkElm.trigger("focus");
               }
 
               // return focus to the trigger link when the lightbox closes
               $closeBtn.on('click', function (e) {
-                  $linkElm.focus()
+                  $linkElm.trigger("focus")
               });
 
               // dialogs need focus to be retained until closed so control tabbing
@@ -464,7 +464,7 @@ import debounce from "./debounce";
             });
 
             $('form').on('click', 'button[type=submit]', function(e) {
-              this.closest('form').submit();
+              this.closest('form').trigger("submit");
             });
 
             this.responsivePlaceholder.initialize();
@@ -482,17 +482,17 @@ import debounce from "./debounce";
                     $fields.toggle();
 
                     if ($fields.is(":visible")) {
-                      $fields.find("input, select").filter(":visible").first().focus();
+                      $fields.find("input, select").filter(":visible").first().trigger("focus");
                     }
 
                     return false;
                 });
 
                 $controlForm.on('click', 'a.submit', function(e) {
-                  $controlForm.closest('form').submit();
+                  $controlForm.closest('form').trigger("submit");
                 });
 
-                $('form').submit(function () {
+                $('form').on("submit", function () {
                   var today = new Date();
                   var fday = $('#tariff_date_day'),
                       fmonth = $('#tariff_date_month'),
@@ -558,7 +558,7 @@ import debounce from "./debounce";
           $controlForm.find('.search-submit').hide();
 
           $controlForm.on('change', 'select', function(e) {
-            $(this).parents('form:first').submit();
+            $(this).parents('form:first').trigger("submit");
           });
 
           $controlForm.on('click', 'a.reset-country-picker', function (e) {
@@ -568,7 +568,7 @@ import debounce from "./debounce";
             } catch (e) {
 
             }
-            $(this).parents('form:first').submit();
+            $(this).parents('form:first').trigger("submit");
             return false;
           });
 
@@ -803,7 +803,7 @@ import debounce from "./debounce";
                         data: obj
                       }
                     }]);
-                    $('.js-commodity-picker-select').parents('form:first').submit();
+                    $('.js-commodity-picker-select').parents('form:first').trigger("submit");
                   }
                 },
                 source: debounce(function(query, populateResults) {
@@ -871,7 +871,7 @@ import debounce from "./debounce";
            } else {
                // dispatch for IE
                var evt = document.createEventObject();
-               this.click();
+               this.trigger("click");
            }
         },
         /**
