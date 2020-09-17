@@ -91,12 +91,6 @@
           min-height: 30px;
         }
 
-        &.chapter-and-heading-li {
-          .chapter-code {
-            margin-right: 0;
-          }
-        }
-
         ul.commodities {
           padding-left: $breadcrumb-indent;
           @media (min-width: $desktop-min-width) {

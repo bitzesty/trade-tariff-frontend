@@ -29,10 +29,7 @@
   margin-right: 5px;
 }
 .commodity-code {
-  width: $commodity-code-width;
-  @media (min-width: $desktop-min-width) {
-    width: $commodity-code-width-desktop;
-  }
+  width: 101px;
   height: $chapter-code-height;
 
   > .code-text {
@@ -47,6 +44,11 @@
     }
   }
 }
+
+.search-results .commodity-code .code-text + .code-text {
+  margin-left: 2px;
+}
+
 .chapter-guide, .forum-link {
   a {
     display: inline !important;
