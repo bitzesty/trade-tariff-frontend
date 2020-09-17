@@ -1,10 +1,9 @@
 <% if measure.has_measure_conditions? %>
 <div class='conditions' id='<%= measure.id %>' data-popup='<%= measure.destination %>-<%= measure.id %>-conditions'>
   <article>
-    <h2 class="govuk-heading-l"><%= measure.measure_type.description %> for <%= measure.geographical_area.description %></h2>
+    <h2 class="govuk-heading-l govuk-!-margin-bottom-0"><%= measure.measure_type.description %> for <%= measure.geographical_area.description %></h2>
     <% measure.grouped_measure_conditions.each do |condition_group, conditions| %>
       <%= render partial: "measure_conditions/measure_condition_code_#{condition_group[:partial_type]}", locals: { condition_group: condition_group, conditions: conditions } %>
-      <br>
     <% end %>
   </article>
 </div>
@@ -13,8 +12,8 @@
 <% if !measure.national? && measure.legal_acts.present? && TradeTariffFrontend.regulations_enabled? %>
   <div class='regulations' id='<%= measure.id %>' data-popup='<%= measure.id %>-regulations'>
     <article>
-      <table class="govuk-table">
-        <caption class="govuk-table__caption">
+      <table class="govuk-table govuk-!-margin-bottom-2">
+        <caption class="govuk-table__caption govuk-heading-m govuk-!-margin-top-6 govuk-!-margin-bottom-3">
           <h2>Legal base</h2>
         </caption>
         <thead class="govuk-table__head">
@@ -49,8 +48,8 @@
 <% if measure.has_measure_footnotes? %>
   <div class='footnotes' id='<%= measure.id %>' data-popup='<%= measure.destination %>-<%= measure.id %>-footnotes'>
     <article>
-      <table class="govuk-table">
-        <caption class="govuk-table__caption">
+      <table class="govuk-table govuk-!-margin-bottom-2">
+        <caption class="govuk-table__caption govuk-heading-m govuk-!-margin-top-6 govuk-!-margin-bottom-3">
           <h2><%= measure.measure_type.description %> for <%= measure.geographical_area.description %></h2>
         </caption>
         <thead class="govuk-table__head">
