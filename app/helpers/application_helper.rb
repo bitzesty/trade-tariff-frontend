@@ -99,6 +99,18 @@ module ApplicationHelper
     end
   end
 
+  def chapter_forum_url(chapter)
+    if chapter.forum_url.present?
+      chapter.forum_url
+    else
+      "https://forum.trade-tariff.service.gov.uk/c/classification/#{chapter.short_code}"
+    end
+  end
+
+  def current_url_without_parameters
+    request.base_url + request.path
+  end
+
   private
 
   def search_date_in_future_month?

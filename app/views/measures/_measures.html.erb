@@ -82,7 +82,7 @@
 
     <% if declarable.import_measures.for_country(@search.country).any? %>
 
-      <%= render "shared/measure_types_help" %>
+      <%= render "shared/measure_types_help", anchor: "import" %>
 
       <table class="small-table measures govuk-table">
         <% if @search.filtered_by_country? %>
@@ -126,7 +126,7 @@
 
     <% if declarable.export_measures.for_country(@search.country).any? %>
 
-      <%= render "shared/measure_types_help" %>
+      <%= render "shared/measure_types_help", anchor: "export" %>
       
       <table class="small-table measures govuk-table">
         <% if @search.filtered_by_country? %>

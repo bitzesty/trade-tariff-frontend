@@ -74,3 +74,12 @@
     border: 0;
   }
 }
+
+
+.govuk-tabs__tab {
+  text-decoration: underline;
+
+  .govuk-tabs__list-item--selected & {
+    text-decoration: none;
+  }
+}

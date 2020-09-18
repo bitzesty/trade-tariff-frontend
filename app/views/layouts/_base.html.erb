@@ -6,6 +6,7 @@
   <meta name="format-detection" content="telephone=no">
   <meta name="govuk:section" content="business and self-employed">
   <link rel="search" type="application/opensearchdescription+xml" href="<%= opensearch_url(format: :xml) %>" title="Trade Tariff Search" />
+  <link rel="canonical" href="<%= current_url_without_parameters %>" />
 <% end %>
 
 <% if controller_name == 'commodities' && action_name == 'show' || controller_name == 'headings' && action_name == 'show' && @heading&.declarable? %>

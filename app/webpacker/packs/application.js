@@ -75,15 +75,3 @@ initAll();
 $(function(){
   GOVUK.tariff.onLoad();
 });
-
-// console.log(jQuery.History);
-// console.log($.History);
-console.log($.event.special.debouncedresize);
-
-$(window).on("debouncedresize", function( event ) {
-    console.log('onDebounced');
-});
-
-$(window).on("resize", function( event ) {
-    console.log('NoDebounced');
-});

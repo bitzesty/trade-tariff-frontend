@@ -1,6 +1,6 @@
 require 'trade_tariff_frontend/api_constraints'
 require 'trade_tariff_frontend/request_forwarder'
-require 'redis_resolver'
+require 'paas_config'
 
 module TradeTariffFrontend
   autoload :Presenter,      'trade_tariff_frontend/presenter'
