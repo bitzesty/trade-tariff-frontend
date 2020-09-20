@@ -72,6 +72,7 @@ deploy_dev:
     - cf -v
     - cf add-plugin-repo CF-Community https://plugins.cloudfoundry.org
     - cf install-plugin blue-green-deploy -r CF-Community -f
+    - cf install-plugin app-autoscaler-plugin -r CF-Community -f
     - CF_ENDPOINT=api.london.cloud.service.gov.uk CF_SPACE=development CF_APP=tariff-frontend-dev CF_APP_WORKER=tariff-frontend-worker-dev ./bin/deploy
   only:
     - master
@@ -85,6 +86,7 @@ deploy_staging:
     - cf -v
     - cf add-plugin-repo CF-Community https://plugins.cloudfoundry.org
     - cf install-plugin blue-green-deploy -r CF-Community -f
+    - cf install-plugin app-autoscaler-plugin -r CF-Community -f
     - CF_ENDPOINT=api.london.cloud.service.gov.uk CF_SPACE=staging CF_APP=tariff-frontend-staging CF_APP_WORKER=tariff-frontend-worker-staging ./bin/deploy
   only:
     - staging
@@ -98,6 +100,7 @@ deploy_production:
     - cf -v
     - cf add-plugin-repo CF-Community https://plugins.cloudfoundry.org
     - cf install-plugin blue-green-deploy -r CF-Community -f
+    - cf install-plugin app-autoscaler-plugin -r CF-Community -f
     - CF_SPACE=production CF_APP=tariff-frontend-production CF_APP_WORKER=tariff-frontend-worker-production ./bin/deploy
   when: manual
   only:
