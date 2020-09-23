@@ -1,0 +1,38 @@
+name: CI
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    services:
+        image: redis:4.0.10
+        ports: ['6379:6379']
+        options: --entrypoint redis-server
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/cache@v2
+        with:
+          path: vendor/bundle
+          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-gems-
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn config get cacheFolder)"
+      - name: Setup Ruby
+        uses: actions/setup-ruby@v1
+        with:
+          ruby-version: 2.7.1
+      - uses: nanasess/setup-chromedriver@master
+      - name: Build and run tests
+        env:
+          BUNDLER_VERSION: 2.1.4
+          DOCKER_TLS_CERTDIR: ""
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+        run: |
+          sudo apt-get update -qy
+          sudo apt-get install -y build-essential rake
+          gem install bundler --version "<= $BUNDLER_VERSION"
+          bundle install --jobs 4 --retry 3 --path vendor/bundle
+          bundle exec rails assets:precompile
+          RAILS_ENV=test RAILS_DISABLE_TEST_LOG=true bundle exec rspec spec/ --tag '~skip_ci' --profile 10 --format RspecJunitFormatter --out rspec.xml --format progress
