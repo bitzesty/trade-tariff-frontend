@@ -4,10 +4,10 @@ jobs:
   test:
     runs-on: ubuntu-latest
     services:
+      redis:
         image: redis:4.0.10
         ports: ['6379:6379']
         options: --entrypoint redis-server
-
     steps:
       - uses: actions/checkout@v2
       - uses: actions/cache@v2
