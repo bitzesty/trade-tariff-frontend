@@ -10,7 +10,6 @@ describe 'Heading page', type: :request do
               visit heading_path("0501")
 
               expect(page).to have_content 'Importing from outside the EU is subject to a third country duty of 0.00 % unless subject to other measures.'
-              expect(page).to have_content 'Goods are subject to VAT standard rate.'
             end
           end
         end
@@ -56,7 +55,7 @@ describe 'Heading page', type: :request do
     context 'requested with json format' do
       it 'renders direct API response' do
         VCR.use_cassette('headings#show_0101_api_json_format') do
-          get "/trade-tariff/headings/0101.json"
+          get "/headings/0101.json"
 
           json = JSON.parse(response.body)
 
@@ -69,7 +68,7 @@ describe 'Heading page', type: :request do
     context 'requested with json HTTP Accept header' do
       it 'renders direct API response' do
         VCR.use_cassette('headings#show_0101_api_json_content_type') do
-          get "/trade-tariff/headings/0101", headers: { 'HTTP_ACCEPT' => 'application/json' }
+          get "/headings/0101", headers: { 'HTTP_ACCEPT' => 'application/json' }
 
           json = JSON.parse(response.body)
 

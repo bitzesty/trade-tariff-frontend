@@ -1,10 +1,10 @@
 <%= form_for controller, method: :post, url: url, namespace: anchor do |f| %>
-  <fieldset class="country-picker js-country-picker box font-xsmall">
+  <fieldset class="govuk-fieldset country-picker js-country-picker box govuk-!-font-size-16">
     <div class="country-picker-container">
       <%= f.hidden_field :anchor, value: anchor %>
-      <%= f.label :country, 'Trade between the UK and' %>
-      <%= f.select :country, f.object.countries.map{ |c| [c.long_description, c.id] }, { include_blank: 'All countries' }, class: 'js-country-picker-select' %>
-      <a class="reset-country-picker" href="#reset-country-picker" title="Reset country picker" rel="nofollow">Reset<span class="long-text">&nbsp;to all countries</span></a>
+      <%= f.label :country, 'Trade between the UK and', class: 'govuk-label' %>
+      <%= f.select :country, f.object.countries.map{ |c| [c.long_description, c.id] }, { include_blank: 'All countries' }, class: 'custom-select js-country-picker-select', "aria-label": "Filter #{anchor.titleize} measures by country" %>
+      <a class="reset-country-picker" href="#" title="Reset country picker" role="button">Reset<span class="long-text">&nbsp;to all countries</span></a>
     </div>
     <%= f.button 'Set country', class: 'button search-submit' %>
   </fieldset>

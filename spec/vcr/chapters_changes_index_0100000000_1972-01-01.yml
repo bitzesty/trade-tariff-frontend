@@ -2,96 +2,85 @@
 http_interactions:
 - request:
     method: get
-    uri: http://tariff-api.dev.gov.uk/chapters/01?as_of=1972-01-01
+    uri: http://localhost:3018/chapters/01?as_of=1972-01-01&currency=EUR
     body:
       encoding: US-ASCII
       string: ''
-    headers: {}
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
   response:
     status:
       code: 200
-      message: 'OK '
+      message: OK
     headers:
-      Server:
-      - nginx
-      Date:
-      - Fri, 29 Nov 2013 08:05:54 GMT
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
       Content-Type:
       - application/json; charset=utf-8
-      Content-Length:
-      - '2252'
-      Connection:
-      - close
-      X-Ua-Compatible:
-      - IE=Edge
       Etag:
-      - '"f9d1d0ce2da0bbdf059b4ec346a98600"'
+      - W/"0df28a88fb96cbe3ffd5000be44b9aee"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 13dc312def200f3825ea2ebca1bcde28
+      - af006eae-0232-47fd-942f-e43aa1688434
       X-Runtime:
-      - '0.252653'
+      - '0.335711'
+      Transfer-Encoding:
+      - chunked
     body:
-      encoding: UTF-8
-      string: '{"goods_nomenclature_sid":27623,"goods_nomenclature_item_id":"0100000000","description":"LIVE
-        ANIMALS","formatted_description":"Live animals","chapter_note_id":381,"section_id":1,"chapter_note":"woot
-        woot","headings":[{"goods_nomenclature_sid":27624,"goods_nomenclature_item_id":"0101000000","declarable":false,"description":"Live
-        horses, asses, mules and hinnies","producline_suffix":"80","leaf":true,"description_plain":"Live
-        horses, asses, mules and hinnies","formatted_description":"Live horses, asses,
-        mules and hinnies","children":[]},{"goods_nomenclature_sid":27633,"goods_nomenclature_item_id":"0102000000","declarable":false,"description":"Live
-        bovine animals","producline_suffix":"80","leaf":true,"description_plain":"Live
-        bovine animals","formatted_description":"Live bovine animals","children":[]},{"goods_nomenclature_sid":27762,"goods_nomenclature_item_id":"0103000000","declarable":false,"description":"Live
-        swine","producline_suffix":"80","leaf":true,"description_plain":"Live swine","formatted_description":"Live
-        swine","children":[]},{"goods_nomenclature_sid":27773,"goods_nomenclature_item_id":"0104000000","declarable":false,"description":"Live
-        sheep and goats","producline_suffix":"80","leaf":true,"description_plain":"Live
-        sheep and goats","formatted_description":"Live sheep and goats","children":[]},{"goods_nomenclature_sid":27783,"goods_nomenclature_item_id":"0105000000","declarable":false,"description":"Live
-        poultry, that is to say, fowls of the species Gallus domesticus, ducks, geese,
-        turkeys and guinea fowls","producline_suffix":"80","leaf":true,"description_plain":"Live
-        poultry, that is to say, fowls of the species Gallus domesticus, ducks, geese,
-        turkeys and guinea fowls","formatted_description":"Live poultry, that is to
-        say, fowls of the species Gallus domesticus, ducks, geese, turkeys and guinea
-        fowls","children":[]},{"goods_nomenclature_sid":27802,"goods_nomenclature_item_id":"0106000000","declarable":false,"description":"Other
-        live animals","producline_suffix":"80","leaf":true,"description_plain":"Other
-        live animals","formatted_description":"Other live animals","children":[]}],"section":{"id":1,"title":"Live
-        animals; animal products","position":1,"numeral":"I","section_note":"heelo\r\n\r\nworldldl"}}'
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJnb29kc19ub21lbmNsYXR1cmVfc2lkIjoyNzYyMywiZ29vZHNfbm9tZW5jbGF0dXJlX2l0ZW1faWQiOiIwMTAwMDAwMDAwIiwiZGVzY3JpcHRpb24iOiJMSVZFIEFOSU1BTFMiLCJmb3JtYXR0ZWRfZGVzY3JpcHRpb24iOiJMaXZlIGFuaW1hbHMiLCJzZWN0aW9uIjp7ImlkIjoxLCJ0aXRsZSI6IkxpdmUgYW5pbWFsczsgYW5pbWFsIHByb2R1Y3RzIiwicG9zaXRpb24iOjEsIm51bWVyYWwiOiJJIiwic2VjdGlvbl9ub3RlIjoiKiAxXFwuIEFueSByZWZlcmVuY2UgaW4gdGhpcyBzZWN0aW9uIHRvIGEgcGFydGljdWxhciBnZW51cyBvciBzcGVjaWVzIG9mIGFuIGFuaW1hbCwgZXhjZXB0IHdoZXJlIHRoZSBjb250ZXh0IG90aGVyd2lzZSByZXF1aXJlcywgaW5jbHVkZXMgYSByZWZlcmVuY2UgdG8gdGhlIHlvdW5nIG9mIHRoYXQgZ2VudXMgb3Igc3BlY2llcy5cclxuKiAyXFwuIEV4Y2VwdCB3aGVyZSB0aGUgY29udGV4dCBvdGhlcndpc2UgcmVxdWlyZXMsIHRocm91Z2hvdXQgdGhlIG5vbWVuY2xhdHVyZSBhbnkgcmVmZXJlbmNlIHRvICdkcmllZCcgcHJvZHVjdHMgYWxzbyBjb3ZlcnMgcHJvZHVjdHMgd2hpY2ggaGF2ZSBiZWVuIGRlaHlkcmF0ZWQsIGV2YXBvcmF0ZWQgb3IgZnJlZXplLWRyaWVkLlxyXG5cclxudGVzdCAifSwiY2hhcHRlcl9ub3RlX2lkIjo0Niwic2VjdGlvbl9pZCI6MSwiY2hhcHRlcl9ub3RlIjoiMS4gVGhpcyBjaGFwdGVyIGNvdmVycyBhbGwgbGl2ZSBhbmltYWxzIGV4Y2VwdDpcbsKgwqDCoMKgKGEpIGZpc2ggYW5kIGNydXN0YWNlYW5zLCBtb2xsdXNjcyBhbmQgb3RoZXIgYXF1YXRpYyBpbnZlcnRlYnJhdGVzLCBvZiBoZWFkaW5nIDAzMDEsIDAzMDYsIDAzMDcgb3IgMDMwODtcbsKgwqDCoMKgKGIpIGN1bHR1cmVzIG9mIG1pY3JvLW9yZ2FuaXNtcyBhbmQgb3RoZXIgcHJvZHVjdHMgb2YgaGVhZGluZyAzMDAyOyBhbmRcbsKgwqDCoMKgKGMpIGFuaW1hbHMgb2YgaGVhZGluZyA5NTA4LlxuKGEpIGZpc2ggYW5kIGNydXN0YWNlYW5zLCBtb2xsdXNjcyBhbmQgb3RoZXIgYXF1YXRpYyBpbnZlcnRlYnJhdGVzLCBvZiBoZWFkaW5nIDAzMDEsIDAzMDYsIDAzMDcgb3IgMDMwODtcbihiKSBjdWx0dXJlcyBvZiBtaWNyby1vcmdhbmlzbXMgYW5kIG90aGVyIHByb2R1Y3RzIG9mIGhlYWRpbmcgMzAwMjsgYW5kXG4oYykgYW5pbWFscyBvZiBoZWFkaW5nIDk1MDguIiwiaGVhZGluZ3MiOlt7Imdvb2RzX25vbWVuY2xhdHVyZV9zaWQiOjI3NjI0LCJnb29kc19ub21lbmNsYXR1cmVfaXRlbV9pZCI6IjAxMDEwMDAwMDAiLCJkZWNsYXJhYmxlIjpmYWxzZSwiZGVzY3JpcHRpb24iOiJMaXZlIGhvcnNlcywgYXNzZXMsIG11bGVzIGFuZCBoaW5uaWVzIiwicHJvZHVjbGluZV9zdWZmaXgiOiI4MCIsImxlYWYiOnRydWUsImRlc2NyaXB0aW9uX3BsYWluIjoiTGl2ZSBob3JzZXMsIGFzc2VzLCBtdWxlcyBhbmQgaGlubmllcyIsImZvcm1hdHRlZF9kZXNjcmlwdGlvbiI6IkxpdmUgaG9yc2VzLCBhc3NlcywgbXVsZXMgYW5kIGhpbm5pZXMiLCJjaGlsZHJlbiI6W119LHsiZ29vZHNfbm9tZW5jbGF0dXJlX3NpZCI6Mjc2MzMsImdvb2RzX25vbWVuY2xhdHVyZV9pdGVtX2lkIjoiMDEwMjAwMDAwMCIsImRlY2xhcmFibGUiOmZhbHNlLCJkZXNjcmlwdGlvbiI6IkxpdmUgYm92aW5lIGFuaW1hbHMiLCJwcm9kdWNsaW5lX3N1ZmZpeCI6IjgwIiwibGVhZiI6dHJ1ZSwiZGVzY3JpcHRpb25fcGxhaW4iOiJMaXZlIGJvdmluZSBhbmltYWxzIiwiZm9ybWF0dGVkX2Rlc2NyaXB0aW9uIjoiTGl2ZSBib3ZpbmUgYW5pbWFscyIsImNoaWxkcmVuIjpbXX0seyJnb29kc19ub21lbmNsYXR1cmVfc2lkIjoyNzc2MiwiZ29vZHNfbm9tZW5jbGF0dXJlX2l0ZW1faWQiOiIwMTAzMDAwMDAwIiwiZGVjbGFyYWJsZSI6ZmFsc2UsImRlc2NyaXB0aW9uIjoiTGl2ZSBzd2luZSIsInByb2R1Y2xpbmVfc3VmZml4IjoiODAiLCJsZWFmIjp0cnVlLCJkZXNjcmlwdGlvbl9wbGFpbiI6IkxpdmUgc3dpbmUiLCJmb3JtYXR0ZWRfZGVzY3JpcHRpb24iOiJMaXZlIHN3aW5lIiwiY2hpbGRyZW4iOltdfSx7Imdvb2RzX25vbWVuY2xhdHVyZV9zaWQiOjI3NzczLCJnb29kc19ub21lbmNsYXR1cmVfaXRlbV9pZCI6IjAxMDQwMDAwMDAiLCJkZWNsYXJhYmxlIjpmYWxzZSwiZGVzY3JpcHRpb24iOiJMaXZlIHNoZWVwIGFuZCBnb2F0cyIsInByb2R1Y2xpbmVfc3VmZml4IjoiODAiLCJsZWFmIjp0cnVlLCJkZXNjcmlwdGlvbl9wbGFpbiI6IkxpdmUgc2hlZXAgYW5kIGdvYXRzIiwiZm9ybWF0dGVkX2Rlc2NyaXB0aW9uIjoiTGl2ZSBzaGVlcCBhbmQgZ29hdHMiLCJjaGlsZHJlbiI6W119LHsiZ29vZHNfbm9tZW5jbGF0dXJlX3NpZCI6Mjc3ODMsImdvb2RzX25vbWVuY2xhdHVyZV9pdGVtX2lkIjoiMDEwNTAwMDAwMCIsImRlY2xhcmFibGUiOmZhbHNlLCJkZXNjcmlwdGlvbiI6IkxpdmUgcG91bHRyeSwgdGhhdCBpcyB0byBzYXksIGZvd2xzIG9mIHRoZSBzcGVjaWVzIEdhbGx1cyBkb21lc3RpY3VzLCBkdWNrcywgZ2Vlc2UsIHR1cmtleXMgYW5kIGd1aW5lYSBmb3dscyIsInByb2R1Y2xpbmVfc3VmZml4IjoiODAiLCJsZWFmIjp0cnVlLCJkZXNjcmlwdGlvbl9wbGFpbiI6IkxpdmUgcG91bHRyeSwgdGhhdCBpcyB0byBzYXksIGZvd2xzIG9mIHRoZSBzcGVjaWVzIEdhbGx1cyBkb21lc3RpY3VzLCBkdWNrcywgZ2Vlc2UsIHR1cmtleXMgYW5kIGd1aW5lYSBmb3dscyIsImZvcm1hdHRlZF9kZXNjcmlwdGlvbiI6IkxpdmUgcG91bHRyeSwgdGhhdCBpcyB0byBzYXksIGZvd2xzIG9mIHRoZSBzcGVjaWVzIEdhbGx1cyBkb21lc3RpY3VzLCBkdWNrcywgZ2Vlc2UsIHR1cmtleXMgYW5kIGd1aW5lYSBmb3dscyIsImNoaWxkcmVuIjpbXX0seyJnb29kc19ub21lbmNsYXR1cmVfc2lkIjoyNzgwMiwiZ29vZHNfbm9tZW5jbGF0dXJlX2l0ZW1faWQiOiIwMTA2MDAwMDAwIiwiZGVjbGFyYWJsZSI6ZmFsc2UsImRlc2NyaXB0aW9uIjoiT3RoZXIgbGl2ZSBhbmltYWxzIiwicHJvZHVjbGluZV9zdWZmaXgiOiI4MCIsImxlYWYiOnRydWUsImRlc2NyaXB0aW9uX3BsYWluIjoiT3RoZXIgbGl2ZSBhbmltYWxzIiwiZm9ybWF0dGVkX2Rlc2NyaXB0aW9uIjoiT3RoZXIgbGl2ZSBhbmltYWxzIiwiY2hpbGRyZW4iOltdfV0sIl9yZXNwb25zZV9pbmZvIjp7ImxpbmtzIjpbeyJyZWwiOiJzZWxmIiwiaHJlZiI6Ii90cmFkZS10YXJpZmYvY2hhcHRlcnMvMDE/YXNfb2Y9MTk3Mi0wMS0wMSZjdXJyZW5jeT1FVVIifSx7InJlbCI6InNlY3Rpb24iLCJocmVmIjoiL3RyYWRlLXRhcmlmZi9zZWN0aW9ucy8xIn1dfX0=
     http_version: 
-  recorded_at: Fri, 29 Nov 2013 08:05:54 GMT
+  recorded_at: Thu, 15 Nov 2018 14:59:40 GMT
 - request:
     method: get
-    uri: http://tariff-api.dev.gov.uk/chapters/01/changes?as_of=1972-01-01
+    uri: http://localhost:3018/chapters/01/changes?as_of=1972-01-01&currency=EUR
     body:
       encoding: US-ASCII
       string: ''
-    headers: {}
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
   response:
     status:
       code: 200
-      message: 'OK '
+      message: OK
     headers:
-      Server:
-      - nginx
-      Date:
-      - Fri, 29 Nov 2013 08:05:59 GMT
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
       Content-Type:
       - application/json; charset=utf-8
-      Content-Length:
-      - '2'
-      Connection:
-      - close
-      X-Ua-Compatible:
-      - IE=Edge
       Etag:
-      - '"d751713988987e9331980363e24189ce"'
+      - W/"4f53cda18c2baa0c0354bb5f9a3ecbe5"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 4b0cf7656728b748913eaf37c2ccb5ba
+      - ee437c9b-b529-4263-a41b-467659fcc03b
       X-Runtime:
-      - '0.189793'
+      - '0.009415'
+      Transfer-Encoding:
+      - chunked
     body:
       encoding: UTF-8
-      string: '[]'
+      string: "[]"
     http_version: 
-  recorded_at: Fri, 29 Nov 2013 08:05:59 GMT
-recorded_with: VCR 2.5.0
+  recorded_at: Thu, 15 Nov 2018 14:59:40 GMT
+recorded_with: VCR 3.0.3

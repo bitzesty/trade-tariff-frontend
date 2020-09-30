@@ -1,0 +1,134 @@
+.search-results {
+  .full-code {
+    width: 171px;
+
+    .commodity-code {
+      width: 101px;
+    }
+  }
+
+  em {
+    font-size: 1em;
+    font-style: italic;
+  }
+
+  .results-subset {
+    position: relative;
+    margin-bottom: 60px;
+    list-style-type: none;
+    padding: 0;
+    font-size: 1.25em;
+
+    .chapter > .full-code {
+      @media (max-width: $mobile-max-width) {
+        margin: 0 1em;
+        padding: 1em 0 0.5em;
+      }
+    }
+
+    .full-code {
+      right: 1em;
+      height: 30px;
+
+      &:after {
+        content: " ";
+        display: table;
+        clear: both;
+        zoom: 1;
+      }
+    }
+
+    .line-text {
+      display: block;
+      padding-top: 0.5em;
+      padding-bottom: 0.5em;
+    }
+
+    .guides-container {
+      padding: 1em 0 0.5em !important;
+      margin: 0 !important;
+    }
+    
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    li {
+      position: relative;
+      display: block;
+      line-height: 30px;
+      margin-top: 5px;
+      word-wrap: break-word;
+      font-size: 1rem;
+      min-height: 30px;
+
+      .full-code {
+        top: 1em;
+      }
+
+      .line-text {
+        padding-left: 1em;
+        @media (min-width: $desktop-min-width) {
+          padding-right: 200px;
+        }
+      }
+
+      ul {
+        margin-left: 3em;
+        margin-bottom: 1em;
+        margin-top: 0;
+
+        li {
+          padding: 0;
+          border-bottom: 1px solid $govuk-border-colour;
+          min-height: 30px;
+          margin-right: 1em;
+
+          &:last-child {
+            border-bottom: none;
+          }
+
+          .line-text {
+            padding-left: 0 !important;
+            
+            @media (min-width: $desktop-min-width) {
+              padding-left: 0;
+              padding-top: 0em;
+              padding-bottom: 0em;
+            }
+          }
+
+          .full-code {
+            top: auto;
+            bottom: 0;
+            right: 0;
+
+            @media (max-width: $mobile-max-width) {
+              margin-top: 0.5em;
+            }
+          }
+        }
+      }
+    }
+
+    .chapter {
+      display: block;
+      min-height: $chapter-code-height;
+      background-color: $highlight-colour;
+      position: relative;
+      
+
+
+      a {
+        display: block;
+        padding-top: 3px;
+        text-decoration: none;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+    
+  }
+}

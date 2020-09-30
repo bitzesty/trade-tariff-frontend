@@ -45,15 +45,4 @@ describe SectionsController, "GET to #show", type: :controller do
       it { should_include_robots_tag! }
     end
   end
-
-  context 'with non existing section id provided', vcr: { cassette_name: "sections#show_9999" } do
-    before(:each) do
-      get :show, params: { id: 9999 }
-    end
-
-    it 'redirect to sections index page as fallback' do
-      expect(response.status).to eq 302
-      expect(response.location).to eq sections_url
-    end
-  end
 end

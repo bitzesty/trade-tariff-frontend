@@ -1,0 +1,52 @@
+import debounce from "./debounce";
+
+(function(){
+  var fieldset = $('.js-quota-country-picker');
+  var autocomplete = null;
+
+  $('.js-quota-country-picker-select').each(function() {
+    (function(element) {
+      autocomplete = accessibleAutocomplete.enhanceSelectElement({
+        selectElement: element[0],
+        minLength: 2,
+        dropdownArrow: function() {
+          return "<span class='autocomplete__arrow'></span>";
+        },
+        source: debounce(function(query, populateResults) {
+          $.ajax({
+            type: "GET",
+            url: '<%= Rails.application.routes.url_helpers.geographical_areas_path(format: :json) %>',
+            data: {
+              term: query
+            },
+            success: function(data) {
+              let results = data.results;
+
+              var newOptions = [];
+              results.forEach(function(result) {
+                newOptions.push("<option value='" + result.id + "'>" + result.text + "</option>");
+              });
+
+              element.html(newOptions.join(""));
+
+              var newSource = results.map(r => r.text);
+              populateResults(newSource);
+            },
+            error: function() {
+              populateResults([]);
+            }
+          });
+        }, 300, false)
+      });
+    })($(this));
+  });
+
+  fieldset.on('click', 'a.reset-country-picker', function (e) {
+    $('.js-quota-country-picker-select')[0].accessibleAutocomplete.clearSelection();
+
+    return false;
+  });
+  $('form.quota-search#new_search').on("submit", function(){
+    $(this).find(':input[type=submit]').prop('disabled', true);
+  });
+})();

@@ -4,7 +4,7 @@ class CommoditiesController < GoodsNomenclaturesController
     @heading = @commodity.heading
     @chapter = @commodity.chapter
     @section = @commodity.section
-    @back_path = heading_path(@heading.short_code)
+    @back_path = request.referer || heading_path(@heading.short_code)
   end
 
   private

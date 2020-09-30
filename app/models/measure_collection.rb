@@ -11,17 +11,27 @@ class MeasureCollection
   end
 
   def for_country(country)
-    self.measures = measures.select{ |m| m.relevant_for_country?(country) }
+    self.measures = measures.select { |m| m.relevant_for_country?(country) }
     self
   end
 
   def vat
-    self.measures = measures.select{ |measure| measure.vat? }
+    self.measures = measures.select(&:vat?)
     self
   end
 
   def national
-    self.measures = measures.select{ |measure| measure.national? }
+    self.measures = measures.select(&:national?)
+    self
+  end
+
+  def third_country_duty
+    self.measures = measures.select(&:third_country?)
+    self
+  end
+
+  def supplementary
+    self.measures = measures.select(&:supplementary?)
     self
   end
 

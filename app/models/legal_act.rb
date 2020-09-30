@@ -3,7 +3,7 @@ require 'api_entity'
 class LegalAct
   include ApiEntity
 
-  attr_accessor :generating_regulation_code, :url, :validity_end_date,
+  attr_accessor :regulation_code, :regulation_url, :validity_end_date,
                 :validity_start_date, :published_date, :officialjournal_number, :officialjournal_page
 
   def validity_start_date=(date)
@@ -15,6 +15,6 @@ class LegalAct
   end
 
   def url_safe_code
-    generating_regulation_code.gsub("/", "_")
+    regulation_code.tr("/", "_")
   end
 end

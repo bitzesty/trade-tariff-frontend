@@ -1,0 +1,12 @@
+<%= form_tag chemical_search_path, method: :get, class: "tariff-search quota-search #{@section_css}", id: 'new_search' do |f| %>
+  <h1 class="govuk-heading-l">Search by Chemical</h1>
+  <div class="govuk-form-group">
+    <%= label_tag :type, 'CAS number', class: 'govuk-label' %>
+    <%= text_field_tag :cas, search_form.cas, class: "govuk-input govuk-input--width-10" %>
+  </div>
+  <div class="govuk-form-group">
+    <%= label_tag :name, 'Chemical name', class: 'govuk-label' %>
+    <%= text_field_tag :name, search_form.name, class: "govuk-input govuk-input--width-20" %>
+  </div>
+  <input class="button govuk-button" type="submit" name="new_search" value="Search">
+<% end %>

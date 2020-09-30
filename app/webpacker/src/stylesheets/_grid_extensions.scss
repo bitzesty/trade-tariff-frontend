@@ -1,0 +1,45 @@
+
+
+$govuk-grid-widths: map-merge($govuk-grid-widths, (one-eighth: 12.5%, seven-eighth: 87.5%));
+
+.column-two-quarters {
+  @include govuk-grid-column(one-half);
+}
+
+.column-one-half {
+  @include govuk-grid-column(one-half);
+}
+
+.column-two-thirds {
+  @include govuk-grid-column(two-thirds);
+}
+
+.column-three-quarters {
+  @include govuk-grid-column(three-quarters);
+}
+
+.column-one-quarter-desktop-only {
+  @media (min-width: $desktop-min-width) {
+    @include govuk-grid-column(one-quarter, $at: desktop);
+  }
+}
+
+.column-three-quarters-desktop-only {
+  @media (min-width: $desktop-min-width) {
+    @include govuk-grid-column(three-quarters, $at: desktop);
+  }
+}
+
+.column-full-mobile-only {
+  @include govuk-media-query(false, $desktop-min-width - 1px) {
+    @include govuk-grid-column(full, $at: mobile);
+  }
+}
+
+.column-one-eighth {
+  @include govuk-grid-column(one-eighth);
+}
+
+.column-seven-eighth {
+  @include govuk-grid-column(seven-eighth);
+}

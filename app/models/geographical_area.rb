@@ -10,7 +10,7 @@ class GeographicalArea
   has_many :children_geographical_areas, class_name: 'GeographicalArea'
 
   def self.countries
-    excluded_geographical_area_ids = ['GB']
+    excluded_geographical_area_ids = %w[GB]
 
     all.sort_by(&:id)
        .reject { |country| country.id.in?(excluded_geographical_area_ids) }
@@ -24,6 +24,19 @@ class GeographicalArea
       countries
     end
   end
+  
+  def self.areas
+    collection('/geographical_areas').sort_by(&:id)
+  end
+  
+  def self.cached_areas
+    Rails.cache.fetch(
+      'areas',
+      expires_in: 24.hours
+    ) do
+      areas
+    end
+  end
 
   def self.by_long_description(term)
     lookup_regexp = /#{term}/i
@@ -35,12 +48,17 @@ class GeographicalArea
       key = ""
       key << (match_id ? "0" : "1")
       key << (match_desc || '')
+      key << country.id
       key
     end
   end
 
   def description
-    attributes['description'].presence || ''
+    if geographical_area_id == "1011"
+      "All countries"
+    else
+      attributes['description'].presence || ''
+    end
   end
 
   def long_description

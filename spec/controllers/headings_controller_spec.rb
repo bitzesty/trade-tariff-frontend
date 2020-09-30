@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe HeadingsController, "GET to #show", type: :controller do
   context 'with existing heading id provided', vcr: { cassette_name: "headings#show" } do
-    let!(:heading)     { Heading.new(attributes_for :heading) }
+    let!(:heading)     { Heading.new(attributes_for(:heading).stringify_keys) }
 
     before(:each) do
       get :show, params: { id: heading.to_param }
@@ -11,19 +11,6 @@ describe HeadingsController, "GET to #show", type: :controller do
     it { should respond_with(:success) }
     it { expect(assigns(:heading)).to be_a(HeadingPresenter) }
     it { expect(assigns(:commodities)).to be_a(HeadingCommodityPresenter) }
-  end
-
-  context 'with too long chapter id provided', vcr: { cassette_name: "headings#show_0101" } do
-    let(:heading_id) { '010111' } # heading 0101 does exist
-
-    before(:each) do
-      get :show, params: { id: heading_id }
-    end
-
-    it 'redirects to heading page (strips exceeding heading id characters)' do
-      expect(response.status).to eq 302
-      expect(response.location).to eq heading_url(id: heading_id.first(4))
-    end
   end
 
   context 'with non existing chapter id provided', vcr: { cassette_name: "headings#show_0110" } do

@@ -1,14 +1,16 @@
 require 'api_entity'
-require 'declarable'
-require 'changeable'
 
 class Commodity < GoodsNomenclature
-  include Models::Changeable
-  include Models::Declarable
+  include Changeable
+  include Declarable
+
+  collection_path "/commodities"
 
   attr_accessor :parent_sid
 
   has_one :heading
+  # vat_measure is used for commodities under the heading only
+  has_many :overview_measures, class_name: 'Measure', wrapper: MeasureCollection
   has_many :ancestors, class_name: 'Commodity'
 
   delegate :goods_nomenclature_item_id, :display_short_code, to: :heading, prefix: true
@@ -69,9 +71,13 @@ class Commodity < GoodsNomenclature
 
   def last_child?
     if casted_by.present?
-      self.goods_nomenclature_sid == casted_by.commodities.select{|c| c.parent_sid == self.parent_sid }.last.goods_nomenclature_sid
+      goods_nomenclature_sid == casted_by.commodities.select { |c| c.parent_sid == parent_sid }.last.goods_nomenclature_sid
     else
       false
     end
+  end
+
+  def aria_label
+    "Commodity code #{code}, " + description
   end
 end

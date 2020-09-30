@@ -1,11 +1,10 @@
 require 'api_entity'
-require 'changeable'
 
 class Chapter < GoodsNomenclature
   include ApiEntity
-  include Models::Changeable
+  include Changeable
 
-  attr_accessor :headings, :chapter_note
+  attr_accessor :headings, :chapter_note, :forum_url
 
   has_one :section
   has_many :headings
@@ -24,5 +23,9 @@ class Chapter < GoodsNomenclature
 
   def to_s
     formatted_description || description
+  end
+
+  def guides
+    attributes['guides']
   end
 end

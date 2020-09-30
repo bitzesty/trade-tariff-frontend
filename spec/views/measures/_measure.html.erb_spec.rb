@@ -4,7 +4,7 @@ describe "measures/_measure.html.erb", type: :view do
   let(:measure) {
     Measure.new(
       attributes_for(:measure, :third_country,
-                               duty_expression: duty_expression)
+                               duty_expression: duty_expression).stringify_keys
     )
   }
 
@@ -13,7 +13,7 @@ describe "measures/_measure.html.erb", type: :view do
   }
 
   context "with formatted_base" do
-    let(:duty_expression) { attributes_for(:duty_expression) }
+    let(:duty_expression) { attributes_for(:duty_expression).stringify_keys }
 
     it {
       expect(rendered).to match /EUR/
@@ -24,7 +24,7 @@ describe "measures/_measure.html.erb", type: :view do
 
   context "without formatted_base" do
     let(:duty_expression) {
-      attributes_for(:duty_expression, formatted_base: nil)
+      attributes_for(:duty_expression, formatted_base: nil).stringify_keys
     }
 
     it {

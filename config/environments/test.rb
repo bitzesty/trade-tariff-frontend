@@ -39,5 +39,5 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
 
   # Host for Trade Tariff API endpoint
-  config.api_host = "http://tariff-api.dev.gov.uk"
+  config.api_host = "http://localhost:3018"
 end

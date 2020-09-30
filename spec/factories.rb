@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :section do
     title    { Forgery(:basic).text }
     position { 1 }
@@ -34,47 +34,54 @@ FactoryGirl.define do
     parent_sid { Forgery(:basic).number }
   end
 
+  factory :monetary_exchange_rate do
+    child_monetary_unit_code { "GBP" }
+    exchange_rate { Random.rand.to_d.truncate(9) }
+    operation_date { Date.today.at_beginning_of_month.ago(5.days).strftime("%Y-%m-%d") }
+    validity_start_date { Date.today.at_beginning_of_month.strftime("%Y-%m-%d") }
+  end
+
   factory :measure do
     transient do
       measure_type_description { Forgery(:basic).text }
     end
 
-    origin { ['eu', 'uk'].sample }
+    origin { %w[eu uk].sample }
     ordernumber { Forgery(:basic).number(exactly: 5) }
     effective_start_date { Date.today.ago(3.years).to_s }
     effective_end_date { nil }
 
     measure_type {
-      attributes_for(:measure_type, id: Forgery(:basic).text, description: measure_type_description)
+      attributes_for(:measure_type, id: Forgery(:basic).text, description: measure_type_description).stringify_keys
     }
 
     trait :vat do
       measure_type {
-        attributes_for(:measure_type, :vat, description: measure_type_description)
+        attributes_for(:measure_type, :vat, description: measure_type_description).stringify_keys
       }
     end
 
     trait :third_country do
       measure_type {
-        attributes_for(:measure_type, :third_country, description: measure_type_description)
+        attributes_for(:measure_type, :third_country, description: measure_type_description).stringify_keys
       }
-      geographical_area { attributes_for(:geographical_area, :third_country) }
+      geographical_area { attributes_for(:geographical_area, :third_country).stringify_keys }
     end
 
     trait :specific_country do
-      geographical_area { attributes_for(:geographical_area, :specific_country) }
+      geographical_area { attributes_for(:geographical_area, :specific_country).stringify_keys }
     end
 
     trait :with_conditions do
-      measure_conditions { [attributes_for(:measure_condition)] }
+      measure_conditions { [attributes_for(:measure_condition).stringify_keys] }
     end
 
     trait :with_additional_code do
-      additional_code { attributes_for(:additional_code) }
+      additional_code { attributes_for(:additional_code).stringify_keys }
     end
 
     trait :with_footnotes do
-      footnotes { [attributes_for(:footnote)] }
+      footnotes { [attributes_for(:footnote).stringify_keys] }
     end
 
     trait :national do
@@ -87,9 +94,9 @@ FactoryGirl.define do
   end
 
   factory :duty_expression do
-    base "80.50 EUR / Hectokilogram"
-    formatted_base "80.50 EUR / <abbr title='Hectokilogram'>Hectokilogram</abbr>"
-    national_measurement_units nil
+    base { "80.50 EUR / Hectokilogram" }
+    formatted_base { "80.50 EUR / <abbr title='Hectokilogram'>Hectokilogram</abbr>" }
+    national_measurement_units { nil }
   end
 
   factory :measure_type do
@@ -118,7 +125,7 @@ FactoryGirl.define do
     end
 
     trait :with_children do
-      children_geographical_areas { [attributes_for(:geograpical_area)] }
+      children_geographical_areas { [attributes_for(:geograpical_area).stringify_keys] }
     end
   end
 
@@ -140,8 +147,9 @@ FactoryGirl.define do
   end
 
   factory :tariff_update do
-    update_type    { ['TariffSynchronizer::ChiefUpdate',
-                      'TariffSynchronizer::TaricUpdate'].sample }
+    update_type {
+      %w[TariffSynchronizer::ChiefUpdate TariffSynchronizer::TaricUpdate].sample
+    }
     state { 'A' }
     created_at { Time.now.to_s }
     updated_at { Time.now.to_s }

@@ -3,6 +3,7 @@ set -e
 
 # Fetch deployed revision
 export GIT_OLD_REVISION=`curl "https://$CF_APP.$HEALTHCHECK_URL" | grep -o -w -E '[[:alnum:]]{7}'`
+
 # Log the new revision
 export GIT_REVISION=`git rev-parse --short HEAD`
 echo $GIT_REVISION > REVISION
@@ -10,7 +11,7 @@ echo $GIT_REVISION > REVISION
 export GIT_MESSAGE=`git log --oneline $GIT_OLD_REVISION..$GIT_REVISION`
 
 # Check CF connectivity
-cf login -a api.cloud.service.gov.uk -u $CF_USER -p "$CF_PASSWORD" -o $CF_ORG -s $CF_SPACE
+cf login -a $CF_ENDPOINT -u $CF_USER -p "$CF_PASSWORD" -o $CF_ORG -s $CF_SPACE
 cf a
 
 # Notify Slack deployment started
@@ -18,18 +19,24 @@ curl -X POST \
 --data-urlencode 'payload={"text": "'"Deploying $CF_APP.\n${GIT_MESSAGE}"'", "channel": "'"#$SLACK_CHANNEL"'", "username": "cf-deploy", "icon_emoji": ":cloud:", "fields": [{"title": "ENV", "value": "'"$CF_SPACE"'", "short": true}, {"title": "SHA1", "value": "'"<https://github.com/bitzesty/trade-tariff-frontend/compare/$GIT_OLD_REVISION...$GIT_REVISION|$GIT_REVISION>"'", "short": true}]}' \
 $SLACK_WEBHOOK
 
+# Pin ruby buildpack
+export CF_BUILDPACK="https://github.com/cloudfoundry/ruby-buildpack.git#v1.8.24"
+
 # Deploy
 cf create-app-manifest $CF_APP
-cf zero-downtime-push $CF_APP -f "$CF_APP"_manifest.yml
+
+# "patch" the manifest so it has "buildpack", not "buildpacks":
+CF_BUILDPACK=$CF_BUILDPACK ruby -ryaml -e 'm = YAML.load(STDIN); m["applications"].map{ |x| x["buildpack"] = ENV["CF_BUILDPACK"]; x.delete("buildpacks") }; puts YAML.dump(m)' \
+  < "$CF_APP"_manifest.yml \
+  > "$CF_APP"_patched_manifest.yml
+
+
+cf bgd $CF_APP -f "$CF_APP"_patched_manifest.yml --delete-old-apps
+
+# Attach autoscaling policy
+cf attach-autoscaling-policy $CF_APP config/autoscaling/"$CF_SPACE"-policy.json
 
 # Notify Slack deployment finished
 curl -X POST \
 --data-urlencode 'payload={"text": "'"Deployment finished for $CF_APP"'", "channel": "'"#$SLACK_CHANNEL"'", "username": "cf-deploy", "icon_emoji": ":cloud:", "fields": [{"title": "ENV", "value": "'"$CF_SPACE"'", "short": true}, {"title": "SHA1", "value": "'"<https://github.com/bitzesty/trade-tariff-frontend/compare/$GIT_OLD_REVISION...$GIT_REVISION|$GIT_REVISION>"'", "short": true}]}' \
 $SLACK_WEBHOOK
-
-# Notify GDS about new releases
-curl -X POST -H 'Content-type: application/json' \
--H 'Authorization: Bearer '"$GDS_TOKEN"'' \
--H 'Accept: application/json' \
---data '{"repo": "'"$CIRCLE_REPOSITORY_URL"'", "deployment[version]": "'"$CIRCLE_SHA1"'", "deployment[environment]": "'"$CF_SPACE"'"}' \
-$GDS_WEBHOOK

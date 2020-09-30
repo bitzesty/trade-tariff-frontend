@@ -7,6 +7,7 @@ class FrontendMailer < ActionMailer::Base
     @name = name
     @email = email
 
-    mail subject: "New Feedback"
+    mail subject: "Trade Tariff Feedback",
+         reply_to: @email
   end
 end

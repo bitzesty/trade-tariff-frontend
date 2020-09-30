@@ -1,0 +1,33 @@
+<%= render partial: 'search/quotas/form', locals: { search_form: @result.search_form } %>
+<% if @result.search_result&.any? %>
+  <article class="search-results">
+    <table class="quota-results govuk-table">
+      <caption class="govuk-table__caption">
+        <h1 class="govuk-heading-l">Quota search results</h1>
+      </caption>
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header">Order number</th>
+          <th scope="col" class="govuk-table__header">Commodity code</th>
+          <th scope="col" class="govuk-table__header">Country</th>
+          <th scope="col" class="govuk-table__header">Start date</th>
+          <th scope="col" class="govuk-table__header">End date</th>
+          <th scope="col" class="govuk-table__header">Balance</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <%= render partial: 'search/quotas/definition', collection: @result.search_result %>
+      </tbody>
+    </table>
+    <%= paginate @result.search_result %>
+  </article>
+<% elsif @result.search_form.large_result? || @result.with_errors %>
+  <article class="search-results">
+    <h1 class="govuk-heading-l">Sorry, there is a problem with the search query. Please specify one or more search criteria.</h1>
+  </article>
+<% elsif @result.search_form.present? %>
+  <br/>
+  <article class="search-results">
+    <h1 class="govuk-heading-l">There are no matching results</h1>
+  </article>
+<% end %>

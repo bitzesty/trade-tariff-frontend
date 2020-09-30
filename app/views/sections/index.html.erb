@@ -2,18 +2,28 @@
   <link rel='alternate' type='application/json' href='<%= sections_url(format: :json) %>' title='Section list in JSON format' />
 <% end %>
 
-<h2 class="heading-small">All sections</h2>
+<h2 class="govuk-heading-m all-sections">All sections</h2>
 
 <section class="sections">
-  <table class="tariff-table">
-    <thead>
-      <tr>
-        <th scope="col">Section</th>
-        <th scope="col">Chapters</th>
-        <th scope="col">Section title</th>
+  <table class="tariff-table govuk-table">
+    <colgroup>
+      <col width="*">
+      <col width="150">
+      <col width="150">
+    </colgroup>
+    <thead class="govuk-table__head">
+      <tr class="govuk-table__row">
+        <th scope="col" class="govuk-table__header">
+          Section title
+          <% if TradeTariffFrontend.download_pdf_enabled? %>
+            <div class="download-pdf pull-right"><%= link_to '[BETA] Trade Tariff PDF (94MB)', download_latest_pdf_url, rel: 'nofollow', target: '_blank' %></div>
+          <% end %>
+        </th>
+        <th scope="col" class="govuk-table__header">Section</th>
+        <th scope="col" class="govuk-table__header">Chapters</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody class="govuk-table__body">
       <%= render @sections %>
     </tbody>
   </table>

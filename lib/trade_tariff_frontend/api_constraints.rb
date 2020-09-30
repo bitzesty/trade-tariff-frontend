@@ -9,4 +9,14 @@ module TradeTariffFrontend
         req['endpoint'].in?(@endpoints)
     end
   end
+
+  class ApiPubConstraints
+    def initialize(endpoints)
+      @endpoints = Array(endpoints)
+    end
+
+    def matches?(req)
+      req['path'].split('/')[0].in?(@endpoints)
+    end
+  end
 end

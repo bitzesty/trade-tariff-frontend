@@ -4,7 +4,7 @@ describe TradeTariffFrontend::RequestForwarder do
   let(:app)            { ->(env) { [200, env, "app"] } }
   let(:host)           { "http://tariff-api.example.com" }
   let(:request_path)   { "/sections/1" }
-  let(:request_params) { "?page=2"}
+  let(:request_params) { "?page=2" }
 
   let(:response_body) { "example" }
 
@@ -12,7 +12,7 @@ describe TradeTariffFrontend::RequestForwarder do
     described_class.new(host: host)
   end
 
-  around(:each) do |example|
+  around do |example|
     # These specs use WebMock
     VCR.turned_off do
       example.run
@@ -28,7 +28,7 @@ describe TradeTariffFrontend::RequestForwarder do
 
     status, env, body = middleware.call env_for(request_path)
 
-    expect(body.body).to include response_body
+    expect(body).to include response_body
   end
 
   it 'forwards response from upstream backend host for HEADs' do
@@ -41,7 +41,7 @@ describe TradeTariffFrontend::RequestForwarder do
     status, env, body = middleware.call env_for(request_path, method: :head)
 
     expect(status).to eq 200
-    expect(body.body).to eq [""]
+    expect(body).to eq [""]
   end
 
   it 'forwards response status code from upstream backend host' do

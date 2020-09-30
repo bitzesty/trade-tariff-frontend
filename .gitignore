@@ -17,8 +17,18 @@ rerun.txt
 pickle-email-*.html
 coverage
 spec/reports
-*manifest.yml
+
+# Cloud Foundry manifest files
+*_manifest.yml
+
 cf-ssh.yml
 .ruby-gemset
 .idea/*
 .env
+
+/public/packs
+/public/packs-test
+/node_modules
+/yarn-error.log
+yarn-debug.log*
+.yarn-integrity

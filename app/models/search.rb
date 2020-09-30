@@ -13,11 +13,22 @@ class Search
   delegate :today?, to: :date
 
   def perform
-    response = self.class.post('/search', body: { q: q, as_of: date.to_s(:db) })
+    retries = 0
+    begin
+      response = self.class.post('/search', q: q, as_of: date.to_s(:db), currency: currency)
 
-    raise ApiEntity::Error if response.code == 500
+      raise ApiEntity::Error if response.status == 500
 
-    Outcome.new(response)
+      response = TariffJsonapiParser.new(response.body).parse
+      Outcome.new(response)
+    rescue StandardError
+      if retries < Rails.configuration.x.http.max_retry
+        retries += 1
+        retry
+      else
+        raise
+      end
+    end
   end
 
   def q=(term)
@@ -25,7 +36,7 @@ class Search
   end
 
   def countries
-    [ geographical_area ].compact
+    [geographical_area].compact
   end
 
   def geographical_area
@@ -40,6 +51,19 @@ class Search
               else
                 TariffDate.parse(attributes.slice(*TariffDate::DATE_KEYS))
               end
+  end
+
+  def currency_name(currency = attributes['currency'])
+    case currency
+    when "GBP"
+        then 'British Pound'
+    else
+      'Euro'
+    end
+  end
+
+  def currency
+    attributes['currency'] || 'EUR'
   end
 
   def filtered_by_date?
@@ -61,7 +85,7 @@ class Search
   def query_attributes
     { 'day'  => date.day,
       'year' => date.year,
-      'month' => date.month }.merge(attributes.slice(:country))
+      'month' => date.month }.merge(attributes.slice(:country, :currency))
   end
 
   def to_s

@@ -1,0 +1,205 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://localhost:3018/certificates/search?code&description&page=1&type=A
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/vnd.uktt.v2
+      User-Agent:
+      - Faraday v0.11.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"22ef387c524086fea8ad9e725cfaa65a"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 5889217c-2872-4551-a00c-ff0af935cbdf
+      X-Runtime:
+      - '0.461039'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"data":[{"id":"A001","type":"certificates","attributes":{"certificate_type_code":"A","certificate_code":"001","description":"Certificate
+        of authenticity fresh ''EMPEROR'' table grapes","formatted_description":"Certificate
+        of authenticity fresh ''EMPEROR'' table grapes"},"relationships":{"measures":{"data":[{"id":"2540173","type":"measure"}]}}},{"id":"A004","type":"certificates","attributes":{"certificate_type_code":"A","certificate_code":"004","description":"Certificate
+        of authenticity Tobacco","formatted_description":"Certificate of authenticity
+        Tobacco"},"relationships":{"measures":{"data":[{"id":"3048663","type":"measure"},{"id":"3048664","type":"measure"},{"id":"3048668","type":"measure"},{"id":"3048669","type":"measure"},{"id":"3048671","type":"measure"},{"id":"3048677","type":"measure"},{"id":"3048678","type":"measure"},{"id":"3048679","type":"measure"},{"id":"3048680","type":"measure"},{"id":"3048681","type":"measure"},{"id":"3048683","type":"measure"},{"id":"3048685","type":"measure"},{"id":"3048696","type":"measure"},{"id":"3048698","type":"measure"}]}}},{"id":"A007","type":"certificates","attributes":{"certificate_type_code":"A","certificate_code":"007","description":"Certificate
+        of authenticity - Frozen beef and veal (crop, chuck and blade and brisket
+        cuts)","formatted_description":"Certificate of authenticity - Frozen beef
+        and veal (crop, chuck and blade and brisket cuts)"},"relationships":{"measures":{"data":[{"id":"3403041","type":"measure"}]}}},{"id":"A008","type":"certificates","attributes":{"certificate_type_code":"A","certificate_code":"008","description":"Certificate
+        of authenticity fresh sweet oranges \"high quality\"","formatted_description":"Certificate
+        of authenticity fresh sweet oranges \"high quality\""},"relationships":{"measures":{"data":[]}}},{"id":"A009","type":"certificates","attributes":{"certificate_type_code":"A","certificate_code":"009","description":"Certificate
+        of authenticity fresh minneola","formatted_description":"Certificate of authenticity
+        fresh minneola"},"relationships":{"measures":{"data":[]}}}],"included":[{"id":"2540173","type":"measure","attributes":{"id":2540173,"validity_start_date":"2003-10-01T00:00:00.000Z","validity_end_date":null,"goods_nomenclature_item_id":"0806101005"},"relationships":{"goods_nomenclature":{"data":{"id":"70346","type":"goods_nomenclature"}}}},{"id":"70346","type":"goods_nomenclature","attributes":{"goods_nomenclature_item_id":"0806101005","goods_nomenclature_sid":70346,"number_indents":3,"description":"Of
+        the variety emperor (vitis vinifera c.v.), from 1 january to 31 january and
+        from 1 december to 31 december","productline_suffix":"80"}},{"id":"3048663","type":"measure","attributes":{"id":3048663,"validity_start_date":"2009-01-01T00:00:00.000Z","validity_end_date":null,"goods_nomenclature_item_id":"2401108510"},"relationships":{"goods_nomenclature":{"data":{"id":"90553","type":"goods_nomenclature"}}}},{"id":"3048664","type":"measure","attributes":{"id":3048664,"validity_start_date":"2009-01-01T00:00:00.000Z","validity_end_date":null,"goods_nomenclature_item_id":"2401103510"},"relationships":{"goods_nomenclature":{"data":{"id":"90548","type":"goods_nomenclature"}}}},{"id":"3048668","type":"measure","attributes":{"id":3048668,"validity_start_date":"2009-01-01T00:00:00.000Z","validity_end_date":null,"goods_nomenclature_item_id":"2401103520"},"relationships":{"goods_nomenclature":{"data":{"id":"90549","type":"goods_nomenclature"}}}},{"id":"3048669","type":"measure","attributes":{"id":3048669,"validity_start_date":"2009-01-01T00:00:00.000Z","validity_end_date":null,"goods_nomenclature_item_id":"2401109511"},"relationships":{"goods_nomenclature":{"data":{"id":"90567","type":"goods_nomenclature"}}}},{"id":"3048671","type":"measure","attributes":{"id":3048671,"validity_start_date":"2009-01-01T00:00:00.000Z","validity_end_date":null,"goods_nomenclature_item_id":"2401109519"},"relationships":{"goods_nomenclature":{"data":{"id":"90559","type":"goods_nomenclature"}}}},{"id":"3048677","type":"measure","attributes":{"id":3048677,"validity_start_date":"2009-01-01T00:00:00.000Z","validity_end_date":null,"goods_nomenclature_item_id":"2401109521"},"relationships":{"goods_nomenclature":{"data":{"id":"90569","type":"goods_nomenclature"}}}},{"id":"3048678","type":"measure","attributes":{"id":3048678,"validity_start_date":"2009-01-01T00:00:00.000Z","validity_end_date":null,"goods_nomenclature_item_id":"2401109529"},"relationships":{"goods_nomenclature":{"data":{"id":"90562","type":"goods_nomenclature"}}}},{"id":"3048679","type":"measure","attributes":{"id":3048679,"validity_start_date":"2009-01-01T00:00:00.000Z","validity_end_date":null,"goods_nomenclature_item_id":"2401209529"},"relationships":{"goods_nomenclature":{"data":{"id":"90598","type":"goods_nomenclature"}}}},{"id":"3048680","type":"measure","attributes":{"id":3048680,"validity_start_date":"2009-01-01T00:00:00.000Z","validity_end_date":null,"goods_nomenclature_item_id":"2401209511"},"relationships":{"goods_nomenclature":{"data":{"id":"90583","type":"goods_nomenclature"}}}},{"id":"3048681","type":"measure","attributes":{"id":3048681,"validity_start_date":"2009-01-01T00:00:00.000Z","validity_end_date":null,"goods_nomenclature_item_id":"2401208510"},"relationships":{"goods_nomenclature":{"data":{"id":"90579","type":"goods_nomenclature"}}}},{"id":"3048683","type":"measure","attributes":{"id":3048683,"validity_start_date":"2009-01-01T00:00:00.000Z","validity_end_date":null,"goods_nomenclature_item_id":"2401203510"},"relationships":{"goods_nomenclature":{"data":{"id":"90573","type":"goods_nomenclature"}}}},{"id":"3048685","type":"measure","attributes":{"id":3048685,"validity_start_date":"2009-01-01T00:00:00.000Z","validity_end_date":null,"goods_nomenclature_item_id":"2401203520"},"relationships":{"goods_nomenclature":{"data":{"id":"90574","type":"goods_nomenclature"}}}},{"id":"3048696","type":"measure","attributes":{"id":3048696,"validity_start_date":"2009-01-01T00:00:00.000Z","validity_end_date":null,"goods_nomenclature_item_id":"2401209519"},"relationships":{"goods_nomenclature":{"data":{"id":"90584","type":"goods_nomenclature"}}}},{"id":"3048698","type":"measure","attributes":{"id":3048698,"validity_start_date":"2009-01-01T00:00:00.000Z","validity_end_date":null,"goods_nomenclature_item_id":"2401209521"},"relationships":{"goods_nomenclature":{"data":{"id":"90586","type":"goods_nomenclature"}}}},{"id":"90553","type":"goods_nomenclature","attributes":{"goods_nomenclature_item_id":"2401108510","goods_nomenclature_sid":90553,"number_indents":3,"description":"Flue-cured
+        virginia type","productline_suffix":"80"}},{"id":"90548","type":"goods_nomenclature","attributes":{"goods_nomenclature_item_id":"2401103510","goods_nomenclature_sid":90548,"number_indents":3,"description":"Light
+        air-cured burley type (including burley hybrids)","productline_suffix":"80"}},{"id":"90549","type":"goods_nomenclature","attributes":{"goods_nomenclature_item_id":"2401103520","goods_nomenclature_sid":90549,"number_indents":3,"description":"Light
+        air-cured maryland type","productline_suffix":"80"}},{"id":"90567","type":"goods_nomenclature","attributes":{"goods_nomenclature_item_id":"2401109511","goods_nomenclature_sid":90567,"number_indents":5,"description":"Whether
+        or not cut in regular size, having a custom value of not less than euro\u0026nbsp;450
+        per 100\u0026nbsp;kg net weight, for use as binder or wrapper for the manufacture
+        of goods falling within subheading 2402 10 00","productline_suffix":"80"}},{"id":"90559","type":"goods_nomenclature","attributes":{"goods_nomenclature_item_id":"2401109519","goods_nomenclature_sid":90559,"number_indents":5,"description":"Other","productline_suffix":"80"}},{"id":"90569","type":"goods_nomenclature","attributes":{"goods_nomenclature_item_id":"2401109521","goods_nomenclature_sid":90569,"number_indents":5,"description":"Whether
+        or not cut in regular size, having a custom value of not less than euro\u0026nbsp;450
+        per 100\u0026nbsp;kg net weight, for use as binder or wrapper for the manufacture
+        of goods falling within subheading 2402 10 00","productline_suffix":"80"}},{"id":"90562","type":"goods_nomenclature","attributes":{"goods_nomenclature_item_id":"2401109529","goods_nomenclature_sid":90562,"number_indents":5,"description":"Other","productline_suffix":"80"}},{"id":"90598","type":"goods_nomenclature","attributes":{"goods_nomenclature_item_id":"2401209529","goods_nomenclature_sid":90598,"number_indents":5,"description":"Other","productline_suffix":"80"}},{"id":"90583","type":"goods_nomenclature","attributes":{"goods_nomenclature_item_id":"2401209511","goods_nomenclature_sid":90583,"number_indents":5,"description":"Whether
+        or not cut in regular size, having a custom value of not less than euro\u0026nbsp;450
+        per 100\u0026nbsp;kg net weight, for use as binder or wrapper for the manufacture
+        of goods falling within subheading 2402 10 00","productline_suffix":"80"}},{"id":"90579","type":"goods_nomenclature","attributes":{"goods_nomenclature_item_id":"2401208510","goods_nomenclature_sid":90579,"number_indents":3,"description":"Flue-cured
+        virginia type","productline_suffix":"80"}},{"id":"90573","type":"goods_nomenclature","attributes":{"goods_nomenclature_item_id":"2401203510","goods_nomenclature_sid":90573,"number_indents":3,"description":"Light
+        air-cured burley type (including burley hybrids)","productline_suffix":"80"}},{"id":"90574","type":"goods_nomenclature","attributes":{"goods_nomenclature_item_id":"2401203520","goods_nomenclature_sid":90574,"number_indents":3,"description":"Light
+        air-cured maryland type","productline_suffix":"80"}},{"id":"90584","type":"goods_nomenclature","attributes":{"goods_nomenclature_item_id":"2401209519","goods_nomenclature_sid":90584,"number_indents":5,"description":"Other","productline_suffix":"80"}},{"id":"90586","type":"goods_nomenclature","attributes":{"goods_nomenclature_item_id":"2401209521","goods_nomenclature_sid":90586,"number_indents":5,"description":"Whether
+        or not cut in regular size, having a custom value of not less than euro\u0026nbsp;450
+        per 100\u0026nbsp;kg net weight, for use as binder or wrapper for the manufacture
+        of goods falling within subheading 2402 10 00","productline_suffix":"80"}},{"id":"3403041","type":"measure","attributes":{"id":3403041,"validity_start_date":"2015-01-01T00:00:00.000Z","validity_end_date":null,"goods_nomenclature_item_id":"0202305000"},"relationships":{"goods_nomenclature":{"data":{"id":"27910","type":"goods_nomenclature"}}}},{"id":"27910","type":"goods_nomenclature","attributes":{"goods_nomenclature_item_id":"0202305000","goods_nomenclature_sid":27910,"number_indents":2,"description":"Crop,
+        chuck-and-blade and brisket cuts","productline_suffix":"80"}}],"meta":{"pagination":{"page":1,"per_page":5,"total_count":12}}}'
+    http_version: 
+  recorded_at: Fri, 04 Oct 2019 12:35:18 GMT
+- request:
+    method: get
+    uri: http://localhost:3018/certificates/search?code&description&page=1&type=A
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/vnd.uktt.v2
+      User-Agent:
+      - Faraday v0.11.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"22ef387c524086fea8ad9e725cfaa65a"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 427ea1cb-977b-46cc-976d-e9a71ae68c02
+      X-Runtime:
+      - '0.431533'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"data":[{"id":"A001","type":"certificates","attributes":{"certificate_type_code":"A","certificate_code":"001","description":"Certificate
+        of authenticity fresh ''EMPEROR'' table grapes","formatted_description":"Certificate
+        of authenticity fresh ''EMPEROR'' table grapes"},"relationships":{"measures":{"data":[{"id":"2540173","type":"measure"}]}}},{"id":"A004","type":"certificates","attributes":{"certificate_type_code":"A","certificate_code":"004","description":"Certificate
+        of authenticity Tobacco","formatted_description":"Certificate of authenticity
+        Tobacco"},"relationships":{"measures":{"data":[{"id":"3048663","type":"measure"},{"id":"3048664","type":"measure"},{"id":"3048668","type":"measure"},{"id":"3048669","type":"measure"},{"id":"3048671","type":"measure"},{"id":"3048677","type":"measure"},{"id":"3048678","type":"measure"},{"id":"3048679","type":"measure"},{"id":"3048680","type":"measure"},{"id":"3048681","type":"measure"},{"id":"3048683","type":"measure"},{"id":"3048685","type":"measure"},{"id":"3048696","type":"measure"},{"id":"3048698","type":"measure"}]}}},{"id":"A007","type":"certificates","attributes":{"certificate_type_code":"A","certificate_code":"007","description":"Certificate
+        of authenticity - Frozen beef and veal (crop, chuck and blade and brisket
+        cuts)","formatted_description":"Certificate of authenticity - Frozen beef
+        and veal (crop, chuck and blade and brisket cuts)"},"relationships":{"measures":{"data":[{"id":"3403041","type":"measure"}]}}},{"id":"A008","type":"certificates","attributes":{"certificate_type_code":"A","certificate_code":"008","description":"Certificate
+        of authenticity fresh sweet oranges \"high quality\"","formatted_description":"Certificate
+        of authenticity fresh sweet oranges \"high quality\""},"relationships":{"measures":{"data":[]}}},{"id":"A009","type":"certificates","attributes":{"certificate_type_code":"A","certificate_code":"009","description":"Certificate
+        of authenticity fresh minneola","formatted_description":"Certificate of authenticity
+        fresh minneola"},"relationships":{"measures":{"data":[]}}}],"included":[{"id":"2540173","type":"measure","attributes":{"id":2540173,"validity_start_date":"2003-10-01T00:00:00.000Z","validity_end_date":null,"goods_nomenclature_item_id":"0806101005"},"relationships":{"goods_nomenclature":{"data":{"id":"70346","type":"goods_nomenclature"}}}},{"id":"70346","type":"goods_nomenclature","attributes":{"goods_nomenclature_item_id":"0806101005","goods_nomenclature_sid":70346,"number_indents":3,"description":"Of
+        the variety emperor (vitis vinifera c.v.), from 1 january to 31 january and
+        from 1 december to 31 december","productline_suffix":"80"}},{"id":"3048663","type":"measure","attributes":{"id":3048663,"validity_start_date":"2009-01-01T00:00:00.000Z","validity_end_date":null,"goods_nomenclature_item_id":"2401108510"},"relationships":{"goods_nomenclature":{"data":{"id":"90553","type":"goods_nomenclature"}}}},{"id":"3048664","type":"measure","attributes":{"id":3048664,"validity_start_date":"2009-01-01T00:00:00.000Z","validity_end_date":null,"goods_nomenclature_item_id":"2401103510"},"relationships":{"goods_nomenclature":{"data":{"id":"90548","type":"goods_nomenclature"}}}},{"id":"3048668","type":"measure","attributes":{"id":3048668,"validity_start_date":"2009-01-01T00:00:00.000Z","validity_end_date":null,"goods_nomenclature_item_id":"2401103520"},"relationships":{"goods_nomenclature":{"data":{"id":"90549","type":"goods_nomenclature"}}}},{"id":"3048669","type":"measure","attributes":{"id":3048669,"validity_start_date":"2009-01-01T00:00:00.000Z","validity_end_date":null,"goods_nomenclature_item_id":"2401109511"},"relationships":{"goods_nomenclature":{"data":{"id":"90567","type":"goods_nomenclature"}}}},{"id":"3048671","type":"measure","attributes":{"id":3048671,"validity_start_date":"2009-01-01T00:00:00.000Z","validity_end_date":null,"goods_nomenclature_item_id":"2401109519"},"relationships":{"goods_nomenclature":{"data":{"id":"90559","type":"goods_nomenclature"}}}},{"id":"3048677","type":"measure","attributes":{"id":3048677,"validity_start_date":"2009-01-01T00:00:00.000Z","validity_end_date":null,"goods_nomenclature_item_id":"2401109521"},"relationships":{"goods_nomenclature":{"data":{"id":"90569","type":"goods_nomenclature"}}}},{"id":"3048678","type":"measure","attributes":{"id":3048678,"validity_start_date":"2009-01-01T00:00:00.000Z","validity_end_date":null,"goods_nomenclature_item_id":"2401109529"},"relationships":{"goods_nomenclature":{"data":{"id":"90562","type":"goods_nomenclature"}}}},{"id":"3048679","type":"measure","attributes":{"id":3048679,"validity_start_date":"2009-01-01T00:00:00.000Z","validity_end_date":null,"goods_nomenclature_item_id":"2401209529"},"relationships":{"goods_nomenclature":{"data":{"id":"90598","type":"goods_nomenclature"}}}},{"id":"3048680","type":"measure","attributes":{"id":3048680,"validity_start_date":"2009-01-01T00:00:00.000Z","validity_end_date":null,"goods_nomenclature_item_id":"2401209511"},"relationships":{"goods_nomenclature":{"data":{"id":"90583","type":"goods_nomenclature"}}}},{"id":"3048681","type":"measure","attributes":{"id":3048681,"validity_start_date":"2009-01-01T00:00:00.000Z","validity_end_date":null,"goods_nomenclature_item_id":"2401208510"},"relationships":{"goods_nomenclature":{"data":{"id":"90579","type":"goods_nomenclature"}}}},{"id":"3048683","type":"measure","attributes":{"id":3048683,"validity_start_date":"2009-01-01T00:00:00.000Z","validity_end_date":null,"goods_nomenclature_item_id":"2401203510"},"relationships":{"goods_nomenclature":{"data":{"id":"90573","type":"goods_nomenclature"}}}},{"id":"3048685","type":"measure","attributes":{"id":3048685,"validity_start_date":"2009-01-01T00:00:00.000Z","validity_end_date":null,"goods_nomenclature_item_id":"2401203520"},"relationships":{"goods_nomenclature":{"data":{"id":"90574","type":"goods_nomenclature"}}}},{"id":"3048696","type":"measure","attributes":{"id":3048696,"validity_start_date":"2009-01-01T00:00:00.000Z","validity_end_date":null,"goods_nomenclature_item_id":"2401209519"},"relationships":{"goods_nomenclature":{"data":{"id":"90584","type":"goods_nomenclature"}}}},{"id":"3048698","type":"measure","attributes":{"id":3048698,"validity_start_date":"2009-01-01T00:00:00.000Z","validity_end_date":null,"goods_nomenclature_item_id":"2401209521"},"relationships":{"goods_nomenclature":{"data":{"id":"90586","type":"goods_nomenclature"}}}},{"id":"90553","type":"goods_nomenclature","attributes":{"goods_nomenclature_item_id":"2401108510","goods_nomenclature_sid":90553,"number_indents":3,"description":"Flue-cured
+        virginia type","productline_suffix":"80"}},{"id":"90548","type":"goods_nomenclature","attributes":{"goods_nomenclature_item_id":"2401103510","goods_nomenclature_sid":90548,"number_indents":3,"description":"Light
+        air-cured burley type (including burley hybrids)","productline_suffix":"80"}},{"id":"90549","type":"goods_nomenclature","attributes":{"goods_nomenclature_item_id":"2401103520","goods_nomenclature_sid":90549,"number_indents":3,"description":"Light
+        air-cured maryland type","productline_suffix":"80"}},{"id":"90567","type":"goods_nomenclature","attributes":{"goods_nomenclature_item_id":"2401109511","goods_nomenclature_sid":90567,"number_indents":5,"description":"Whether
+        or not cut in regular size, having a custom value of not less than euro\u0026nbsp;450
+        per 100\u0026nbsp;kg net weight, for use as binder or wrapper for the manufacture
+        of goods falling within subheading 2402 10 00","productline_suffix":"80"}},{"id":"90559","type":"goods_nomenclature","attributes":{"goods_nomenclature_item_id":"2401109519","goods_nomenclature_sid":90559,"number_indents":5,"description":"Other","productline_suffix":"80"}},{"id":"90569","type":"goods_nomenclature","attributes":{"goods_nomenclature_item_id":"2401109521","goods_nomenclature_sid":90569,"number_indents":5,"description":"Whether
+        or not cut in regular size, having a custom value of not less than euro\u0026nbsp;450
+        per 100\u0026nbsp;kg net weight, for use as binder or wrapper for the manufacture
+        of goods falling within subheading 2402 10 00","productline_suffix":"80"}},{"id":"90562","type":"goods_nomenclature","attributes":{"goods_nomenclature_item_id":"2401109529","goods_nomenclature_sid":90562,"number_indents":5,"description":"Other","productline_suffix":"80"}},{"id":"90598","type":"goods_nomenclature","attributes":{"goods_nomenclature_item_id":"2401209529","goods_nomenclature_sid":90598,"number_indents":5,"description":"Other","productline_suffix":"80"}},{"id":"90583","type":"goods_nomenclature","attributes":{"goods_nomenclature_item_id":"2401209511","goods_nomenclature_sid":90583,"number_indents":5,"description":"Whether
+        or not cut in regular size, having a custom value of not less than euro\u0026nbsp;450
+        per 100\u0026nbsp;kg net weight, for use as binder or wrapper for the manufacture
+        of goods falling within subheading 2402 10 00","productline_suffix":"80"}},{"id":"90579","type":"goods_nomenclature","attributes":{"goods_nomenclature_item_id":"2401208510","goods_nomenclature_sid":90579,"number_indents":3,"description":"Flue-cured
+        virginia type","productline_suffix":"80"}},{"id":"90573","type":"goods_nomenclature","attributes":{"goods_nomenclature_item_id":"2401203510","goods_nomenclature_sid":90573,"number_indents":3,"description":"Light
+        air-cured burley type (including burley hybrids)","productline_suffix":"80"}},{"id":"90574","type":"goods_nomenclature","attributes":{"goods_nomenclature_item_id":"2401203520","goods_nomenclature_sid":90574,"number_indents":3,"description":"Light
+        air-cured maryland type","productline_suffix":"80"}},{"id":"90584","type":"goods_nomenclature","attributes":{"goods_nomenclature_item_id":"2401209519","goods_nomenclature_sid":90584,"number_indents":5,"description":"Other","productline_suffix":"80"}},{"id":"90586","type":"goods_nomenclature","attributes":{"goods_nomenclature_item_id":"2401209521","goods_nomenclature_sid":90586,"number_indents":5,"description":"Whether
+        or not cut in regular size, having a custom value of not less than euro\u0026nbsp;450
+        per 100\u0026nbsp;kg net weight, for use as binder or wrapper for the manufacture
+        of goods falling within subheading 2402 10 00","productline_suffix":"80"}},{"id":"3403041","type":"measure","attributes":{"id":3403041,"validity_start_date":"2015-01-01T00:00:00.000Z","validity_end_date":null,"goods_nomenclature_item_id":"0202305000"},"relationships":{"goods_nomenclature":{"data":{"id":"27910","type":"goods_nomenclature"}}}},{"id":"27910","type":"goods_nomenclature","attributes":{"goods_nomenclature_item_id":"0202305000","goods_nomenclature_sid":27910,"number_indents":2,"description":"Crop,
+        chuck-and-blade and brisket cuts","productline_suffix":"80"}}],"meta":{"pagination":{"page":1,"per_page":5,"total_count":12}}}'
+    http_version: 
+  recorded_at: Fri, 04 Oct 2019 12:35:19 GMT
+- request:
+    method: get
+    uri: http://localhost:3018/certificate_types
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/vnd.uktt.v2
+      User-Agent:
+      - Faraday v0.11.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"b6c71cba1113e62dfff80a2dd054ff4d"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 2ec89cc0-0f37-47e5-a829-304db7645041
+      X-Runtime:
+      - '0.010899'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"data":[{"id":"A","type":"certificate_type","attributes":{"certificate_type_code":"A","description":"Certificate
+        of authenticity"}},{"id":"E","type":"certificate_type","attributes":{"certificate_type_code":"E","description":"Export
+        certificate/licence/document from country of origin"}},{"id":"H","type":"certificate_type","attributes":{"certificate_type_code":"H","description":"HANDI,
+        LOOMS certificate"}},{"id":"I","type":"certificate_type","attributes":{"certificate_type_code":"I","description":"Surveillance
+        certificate/licence/ document issued by one of the Member States"}},{"id":"L","type":"certificate_type","attributes":{"certificate_type_code":"L","description":"Import
+        certificate/licence/document"}},{"id":"C","type":"certificate_type","attributes":{"certificate_type_code":"C","description":"Other
+        certificates"}},{"id":"X","type":"certificate_type","attributes":{"certificate_type_code":"X","description":"Export
+        licence"}},{"id":"D","type":"certificate_type","attributes":{"certificate_type_code":"D","description":"Anti-dumping/countervailing
+        document"}},{"id":"T","type":"certificate_type","attributes":{"certificate_type_code":"T","description":"T-Document"}},{"id":"U","type":"certificate_type","attributes":{"certificate_type_code":"U","description":"Proofs
+        of origin"}},{"id":"Z","type":"certificate_type","attributes":{"certificate_type_code":"Z","description":"More
+        certificates"}},{"id":"P","type":"certificate_type","attributes":{"certificate_type_code":"P","description":"Ingredients"}},{"id":"K","type":"certificate_type","attributes":{"certificate_type_code":"K","description":"Tariff
+        quota"}},{"id":"Y","type":"certificate_type","attributes":{"certificate_type_code":"Y","description":"Particular
+        provisions"}},{"id":"N","type":"certificate_type","attributes":{"certificate_type_code":"N","description":"UN/EDIFACT
+        certificates"}},{"id":"R","type":"certificate_type","attributes":{"certificate_type_code":"R","description":"Export
+        refunds"}},{"id":"9","type":"certificate_type","attributes":{"certificate_type_code":"9","description":"National
+        Document"}}]}'
+    http_version: 
+  recorded_at: Fri, 04 Oct 2019 12:35:19 GMT
+recorded_with: VCR 3.0.3

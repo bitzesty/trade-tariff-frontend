@@ -2,113 +2,77 @@
 http_interactions:
 - request:
     method: get
-    uri: http://tariff-api.dev.gov.uk/updates/latest
+    uri: http://localhost:3018/sections
     body:
       encoding: US-ASCII
       string: ''
-    headers: {}
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
   response:
     status:
       code: 200
-      message: ! 'OK '
+      message: OK
     headers:
-      Server:
-      - nginx
-      Date:
-      - Wed, 13 Feb 2013 13:15:54 GMT
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
       Content-Type:
       - application/json; charset=utf-8
-      Content-Length:
-      - '368'
-      Connection:
-      - close
-      X-Ua-Compatible:
-      - IE=Edge
       Etag:
-      - ! '"06447f3f8e418cb7ec9ea45d71a2884c"'
+      - W/"3a14b5caaf9984aeea8cbbc448e4e499"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 62cf11ec4bdf2d2f1140e99a179f4403
+      - 2af7387f-a6d6-405f-89aa-810fe1528444
       X-Runtime:
-      - '0.102370'
+      - '0.205583'
+      Transfer-Encoding:
+      - chunked
     body:
-      encoding: US-ASCII
-      string: ! '[{"update_type":"TariffSynchronizer::ChiefUpdate","state":"A","created_at":"2013-02-12T12:35:44+00:00","updated_at":"2013-02-12T12:35:57+00:00","filename":"2013-02-12_KBT009(13043).txt"},{"update_type":"TariffSynchronizer::TaricUpdate","state":"A","created_at":"2013-02-12T12:35:31+00:00","updated_at":"2013-02-12T12:35:56+00:00","filename":"2013-02-11_TGB13028.xml"}]'
-    http_version:
-  recorded_at: Wed, 13 Feb 2013 13:15:54 GMT
-- request:
-    method: get
-    uri: http://tariff-api.dev.gov.uk/sections
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers: {}
-  response:
-    status:
-      code: 200
-      message: ! 'OK '
-    headers:
-      Server:
-      - nginx
-      Date:
-      - Wed, 13 Feb 2013 13:15:59 GMT
-      Content-Type:
-      - application/json; charset=utf-8
-      Content-Length:
-      - '3262'
-      Connection:
-      - close
-      X-Ua-Compatible:
-      - IE=Edge
-      Etag:
-      - ! '"fd685a5983410a0b05a3c2197e54ecae"'
-      Cache-Control:
-      - max-age=0, private, must-revalidate
-      X-Request-Id:
-      - 725de3846e1411353273d3ae3920e268
-      X-Runtime:
-      - '0.078096'
-    body:
-      encoding: US-ASCII
-      string: ! '[{"position":1,"title":"Live animals; animal products (chapters 1
-        to 5)","numeral":"I"},{"position":2,"title":"Vegetable products (chapters
-        6 to 14)","numeral":"II"},{"position":3,"title":"Animal or vegetable fats
-        and oils and their cleavage products; prepared edible fats; animal or vegetable
-        waxes (chapter 15)","numeral":"III"},{"position":4,"title":"Prepared foodstuffs;
-        beverages, spirits and vinegar; tobacco and manufactured tobacco substitutes
-        (chapters 16 to 24)","numeral":"IV"},{"position":5,"title":"Mineral products
-        (chapters 25 to 27)","numeral":"V"},{"position":6,"title":"Products of the
-        chemical or allied industries (chapters 28 to 38)","numeral":"VI"},{"position":7,"title":"Plastics
-        and articles thereof; rubber and articles thereof (chapters 39 to 40)","numeral":"VII"},{"position":8,"title":"Raw
+      encoding: UTF-8
+      string: '[{"id":1,"position":1,"title":"Live animals; animal products","numeral":"I","chapter_from":"01","chapter_to":"05","section_note_id":1},{"id":2,"position":2,"title":"Vegetable
+        products","numeral":"II","chapter_from":"06","chapter_to":"14","section_note_id":6},{"id":3,"position":3,"title":"Animal
+        or vegetable fats and oils and their cleavage products; prepared edible fats;
+        animal or vegetable waxes","numeral":"III","chapter_from":"15","chapter_to":"15","section_note_id":9},{"id":4,"position":4,"title":"Prepared
+        foodstuffs; beverages, spirits and vinegar; tobacco and manufactured tobacco
+        substitutes","numeral":"IV","chapter_from":"16","chapter_to":"24","section_note_id":null},{"id":5,"position":5,"title":"Mineral
+        products","numeral":"V","chapter_from":"25","chapter_to":"27","section_note_id":null},{"id":6,"position":6,"title":"Products
+        of the chemical or allied industries","numeral":"VI","chapter_from":"28","chapter_to":"38","section_note_id":7},{"id":7,"position":7,"title":"Plastics
+        and articles thereof; rubber and articles thereof","numeral":"VII","chapter_from":"39","chapter_to":"40","section_note_id":8},{"id":8,"position":8,"title":"Raw
         hides and skins, leather, furskins and articles thereof; saddlery and harness;
         travel goods, handbags and similar containers; articles of animal gut (other
-        than silkworm gut) (chapters 41 to 43)","numeral":"VIII"},{"position":9,"title":"Wood
+        than silkworm gut)","numeral":"VIII","chapter_from":"41","chapter_to":"43","section_note_id":null},{"id":9,"position":9,"title":"Wood
         and articles of wood; wood charcoal; cork and articles of cork; manufactures
-        of straw, of esparto or of other plaiting materials; basket-ware and wickerwork
-        (chapters 44 to 46)","numeral":"IX"},{"position":10,"title":"Pulp of wood
-        or of other fibrous cellulosic material; recovered (waste and scrap) paper
-        or paperboard; paper and paperboard and articles thereof (chapters 47 to 49)","numeral":"X"},{"position":11,"title":"Textiles
-        and textile articles (chapters 50 to 63)","numeral":"XI"},{"position":12,"title":"Footwear,
+        of straw, of esparto or of other plaiting materials; basket-ware and wickerwork","numeral":"IX","chapter_from":"44","chapter_to":"46","section_note_id":null},{"id":10,"position":10,"title":"Pulp
+        of wood or of other fibrous cellulosic material; recovered (waste and scrap)
+        paper or paperboard; paper and paperboard and articles thereof","numeral":"X","chapter_from":"47","chapter_to":"49","section_note_id":null},{"id":11,"position":11,"title":"Textiles
+        and textile articles","numeral":"XI","chapter_from":"50","chapter_to":"63","section_note_id":2},{"id":12,"position":12,"title":"Footwear,
         headgear, umbrellas, sun umbrellas, walking-sticks, seat-sticks, whips, riding-crops
         and parts thereof; prepared feathers and articles made therewith; artificial
-        flowers; articles of human hair (chapters 64 to 67)","numeral":"XII"},{"position":13,"title":"Articles
+        flowers; articles of human hair","numeral":"XII","chapter_from":"64","chapter_to":"67","section_note_id":null},{"id":13,"position":13,"title":"Articles
         of stone, plaster, cement, asbestos, mica or similar materials; ceramic products;
-        glass and glassware (chapters 68 to 70)","numeral":"XIII"},{"position":14,"title":"Natural
+        glass and glassware","numeral":"XIII","chapter_from":"68","chapter_to":"70","section_note_id":null},{"id":14,"position":14,"title":"Natural
         or cultured pearls, precious or semi-precious stones, precious metals, metals
-        clad with precious metal and articles thereof; imitation jewellery; coins
-        (chapter 71)","numeral":"XIV"},{"position":15,"title":"Base metals and articles
-        of base metal (chapters 72 to 83)","numeral":"XV"},{"position":16,"title":"Machinery
+        clad with precious metal and articles thereof; imitation jewellery; coins","numeral":"XIV","chapter_from":"71","chapter_to":"71","section_note_id":null},{"id":15,"position":15,"title":"Base
+        metals and articles of base metal","numeral":"XV","chapter_from":"72","chapter_to":"83","section_note_id":3},{"id":16,"position":16,"title":"Machinery
         and mechanical appliances; electrical equipment; parts thereof, sound recorders
         and reproducers, television image and sound recorders and reproducers, and
-        parts and accessories of such articles (chapters 84 to 85)","numeral":"XVI"},{"position":17,"title":"Vehicles,
-        aircraft, vessels and associated transport equipment (chapters 86 to 89)","numeral":"XVII"},{"position":18,"title":"Optical,
+        parts and accessories of such articles","numeral":"XVI","chapter_from":"84","chapter_to":"85","section_note_id":4},{"id":17,"position":17,"title":"Vehicles,
+        aircraft, vessels and associated transport equipment","numeral":"XVII","chapter_from":"86","chapter_to":"89","section_note_id":5},{"id":18,"position":18,"title":"Optical,
         photographic, cinematographic, measuring, checking, precision, medical or
         surgical instruments and apparatus; clocks and watches; musical instruments;
-        parts and accessories thereof (chapters 90 to 92)","numeral":"XVIII"},{"position":19,"title":"Arms
-        and ammunition; parts and accessories thereof (chapter 93)","numeral":"XIX"},{"position":20,"title":"Miscellaneous
-        manufactured articles (chapters 94 to 96)","numeral":"XX"},{"position":21,"title":"Works
-        of art, collectors'' pieces and antiques (chapters 97 to 99)","numeral":"XXI"}]'
-    http_version:
-  recorded_at: Wed, 13 Feb 2013 13:15:59 GMT
-recorded_with: VCR 2.2.5
+        parts and accessories thereof","numeral":"XVIII","chapter_from":"90","chapter_to":"92","section_note_id":null},{"id":19,"position":19,"title":"Arms
+        and ammunition; parts and accessories thereof","numeral":"XIX","chapter_from":"93","chapter_to":"93","section_note_id":null},{"id":20,"position":20,"title":"Miscellaneous
+        manufactured articles","numeral":"XX","chapter_from":"94","chapter_to":"96","section_note_id":null},{"id":21,"position":21,"title":"Works
+        of art, collectors'' pieces and antiques","numeral":"XXI","chapter_from":"97","chapter_to":"98","section_note_id":null}]'
+    http_version: 
+  recorded_at: Tue, 05 Mar 2019 11:05:55 GMT
+recorded_with: VCR 3.0.3

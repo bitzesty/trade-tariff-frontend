@@ -3,47 +3,81 @@ require "api_entity"
 class ApplicationController < ActionController::Base
   protect_from_forgery
   include TradeTariffFrontend::ViewContext::Controller
+  include ApplicationHelper
 
+  # before_action :http_authentication, if: -> { TradeTariffFrontend::Locking.auth_locked? }
+  before_action :sample_requests_for_scout
   before_action :set_last_updated
   before_action :set_cache
+  before_action :preprocess_raw_params
   before_action :search_query
+  before_action :set_currency_for_date
   before_action :maintenance_mode_if_active
   before_action :bots_no_index_if_historical
 
   layout :set_layout
 
-  rescue_from Errno::ECONNREFUSED do |e|
+  rescue_from AbstractController::ActionNotFound do
+    render plain: '404', status: 404
+  end
+
+  rescue_from Errno::ECONNREFUSED do |_e|
     render plain: '', status: :error
   end
 
-  rescue_from ApiEntity::NotFound do ||
+  rescue_from ApiEntity::NotFound do
     render plain: '404', status: 404
   end
 
   rescue_from ApiEntity::Error, with: :render_500
 
-  rescue_from URI::InvalidURIError do |e|
+  rescue_from URI::InvalidURIError do |_e|
     render plain: '404', status: 404
+  end
+
+  rescue_from(ActionView::MissingTemplate, ActionController::UnknownFormat) do |_e|
+    request.format = :html
+    render_404
   end
 
   def url_options
     return super unless search_invoked?
-    return { country: search_query.country }.merge(super) if search_query.date.today?
+
+    if search_query.date.today?
+      return { country: search_query.country, currency: search_query.currency }.merge(super)
+    end
+
     {
       year: search_query.date.year,
       month: search_query.date.month,
       day: search_query.date.day,
-      country: search_query.country
+      country: search_query.country,
+      currency: search_query.currency
     }.merge(super)
   end
 
   private
 
+  # def http_authentication
+  #   if TradeTariffFrontend::Locking.auth_locked?
+  #     authenticate_or_request_with_http_basic do |name, password|
+  #       ActiveSupport::SecurityUtils.variable_size_secure_compare(name, TradeTariffFrontend::Locking.user) &
+  #         ActiveSupport::SecurityUtils.variable_size_secure_compare(password, TradeTariffFrontend::Locking.password)
+  #     end
+  #   end
+  # end
+
   def render_500
     render template: "errors/internal_server_error",
-           layout: "pages",
            status: 500
-    return false
+    false
+  end
+
+  def render_404
+    render template: "errors/not_found",
+           status: :not_found,
+           formats: :html
+    false
   end
 
   def set_last_updated
@@ -67,16 +101,41 @@ class ApplicationController < ActionController::Base
   end
 
   def query_params
-    { query: { as_of: search_query.date } }
+    { as_of: search_query.date, currency: search_query.currency }
   end
 
   def set_cache
     unless Rails.env.development?
-      expires_in 2.hours, :public => true, 'stale-if-error' => 86400, 'stale-while-revalidate' => 86400
+      expires_in 2.hours, :public => true, 'stale-if-error' => 86_400, 'stale-while-revalidate' => 86_400
     end
   end
 
   protected
+
+  def preprocess_raw_params
+    if TradeTariffFrontend.block_searching_past_march? && params[:year] && params[:month] && params[:day]
+      now = Date.current
+      search_date = begin
+        Date.new(*[params[:year], params[:month], params[:day]].map(&:to_i))
+      rescue ArgumentError
+        now
+      end
+      brexit_date = Date.parse(ENV['BREXIT_DATE'] || '2021-01-01')
+      if (search_date >= brexit_date) && (now < brexit_date)
+        params[:year] = now.year
+        params[:month] = now.month
+        params[:day] = now.day
+        flash[:alert] = "Sorry we are currently unable to display data past #{brexit_date.strftime("#{brexit_date.day.ordinalize} of %B %Y")}"
+      end
+    end
+  end
+
+  def set_currency_for_date
+    if search_date_in_future_month?
+      search_query.attributes['currency'] = "EUR"
+      flash[:alert] = "Euro is the only currency supported for a search date in the future"
+    end
+  end
 
   def maintenance_mode_if_active
     if ENV["MAINTENANCE"].present? && action_name != "maintenance"
@@ -85,11 +144,26 @@ class ApplicationController < ActionController::Base
   end
 
   def bots_no_index_if_historical
-    response.headers["X-Robots-Tag"] = "none" unless @search.today?
+    return if search_query.today?
+
+    response.headers["X-Robots-Tag"] = "none"
   end
 
   def append_info_to_payload(payload)
     super
     payload[:user_agent] = request.env["HTTP_USER_AGENT"]
+  end
+
+  def sample_requests_for_scout
+    # Sample rate should range from 0-1:
+    # * 0: captures no requests
+    # * 0.75: captures 75% of requests
+    # * 1: captures all requests
+    sample_rate = 0.1
+
+    if rand > sample_rate
+      Rails.logger.debug("[Scout] Ignoring request: #{request.original_url}")
+      ScoutApm::Transaction.ignore!
+    end
   end
 end

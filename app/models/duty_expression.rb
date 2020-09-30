@@ -12,4 +12,8 @@ class DutyExpression
       base
     end
   end
+
+  def amount
+    base.delete("%").to_i
+  end
 end

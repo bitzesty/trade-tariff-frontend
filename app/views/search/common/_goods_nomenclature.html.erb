@@ -1,0 +1,14 @@
+<tr class="govuk-table__row">
+  <td class="govuk-table__cell">
+    <a href="<%= commodity_path(goods_nomenclature) %>" aria-describedby="code-for-commodity-<%= goods_nomenclature.id %>">
+      <%= goods_nomenclature.description.html_safe %>
+      <span class="govuk-visually-hidden">
+        (code <%= goods_nomenclature.code %>)
+      </span>    
+    </a>
+  </td>
+
+  <td class="govuk-table__cell text-right" id="code-for-commodity-<%= goods_nomenclature.id %>">
+    <%= format_full_code(goods_nomenclature) %>
+  </td>
+</tr>

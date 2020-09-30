@@ -3,7 +3,7 @@ require 'spec_helper'
 describe CommoditiesController, type: :controller do
   describe "GET to #show" do
     context 'existing commodity id provided', vcr: { cassette_name: "commodities#show" } do
-      let!(:commodity)   { Commodity.new(attributes_for :commodity) }
+      let!(:commodity)   { Commodity.new(attributes_for(:commodity).stringify_keys) }
 
       before(:each) do
         get :show, params: { id: commodity.short_code }
@@ -16,19 +16,6 @@ describe CommoditiesController, type: :controller do
       it { expect(assigns(:chapter)).to be_present }
       it { expect(assigns(:heading)).to be_present }
       it { expect(assigns(:commodity)).to be_present }
-    end
-
-    context 'with too long commodity id provided', vcr: { cassette_name: "commodities#show_01012100001234" } do
-      let(:commodity_id) { '01012100001234' } # commodity 0101210000 does exist
-
-      before(:each) do
-        get :show, params: { id: commodity_id }
-      end
-
-      it 'redirects to heading page (strips exceeding heading id characters)' do
-        expect(response.status).to eq 302
-        expect(response.location).to eq commodity_url(id: commodity_id.first(10))
-      end
     end
 
     context 'with non existing commodity id provided', vcr: { cassette_name: "commodities#show_0101999999" } do
@@ -60,7 +47,8 @@ describe CommoditiesController, type: :controller do
       it 'redirects to actual version of the commodity page' do
         expect(response.status).to eq 302
         expect(response.location).to eq commodity_url(
-                                            id: commodity_id.first(10)
+                                            id: commodity_id.first(10),
+                                            currency: 'EUR'
                                         )
       end
     end

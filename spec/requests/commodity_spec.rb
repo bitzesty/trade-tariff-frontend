@@ -9,7 +9,6 @@ describe 'Commodity page', type: :request do
             visit commodity_path("0101300000")
 
             expect(page).to have_content 'Importing from outside the EU is subject to a third country duty of 7.70 %'
-            expect(page).to have_content 'Goods are subject to VAT standard rate.'
           end
         end
       end
@@ -19,7 +18,7 @@ describe 'Commodity page', type: :request do
       context 'requested with json format' do
         it 'renders direct API response' do
           VCR.use_cassette('commodities#show_0101300000_api_json_format') do
-            get "/trade-tariff/commodities/0101300000.json"
+            get "/commodities/0101300000.json"
 
             json = JSON.parse(response.body)
 
@@ -32,7 +31,7 @@ describe 'Commodity page', type: :request do
       context 'requested with json HTTP Accept header' do
         it 'renders direct API response' do
           VCR.use_cassette('commodities#show_0101300000_api_json_content_type') do
-            get "/trade-tariff/commodities/0101300000", headers: { 'HTTP_ACCEPT' => 'application/json' }
+            get "/commodities/0101300000", headers: { 'HTTP_ACCEPT' => 'application/json' }
 
             json = JSON.parse(response.body)
 
@@ -51,7 +50,6 @@ describe 'Commodity page', type: :request do
           visit commodity_path("8714930019")
 
           expect(page).to have_content 'Importing from outside the EU is subject to a third country duty of 4.70 % unless subject to other measures.'
-          expect(page).to have_content 'Goods are subject to VAT standard rate.'
         end
       end
     end
