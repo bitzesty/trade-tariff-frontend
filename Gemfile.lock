@@ -1094,7 +1094,7 @@ GEM
     msgpack (1.3.3)
     multi_json (1.12.1)
     multipart-post (2.1.1)
-    nio4r (2.5.3)
+    nio4r (2.5.4)
     nokogiri (1.10.10)
       mini_portile2 (~> 2.4.0)
     nokogumbo (2.0.2)
@@ -1110,7 +1110,8 @@ GEM
     pry-rails (0.3.4)
       pry (>= 0.9.10)
     public_suffix (4.0.6)
-    puma (3.12.6)
+    puma (5.0.2)
+      nio4r (~> 2.0)
     rack (2.2.3)
     rack-attack (5.4.2)
       rack (>= 1.0, < 3)
@@ -1304,7 +1305,7 @@ DEPENDENCIES
   nokogiri (>= 1.10.9)
   plek (~> 1.11)
   pry-rails
-  puma (~> 3.12.6)
+  puma (~> 5.0.2)
   rack-attack
   rack-cors
   rack-test

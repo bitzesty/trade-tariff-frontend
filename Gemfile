@@ -34,7 +34,7 @@ gem "logstash-event"
 gem "lograge"
 
 # Web Server
-gem 'puma', '~> 3.12.6'
+gem 'puma', '~> 5.0.2'
 gem 'rack-cors'
 gem 'rack-attack'
 gem "scout_apm"
