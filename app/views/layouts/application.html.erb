@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" class="govuk-template ">
 
-<%= render :partial => 'layouts/base' %>
+<%= render partial: 'layouts/base' %>
 
 <head>
   <meta charset="utf-8" />
-  <title><%= yield(:pageTitle) %></title>
+  <title><%= yield :pageTitle %></title>
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#0b0c0c" />
 
@@ -68,7 +68,7 @@
     <%= yield :before_main_content %>
 
     <main id="content" class="govuk-main-wrapper" role="main">
-      <%= render 'shared/header' %>
+      <%= render 'shared/search' %>
       <%= yield %>
       <% if @tariff_last_updated %>
         <div id="last-updated-at"><p class="govuk-!-font-size-16">Last updated: <%= @tariff_last_updated.strftime("%e %B %Y") %>&emsp;<a href="https://www.gov.uk/government/collections/tariff-stop-press-notices" target="_blank">View latest amendments</a></p></div>

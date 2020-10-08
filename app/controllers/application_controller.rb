@@ -29,7 +29,10 @@ class ApplicationController < ActionController::Base
     render plain: '404', status: 404
   end
 
-  rescue_from ApiEntity::Error, with: :render_500
+  rescue_from ApiEntity::Error do
+    request.format = :html
+    render_500
+  end
 
   rescue_from URI::InvalidURIError do |_e|
     render plain: '404', status: 404
@@ -68,12 +71,15 @@ class ApplicationController < ActionController::Base
   # end
 
   def render_500
+    @no_shared_search = true
     render template: "errors/internal_server_error",
-           status: 500
+           status: :internal_server_error,
+           formats: :html
     false
   end
 
   def render_404
+    @no_shared_search = true
     render template: "errors/not_found",
            status: :not_found,
            formats: :html
