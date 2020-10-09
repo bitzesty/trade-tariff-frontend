@@ -1,6 +1,5 @@
 class CommoditiesController < GoodsNomenclaturesController
   def show
-    raise ApiEntity::Error, "Message"
     @commodity = CommodityPresenter.new(Commodity.find(params[:id], query_params))
     @heading = @commodity.heading
     @chapter = @commodity.chapter
