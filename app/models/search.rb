@@ -12,6 +12,12 @@ class Search
 
   delegate :today?, to: :date
 
+  def initialize(attributes = {})
+    attributes['currency'].gsub!(/[^a-zA-Z]/, '') if attributes['currency']
+    attributes['country'].gsub!(/[^a-zA-Z]/, '') if attributes['country']
+    super
+  end
+
   def perform
     retries = 0
     begin
@@ -55,8 +61,8 @@ class Search
 
   def currency_name(currency = attributes['currency'])
     case currency
-    when "GBP"
-        then 'British Pound'
+    when 'GBP'
+      'British Pound'
     else
       'Euro'
     end
