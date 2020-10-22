@@ -22,21 +22,21 @@ gem "kaminari", "~> 1.0"
 gem "webpacker", "~> 5.2"
 
 # gov UK
-gem "govspeak", '~> 6.5.6'
+gem "govspeak", "~> 6.5.6"
 gem "plek", "~> 1.11"
 
 gem "connection_pool", "~> 2.2"
 
-gem "nokogiri", ">= 1.10.9"
+gem "nokogiri", ">= 1.10.10"
 
 # Logging
 gem "logstash-event"
 gem "lograge"
 
 # Web Server
-gem 'puma', '~> 5.0.2'
-gem 'rack-cors'
-gem 'rack-attack'
+gem "puma", "~> 5.0.2"
+gem "rack-cors"
+gem "rack-attack"
 gem "scout_apm"
 
 # Redis
@@ -53,7 +53,6 @@ group :development do
 end
 
 group :development, :test do
-  gem "pry-rails"
   gem "dotenv-rails"
 end
 
@@ -70,7 +69,7 @@ group :test do
   gem "selenium-webdriver"
   gem "timecop", "~> 0.9.1"
   gem "rspec_junit_formatter"
-  gem 'rack-test'
+  gem "rack-test"
 end
 
 group :production do
