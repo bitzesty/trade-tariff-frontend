@@ -20,7 +20,7 @@ jobs:
         id: yarn-cache-dir-path
         run: echo "::set-output name=dir::$(yarn config get cacheFolder)"
       - name: Setup Ruby
-        uses: actions/setup-ruby@v1
+        uses: ruby/setup-ruby@v1
         with:
           ruby-version: 2.7.1
       - uses: nanasess/setup-chromedriver@master
@@ -37,7 +37,7 @@ jobs:
           bundle exec rails assets:precompile
           RAILS_ENV=test RAILS_DISABLE_TEST_LOG=true bundle exec rspec spec/ --tag '~skip_ci' --profile 10 --format RspecJunitFormatter --out rspec.xml --format progress
   deploy_dev:
-    if: github.ref == 'refs/heads/master_notyet'
+    if: github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     strategy:
       max-parallel: 1
@@ -50,9 +50,9 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-gems-
       - name: Setup Ruby
-        uses: actions/setup-ruby@v1
+        uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 2.5.8
+          ruby-version: 2.7.1
       - uses: actions/setup-node@v2-beta
         with:
           node-version: '12'
@@ -67,7 +67,7 @@ jobs:
           CF_ORG: ${{ secrets.CF_ORG }}
           SLACK_CHANNEL: ${{ secrets.SLACK_CHANNEL }}
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-          HEALTHCHECK_URL: ${{ secrets.HEALTHCHECK_URL }}
+          HEALTHCHECK_URL: ${{ secrets.DEV_HEALTHCHECK_URL }}
         run: |
           curl -v -L -o cf-cli_amd64.deb 'https://cli.run.pivotal.io/stable?release=debian64&source=github'
           sudo dpkg -i cf-cli_amd64.deb
@@ -77,7 +77,7 @@ jobs:
           cf install-plugin app-autoscaler-plugin -r CF-Community -f
           ./bin/deploy
   deploy_staging:
-    if: github.ref == 'refs/heads/staging_notyet'
+    if: github.ref == 'refs/heads/staging'
     runs-on: ubuntu-latest
     strategy:
       max-parallel: 1
@@ -90,9 +90,9 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-gems-
       - name: Setup Ruby
-        uses: actions/setup-ruby@v1
+        uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 2.5.8
+          ruby-version: 2.7.1
       - uses: actions/setup-node@v2-beta
         with:
           node-version: '12'
@@ -107,7 +107,7 @@ jobs:
           CF_ORG: ${{ secrets.CF_ORG }}
           SLACK_CHANNEL: ${{ secrets.SLACK_CHANNEL }}
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-          HEALTHCHECK_URL: ${{ secrets.HEALTHCHECK_URL }}
+          HEALTHCHECK_URL: ${{ secrets.STAGING_HEALTHCHECK_URL }}
         run: |
           curl -v -L -o cf-cli_amd64.deb 'https://cli.run.pivotal.io/stable?release=debian64&source=github'
           sudo dpkg -i cf-cli_amd64.deb

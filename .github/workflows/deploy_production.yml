@@ -2,7 +2,7 @@ name: "Production deployment"
 on: [workflow_dispatch]
 jobs:
   deploy_production:
-    if: github.ref == 'refs/heads/production_notyet'
+    if: github.ref == 'refs/heads/production'
     runs-on: ubuntu-latest
     strategy:
       max-parallel: 1
@@ -15,9 +15,9 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-gems-
       - name: Setup Ruby
-        uses: actions/setup-ruby@v1
+        uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 2.5.8
+          ruby-version: 2.7.1
       - uses: actions/setup-node@v2-beta
         with:
           node-version: '12'
@@ -32,7 +32,7 @@ jobs:
           CF_ORG: ${{ secrets.CF_ORG }}
           SLACK_CHANNEL: ${{ secrets.SLACK_CHANNEL }}
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-          HEALTHCHECK_URL: ${{ secrets.HEALTHCHECK_URL }}
+          HEALTHCHECK_URL: ${{ secrets.PRODUCTION_HEALTHCHECK_URL }}
         run: |
           curl -v -L -o cf-cli_amd64.deb 'https://cli.run.pivotal.io/stable?release=debian64&source=github'
           sudo dpkg -i cf-cli_amd64.deb
