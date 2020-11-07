@@ -1,6 +1,3 @@
-[![CircleCI](https://circleci.com/gh/bitzesty/trade-tariff-frontend/tree/master.svg?style=svg&circle-token=953ad6f2f468a760cbba9a43c40ebf69fdbdc60c)](https://circleci.com/gh/bitzesty/trade-tariff-frontend/tree/master)
-[![Code Climate](https://codeclimate.com/github/bitzesty/trade-tariff-frontend/badges/gpa.svg)](https://codeclimate.com/github/bitzesty/trade-tariff-frontend)
-
 # Trade Tariff Frontend
 
 __Now maintained at https://github.com/bitzesty/trade-tariff-frontend__
@@ -83,7 +80,7 @@ To create or update autoscaling policy for your application run:
     cf attach-autoscaling-policy APP_NAME ./policy.json
 
 
-Current autosscaling policy files are [here](https://gitlab.bitzesty.com/clients/trade-tariff/trade-tariff-frontend/-/tree/master/config/autoscale).
+Current autosscaling policy files are [here](https://github.com/bitzesty/trade-tariff-frontend/tree/master/config/autoscaling).
 
 
 
