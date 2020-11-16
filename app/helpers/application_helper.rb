@@ -103,7 +103,7 @@ module ApplicationHelper
     if chapter.forum_url.present?
       chapter.forum_url
     else
-      "https://forum.trade-tariff.service.gov.uk/c/classification-#{chapter.short_code}"
+      "https://forum.trade-tariff.service.gov.uk/c/classification/chapter-#{chapter.short_code}"
     end
   end
 
