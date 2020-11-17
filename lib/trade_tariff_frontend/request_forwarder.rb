@@ -41,7 +41,7 @@ module TradeTariffFrontend
             response.headers.
                      except(*IGNORED_UPSTREAM_HEADERS).
                      merge('X-Slimmer-Skip' => true).
-                     merge('Cache-Control' => cache_control_value(response))
+                     merge('Cache-Control' => "max-age=#{response.status.to_i.between?(500, 599) ? 180 : 3600}")
           )
         ).finish
       else
@@ -76,31 +76,6 @@ module TradeTariffFrontend
     def api_request_path_for(path)
       @uri = URI.parse(path)
       @api_request_path_formatter.call(path)
-    end
-
-    def cache_control_value(response)
-      return 'no-cache' if @uri.path =~ /\/search_references\.(json|csv)/
-      return 'no-cache' if @uri.path =~ /\/(quotas|additional_codes|certificates|footnotes)\/search.*/
-      "max-age=#{cache_max_age(response.status.to_i)}"
-    end
-
-    def cache_max_age(response_code, now=nil)
-      # cache server errors for a relatively short time
-      return 180 if response_code.to_i.between?(500, 599)
-
-      # cache goods_nomenclature calls with `as_of` parameter for 10 years
-      return (60 * 60 * 24 * 365 * 10) if @uri.path =~ /\/v1\/goods_nomenclature\.(json|csv)/ && @uri.query.include?('as_of')
-
-      # cache other calls according to the daily sync schedule
-      now ||= Time.now.utc
-      case now.hour
-      when 0..21
-        now.change(hour: 22).to_i - now.to_i
-      when 22
-        now.change(hour: 23).to_i - now.to_i
-      when 23
-        now.tomorrow.change(hour: 22).to_i - now.to_i
-      end
     end
   end
 end
