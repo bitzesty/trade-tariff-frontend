@@ -19,7 +19,7 @@ class GeographicalArea
   def self.cached_countries
     Rails.cache.fetch(
       'cached_countries',
-      expires_in: 24.hours
+      expires_in: 1.hour
     ) do
       countries
     end
@@ -32,7 +32,7 @@ class GeographicalArea
   def self.cached_areas
     Rails.cache.fetch(
       'areas',
-      expires_in: 24.hours
+      expires_in: 1.hour
     ) do
       areas
     end
