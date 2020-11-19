@@ -9,6 +9,7 @@ describe 'Sections Index page', type: :request do
 
           expect(page).to have_content 'Live animals; animal products'
           expect(page).to have_content 'Vehicles, aircraft'
+          expect(page).to have_content 'Privacy'
         end
       end
     end
