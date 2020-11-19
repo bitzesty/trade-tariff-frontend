@@ -4,8 +4,8 @@ class FrontendMailer < ActionMailer::Base
 
   def new_feedback(message, name = nil, email = nil)
     @message = message
-    @name = name
-    @email = email
+    @name = name.presence || nil
+    @email = email.presence || TradeTariffFrontend.from_email
 
     mail subject: "Trade Tariff Feedback",
          reply_to: @email
