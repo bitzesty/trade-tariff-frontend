@@ -102,4 +102,29 @@ module TradeTariffFrontend
       end
     end
   end
+
+  class FilterBadQueryParameterEncoding
+    def initialize(app)
+      @app = app
+    end
+
+    def call(env)
+      @query_string = env['QUERY_STRING'].to_s
+      begin
+        Rack::Utils.parse_nested_query @query_string
+      rescue Rack::Utils::InvalidParameterError
+        return bad_request
+      end
+
+      @app.call(env)
+    end
+
+    def bad_request
+      [
+        400,
+        { "Content-Type" => "application/json" },
+        [{ status: 400, error: "There was a problem with your query: '#{@query_string}'" }.to_json]
+      ]
+    end
+  end
 end
