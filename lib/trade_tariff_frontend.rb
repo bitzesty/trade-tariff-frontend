@@ -120,10 +120,25 @@ module TradeTariffFrontend
     end
 
     def bad_request
+      @status = 400
       [
-        400,
-        { "Content-Type" => "application/json" },
-        [{ status: 400, error: "There was a problem with your query: '#{@query_string}'" }.to_json]
+        @status,
+        { 'Content-Type' => 'application/json' },
+        error_object
+      ]
+    end
+
+    def error_object
+      [
+        {
+          errors: [
+            {
+              status: @status.to_s,
+              title: "There was a problem with your query",
+              source: {parameter: @query_string}
+            }
+          ]
+        }.to_json
       ]
     end
   end
