@@ -134,8 +134,8 @@ module TradeTariffFrontend
           errors: [
             {
               status: @status.to_s,
-              title: "There was a problem with your query",
-              source: {parameter: @query_string}
+              title: 'There was a problem with your query',
+              source: { parameter: @query_string }
             }
           ]
         }.to_json
