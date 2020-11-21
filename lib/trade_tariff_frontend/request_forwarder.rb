@@ -22,7 +22,7 @@ module TradeTariffFrontend
                              .downcase
                              .split('/')
                              .reject { |p| p.empty? || p == 'api' }
-                             .first || 'v2'
+                             .first || "v#{Rails.configuration.x.backend.api_version}"
         conn = Faraday.new
         response = conn.send(
           rackreq.request_method.downcase,
