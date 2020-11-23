@@ -22,7 +22,7 @@ module TradeTariffFrontend
                              .downcase
                              .split('/')
                              .reject { |p| p.empty? || p == 'api' }
-                             .first || 'v2'
+                             .first || "v#{Rails.configuration.x.backend.api_version}"
         conn = Faraday.new
         response = conn.send(
           rackreq.request_method.downcase,
@@ -41,7 +41,7 @@ module TradeTariffFrontend
             response.headers.
                      except(*IGNORED_UPSTREAM_HEADERS).
                      merge('X-Slimmer-Skip' => true).
-                     merge('Cache-Control' => "max-age=#{response.status.to_i.between?(500, 599) ? 180 : 3600}")
+                     merge('Cache-Control' => cache_control_string(response))
           )
         ).finish
       else
@@ -76,6 +76,13 @@ module TradeTariffFrontend
     def api_request_path_for(path)
       @uri = URI.parse(path)
       @api_request_path_formatter.call(path)
+    end
+
+    def cache_control_string(response)
+      is_error = response.status.to_i.between?(500, 599)
+      cache_control = ["max-age=#{is_error ? 0 : 3600}"]
+      cache_control.unshift('no-store') if is_error
+      cache_control.join(', ')
     end
   end
 end
