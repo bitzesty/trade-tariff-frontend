@@ -5,7 +5,6 @@ class ApplicationController < ActionController::Base
   include TradeTariffFrontend::ViewContext::Controller
   include ApplicationHelper
 
-  # before_action :http_authentication, if: -> { TradeTariffFrontend::Locking.auth_locked? }
   before_action :sample_requests_for_scout
   before_action :set_last_updated
   before_action :set_cache
@@ -17,28 +16,13 @@ class ApplicationController < ActionController::Base
 
   layout :set_layout
 
-  rescue_from AbstractController::ActionNotFound do
-    render plain: '404', status: 404
-  end
-
-  rescue_from Errno::ECONNREFUSED do |_e|
-    render plain: '', status: :error
-  end
-
-  rescue_from ApiEntity::NotFound do
-    render plain: '404', status: 404
-  end
-
-  rescue_from ApiEntity::Error do
+  rescue_from ApiEntity::Error, Errno::ECONNREFUSED do
     request.format = :html
     render_500
   end
 
-  rescue_from URI::InvalidURIError do |_e|
-    render plain: '404', status: 404
-  end
-
-  rescue_from(ActionView::MissingTemplate, ActionController::UnknownFormat) do |_e|
+  rescue_from(ApiEntity::NotFound, ActionView::MissingTemplate, ActionController::UnknownFormat,
+              AbstractController::ActionNotFound, URI::InvalidURIError) do |_e|
     request.format = :html
     render_404
   end
@@ -60,15 +44,6 @@ class ApplicationController < ActionController::Base
   end
 
   private
-
-  # def http_authentication
-  #   if TradeTariffFrontend::Locking.auth_locked?
-  #     authenticate_or_request_with_http_basic do |name, password|
-  #       ActiveSupport::SecurityUtils.variable_size_secure_compare(name, TradeTariffFrontend::Locking.user) &
-  #         ActiveSupport::SecurityUtils.variable_size_secure_compare(password, TradeTariffFrontend::Locking.password)
-  #     end
-  #   end
-  # end
 
   def render_500
     @no_shared_search = true
