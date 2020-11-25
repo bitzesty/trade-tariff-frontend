@@ -52,4 +52,14 @@ describe "Date & Currency change", js: true, vcr: {
       expect(page).to have_content "Change date"
     end
   end
+
+  it 'displays the searched-for date, if the searched-for date is past BREXIT_DATE, and the current date is past BREXIT_DATE' do
+    post_eu_exit_date = DateTime.new(2021, 1, 1, 12, 0, 0)
+
+    Timecop.freeze(post_eu_exit_date) do
+      visit sections_path
+
+      expect(page).to have_content "This tariff is for #{post_eu_exit_date.strftime('%-d %B %Y')}"
+    end
+  end
 end
