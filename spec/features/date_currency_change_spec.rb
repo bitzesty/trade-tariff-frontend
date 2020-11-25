@@ -32,24 +32,21 @@ describe "Date & Currency change", js: true, vcr: {
   end
 
   it 'displays today\'s date, if the searched-for date is past BREXIT_DATE, but the current date is before BREXIT_DATE' do
-    now = DateTime.new(2020, 11, 23, 12, 0, 0)
-    eu_exit = Date.parse(ENV['BREXIT_DATE'] || '2021-01-01')
+    pre_eu_exit_date = DateTime.new(2020, 12, 31, 12, 0, 0)
+    searched_for_date = DateTime.new(2021, 2, 2, 12, 0, 0)
 
-    visit sections_path(day: now.yesterday.day, month: now.month, year: now.year)
+    Timecop.freeze(pre_eu_exit_date) do
+      visit sections_path
 
-    expect(page).to have_content "This tariff is for #{now.yesterday.strftime('%-d %B %Y')}"
+      click_link 'Change date'
 
-    click_link 'Change date'
+      page.execute_script("$('#tariff_date_year').val('#{searched_for_date.year}')")
+      page.execute_script("$('#tariff_date_month').val('#{searched_for_date.month}')")
+      page.execute_script("$('#tariff_date_day').val('#{searched_for_date.day}')")
 
-    page.execute_script("$('#tariff_date_year').val('#{eu_exit.year}')")
-    page.execute_script("$('#tariff_date_month').val('#{eu_exit.month}')")
-    page.execute_script("$('#tariff_date_day').val('#{eu_exit.day + 1}')")
-
-    Timecop.freeze(now) do
       click_link 'Set date'
 
-      expect(page).to have_content "This tariff is for #{now.strftime('%-d %B %Y')}"
-      expect(page).to have_content "Change date"
+      expect(page).to have_content "This tariff is for #{(pre_eu_exit_date).strftime('%-d %B %Y')}"
     end
   end
 
