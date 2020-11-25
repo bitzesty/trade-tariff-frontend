@@ -31,25 +31,6 @@ describe "Date & Currency change", js: true, vcr: {
     expect(page).to have_content "Change date"
   end
 
-  it 'displays today\'s date, if the searched-for date is past BREXIT_DATE, but the current date is before BREXIT_DATE' do
-    pre_eu_exit_date = DateTime.new(2020, 12, 31, 12, 0, 0)
-    searched_for_date = DateTime.new(2021, 2, 2, 12, 0, 0)
-
-    Timecop.freeze(pre_eu_exit_date) do
-      visit sections_path
-
-      click_link 'Change date'
-
-      page.execute_script("$('#tariff_date_year').val('#{searched_for_date.year}')")
-      page.execute_script("$('#tariff_date_month').val('#{searched_for_date.month}')")
-      page.execute_script("$('#tariff_date_day').val('#{searched_for_date.day}')")
-
-      click_link 'Set date'
-
-      expect(page).to have_content "This tariff is for #{(pre_eu_exit_date).strftime('%-d %B %Y')}"
-    end
-  end
-
   it 'displays the searched-for date, if the searched-for date is past BREXIT_DATE, and the current date is past BREXIT_DATE' do
     post_eu_exit_date = DateTime.new(2021, 1, 2, 12, 0, 0)
     searched_for_date = DateTime.new(2021, 2, 2, 12, 0, 0)
