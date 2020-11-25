@@ -70,6 +70,7 @@ group :test do
   gem "timecop", "~> 0.9.1"
   gem "rspec_junit_formatter"
   gem "rack-test"
+  gem 'webdrivers', "~> 4.4"
 end
 
 group :production do
