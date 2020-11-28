@@ -79,6 +79,7 @@ module TradeTariffFrontend
     end
 
     def cache_control_string(response)
+      return 'no-cache' if @uri.path =~ /\/(quotas|additional_codes|certificates|footnotes)\/search.*/
       is_error = response.status.to_i.between?(500, 599)
       cache_control = ["max-age=#{is_error ? 0 : 3600}"]
       cache_control.unshift('no-store') if is_error
