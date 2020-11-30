@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe TradeTariffFrontend::RequestForwarder do
   let(:app)            { ->(env) { [200, env, "app"] } }
-  let(:host)           { "http://tariff-api.example.com" }
+  let(:host)           { TradeTariffFrontend::ServiceChooser.api_host }
   let(:request_path)   { "/sections/1" }
   let(:request_params) { "?page=2" }
 

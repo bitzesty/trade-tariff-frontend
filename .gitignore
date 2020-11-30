@@ -25,6 +25,8 @@ cf-ssh.yml
 .ruby-gemset
 .idea/*
 .env
+.env.development
+.env.test
 
 /public/packs
 /public/packs-test
