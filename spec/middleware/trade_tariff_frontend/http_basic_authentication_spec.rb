@@ -10,7 +10,7 @@ describe 'Basic Auth' do
   context 'when app is not locked', vcr: { cassette_name: 'sections#index_auth_disabled' } do
     before do
       ENV['CDS_LOCKED_IP'] = nil
-      ENV['CDS_IP_WHITELIST'] = nil
+      ENV['IP_ALLOWLIST'] = nil
       ENV['CDS_LOCKED_AUTH'] = nil
       ENV['CDS_USER'] = nil
       ENV['CDS_PASSWORD'] = nil
@@ -29,7 +29,7 @@ describe 'Basic Auth' do
 
     before do
       ENV['CDS_LOCKED_IP'] = nil
-      ENV['CDS_IP_WHITELIST'] = nil
+      ENV['IP_ALLOWLIST'] = nil
       ENV['CDS_LOCKED_AUTH'] = 'true'
       ENV['CDS_USER'] = correct_user
       ENV['CDS_PASSWORD'] = correct_password
@@ -37,7 +37,7 @@ describe 'Basic Auth' do
 
     after do
       ENV['CDS_LOCKED_IP'] = nil
-      ENV['CDS_IP_WHITELIST'] = nil
+      ENV['IP_ALLOWLIST'] = nil
       ENV['CDS_LOCKED_AUTH'] = nil
       ENV['CDS_USER'] = nil
       ENV['CDS_PASSWORD'] = nil
