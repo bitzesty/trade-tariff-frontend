@@ -3,5 +3,7 @@ Rack::Attack.blocklist('block access if locked and ip is not listed') do |reques
 end
 
 Rack::Attack.blocklist('block access for non AWS CDN requests') do |request|
-  TradeTariffFrontend::Locking.cdn_locked? && !TradeTariffFrontend::Locking.cdn_request?(request.env['CDN_SECRET'])
+  result = TradeTariffFrontend::Locking.cdn_locked? && !TradeTariffFrontend::Locking.cdn_request?(request.env['CDN_SECRET'])
+  result = !TradeTariffFrontend::Locking.allowed_ip?(request.ip) if result && TradeTariffFrontend::Locking.has_ip_allow_list?
+  result
 end

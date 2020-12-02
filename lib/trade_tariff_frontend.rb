@@ -80,11 +80,15 @@ module TradeTariffFrontend
     end
 
     def ip_locked?
-      ENV['CDS_LOCKED_IP'].present? && ENV['CDS_IP_WHITELIST'].present?
+      ENV['CDS_LOCKED_IP'].present? && ENV['IP_ALLOWLIST'].present?
+    end
+
+    def has_ip_allow_list?
+      ENV['IP_ALLOWLIST'].present?
     end
 
     def allowed_ip?(ip)
-      allowed_ips = ENV['CDS_IP_WHITELIST']&.split(',')&.map(&:squish) || []
+      allowed_ips = ENV['IP_ALLOWLIST']&.split(',')&.map(&:squish) || []
       allowed_ips.include?(ip)
     end
 
