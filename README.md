@@ -8,7 +8,7 @@ This is the front-end application for:
 
 * [Trade Tariff Backend](https://github.com/bitzesty/trade-tariff-backend)
 
-This application requires the one or more Trade Tariff Backend APIs to be running and the following env variables set: `API_SERVICE_BACKEND_DEFAULT`, `API_SERVICE_BACKEND_URL_OPTIONS`.
+This application requires one or more Trade Tariff Backend APIs to be running and the following env variables set: `API_SERVICE_BACKEND_DEFAULT`, `API_SERVICE_BACKEND_URL_OPTIONS`.
 
 For example:
 
