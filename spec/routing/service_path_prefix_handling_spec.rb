@@ -59,15 +59,24 @@ describe RoutingFilter::ServicePathPrefixHandler, type: :routing do
     end
 
     context 'when the service choice prefix is set to an unsupported service choice' do
-      let(:prefix) { "/foo" }
+      let(:prefix) { "/xixi" }
 
       it 'routes to a not_found action in the errors controller' do
         expect(get: path).to route_to(
           controller: "errors",
           action: "not_found",
-          path: "foo/commodities/0101300000",
+          path: "xixi/commodities/0101300000"
         )
+        expect(TradeTariffFrontend::ServiceChooser).not_to have_received(:service_choice=)
+      end
+    end
 
+    context 'when the service choice prefix is the only thing in the path' do
+      let(:path) { "#{prefix}" }
+      let(:prefix) { '/xi' }
+
+      it 'routes to a not_found action in the errors controller' do
+        expect(get: path).not_to be_routable
         expect(TradeTariffFrontend::ServiceChooser).not_to have_received(:service_choice=)
       end
     end

@@ -2,18 +2,20 @@ require 'trade_tariff_frontend'
 
 module RoutingFilter
   class ServicePathPrefixHandler < Filter
-    SERVICE_CHOICE_PATH_PREFIXES = ::TradeTariffFrontend::ServiceChooser.service_choices.each_with_object({}) do |(key, value), acc|
-      acc["/#{key}"] = key
-    end.freeze
+    SERVICE_CHOICE_PREFIXES =::TradeTariffFrontend::ServiceChooser.
+      service_choices.
+      keys.
+      map { |prefix| Regexp.escape(prefix.to_s) }.
+      join('|')
+
+    SERVICE_CHOICE_PREFIXES_REGEX = %r{^/(#{SERVICE_CHOICE_PREFIXES})(?=/|$)}
 
     # Recognising paths
     def around_recognize(path, env)
-      prefix, service_choice = SERVICE_CHOICE_PATH_PREFIXES.find { |prefix, choice| path.start_with?(prefix) }
+      service_choice = extract_segment!(SERVICE_CHOICE_PREFIXES_REGEX , path)
       service_choice_default = ::TradeTariffFrontend::ServiceChooser.service_default
 
-      path.sub!(prefix, "") if prefix
-
-      if service_choice.present? && service_choice != service_choice_default
+      if path != "/" && service_choice.present? && service_choice != service_choice_default
         ::TradeTariffFrontend::ServiceChooser.service_choice = service_choice
 
         yield.tap do |params|
