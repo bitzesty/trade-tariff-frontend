@@ -87,7 +87,7 @@ module TradeTariffFrontend
     end
 
     def api_host
-      service_choices.fetch(service_choice, service_default)
+      service_choices[service_choice] || service_choices[service_default]
     end
   end
   
