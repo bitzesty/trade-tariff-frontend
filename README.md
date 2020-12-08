@@ -8,7 +8,17 @@ This is the front-end application for:
 
 * [Trade Tariff Backend](https://github.com/bitzesty/trade-tariff-backend)
 
-This application requires the Trade Tariff Backend API to be running and the following env variable set `TARIFF_API_HOST`.
+This application requires the one or more Trade Tariff Backend APIs to be running and the following env variables set: `API_SERVICE_BACKEND_DEFAULT`, `API_SERVICE_BACKEND_URL_OPTIONS`.
+
+For example:
+
+```
+API_SERVICE_BACKEND_DEFAULT=uk
+API_SERVICE_BACKEND_URL_OPTIONS={"uk":"http://localhost:3001","xi":"http://localhost:3002"}
+```
+
+By default (without a service choice prefix) the application will route to whatever the `API_SERVICE_BACKEND_DEFAULT` specifies from the `API_SERVICE_BACKEND_URL_OPTIONS` list.
+
 To use latest api version need to set up env variable `TARIFF_API_VERSION`. 
 
 ## Running the frontend
