@@ -2,12 +2,12 @@ class FrontendMailer < ActionMailer::Base
   default from: TradeTariffFrontend.from_email,
           to: TradeTariffFrontend.to_email
 
-  def new_feedback(message, name = nil, email = nil)
-    @message = message
-    @name = name.presence
-    @email = email.presence || TradeTariffFrontend.from_email
+  def new_feedback(feedback)
+    @message = feedback.message
+    @name = feedback.name.presence
+    @email = feedback.email.presence || TradeTariffFrontend.from_email
 
-    mail subject: "Trade Tariff Feedback",
+    mail subject: 'Trade Tariff Feedback',
          reply_to: @email
   end
 end
