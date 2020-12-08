@@ -6,6 +6,7 @@ module RoutingFilter
       acc["/#{key}"] = key
     end.freeze
 
+    # Recognising paths
     def around_recognize(path, env)
       prefix, choice = SERVICE_CHOICE_PATH_PREFIXES.find { |prefix, choice| path.start_with?(prefix) }
       default = ::TradeTariffFrontend::ServiceChooser.service_default
@@ -23,6 +24,7 @@ module RoutingFilter
       end
     end
 
+    # Rendering links
     def around_generate(params, &block)
       yield.tap do |path, params|
         choice = ::TradeTariffFrontend::ServiceChooser.service_choice
