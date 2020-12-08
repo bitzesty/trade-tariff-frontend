@@ -8,16 +8,16 @@ module RoutingFilter
 
     # Recognising paths
     def around_recognize(path, env)
-      prefix, choice = SERVICE_CHOICE_PATH_PREFIXES.find { |prefix, choice| path.start_with?(prefix) }
-      default = ::TradeTariffFrontend::ServiceChooser.service_default
+      prefix, service_choice = SERVICE_CHOICE_PATH_PREFIXES.find { |prefix, choice| path.start_with?(prefix) }
+      service_choice_default = ::TradeTariffFrontend::ServiceChooser.service_default
 
       path.sub!(prefix, "") if prefix
 
-      if choice.present? && choice != default
-        ::TradeTariffFrontend::ServiceChooser.service_choice = choice
+      if service_choice.present? && service_choice != service_choice_default
+        ::TradeTariffFrontend::ServiceChooser.service_choice = service_choice
 
         yield.tap do |params|
-          params[:service_api_choice] = choice
+          params[:service_api_choice] = service_choice
         end
       else
         yield
@@ -27,10 +27,10 @@ module RoutingFilter
     # Rendering links
     def around_generate(params, &block)
       yield.tap do |path, params|
-        choice = ::TradeTariffFrontend::ServiceChooser.service_choice
-        default = ::TradeTariffFrontend::ServiceChooser.service_default
+        service_choice = ::TradeTariffFrontend::ServiceChooser.service_choice
+        service_choice_default = ::TradeTariffFrontend::ServiceChooser.service_default
 
-        prepend_segment!(path, choice) if choice && choice != default
+        prepend_segment!(path, service_choice) if service_choice && service_choice != service_choice_default
       end
     end
   end
