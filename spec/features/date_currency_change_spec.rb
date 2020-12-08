@@ -31,7 +31,7 @@ describe "Date & Currency change", js: true, vcr: {
     expect(page).to have_content "Change date"
   end
 
-  it 'displays today\'s date, if the searched-for date is past BREXIT_DATE, but the current date is before BREXIT_DATE' do
+  xit 'displays today\'s date, if the searched-for date is past BREXIT_DATE, but the current date is before BREXIT_DATE' do
     now = DateTime.new(2020, 11, 23, 12, 0, 0)
     eu_exit = Date.parse(ENV['BREXIT_DATE'] || '2021-01-01')
 
