@@ -66,7 +66,7 @@ module TradeTariffFrontend
   end
 
   module ServiceChooser
-    THREAD_SERVICE_CHOICE_KEY = :service_choice
+    SERVICE_DEFAULT = 'uk'.freeze
 
     module_function
 
@@ -74,20 +74,20 @@ module TradeTariffFrontend
       @service_choices ||= JSON.parse(ENV['API_SERVICE_BACKEND_URL_OPTIONS'])
     end
 
-    def service_default
-      @service_default ||= ENV["API_SERVICE_BACKEND_DEFAULT"]
-    end
-
     def service_choice=(service_choice)
-      Thread.current[THREAD_SERVICE_CHOICE_KEY] = service_choice
+      Thread.current[:service_choice] = service_choice
     end
 
     def service_choice
-      Thread.current[THREAD_SERVICE_CHOICE_KEY]
+      Thread.current[:service_choice]
     end
 
     def api_host
-      service_choices[service_choice] || service_choices[service_default]
+      host = service_choices[service_choice]
+
+      return service_choices[SERVICE_DEFAULT] if host.blank?
+
+      host
     end
   end
   

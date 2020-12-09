@@ -2,38 +2,48 @@ require 'trade_tariff_frontend'
 
 module RoutingFilter
   class ServicePathPrefixHandler < Filter
-    SERVICE_CHOICE_PREFIXES =::TradeTariffFrontend::ServiceChooser.
-      service_choices.
-      keys.
-      map { |prefix| Regexp.escape(prefix.to_s) }.
-      join('|')
+    SERVICE_CHOICE_PREFIXES = 
+      ::TradeTariffFrontend::ServiceChooser.service_choices
+                                           .keys
+                                           .map { |prefix| Regexp.escape(prefix) }
+                                           .join('|')
+                                           .freeze
 
-    SERVICE_CHOICE_PREFIXES_REGEX = %r{^/(#{SERVICE_CHOICE_PREFIXES})(?=/|$)}
+    SERVICE_CHOICE_PREFIXES_REGEX = %r{^/(#{SERVICE_CHOICE_PREFIXES})(?=/|$)}.freeze
 
     # Recognising paths
-    def around_recognize(path, env)
-      service_choice = extract_segment!(SERVICE_CHOICE_PREFIXES_REGEX , path)
-      service_choice_default = ::TradeTariffFrontend::ServiceChooser.service_default
+    def around_recognize(path, _env)
+      service_choice = extract_segment!(SERVICE_CHOICE_PREFIXES_REGEX, path)
 
-      if path != "/" && service_choice.present? && service_choice != service_choice_default
+      @path = path
+      @service_choice = service_choice
+
+      if valid_service_choice?
         ::TradeTariffFrontend::ServiceChooser.service_choice = service_choice
-
-        yield.tap do |params|
-          params[:service_api_choice] = service_choice
-        end
-      else
-        yield
       end
+
+      yield
     end
 
     # Rendering links
-    def around_generate(params, &block)
-      yield.tap do |path, params|
+    def around_generate(_params)
+      yield.tap do |path, _params|
         service_choice = ::TradeTariffFrontend::ServiceChooser.service_choice
-        service_choice_default = ::TradeTariffFrontend::ServiceChooser.service_default
 
         prepend_segment!(path, service_choice) if service_choice && service_choice != service_choice_default
       end
+    end
+
+    private
+
+    attr_reader :path, :service_choice
+
+    def valid_service_choice?
+      path != "/" && service_choice.present? && service_choice != service_choice_default
+    end
+
+    def service_choice_default
+      ::TradeTariffFrontend::ServiceChooser::SERVICE_DEFAULT
     end
   end
 end

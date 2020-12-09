@@ -1,21 +1,11 @@
 require 'spec_helper'
 
 describe RoutingFilter::ServicePathPrefixHandler, type: :routing do
-  before do
-    allow(TradeTariffFrontend::ServiceChooser).to receive(:service_choice=)
-    allow(TradeTariffFrontend::ServiceChooser).to receive(:service_choices).and_return(service_choices)
-    allow(TradeTariffFrontend::ServiceChooser).to receive(:service_default).and_return(service_default)
-  end
-
-  let(:service_choices) do
-    {
-      'xi' => 'http://localhost:3000',
-      'uk' => 'http://localhost:3001',
-    }
-  end
-
-  let(:service_default){ 'uk' }
   let(:path) { "#{prefix}/commodities/0101300000" }
+
+  after do
+    Thread.current[:service_choice] = nil
+  end
 
   describe 'matching routes' do
     context 'when the service choice prefix is xi' do
@@ -26,9 +16,8 @@ describe RoutingFilter::ServicePathPrefixHandler, type: :routing do
           controller: "commodities",
           action: "show",
           id: "0101300000",
-          service_api_choice: "xi"
         )
-        expect(TradeTariffFrontend::ServiceChooser).to have_received(:service_choice=).with("xi")
+        expect(Thread.current[:service_choice]).to eq('xi')
       end
     end
 
@@ -41,7 +30,7 @@ describe RoutingFilter::ServicePathPrefixHandler, type: :routing do
           action: "show",
           id: "0101300000",
         )
-        expect(TradeTariffFrontend::ServiceChooser).not_to have_received(:service_choice=)
+        expect(Thread.current[:service_choice]).to be_nil
       end
     end
 
@@ -54,7 +43,7 @@ describe RoutingFilter::ServicePathPrefixHandler, type: :routing do
           action: "show",
           id: "0101300000",
         )
-        expect(TradeTariffFrontend::ServiceChooser).not_to have_received(:service_choice=)
+        expect(Thread.current[:service_choice]).to be_nil
       end
     end
 
@@ -67,7 +56,7 @@ describe RoutingFilter::ServicePathPrefixHandler, type: :routing do
           action: "not_found",
           path: "xixi/commodities/0101300000"
         )
-        expect(TradeTariffFrontend::ServiceChooser).not_to have_received(:service_choice=)
+        expect(Thread.current[:service_choice]).to eq(nil)
       end
     end
 
@@ -77,19 +66,17 @@ describe RoutingFilter::ServicePathPrefixHandler, type: :routing do
 
       it 'routes to a not_found action in the errors controller' do
         expect(get: path).not_to be_routable
-        expect(TradeTariffFrontend::ServiceChooser).not_to have_received(:service_choice=)
       end
     end
   end
 
   describe 'path generation' do
-    before do
-      allow(TradeTariffFrontend::ServiceChooser).to receive(:service_choice).and_return(choice)
-      allow(TradeTariffFrontend::ServiceChooser).to receive(:service_default).and_return(service_default)
-    end
-
     let(:commodity_id) { '0101210000' }
     let(:service_default) { 'uk' }
+
+    before do
+      TradeTariffFrontend::ServiceChooser.service_choice = choice
+    end
 
     context 'when the service choice is not the default' do
       let(:choice) { 'xi' }
