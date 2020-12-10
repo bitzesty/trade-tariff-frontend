@@ -5,6 +5,7 @@ require 'routing_filter/service_path_prefix_handler'
 
 Rails.application.routes.draw do
   filter :service_path_prefix_handler
+  default_url_options(host: TradeTariffFrontend.host)
 
   get "/trade-tariff/*path", to: redirect('/%{path}', status: 301)
   get "/api/(*path)", constraints: { path: /[^v\d+].*/ }, to: redirect { |_params, request| request.url.gsub('/api/', "/api/v2/") }
@@ -55,7 +56,7 @@ Rails.application.routes.draw do
   end
 
   constraints(id: /[\d]{2}/) do
-    resources :chapters, only: %i[index show] do
+    resources :chapters, only: %i[show] do
       resources :changes,
                 only: [:index],
                 defaults: { format: :atom },
@@ -64,7 +65,7 @@ Rails.application.routes.draw do
   end
 
   constraints(id: /[\d]{4}/) do
-    resources :headings, only: %i[index show] do
+    resources :headings, only: %i[show] do
       resources :changes,
                 only: [:index],
                 defaults: { format: :atom },
@@ -73,7 +74,7 @@ Rails.application.routes.draw do
   end
 
   constraints(id: /[\d]{10}/) do
-    resources :commodities, only: %i[index show] do
+    resources :commodities, only: %i[show] do
       resources :changes,
                 only: [:index],
                 defaults: { format: :atom },

@@ -37,8 +37,6 @@ Shoulda::Matchers.configure do |config|
   end
 end
 
-Rails.application.routes.default_url_options[:host] = "test.host"
-
 RSpec.configure do |config|
   config.raise_errors_for_deprecations!
   config.order = :random

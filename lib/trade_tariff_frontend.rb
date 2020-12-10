@@ -65,6 +65,10 @@ module TradeTariffFrontend
     ENV.fetch('DOWNLOAD_PDF_ENABLED', 'false') == 'true'
   end
 
+  def host
+    ENV['FRONTEND_HOST'] || "http://localhost"
+  end
+
   module ServiceChooser
     SERVICE_DEFAULT = 'uk'.freeze
 
