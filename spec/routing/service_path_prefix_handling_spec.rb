@@ -121,5 +121,31 @@ describe RoutingFilter::ServicePathPrefixHandler, type: :routing do
         expect(result).to eq("/commodities/0101210000?currency=EUR")
       end
     end
+
+    context 'when the path helper is generated using a custom url helper' do
+      let(:choice) { 'xi' }
+
+      it 'prepends the choice to the path' do
+        result = a_z_index_path(letter: 'a')
+
+        expect(result).to eq('/xi/a-z-index/a')
+      end
+    end
+
+    context 'when the url helper is generated with a router :as helper' do
+      let(:choice) { 'xi' }
+
+      it 'prepends the choice to the path' do
+        result = sections_path
+
+        expect(result).to eq('/xi/sections')
+      end
+
+      it 'prepends the choice to the url' do
+        result = sections_url
+
+        expect(result).to eq('http://test.host/xi/sections')
+      end
+    end
   end
 end
