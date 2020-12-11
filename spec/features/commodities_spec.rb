@@ -85,17 +85,13 @@ describe 'JS behaviour', js: true do
     context 'with the environment variable set' do
       context 'with the column showing' do
         before do
-          @current_legal_base = ENV['HIDE_REGULATIONS'].dup
-          ENV['HIDE_REGULATIONS'] = 'false'
+          allow(TradeTariffFrontend).to receive(:regulations_enabled?).and_return(true)
+
           VCR.use_cassette('commodities#show_0201100021_legal_base_visible') do
             visit commodity_path('0201100021', day: 21, month: 2, year: 2019)
           end
 
           click_import_tab
-        end
-
-        after do
-          ENV['HIDE_REGULATIONS'] = @current_legal_base
         end
 
         it 'displays the legal base column' do
@@ -109,18 +105,13 @@ describe 'JS behaviour', js: true do
 
       context 'with the column hidden' do
         before do
-          @current_legal_base = ENV['HIDE_REGULATIONS'].dup
-          ENV['HIDE_REGULATIONS'] = 'true'
+          allow(TradeTariffFrontend).to receive(:regulations_enabled?).and_return(false)
 
           VCR.use_cassette('commodities#show_0201100021_legal_base_hidden') do
             visit commodity_path('0201100021', day: 21, month: 2, year: 2019, cache_buster: 'reload')
           end
 
           click_import_tab
-        end
-
-        after do
-          ENV['HIDE_REGULATIONS'] = @current_legal_base
         end
 
         it 'does not display the legal base column' do
