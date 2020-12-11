@@ -30,7 +30,7 @@ module RoutingFilter
       yield.tap do |path, _params|
         service_choice = ::TradeTariffFrontend::ServiceChooser.service_choice
 
-        prepend_segment!(path, service_choice) if service_choice && service_choice != service_choice_default
+        prepend_segment!(path, service_choice) if service_choice.present? && service_choice != service_choice_default
       end
     end
 
