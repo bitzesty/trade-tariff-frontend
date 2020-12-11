@@ -10,7 +10,6 @@ VCR.configure do |c|
   c.configure_rspec_metadata!
   c.ignore_request do |request|
     URI(request.uri).host.in?(%w(localhost 127.0.0.1)) &&
-      !service_ports.include?(URI(request.uri).port)
-      
+      service_ports.exclude?(URI(request.uri).port)
   end
 end

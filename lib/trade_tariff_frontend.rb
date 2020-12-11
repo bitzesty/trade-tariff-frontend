@@ -66,11 +66,11 @@ module TradeTariffFrontend
   end
 
   def host
-    ENV['FRONTEND_HOST'] || "http://localhost"
+    ENV.fetch('FRONTEND_HOST', 'http://localhost')
   end
 
   module ServiceChooser
-    SERVICE_DEFAULT = 'uk'.freeze
+    SERVICE_DEFAULT = 'uk-old'.freeze
 
     module_function
 

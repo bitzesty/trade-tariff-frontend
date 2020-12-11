@@ -43,7 +43,7 @@ describe RoutingFilter::ServicePathPrefixHandler, type: :routing do
           action: "show",
           id: "0101300000",
         )
-        expect(Thread.current[:service_choice]).to be_nil
+        expect(Thread.current[:service_choice]).to eq('uk')
       end
     end
 
@@ -101,7 +101,7 @@ describe RoutingFilter::ServicePathPrefixHandler, type: :routing do
     end
 
     context 'when the service choice is the default' do
-      let(:choice) { 'uk' }
+      let(:choice) { 'uk-old' }
 
       it 'does not prepend the choice to the url' do
         result = commodity_path(
