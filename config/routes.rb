@@ -1,6 +1,12 @@
 require 'trade_tariff_frontend'
+require 'trade_tariff_frontend/api_constraints'
+require 'trade_tariff_frontend/request_forwarder'
+require 'routing_filter/service_path_prefix_handler'
 
 Rails.application.routes.draw do
+  filter :service_path_prefix_handler
+  default_url_options(host: TradeTariffFrontend.host)
+
   get "/trade-tariff/*path", to: redirect('/%{path}', status: 301)
   get "/api/(*path)", constraints: { path: /[^v\d+].*/ }, to: redirect { |_params, request| request.url.gsub('/api/', "/api/v2/") }
   get "/v1/(*path)", to: redirect { |_params, request| "/api#{request.path}?#{request.query_string}" }
@@ -39,7 +45,6 @@ Rails.application.routes.draw do
     match ':endpoint/(*path)',
           via: :get,
           to: TradeTariffFrontend::RequestForwarder.new(
-            host: Rails.application.config.api_host,
             api_request_path_formatter: lambda { |path|
               path.gsub("#{APP_SLUG}/", "")
             }
@@ -51,7 +56,7 @@ Rails.application.routes.draw do
   end
 
   constraints(id: /[\d]{2}/) do
-    resources :chapters, only: %i[index show] do
+    resources :chapters, only: %i[show] do
       resources :changes,
                 only: [:index],
                 defaults: { format: :atom },
@@ -60,7 +65,7 @@ Rails.application.routes.draw do
   end
 
   constraints(id: /[\d]{4}/) do
-    resources :headings, only: %i[index show] do
+    resources :headings, only: %i[show] do
       resources :changes,
                 only: [:index],
                 defaults: { format: :atom },
@@ -69,7 +74,7 @@ Rails.application.routes.draw do
   end
 
   constraints(id: /[\d]{10}/) do
-    resources :commodities, only: %i[index show] do
+    resources :commodities, only: %i[show] do
       resources :changes,
                 only: [:index],
                 defaults: { format: :atom },
@@ -80,14 +85,12 @@ Rails.application.routes.draw do
   constraints TradeTariffFrontend::ApiPubConstraints.new(TradeTariffFrontend.public_api_endpoints) do
     scope 'api' do
       get ":version/*path", to: TradeTariffFrontend::RequestForwarder.new(
-        host: Rails.application.config.api_host,
         api_request_path_formatter: lambda { |path|
           path.gsub(/api\/v\d+\//, '')
         }
       ), constraints: { version: /v[1-2]{1}/ }
 
       get "v2/goods_nomenclatures/*path", to: TradeTariffFrontend::RequestForwarder.new(
-        host: Rails.application.config.api_host,
         api_request_path_formatter: lambda { |path|
           path.gsub(/api\/v2\//, '')
         }

@@ -5,6 +5,7 @@ Rails.application.configure do
   # every request. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
   config.cache_classes = false
+  config.cache_store = [:null_store]
 
   # Going to leave this here so in the future we can use BrowserStack locally
   config.hosts << "bs-local.com"
@@ -38,7 +39,4 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
-
-  # Host for Trade Tariff API endpoint
-  config.api_host = ENV["TARIFF_API_HOST"] || "http://tariff-api.dev.gov.uk"
 end

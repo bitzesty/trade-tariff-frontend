@@ -6,7 +6,6 @@ module TradeTariffFrontend
     IGNORED_UPSTREAM_HEADERS = %w[status x-ua-compatible connection transfer-encoding].freeze
 
     def initialize(opts = {})
-      @host = URI.parse(opts.fetch(:host))
       @api_request_path_formatter = opts.fetch(:api_request_path_formatter) do
         ->(path) { path }
       end
@@ -56,7 +55,11 @@ module TradeTariffFrontend
     private
 
     def request_url_for(rackreq)
-      "#{@host}#{request_uri_for(rackreq)}"
+      "#{host}#{request_uri_for(rackreq)}"
+    end
+
+    def host
+      TradeTariffFrontend::ServiceChooser.api_host
     end
 
     def request_uri_for(rackreq)

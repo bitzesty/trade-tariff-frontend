@@ -1,5 +1,3 @@
-require 'trade_tariff_frontend/api_constraints'
-require 'trade_tariff_frontend/request_forwarder'
 require 'paas_config'
 
 module TradeTariffFrontend
@@ -66,6 +64,37 @@ module TradeTariffFrontend
   def download_pdf_enabled?
     ENV.fetch('DOWNLOAD_PDF_ENABLED', 'false') == 'true'
   end
+
+  def host
+    ENV.fetch('FRONTEND_HOST', 'http://localhost')
+  end
+
+  module ServiceChooser
+    SERVICE_DEFAULT = 'uk-old'.freeze
+
+    module_function
+
+    def service_choices
+      @service_choices ||= JSON.parse(ENV['API_SERVICE_BACKEND_URL_OPTIONS'])
+    end
+
+    def service_choice=(service_choice)
+      Thread.current[:service_choice] = service_choice
+    end
+
+    def service_choice
+      Thread.current[:service_choice]
+    end
+
+    def api_host
+      host = service_choices[service_choice]
+
+      return service_choices[SERVICE_DEFAULT] if host.blank?
+
+      host
+    end
+  end
+  
 
   # CDS locking and authentication
   module Locking

@@ -93,7 +93,4 @@ Rails.application.configure do
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
-
-  # Host for Trade Tariff API endpoint
-  config.api_host = ENV["PLEK_SERVICE_TARIFF_API_URI"]
 end

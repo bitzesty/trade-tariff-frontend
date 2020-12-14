@@ -14,6 +14,7 @@ gem "faraday"
 gem "faraday_middleware", "~> 1"
 gem "addressable", "~> 2.3"
 gem "hashie", "~> 3.4"
+gem 'routing-filter', '~> 0.6.3'
 
 # Assets
 gem "responders", "~> 3.0.0"
@@ -54,6 +55,8 @@ end
 
 group :development, :test do
   gem "dotenv-rails"
+  gem 'pry-byebug'
+  gem 'pry-rails'
 end
 
 group :test do

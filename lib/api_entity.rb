@@ -174,7 +174,9 @@ module ApiEntity
     end
 
     def api
-      @api ||= Faraday.new Rails.application.config.api_host do |conn|
+      host = TradeTariffFrontend::ServiceChooser.api_host
+
+      Faraday.new(host) do |conn|
         conn.request :url_encoded
         conn.adapter Faraday.default_adapter
         conn.response :json, content_type: /\bjson$/
