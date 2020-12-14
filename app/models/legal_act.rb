@@ -4,7 +4,19 @@ class LegalAct
   include ApiEntity
 
   attr_accessor :regulation_code, :regulation_url, :validity_end_date,
-                :validity_start_date, :published_date, :officialjournal_number, :officialjournal_page
+                :validity_start_date, :published_date, :officialjournal_number, :officialjournal_page, :information_text
+
+  def national_public_id
+    information_text&.split('|')&.first
+  end
+
+  def national_url
+    information_text&.split('|')&.fetch(1)
+  end
+
+  def national_information
+    information_text&.split('|')&.last
+  end
 
   def validity_start_date=(date)
     @validity_start_date = Date.parse(date) if date.present?
