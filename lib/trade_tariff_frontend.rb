@@ -51,6 +51,10 @@ module TradeTariffFrontend
     ENV["CURRENCY_PICKER"].to_i == 1
   end
 
+  def uk_regulations_enabled?
+    ENV.fetch('UK_REGULATIONS', 'false').to_s.downcase == 'true'
+  end
+
   def regulations_enabled?
     return true unless ENV['HIDE_REGULATIONS']
 
