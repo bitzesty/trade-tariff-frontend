@@ -4,8 +4,7 @@ module ApplicationHelper
   end
 
   def service_choice
-    @service_choice ||=
-      TradeTariffFrontend::ServiceChooser.service_choice ||
+    TradeTariffFrontend::ServiceChooser.service_choice ||
       TradeTariffFrontend::ServiceChooser::SERVICE_DEFAULT
   end
 
