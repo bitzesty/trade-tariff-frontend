@@ -1,10 +1,12 @@
 module ApplicationHelper
   def trade_tariff_heading
-    service_choice =
+    t('trade_tariff_heading')[service_choice.to_sym]
+  end
+
+  def service_choice
+    @service_choice ||=
       TradeTariffFrontend::ServiceChooser.service_choice ||
       TradeTariffFrontend::ServiceChooser::SERVICE_DEFAULT
-
-    t('trade_tariff_heading')[service_choice.to_sym]
   end
 
   def govspeak(text)
