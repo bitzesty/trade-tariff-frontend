@@ -17,6 +17,8 @@ module TradeTariffFrontend
       case rackreq.request_method
       # The API is read-only
       when "GET", "HEAD"
+        remove_service_choice_prefix!(rackreq)
+
         api_version = rackreq.path
                              .downcase
                              .split('/')
@@ -27,6 +29,7 @@ module TradeTariffFrontend
           rackreq.request_method.downcase,
           request_url_for(rackreq)
         ) do |req|
+
           req.headers['Accept'] = "application/vnd.uktt.#{api_version}"
           req.headers['Content-Type'] = env['CONTENT_TYPE']
           req.options.timeout = 60           # open/read timeout in seconds
@@ -86,6 +89,13 @@ module TradeTariffFrontend
       cache_control = ["max-age=#{is_error ? 0 : 3600}"]
       cache_control.unshift('no-store') if is_error
       cache_control.join(', ')
+    end
+
+    def remove_service_choice_prefix!(rackreq)
+      choice = TradeTariffFrontend::ServiceChooser.service_choice
+      prefix = "/#{choice}"
+
+      rackreq.path_info = rackreq.path_info.sub(prefix, '') if choice.present?
     end
   end
 end

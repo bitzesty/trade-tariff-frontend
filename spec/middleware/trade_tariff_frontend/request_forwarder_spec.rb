@@ -20,11 +20,13 @@ describe TradeTariffFrontend::RequestForwarder do
   end
 
   it 'forwards response from upstream backend host for GETs' do
-    stub_request(:get, "#{host}#{request_path}").to_return(
-      status: 200,
-      body: response_body,
-      headers: { 'Content-Length' => response_body.size }
-    )
+    stub_request(:get, "#{host}#{request_path}")
+      .with(headers: { 'Accept' => 'application/vnd.uktt.sections' })
+      .to_return(
+        status: 200,
+        body: response_body,
+        headers: { 'Content-Length' => response_body.size }
+      )
 
     status, env, body = middleware.call env_for(request_path)
 
@@ -32,11 +34,13 @@ describe TradeTariffFrontend::RequestForwarder do
   end
 
   it 'forwards response from upstream backend host for HEADs' do
-    stub_request(:head, "#{host}#{request_path}").to_return(
-      status: 200,
-      body: '',
-      headers: { 'Content-Length' => 0 }
-    )
+    stub_request(:head, "#{host}#{request_path}")
+      .with(headers: { 'Accept' => 'application/vnd.uktt.sections' })
+      .to_return(
+        status: 200,
+        body: '',
+        headers: { 'Content-Length' => 0 }
+      )
 
     status, env, body = middleware.call env_for(request_path, method: :head)
 
@@ -45,11 +49,13 @@ describe TradeTariffFrontend::RequestForwarder do
   end
 
   it 'forwards response status code from upstream backend host' do
-    stub_request(:get, "#{host}#{request_path}").to_return(
-      status: 404,
-      body: 'Not Found',
-      headers: { 'Content-Length' => 'Not Found'.size }
-    )
+    stub_request(:get, "#{host}#{request_path}")
+      .with(headers: { 'Accept' => 'application/vnd.uktt.sections' })
+      .to_return(
+        status: 404,
+        body: 'Not Found',
+        headers: { 'Content-Length' => 'Not Found'.size }
+      )
 
     status, env, body = middleware.call env_for(request_path)
 
@@ -57,14 +63,16 @@ describe TradeTariffFrontend::RequestForwarder do
   end
 
   it 'forwards allowed headers from upstream backend host' do
-    stub_request(:get, "#{host}#{request_path}").to_return(
-      status: 200,
-      body: response_body,
-      headers: {
-        'Content-Length' => response_body.size,
-        'Content-Type' => 'text/html'
-      }
-    )
+    stub_request(:get, "#{host}#{request_path}")
+      .with(headers: { 'Accept' => 'application/vnd.uktt.sections' })
+      .to_return(
+        status: 200,
+        body: response_body,
+        headers: {
+          'Content-Length' => response_body.size,
+          'Content-Type' => 'text/html'
+        }
+      )
 
     status, env, body = middleware.call env_for(request_path)
 
@@ -72,14 +80,16 @@ describe TradeTariffFrontend::RequestForwarder do
   end
 
   it 'does not forward non-allowed headers from upstream backend host' do
-    stub_request(:get, "#{host}#{request_path}").to_return(
-      status: 200,
-      body: response_body,
-      headers: {
-        'Content-Length' => response_body.size,
-        'X-UA-Compatible' => 'IE=9'
-      }
-    )
+    stub_request(:get, "#{host}#{request_path}")
+      .with(headers: { 'Accept' => 'application/vnd.uktt.sections' })
+      .to_return(
+        status: 200,
+        body: response_body,
+        headers: {
+          'Content-Length' => response_body.size,
+          'X-UA-Compatible' => 'IE=9'
+        }
+      )
 
     status, env, body = middleware.call env_for(request_path)
 
@@ -96,15 +106,42 @@ describe TradeTariffFrontend::RequestForwarder do
   it "forwards request params" do
     request_uri = request_path + request_params
 
-    stub_request(:get, "#{host}#{request_uri}").to_return(
-      status: 200,
-      body: response_body,
-      headers: { "Content-Length" => response_body.size }
-    )
+    stub_request(:get, "#{host}#{request_uri}")
+      .with(headers: { 'Accept' => 'application/vnd.uktt.sections' })
+      .to_return(
+        status: 200,
+        body: response_body,
+        headers: { "Content-Length" => response_body.size }
+      )
 
     status, env, body = middleware.call env_for(request_uri)
 
     expect(status).to eq(200)
+  end
+
+  context 'when a service prefix is included in the path' do
+    let(:request_path)   { '/xi/sections/1' }
+
+    it 'removes the service prefix' do
+      TradeTariffFrontend::ServiceChooser.service_choice = 'xi'
+
+      stub_request(:get, "#{host}/sections/1")
+        .with(headers: { 'Accept' => 'application/vnd.uktt.sections' })
+        .to_return(
+          status: 200,
+          body: response_body,
+          headers: {
+            'Content-Length' => response_body.size,
+            'X-UA-Compatible' => 'IE=9'
+          }
+        )
+
+      status, env, body = middleware.call env_for(request_path)
+
+      expect(env['X-UA-Compatible']).to be_blank
+
+      TradeTariffFrontend::ServiceChooser.service_choice = nil
+    end
   end
 
   def env_for(url, opts = {})
