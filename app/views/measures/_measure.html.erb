@@ -50,15 +50,19 @@
 
   <td><%= measure.excluded_country_list %></td>
 
-  <%- if measure.legal_acts.present? && TradeTariffFrontend.regulations_enabled? -%>
+  <% if TradeTariffFrontend.uk_regulations_enabled? %>
     <td class="numerical">
-      <% if measure.national? %>
+      <% if measure.legal_acts.present? %>
         <%= link_to measure.legal_acts.first.national_public_id, "#", class: 'reference', 'data-popup-ref' => "#{measure.id}-regulations", "aria-label": "Legal base: #{measure.legal_acts.first.national_public_id}. Click to open a dialog with all the legal bases for this measure", role: "button" %>
-      <% else %>
+      <% end %>
+    </td>
+  <% elsif TradeTariffFrontend.regulations_enabled? %>
+    <td class="numerical">
+      <% if !measure.national? && measure.legal_acts.present? %>
         <%= link_to measure.legal_acts.first.regulation_code, "#", class: 'reference', 'data-popup-ref' => "#{measure.id}-regulations", "aria-label": "Legal base: #{measure.legal_acts.first.regulation_code}. Click to open a dialog with all the legal bases for this measure", role: "button" %>
       <% end %>
     </td>
-  <%- end -%>
+  <% end %>
 
   <td class="numerical">
     <%= measure.effective_start_date %><% if measure.effective_end_date.present? %><br>(<%= measure.effective_end_date %>)<% end %>
