@@ -7,3 +7,7 @@ en:
   geographical_areas:
     descriptions:
       erga_omnes: "All countries"
+  trade_tariff_heading:
+    uk-old: "The Online Trade Tariff"
+    uk: "The Online Trade Tariff"
+    xi: "The Northern Ireland (EU) Tariff for the XI"
