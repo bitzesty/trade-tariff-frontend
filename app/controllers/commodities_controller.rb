@@ -22,8 +22,8 @@ class CommoditiesController < GoodsNomenclaturesController
     return [nil, nil] unless i = gnids.index(commodity.goods_nomenclature_item_id)
 
     [
-      i == 0 ? nil : gnids[i-1],
-      i == (gnids.length - 1) ? nil : gnids[i+1]
+      i == 0 ? nil : Commodity.find(gnids[i-1]),
+      i == (gnids.length - 1) ? nil : Commodity.find(gnids[i+1])
     ]
   end
 end
