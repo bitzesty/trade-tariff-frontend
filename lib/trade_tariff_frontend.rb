@@ -115,15 +115,17 @@ module TradeTariffFrontend
     end
   end
 
-  class FilterBadQueryParameterEncoding
+  class FilterBadURLEncoding
     def initialize(app)
       @app = app
     end
 
     def call(env)
       @query_string = env['QUERY_STRING'].to_s
+      @path_string = env["PATH_INFO"].to_s
       begin
         Rack::Utils.parse_nested_query @query_string
+        return bad_request unless @path_string.ascii_only? && @query_string.ascii_only?
       rescue Rack::Utils::InvalidParameterError
         return bad_request
       end
