@@ -12,7 +12,7 @@ export GIT_MESSAGE=`git log --oneline $GIT_OLD_REVISION..$GIT_REVISION`
 
 # Check CF connectivity
 cf login -a $CF_ENDPOINT -u $CF_USER -p "$CF_PASSWORD" -o $CF_ORG -s $CF_SPACE
-cf a
+cf apps
 
 # Notify Slack deployment started
 #curl -X POST \
@@ -31,14 +31,21 @@ CF_BUILDPACK=$CF_BUILDPACK ruby -ryaml -e 'm = YAML.load(STDIN); m["applications
   > "$CF_APP"_patched_manifest.yml
 
 
-cf bgd $CF_APP -f "$CF_APP"_patched_manifest.yml --delete-old-apps
+cf blue-green-deploy $CF_APP -f "$CF_APP"_patched_manifest.yml --delete-old-apps
 
 # Create network policy for fronted app
 # https://docs.cloud.service.gov.uk/deploying_apps.html#deploying-private-apps
-# $PRIVATE_APP - backend app
+# $PRIVATE_APP* - backend apps
 # $PUBLIC_APP - frontend app
+
 export PRIVATE_APP=`CF_APP=$CF_APP ruby -e 'puts ENV["CF_APP"].gsub("frontend", "backend")'`
-cf add-network-policy $CF_APP --destination-app $PRIVATE_APP --protocol tcp --port 8080
+export PRIVATE_APP_XI=`CF_APP=$CF_APP ruby -e 'puts ENV["CF_APP"].gsub("frontend", "xi-backend")'`
+export PRIVATE_APP_UK=`CF_APP=$CF_APP ruby -e 'puts ENV["CF_APP"].gsub("frontend", "uk-backend")'`
+
+cf add-network-policy $CF_APP --destination-app $PRIVATE_APP    --protocol tcp --port 8080
+cf add-network-policy $CF_APP --destination-app $PRIVATE_APP_XI --protocol tcp --port 8080
+# TODO: Roll out UK service in all environments
+# cf add-network-policy $CF_APP --destination-app $PRIVATE_APP_UK --protocol tcp --port 8080
 
 # Attach autoscaling policy
 cf attach-autoscaling-policy $CF_APP config/autoscaling/"$CF_SPACE"-policy.json
