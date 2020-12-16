@@ -10,7 +10,7 @@ class AdditionalCodeSearchForm
   end
 
   def additional_code_types
-    Rails.cache.fetch('cached_additional_code_types', expires_in: 24.hours) do
+    TradeTariffFrontend::ServiceChooser.cache_with_service_choice('cached_additional_code_types', expires_in: 24.hours) do
       AdditionalCodeType.all&.sort_by(&:additional_code_type_id).map do |type|
         [ "#{type&.additional_code_type_id} - #{type&.description}", type&.additional_code_type_id ]
       end.to_h

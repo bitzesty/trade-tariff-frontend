@@ -39,8 +39,9 @@ class TariffUpdate
         func.call
       else
         # Cache for 1 hour
-        #
-        Rails.cache.fetch("tariff_last_updated", expires_in: 1.hour) do
+        TradeTariffFrontend::ServiceChooser.cache_with_service_choice(
+          "tariff_last_updated", expires_in: 1.hour
+        ) do
           func.call
         end
       end

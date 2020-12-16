@@ -10,7 +10,9 @@ class CertificateSearchForm
   end
 
   def certificate_types
-    Rails.cache.fetch('cached_certificate_types', expires_in: 24.hours) do
+    TradeTariffFrontend::ServiceChooser.cache_with_service_choice(
+      'cached_certificate_types', expires_in: 24.hours
+    ) do
       CertificateType.all&.sort_by(&:certificate_type_code).map do |type|
         [ "#{type&.certificate_type_code} - #{type&.description}", type&.certificate_type_code ]
       end.to_h

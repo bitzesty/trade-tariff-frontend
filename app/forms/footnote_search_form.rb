@@ -10,7 +10,7 @@ class FootnoteSearchForm
   end
 
   def footnote_types
-    Rails.cache.fetch('cached_footnote_types', expires_in: 24.hours) do
+    TradeTariffFrontend::ServiceChooser.cache_with_service_choice('cached_footnote_types', expires_in: 24.hours) do
       FootnoteType.all&.sort_by(&:footnote_type_id).map do |type|
         [ "#{type&.footnote_type_id} - #{type&.description}", type&.footnote_type_id ]
       end.to_h
