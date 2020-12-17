@@ -1,13 +1,4 @@
 module ApplicationHelper
-  def trade_tariff_heading
-    t('trade_tariff_heading')[service_choice.to_sym]
-  end
-
-  def service_choice
-    TradeTariffFrontend::ServiceChooser.service_choice ||
-      TradeTariffFrontend::ServiceChooser::SERVICE_DEFAULT
-  end
-
   def govspeak(text)
     text = text['content'] || text[:content] if text.is_a?(Hash)
     return '' if text.nil?
