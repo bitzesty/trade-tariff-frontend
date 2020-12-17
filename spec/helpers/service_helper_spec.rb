@@ -25,8 +25,8 @@ describe ServiceHelper, type: :helper do
     context 'when the selected service choice is xi' do
       let(:choice) { 'xi' }
 
-      it 'returns The Northern Ireland (EU) Tariff for the XI' do
-        expect(trade_tariff_heading).to eq('The Northern Ireland (EU) Tariff for the XI')
+      it 'returns The Northern Ireland (EU) Tariff' do
+        expect(trade_tariff_heading).to eq('The Northern Ireland (EU) Tariff')
       end
     end
   end
@@ -43,7 +43,7 @@ describe ServiceHelper, type: :helper do
       let(:choice) { 'uk-old' }
 
       it 'returns the link to the XI service' do
-        expect(switch_service_link).to eq(link_to('The Northern Ireland (EU) Tariff for the XI', '/xi/sections/1'))
+        expect(switch_service_link).to eq(link_to('The Northern Ireland (EU) Tariff', '/xi/sections/1'))
       end
     end
 
@@ -52,7 +52,7 @@ describe ServiceHelper, type: :helper do
       let(:choice) { 'uk' }
 
       it 'returns the link to the XI service' do
-        expect(switch_service_link).to eq(link_to('The Northern Ireland (EU) Tariff for the XI', '/xi/sections/1'))
+        expect(switch_service_link).to eq(link_to('The Northern Ireland (EU) Tariff', '/xi/sections/1'))
       end
     end
 
