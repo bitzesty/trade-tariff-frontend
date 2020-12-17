@@ -100,8 +100,6 @@ module TradeTariffFrontend
       host
     end
 
-    private
-
     def cache_prefix
       service_choice || SERVICE_DEFAULT
     end
