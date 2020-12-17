@@ -2,23 +2,24 @@ require 'spec_helper'
 
 describe 'Service choices', js: true do
   # TODO: Make the service choice using the change service choice link when implemented
-  around do |example|
+  before do
     TradeTariffFrontend::ServiceChooser.service_choice = choice
-    example.call
-    TradeTariffFrontend::ServiceChooser.service_choice = nil
+    VCR.use_cassette('geographical_areas#countries') do
+      VCR.use_cassette('commodities#show_0201300020') do
+        visit commodity_path('0201300020')
+      end
+    end
   end
 
-  let(:capybara_host) { Capybara.current_session.server.base_url }
+  after do
+    TradeTariffFrontend::ServiceChooser.service_choice = nil
+  end
 
   context 'when using the default service as the current service backend' do
     let(:choice) { nil }
 
     it 'displays the correct tariff heading' do
-      VCR.use_cassette('sections#index', record: :new_episodes) do
-        visit sections_path
-
-        expect(page).to have_link('The Online Trade Tariff', href: '/sections')
-      end
+      expect(page).to have_link('The Online Trade Tariff', href: '/sections')
     end
   end
 
@@ -26,11 +27,7 @@ describe 'Service choices', js: true do
     let(:choice) { 'uk' }
 
     it 'displays the correct tariff heading' do
-      VCR.use_cassette('sections#index', record: :new_episodes) do
-        visit sections_path
-
-        expect(page).to have_link('The Online Trade Tariff', href: '/uk/sections')
-      end
+      expect(page).to have_link('The Online Trade Tariff', href: '/uk/sections')
     end
   end
 
@@ -39,11 +36,7 @@ describe 'Service choices', js: true do
     let(:choice) { 'uk-old' }
 
     it 'displays the correct tariff heading' do
-      VCR.use_cassette('sections#index', record: :new_episodes) do
-        visit sections_path
-
-        expect(page).to have_link('The Online Trade Tariff', href: '/sections')
-      end
+      expect(page).to have_link('The Online Trade Tariff', href: '/sections')
     end
   end
 
@@ -51,11 +44,7 @@ describe 'Service choices', js: true do
     let(:choice) { 'xi' }
 
     it 'displays the correct tariff heading' do
-      VCR.use_cassette('sections#index', record: :new_episodes) do
-        visit sections_path
-
-        expect(page).to have_link('The Northern Ireland (EU) Tariff for the XI', href: '/xi/sections')
-      end
+      expect(page).to have_link('The Northern Ireland (EU) Tariff for the XI', href: '/xi/sections')
     end
   end
 end
