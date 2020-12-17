@@ -8,7 +8,9 @@ class SearchSuggestion
   attr_accessor :value
 
   def self.cached_suggestions
-    Rails.cache.fetch('cached_search_suggestions', expires_in: 24.hours) do
+    TradeTariffFrontend::ServiceChooser.cache_with_service_choice(
+      'cached_search_suggestions', expires_in: 24.hours
+    ) do
       all
     end
   end

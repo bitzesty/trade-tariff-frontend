@@ -17,7 +17,7 @@ class GeographicalArea
   end
 
   def self.cached_countries
-    Rails.cache.fetch(
+    TradeTariffFrontend::ServiceChooser.cache_with_service_choice(
       'cached_countries',
       expires_in: 1.hour
     ) do
@@ -30,7 +30,7 @@ class GeographicalArea
   end
   
   def self.cached_areas
-    Rails.cache.fetch(
+    TradeTariffFrontend::ServiceChooser.cache_with_service_choice(
       'areas',
       expires_in: 1.hour
     ) do

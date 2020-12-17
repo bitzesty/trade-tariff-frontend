@@ -85,7 +85,8 @@ module ApplicationHelper
   end
 
   def download_chapter_pdf_url(section_position, chapter_code)
-    pdf_urls = Rails.cache.fetch('cached_chapters_pdf_urls', expires_in: 1.hours) do
+    pdf_urls = TradeTariffFrontend::ServiceChooser
+      .cache_with_service_choice('cached_chapters_pdf_urls', pdf_cache_options) do
       TariffPdf.chapters.map(&:url)
     end
 
@@ -97,7 +98,9 @@ module ApplicationHelper
   end
 
   def download_latest_pdf_url
-    pdf_urls = Rails.cache.fetch('cached_latest_pdf_urls', expires_in: 1.hours) do
+    pdf_urls = TradeTariffFrontend::ServiceChooser
+      .cache_with_service_choice('cached_latest_pdf_urls', pdf_cache_options) do
+
       TariffPdf.latest.map(&:url)
     end
 
@@ -124,5 +127,9 @@ module ApplicationHelper
 
   def search_date_in_future_month?
     @search&.date.date >= Date.today.at_beginning_of_month.next_month
+  end
+
+  def pdf_cache_options
+    { expires_in: 1.hours }
   end
 end

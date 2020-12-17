@@ -86,6 +86,16 @@ module TradeTariffFrontend
       Thread.current[:service_choice]
     end
 
+    def cache_with_service_choice(cache_key, options = {})
+      Rails.cache.fetch("#{cache_prefix}.#{cache_key}", options) do
+        yield
+      end
+    end
+
+    def cache_prefix
+      service_choice || SERVICE_DEFAULT
+    end
+
     def api_host
       host = service_choices[service_choice]
 
