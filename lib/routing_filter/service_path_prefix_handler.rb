@@ -15,12 +15,7 @@ module RoutingFilter
     def around_recognize(path, _env)
       service_choice = extract_segment!(SERVICE_CHOICE_PREFIXES_REGEX, path)
 
-      @path = path
-      @service_choice = service_choice
-
-      if valid_service_choice?
-        ::TradeTariffFrontend::ServiceChooser.service_choice = service_choice
-      end
+      ::TradeTariffFrontend::ServiceChooser.service_choice = service_choice
 
       yield
     end
@@ -37,10 +32,6 @@ module RoutingFilter
     private
 
     attr_reader :path, :service_choice
-
-    def valid_service_choice?
-      path != "/" && service_choice.present? && service_choice != service_choice_default
-    end
 
     def service_choice_default
       ::TradeTariffFrontend::ServiceChooser::SERVICE_DEFAULT
