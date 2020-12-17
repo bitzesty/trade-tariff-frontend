@@ -85,7 +85,6 @@ module ApplicationHelper
   end
 
   def download_chapter_pdf_url(section_position, chapter_code)
-    
     pdf_urls = TradeTariffFrontend::ServiceChooser
       .cache_with_service_choice('cached_chapters_pdf_urls', pdf_cache_options) do
       TariffPdf.chapters.map(&:url)
