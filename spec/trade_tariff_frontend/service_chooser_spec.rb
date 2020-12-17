@@ -21,29 +21,6 @@ describe TradeTariffFrontend::ServiceChooser do
         described_class.cache_with_service_choice(cache_key, options) {}
 
         expect(Rails.cache).to have_received(:fetch).with('uk-old.foo', options)
-
-      end
-    end
-
-    context 'when the service choice is uk-old' do
-      let(:choice) { 'uk-old' }
-
-      it 'caches under the service default key prefix' do
-        described_class.cache_with_service_choice(cache_key, options) {}
-
-        expect(Rails.cache).to have_received(:fetch).with('uk-old.foo', options)
-
-      end
-    end
-
-    context 'when the service choice is uk' do
-      let(:choice) { 'uk' }
-
-      it 'caches under the service default key prefix' do
-        described_class.cache_with_service_choice(cache_key, options) {}
-
-        expect(Rails.cache).to have_received(:fetch).with('uk.foo', options)
-
       end
     end
 
@@ -54,7 +31,6 @@ describe TradeTariffFrontend::ServiceChooser do
         described_class.cache_with_service_choice(cache_key, options) {}
 
         expect(Rails.cache).to have_received(:fetch).with('xi.foo', options)
-
       end
     end
   end
