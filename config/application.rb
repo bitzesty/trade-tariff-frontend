@@ -103,6 +103,6 @@ module TradeTariffFrontend
     config.middleware.use Rack::Attack
 
     # Prevent invalid queries from causing an error, e.g., `/api/v2/search_references.json?query[letter]=%`
-    config.middleware.use TradeTariffFrontend::FilterBadQueryParameterEncoding
+    config.middleware.use TradeTariffFrontend::FilterBadURLEncoding
   end
 end

@@ -85,10 +85,7 @@ module TradeTariffFrontend
     end
 
     def cache_control_string(response)
-      is_error = response.status.to_i.between?(500, 599)
-      cache_control = ["max-age=#{is_error ? 0 : 3600}"]
-      cache_control.unshift('no-store') if is_error
-      cache_control.join(', ')
+      return 'no-cache'
     end
 
     def remove_service_choice_prefix!(rackreq)

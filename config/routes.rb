@@ -8,12 +8,24 @@ Rails.application.routes.draw do
   default_url_options(host: TradeTariffFrontend.host)
 
   get "/trade-tariff/*path", to: redirect('/%{path}', status: 301)
-  get "/api/(*path)", constraints: { path: /[^v\d+].*/ }, to: redirect { |_params, request| request.url.gsub('/api/', "/api/v2/") }
+  get "/api/(*path)", constraints: { path: /[^v\d+].*/ }, to: redirect { |_params, request|
+    path = request.path.gsub('/api/', "/api/v2/")
+    "https://#{ENV['HOST']}#{path}" # request.path starts with '/'
+  }
   get "/v1/(*path)", to: redirect { |_params, request| "/api#{request.path}?#{request.query_string}" }
   get "/v2/(*path)", to: redirect { |_params, request| "/api#{request.path}?#{request.query_string}" }
-  get "/api/:version/commodities/:id", to: redirect { |_params, request| request.url.gsub('commodities', 'chapters').gsub('00000000', '') }, constraints: { id: /\d{2}00000000/ }
-  get "/api/:version/commodities/:id", to: redirect { |_params, request| request.url.gsub('commodities', 'headings').gsub('000000', '') }, constraints: { id: /\d{4}000000/ }
-  get "/api/v1/quotas/search", to: redirect('/api/v2/quotas/search', status: 301)
+  get "/api/:version/commodities/:id", constraints: { id: /\d{2}00000000/ }, to: redirect { |_params, request|
+    path = request.path.gsub('commodities', 'chapters').gsub('00000000', '')
+    "https://#{ENV['HOST']}#{path}"
+  }
+  get "/api/:version/commodities/:id", constraints: { id: /\d{4}000000/ }, to: redirect { |_params, request|
+    path = request.path.gsub('commodities', 'headings').gsub('000000', '')
+    "https://#{ENV['HOST']}#{path}"
+  }
+  get "/api/v1/quotas/search", to: redirect { |_params, request|
+    path = request.path.gsub('v1', 'v2')
+    "https://#{ENV['HOST']}#{path}"
+  }
 
   get "/", to: redirect(TradeTariffFrontend.production? ? "https://www.gov.uk/trade-tariff" : "/sections", status: 302)
   get "healthcheck", to: "healthcheck#check"
