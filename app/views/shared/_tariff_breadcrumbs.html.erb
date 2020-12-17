@@ -80,7 +80,6 @@ declarable ||= false %>
             </ul>
           </li>
         </ul>
-        <div class="feed"><%= link_to 'Changes', heading_changes_path(@heading.declarable, format: :atom), rel: "nofollow" %></div>
       </div>
       <div class="mobile-only">
         <ul class="js-full-tree">
@@ -91,7 +90,6 @@ declarable ||= false %>
               <li class="heading-li">
                 <%= tree_heading_code(heading) %>
                 <p><%= heading.formatted_description.html_safe %></p>
-                <div class="feed"><%= link_to 'Changes', heading_changes_path(@heading.declarable, format: :atom), rel: "nofollow" %></div>
               </li>
             </ul>
           </li>
@@ -103,7 +101,6 @@ declarable ||= false %>
               <li class="chapter-and-heading-li">
                 <%= tree_heading_code(heading) %>
                 <p><%= heading.formatted_description.html_safe %></p>
-                <div class="feed"><%= link_to 'Changes', heading_changes_path(@heading.declarable, format: :atom), rel: "nofollow" %></div>
               </li>
             </ul>
           </li>
@@ -121,7 +118,6 @@ declarable ||= false %>
             <%= chapter %>
           </p>
 
-          <div class="feed"><%= link_to 'Changes', chapter_changes_path(@chapter, format: :atom), rel: 'nofollow' %></div>
           <% if TradeTariffFrontend.download_pdf_enabled? %>
             <div class="download-pdf"><%= link_to 'Download PDF', download_chapter_pdf_url(chapter.section.position, chapter.short_code), rel: 'nofollow', target: '_blank' %></div>
           <% end %>
