@@ -27,26 +27,17 @@
         <%= govuk_header_navigation_item(search_active_class) do %>
           <%= link_to "Search", sections_path, class: "govuk-header__link" %>
         <% end %>
-        <%= govuk_header_navigation_item(additional_code_search_class) do %>
-          <%= link_to "Additional code", additional_code_search_path, class: "govuk-header__link" %>
-        <% end %>
-        <%= govuk_header_navigation_item(certificate_search_class) do %>
-          <%= link_to "Certificate", certificate_search_path, class: "govuk-header__link" %>
-        <% end %>
         <%= govuk_header_navigation_item(footnote_search_class) do %>
           <%= link_to "Footnotes", footnote_search_path, class: "govuk-header__link" %>
-        <% end %>
-        <%= govuk_header_navigation_item(quota_search_active_class) do %>
-          <%= link_to "Quotas", quota_search_path, class: "govuk-header__link" %>
-        <% end %>
-        <%= govuk_header_navigation_item(chemical_search_active_class) do %>
-          <%= link_to "CAS", chemical_search_path, class: "govuk-header__link" %>
         <% end %>
         <%= govuk_header_navigation_item(a_z_active_class) do %>
           <%= link_to "A-Z", a_z_index_path(letter: "a"), class: "govuk-header__link" %>
         <% end %>
         <%= govuk_header_navigation_item(exchange_rates_active_class) do %>
           <%= link_to "Exchange rates", exchange_rates_path, class: "govuk-header__link" %>
+        <% end %>
+         <%= govuk_header_navigation_item(tools_active_class) do %>
+          <%= link_to "Tools", tools_path, class: "govuk-header__link" %>
         <% end %>
       </ul>
     </nav>

@@ -60,4 +60,26 @@ describe ApplicationHelper, type: :helper do
       expect(helper.generate_breadcrumbs('Current Page', [['Previous Page', '/']])).to match(/Previous Page/)
     end
   end
+
+  describe '.tools_active_class' do
+    let(:action) { 'something' }
+
+    before do
+      allow(controller).to receive(:params).and_return({ action: action })
+    end
+
+    context 'when action is tools' do
+      let(:action) { 'tools' }
+
+      it 'returns active' do
+        expect(helper.tools_active_class).to eq('active')
+      end
+    end
+
+    context 'when action is not tools' do
+      it 'returns nil' do
+        expect(helper.tools_active_class).to be_nil
+      end
+    end
+  end
 end

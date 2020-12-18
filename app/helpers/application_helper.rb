@@ -58,24 +58,12 @@ module ApplicationHelper
     'active' if params[:controller] == 'search_references'
   end
 
-  def additional_code_search_class
-    'active' if params[:action] == 'additional_code_search'
+  def tools_active_class
+    'active' if params[:action] == 'tools'
   end
 
   def footnote_search_class
     'active' if params[:action] == 'footnote_search'
-  end
-
-  def certificate_search_class
-    'active' if params[:action] == 'certificate_search'
-  end
-
-  def quota_search_active_class
-    'active' if params[:action] == 'quota_search'
-  end
-
-  def chemical_search_active_class
-    'active' if params[:action] == 'chemical_search'
   end
 
   def currency_options
