@@ -1,5 +1,6 @@
 class SearchReferencesController < ApplicationController
   def show
+    @no_shared_switch_service_link = true
     @search_references = SearchReferencesPresenter.new(
       SearchReference.all(query: { letter: letter })
     )
