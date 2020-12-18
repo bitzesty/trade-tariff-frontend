@@ -4,11 +4,23 @@
 en:
   meta_description: "Search for import and export commodity codes and for tax, duty and licences that apply to your goods"
 
+  title: 
+    default: "%{service_name}: %{service_description} - GOV.UK"
+    goods_nomenclature: "%{goods_description} - %{service_name} - GOV.UK"
+    commodity: 
+      uk-old: "Commodity code %{commodity_code} - %{commodity_description} - %{service_name} - GOV.UK"
+      uk: "Commodity code %{commodity_code}: %{commodity_description} - %{service_name} - GOV.UK"
+      xi: "Commodity code %{commodity_code}: %{commodity_description} - %{service_name} - GOV.UK"
+    service_description: "Look up commodity codes, import duty, VAT and controls - GOV.UK"
+    service_name:
+      uk-old: "Trade Tariff"
+      uk: "The Online Trade Tariff"
+      xi: "The Northern Ireland (EU) Tariff"
   geographical_areas:
     descriptions:
       erga_omnes: "All countries"
   trade_tariff_heading:
-    uk-old: "The Online Trade Tariff"
+    uk-old: "Trade Tariff"
     uk: "The Online Trade Tariff"
     xi: "The Northern Ireland (EU) Tariff"
 

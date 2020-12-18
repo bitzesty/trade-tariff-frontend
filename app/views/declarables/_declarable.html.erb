@@ -1,4 +1,4 @@
-<% content_for :title, "Commodity code - #{declarable.code} - #{declarable.description_plain} - Trade Tariff - GOV.UK" %>
+<% content_for :title, commodity_title(declarable) %>
 
 <article class="tariff commodity">
   <%= render 'shared/tariff_breadcrumbs', declarable: declarable %>
