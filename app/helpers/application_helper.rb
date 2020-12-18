@@ -50,20 +50,12 @@ module ApplicationHelper
     'active' if params[:action] == 'search' || (params[:controller] == 'sections' && params[:action] == 'index')
   end
 
-  def exchange_rates_active_class
-    'active' if params[:controller] == 'exchange_rates'
-  end
-
   def a_z_active_class
     'active' if params[:controller] == 'search_references'
   end
 
   def tools_active_class
     'active' if params[:action] == 'tools'
-  end
-
-  def footnote_search_class
-    'active' if params[:action] == 'footnote_search'
   end
 
   def currency_options
