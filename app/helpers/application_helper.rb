@@ -27,6 +27,19 @@ module ApplicationHelper
     end
   end
 
+  def generate_breadcrumbs(current_page, previous_pages)
+    crumbs = [
+      previous_pages.map do |title, link|
+        content_tag(:li, nil, class: 'govuk-breadcrumbs__list-item') {
+          link_to(title, link, class: 'govuk-breadcrumbs__link')
+        }
+      end,
+      content_tag(:li, current_page, class: 'govuk-breadcrumbs__list-item', aria: { current: 'page' })
+    ]
+
+    content_tag(:div, class: "govuk-breadcrumbs") { content_tag(:ol, crumbs.join('').html_safe, class: "govuk-breadcrumbs__list", role: "breadcrumbs") }
+  end
+
   def govuk_header_navigation_item(active_class = false)
     base_classname = "govuk-header__navigation-item"
     classname = "#{base_classname} #{active_class ? "#{base_classname}--active" : ''}"

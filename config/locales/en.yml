@@ -11,3 +11,11 @@ en:
     uk-old: "The Online Trade Tariff"
     uk: "The Online Trade Tariff"
     xi: "The Northern Ireland (EU) Tariff"
+
+  breadcrumb:
+    home: Home
+    tools: Tools
+    quotas: Quotas
+    certificates: Certificate
+    additional_codes: Additional codes
+    chemicals: Chemicals

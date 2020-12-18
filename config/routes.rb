@@ -37,6 +37,7 @@ Rails.application.routes.draw do
   get 'feedback', to: 'feedback#new'
   post 'feedback', to: 'feedback#create'
   get 'feedback/thanks', to: 'feedback#thanks'
+  get 'tools', to: 'pages#tools'
 
   match "/search", to: "search#search", as: :perform_search, via: %i[get post]
   get "search_suggestions", to: "search#suggestions", as: :search_suggestions
