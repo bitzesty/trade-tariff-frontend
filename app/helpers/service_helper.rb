@@ -30,7 +30,7 @@ module ServiceHelper
     when "uk-old" then link_to(t("trade_tariff_heading.xi"), "/xi#{current_path}")
     when "uk" then link_to(t("trade_tariff_heading.xi"), "/xi#{current_path}")
     else
-      link_to(t("trade_tariff_heading.uk-old"))
+      link_to(t("trade_tariff_heading.uk-old"), current_path)
     end
   end
 

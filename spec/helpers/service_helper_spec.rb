@@ -68,7 +68,7 @@ describe ServiceHelper, type: :helper do
       let(:choice) { 'uk-old' }
 
       it 'returns The Online Trade Tariff' do
-        expect(trade_tariff_heading).to eq('The Online Trade Tariff')
+        expect(trade_tariff_heading).to eq('Trade Tariff')
       end
     end
 
