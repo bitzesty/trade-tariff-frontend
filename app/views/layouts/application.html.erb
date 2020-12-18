@@ -70,14 +70,6 @@
     <main id="content" class="govuk-main-wrapper" role="main">
       <%= render 'shared/search' %>
 
-      <% unless @no_shared_switch_service_link == true %>
-        <div class="tariff-breadcrumbs js-tariff-breadcrumbs clt govuk-!-font-size-15 govuk-!-margin-bottom-7 govuk-!-margin-top-0">
-          <nav>
-            <p>Switch to the <%= switch_service_link %></a>.</p>
-          </nav>
-        </div>
-      <% end %>
-
       <%= yield %>
       <% if @tariff_last_updated %>
         <div id="last-updated-at"><p class="govuk-!-font-size-16">Last updated: <%= @tariff_last_updated.strftime("%e %B %Y") %>&emsp;<a href="https://www.gov.uk/government/collections/tariff-stop-press-notices" target="_blank">View latest amendments</a></p></div>

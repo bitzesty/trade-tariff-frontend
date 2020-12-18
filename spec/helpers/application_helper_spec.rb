@@ -22,9 +22,9 @@ describe ApplicationHelper, type: :helper do
       end
     end
 
-    context 'HashWithIndifferentAccess is passed as argument' do
+    context 'when HashWithIndifferentAccess is passed as argument' do
       let(:hash) {
-        {"content"=>"* 1\\. This chapter does not cover:"}
+        { "content" => "* 1\\. This chapter does not cover:" }
       }
 
       it 'fetches :content from the hash' do
@@ -38,9 +38,9 @@ describe ApplicationHelper, type: :helper do
       end
     end
 
-    context 'HashWithIndifferentAccess is passed as argument with no applicable content' do
+    context 'when HashWithIndifferentAccess is passed as argument with no applicable content' do
       let(:na_hash) {
-        {"foo"=>"bar"}
+        { "foo" => "bar" }
       }
 
       it 'returns an empty string' do
@@ -65,7 +65,7 @@ describe ApplicationHelper, type: :helper do
     let(:action) { 'something' }
 
     before do
-      allow(controller).to receive(:params).and_return({ action: action })
+      allow(controller).to receive(:params).and_return(action: action)
     end
 
     context 'when action is tools' do

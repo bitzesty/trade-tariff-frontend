@@ -6,16 +6,11 @@
       ]
     )
   %>
-
-  <div class="tariff-breadcrumbs js-tariff-breadcrumbs clt govuk-!-font-size-15 govuk-!-margin-bottom-3">
-    <nav>
-      <p>Switch to the <%= switch_service_link %></a>.</p>
-    </nav>
-  </div>
 <% end %>
 
 <section class="a-z">
   <h1 class="govuk-heading-l">A&ndash;Z of Classified Goods</h1>
+  <%= service_switch_banner %>
   <div class="inner">
     <ol class="index govuk-list govuk-!-margin-bottom-8">
       <%= a_z_index(letter) %>

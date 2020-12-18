@@ -204,10 +204,6 @@ describe "Search", js: true do
   end
 
   describe 'tools page' do
-    before do
-      Rails.cache.clear
-    end
-
     it 'has the Tools link present on the page' do
       visit tools_path
 
