@@ -18,7 +18,7 @@ describe ServiceHelper, type: :helper do
       let(:choice) { nil }
 
       it 'returns the title for the current service choice' do
-        expect(helper.default_title).to eq('Trade Tariff: Look up commodity codes, import duty, VAT and controls - GOV.UK - GOV.UK')
+        expect(helper.default_title).to eq('The Online Trade Tariff: Look up commodity codes, import duty, VAT and controls - GOV.UK - GOV.UK')
       end
     end
   end
@@ -38,7 +38,7 @@ describe ServiceHelper, type: :helper do
       let(:choice) { nil }
 
       it 'returns the correct title for the current goods nomenclature' do
-        expect(helper.goods_nomenclature_title(goods_nomenclature)).to eq('Live horses, asses, mules and hinnies - Trade Tariff - GOV.UK')
+        expect(helper.goods_nomenclature_title(goods_nomenclature)).to eq('Live horses, asses, mules and hinnies - The Online Trade Tariff - GOV.UK')
       end
     end
   end
@@ -58,7 +58,7 @@ describe ServiceHelper, type: :helper do
       let(:choice) { nil }
 
       it 'returns the correct title for the current goods nomenclature' do
-        expect(helper.commodity_title(commodity)).to eq('Commodity code 0101300000 - Pure-bred breeding animals - Trade Tariff - GOV.UK')
+        expect(helper.commodity_title(commodity)).to eq('Commodity code 0101300000: Pure-bred breeding animals - The Online Trade Tariff - GOV.UK')
       end
     end
   end
@@ -68,7 +68,7 @@ describe ServiceHelper, type: :helper do
       let(:choice) { 'uk-old' }
 
       it 'returns The Online Trade Tariff' do
-        expect(trade_tariff_heading).to eq('Trade Tariff')
+        expect(trade_tariff_heading).to eq('The Online Trade Tariff')
       end
     end
 
@@ -119,7 +119,7 @@ describe ServiceHelper, type: :helper do
       let(:choice) { 'xi' }
 
       it 'returns the link to the current UK service' do
-        expect(switch_service_link).to eq(link_to('Trade Tariff', '/sections/1'))
+        expect(switch_service_link).to eq(link_to('The Online Trade Tariff', '/sections/1'))
       end
     end
   end
