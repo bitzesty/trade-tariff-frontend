@@ -14,16 +14,16 @@ module ServiceHelper
   end
 
   def service_switch_banner(optional_classes: 'govuk-!-margin-bottom-7')
-    content_tag(:div, class: "tariff-breadcrumbs js-tariff-breadcrumbs clt govuk-!-font-size-15 #{optional_classes}") do
-      content_tag(:nav) do
-        content_tag(:p) do
+    tag.div(class: "tariff-breadcrumbs js-tariff-breadcrumbs clt govuk-!-font-size-15 #{optional_classes}") do
+      tag.nav do
+        tag.p do
           banner_copy
         end
       end
     end
   end
 
-  private
+private
 
   def service_choice
     TradeTariffFrontend::ServiceChooser.service_choice ||
