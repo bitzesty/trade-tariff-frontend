@@ -10,7 +10,7 @@ describe ServiceHelper, type: :helper do
       let(:choice) { 'xi' }
 
       it 'returns the title for the current service choice' do
-        expect(helper.default_title).to eq('The Northern Ireland (EU) Tariff: Look up commodity codes, import duty, VAT and controls - GOV.UK - GOV.UK')
+        expect(helper.default_title).to eq('The Northern Ireland (EU) Tariff: Look up commodity codes, import duty, VAT and controls - GOV.UK')
       end
     end
 
@@ -18,7 +18,7 @@ describe ServiceHelper, type: :helper do
       let(:choice) { nil }
 
       it 'returns the title for the current service choice' do
-        expect(helper.default_title).to eq('The Online Trade Tariff: Look up commodity codes, import duty, VAT and controls - GOV.UK - GOV.UK')
+        expect(helper.default_title).to eq('The Online Trade Tariff: Look up commodity codes, import duty, VAT and controls - GOV.UK')
       end
     end
   end
