@@ -59,7 +59,7 @@ class Search
               end
   end
 
-  def currency_name(currency = attributes['currency'])
+  def currency_name
     case currency
     when 'GBP'
       'British Pound'
