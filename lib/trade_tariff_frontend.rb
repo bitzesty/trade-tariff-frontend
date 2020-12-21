@@ -92,16 +92,16 @@ module TradeTariffFrontend
       end
     end
 
-    def cache_prefix
-      service_choice || SERVICE_DEFAULT
-    end
-
     def api_host
       host = service_choices[service_choice]
 
       return service_choices[SERVICE_DEFAULT] if host.blank?
 
       host
+    end
+
+    def cache_prefix
+      service_choice || SERVICE_DEFAULT
     end
   end
   
