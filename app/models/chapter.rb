@@ -4,7 +4,7 @@ class Chapter < GoodsNomenclature
   include ApiEntity
   include Changeable
 
-  attr_accessor :headings, :chapter_note, :forum_url
+  attr_accessor :headings, :chapter_note
 
   has_one :section
   has_many :headings
