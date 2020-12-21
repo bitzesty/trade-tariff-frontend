@@ -27,6 +27,19 @@ module ApplicationHelper
     end
   end
 
+  def generate_breadcrumbs(current_page, previous_pages)
+    crumbs = [
+      previous_pages.map do |title, link|
+        content_tag(:li, nil, class: 'govuk-breadcrumbs__list-item') {
+          link_to(title, link, class: 'govuk-breadcrumbs__link')
+        }
+      end,
+      content_tag(:li, current_page, class: 'govuk-breadcrumbs__list-item', aria: { current: 'page' })
+    ]
+
+    content_tag(:div, class: "govuk-breadcrumbs") { content_tag(:ol, crumbs.join('').html_safe, class: "govuk-breadcrumbs__list", role: "breadcrumbs") }
+  end
+
   def govuk_header_navigation_item(active_class = false)
     base_classname = "govuk-header__navigation-item"
     classname = "#{base_classname} #{active_class ? "#{base_classname}--active" : ''}"
@@ -37,32 +50,12 @@ module ApplicationHelper
     'active' if params[:action] == 'search' || (params[:controller] == 'sections' && params[:action] == 'index')
   end
 
-  def exchange_rates_active_class
-    'active' if params[:controller] == 'exchange_rates'
-  end
-
   def a_z_active_class
     'active' if params[:controller] == 'search_references'
   end
 
-  def additional_code_search_class
-    'active' if params[:action] == 'additional_code_search'
-  end
-
-  def footnote_search_class
-    'active' if params[:action] == 'footnote_search'
-  end
-
-  def certificate_search_class
-    'active' if params[:action] == 'certificate_search'
-  end
-
-  def quota_search_active_class
-    'active' if params[:action] == 'quota_search'
-  end
-
-  def chemical_search_active_class
-    'active' if params[:action] == 'chemical_search'
+  def tools_active_class
+    'active' if params[:action] == 'tools'
   end
 
   def currency_options

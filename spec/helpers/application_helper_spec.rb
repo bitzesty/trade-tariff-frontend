@@ -22,9 +22,9 @@ describe ApplicationHelper, type: :helper do
       end
     end
 
-    context 'HashWithIndifferentAccess is passed as argument' do
+    context 'when HashWithIndifferentAccess is passed as argument' do
       let(:hash) {
-        {"content"=>"* 1\\. This chapter does not cover:"}
+        { "content" => "* 1\\. This chapter does not cover:" }
       }
 
       it 'fetches :content from the hash' do
@@ -38,15 +38,47 @@ describe ApplicationHelper, type: :helper do
       end
     end
 
-    context 'HashWithIndifferentAccess is passed as argument with no applicable content' do
+    context 'when HashWithIndifferentAccess is passed as argument with no applicable content' do
       let(:na_hash) {
-        {"foo"=>"bar"}
+        { "foo" => "bar" }
       }
 
       it 'returns an empty string' do
         expect(
           helper.govspeak(na_hash)
         ).to eq ''
+      end
+    end
+  end
+
+  describe '.generate_breadcrumbs' do
+    it 'returns current page list item' do
+      expect(helper.generate_breadcrumbs('Current Page', [])).to match(/Current Page/)
+    end
+
+    it 'returns previous pages breadcrumbs' do
+      expect(helper.generate_breadcrumbs('Current Page', [['Previous Page', '/']])).to match(/Previous Page/)
+    end
+  end
+
+  describe '.tools_active_class' do
+    let(:action) { 'something' }
+
+    before do
+      allow(controller).to receive(:params).and_return(action: action)
+    end
+
+    context 'when action is tools' do
+      let(:action) { 'tools' }
+
+      it 'returns active' do
+        expect(helper.tools_active_class).to eq('active')
+      end
+    end
+
+    context 'when action is not tools' do
+      it 'returns nil' do
+        expect(helper.tools_active_class).to be_nil
       end
     end
   end

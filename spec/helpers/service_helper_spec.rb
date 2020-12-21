@@ -5,7 +5,7 @@ describe ServiceHelper, type: :helper do
     allow(TradeTariffFrontend::ServiceChooser).to receive(:service_choice).and_return(choice)
   end
 
-  describe ".trade_tariff_heading" do
+  describe '.trade_tariff_heading' do
     context 'when the selected service choice is uk-old' do
       let(:choice) { 'uk-old' }
 
@@ -31,7 +31,7 @@ describe ServiceHelper, type: :helper do
     end
   end
 
-  describe ".switch_service_link" do
+  describe '.switch_service_link' do
     let(:request) { double('request', filtered_path: path) }
 
     before do
@@ -62,6 +62,25 @@ describe ServiceHelper, type: :helper do
 
       it 'returns the link to the current UK service' do
         expect(switch_service_link).to eq(link_to('The Online Trade Tariff', '/sections/1'))
+      end
+    end
+  end
+
+  describe '.service_switch_banner' do
+    let(:request) { double('request', filtered_path: '/tools') }
+    let(:choice) { 'xi' }
+
+    context 'when on sections page' do
+      let(:request) { double('request', filtered_path: '/sections') }
+
+      it 'returns the full banner that allows users to toggle between the services' do
+        expect(service_switch_banner).to include(t("service_banner.big.#{choice}", link: switch_service_link))
+      end
+    end
+
+    context 'when not on sections page' do
+      it 'returns the subtle banner that allows users to toggle between the services' do
+        expect(service_switch_banner).to include(t('service_banner.small', link: switch_service_link))
       end
     end
   end

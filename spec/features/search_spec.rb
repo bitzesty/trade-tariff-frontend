@@ -74,15 +74,6 @@ describe "Search", js: true do
       Rails.cache.clear
     end
 
-    context 'quota search link on page header' do
-      it 'should contain link to quota search page' do
-        VCR.use_cassette('search#quota_search_header', record: :new_episodes) do
-          visit sections_path
-          expect(page).to have_content('Quotas')
-        end
-      end
-    end
-
     context 'quota search form' do
       it 'should contain quota search params inputs' do
         VCR.use_cassette('search#quota_search_form', record: :new_episodes) do
@@ -131,15 +122,6 @@ describe "Search", js: true do
       Rails.cache.clear
     end
 
-    context 'additional code search link on page header' do
-      it 'should contain link to additional code search page' do
-        VCR.use_cassette('search#additional_code_search_header', record: :new_episodes) do
-          visit sections_path
-          expect(page).to have_content('Additional code')
-        end
-      end
-    end
-
     context 'additional code search form' do
       it 'should contain additional code search params inputs' do
         VCR.use_cassette('search#additional_code_search_form', record: :new_episodes) do
@@ -183,15 +165,6 @@ describe "Search", js: true do
       Rails.cache.clear
     end
 
-    context 'certificate search link on page header' do
-      it 'should contain link to certificate search page' do
-        VCR.use_cassette('search#certificate_search_header', record: :new_episodes) do
-          visit sections_path
-          expect(page).to have_content('Certificate')
-        end
-      end
-    end
-
     context 'certificate search form' do
       it 'should contain certificate search params inputs' do
         VCR.use_cassette('search#certificate_search_form', record: :new_episodes) do
@@ -229,7 +202,15 @@ describe "Search", js: true do
       end
     end
   end
-  
+
+  describe 'tools page' do
+    it 'has the Tools link present on the page' do
+      visit tools_path
+
+      expect(page).to have_content('Tools')
+    end
+  end
+
   context 'chemical search' do
     before(:each) do
       Rails.cache.clear
@@ -237,21 +218,10 @@ describe "Search", js: true do
 
     let(:name) { "CAS" }
 
-    context 'chemical search link on page header' do
-      it 'should contain link to certificate search page' do
-        VCR.use_cassette('search#chemical_search_header', record: :new_episodes) do
-          visit sections_path
-          expect(page).to have_content(name)
-        end
-      end
-    end
-
     context 'chemical search form' do
       it 'should contain chemical search params inputs' do
         VCR.use_cassette('search#chemical_search_form', record: :new_episodes) do
           visit chemical_search_path
-
-          expect(page).to have_content(name)
 
           expect(page.find('#cas')).to be_present
           expect(page.find('#name')).to be_present

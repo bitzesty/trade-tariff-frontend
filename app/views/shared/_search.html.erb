@@ -1,8 +1,9 @@
-<% return if @no_shared_search %>
+<% return if @no_shared_search || @no_shared_switch_service_link %>
 
 <% if (controller_name == 'commodities' && action_name == 'show') || (controller_name == 'headings' && action_name == 'show' && @heading&.declarable?) %>
   <header>
     <h1 class="govuk-heading-l commodity-header">Commodity information for <%= (@commodity || @heading).code %></h1>
+    <%= service_switch_banner %>
     <%= form_tag perform_search_path, method: :get, class: "tariff-search #{@section_css}", id: "new_search" do |f| %>
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-full">
@@ -19,6 +20,7 @@
 <% elsif %w(search search_references exchange_rates pages errors feedback).exclude?(controller_name) && action_name != 'quota_search' %>
   <header>
     <h1 class="govuk-heading-l"><a href="<%= sections_path %>">Trade Tariff: look up commodity codes, duty and VAT rates</a></h1>
+    <%= service_switch_banner %>
   </header>
   <%= form_tag perform_search_path, method: :get, class: "tariff-search #{@section_css}", id: "new_search" do |f| %>
     <div class="search-header js-search-header">

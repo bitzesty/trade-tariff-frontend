@@ -11,3 +11,20 @@ en:
     uk-old: "The Online Trade Tariff"
     uk: "The Online Trade Tariff"
     xi: "The Northern Ireland (EU) Tariff"
+
+  breadcrumb:
+    home: Home
+    tools: Tools
+    quotas: Quotas
+    certificates: Certificate
+    additional_codes: Additional codes
+    chemicals: Chemicals
+    az: A to Z
+
+  service_banner:
+    small:
+      Switch to %{link}.
+    big:
+      uk-old: Are you trading in Northern Ireland? From January 1st 2021, Northern Ireland is operating under a dual tariff regime and the rules may differ if you are importing goods that are at risk of being transported to the Republic of Ireland. In that case, use the %{link}.
+      uk: Are you trading in Northern Ireland? From January 1st 2021, Northern Ireland is operating under a dual tariff regime and the rules may differ if you are importing goods that are at risk of being transported to the Republic of Ireland. In that case, use the %{link}.
+      xi: Use the Northern Ireland (EU) Tariff to look up commodity codes, duty, VAT and controls if you are importing goods that are at risk of being transported to the Republic of Ireland. Find out more about the dual tariff regime for Northern Ireland.<br><br>In that case, use the %{link}.

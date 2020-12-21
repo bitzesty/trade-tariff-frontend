@@ -69,11 +69,6 @@
 
     <main id="content" class="govuk-main-wrapper" role="main">
       <%= render 'shared/search' %>
-      <div class="tariff-breadcrumbs js-tariff-breadcrumbs clt govuk-!-font-size-15 govuk-!-margin-bottom-7">
-        <nav>
-          <p>Switch to the <%= switch_service_link %></a>.</p>
-        </nav>
-      </div>
 
       <%= yield %>
       <% if @tariff_last_updated %>

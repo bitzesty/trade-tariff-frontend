@@ -18,4 +18,9 @@ class PagesController < ApplicationController
     respond_to :text
     expires_in 6.hours, public: true
   end
+
+  def tools
+    @no_shared_search = true
+    @no_shared_switch_service_link = true
+  end
 end
