@@ -69,7 +69,7 @@ class Search
   end
 
   def currency
-    attributes['currency'] || 'EUR'
+    attributes['currency'] || TradeTariffFrontend.currency_default
   end
 
   def filtered_by_date?

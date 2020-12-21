@@ -35,7 +35,7 @@ describe ApplicationController, type: :controller do
     before do
       ENV['BREXIT_DATE'] = (Date.today + 5.days).to_s
       ENV['ALLOW_SEARCH'] = nil
-      allow(TradeTariffFrontend).to receive(:block_searching_past_march?) { true }
+      allow(TradeTariffFrontend).to receive(:block_searching_past_brexit?) { true }
     end
 
     after do
