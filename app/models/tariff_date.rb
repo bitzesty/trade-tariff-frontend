@@ -14,6 +14,8 @@ class TariffDate
     new(
       if valid_date_param?(date_param)
         date_param.values_at(*DATE_KEYS).join('-')
+      elsif TradeTariffFrontend.simulation_date
+        TradeTariffFrontend.simulation_date
       else
         Date.current
       end
