@@ -1,12 +1,16 @@
 require 'spec_helper'
 
 describe TradeTariffFrontend::ServiceChooser do
+  after do
+    Thread.current[:service_choice] = nil
+  end
+
   describe '.service_choices' do
     it 'returns a Hash of url options for the services' do
       expect(described_class.service_choices).to eq(
-        "uk" => "http://localhost:3018",
-        "uk-old" => "http://localhost:3018",
-        "xi" => "http://localhost:3019"
+        'uk' => 'http://localhost:3018',
+        'uk-old' => 'http://localhost:3018',
+        'xi' => 'http://localhost:3019',
       )
     end
   end
@@ -17,17 +21,12 @@ describe TradeTariffFrontend::ServiceChooser do
         .to change { Thread.current[:service_choice] }
         .from(nil)
         .to('xi')
-
-      # Don't pollute other tests with the service choice value
-      described_class.service_choice = nil
     end
   end
 
   describe '.api_host' do
-    around do |example|
+    before do
       Thread.current[:service_choice] = choice
-      example.run
-      Thread.current[:service_choice] = nil
     end
 
     context 'when the service choice does not have a corresponding url' do
@@ -54,10 +53,6 @@ describe TradeTariffFrontend::ServiceChooser do
     before do
       described_class.service_choice = choice
       allow(Rails.cache).to receive(:fetch)
-    end
-
-    after do
-      described_class.service_choice = nil
     end
 
     context 'when the service choice is nil' do

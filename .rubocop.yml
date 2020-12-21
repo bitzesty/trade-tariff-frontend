@@ -38,3 +38,5 @@ RSpec/DescribeClass:
     - tasks/**/*.rb
 RSpec/ExampleLength:
   Enabled: false
+Style/StringLiterals:
+  EnforcedStyle: single_quotes
