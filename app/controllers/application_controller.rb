@@ -29,7 +29,7 @@ class ApplicationController < ActionController::Base
   def url_options
     return super unless search_invoked?
 
-    if search_query.date.today?
+    if search_query.date.today? || search_query.date == TradeTariffFrontend.simulation_date
       return { country: search_query.country, currency: search_query.currency }.merge(super)
     end
 

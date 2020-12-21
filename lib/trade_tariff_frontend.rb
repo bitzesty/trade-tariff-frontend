@@ -59,6 +59,10 @@ module TradeTariffFrontend
     currency_default_gbp? ? "GBP" : "EUR"
   end
 
+  def simulation_date
+    ENV.fetch("SIMULATION_DATE", nil)
+  end
+  
   def uk_regulations_enabled?
     ENV.fetch('UK_REGULATIONS', 'false').to_s.downcase == 'true'
   end
