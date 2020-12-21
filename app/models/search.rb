@@ -62,7 +62,7 @@ class Search
   def currency_name
     case currency
     when 'GBP'
-      'British Pound'
+      'Pound sterling'
     else
       'Euro'
     end
