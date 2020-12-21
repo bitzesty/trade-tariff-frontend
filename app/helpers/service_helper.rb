@@ -51,7 +51,7 @@ private
   end
 
   def service_description
-    t("title.service_description")
+    t('title.service_description')
   end
 
   def service_choice
