@@ -66,7 +66,7 @@ module ApplicationHelper
   end
 
   def currency_options
-    [%w[Pound \sterling GBP], %w[Euro EUR]]
+    [%w[Pound\ sterling GBP], %w[Euro EUR]]
   end
 
   def download_chapter_pdf_url(section_position, chapter_code)
