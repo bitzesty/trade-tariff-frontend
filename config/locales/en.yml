@@ -11,7 +11,7 @@ en:
       uk-old: "Commodity code %{commodity_code}: %{commodity_description} - %{service_name} - GOV.UK"
       uk: "Commodity code %{commodity_code}: %{commodity_description} - %{service_name} - GOV.UK"
       xi: "Commodity code %{commodity_code}: %{commodity_description} - %{service_name} - GOV.UK"
-    service_description: "Look up commodity codes, import duty, VAT and controls - GOV.UK"
+    service_description: "Look up commodity codes, import duty, VAT and controls"
     service_name:
       uk-old: "The Online Trade Tariff"
       uk: "The Online Trade Tariff"
