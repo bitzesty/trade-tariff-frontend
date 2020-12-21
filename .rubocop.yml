@@ -6,34 +6,34 @@ inherit_gem:
 require: rubocop-rspec
 
 AllCops:
-  # Exclude anything that isn't really part of our code.
-  # rails_helper is excluded because it's full of solecisms, but it's mostly
-  # generated code and copy-and-pasted snipets from READMEs.
   Exclude:
-    - "vendor/**/*"
-    - "db/**/*"
-    - "bin/**/*"
-    - "config/**/*"
-    - "tmp/**/*"
-
+    - 'db/schema.rb'
+    - 'vendor/**/*'
+    - 'bin/**'
+    - 'db/**/*'
+    - 'node_modules/**/*'
+    - 'tmp/**/*'
+    - 'config/initializers/canonical_rails.rb'
+    - 'config/puma.rb'
+    - 'spec/spec_helper.rb'
+Style/FrozenStringLiteralComment:
+  Enabled: false
 Style/Documentation:
   Enabled: false
-
-Layout/ParameterAlignment:
-  EnforcedStyle: with_fixed_indentation
-
+Metrics/AbcSize:
+  Max: 20
 Layout/LineLength:
   Max: 120
-
+Style/GuardClause:
+  MinBodyLength: 2
+Layout/AccessModifierIndentation:
+  Enabled: false
 Metrics/BlockLength:
+  Enabled: false
+Metrics/ModuleLength:
+  Enabled: false
+RSpec/DescribeClass:
   Exclude:
-    - "spec/**/*"
-
+    - tasks/**/*.rb
 RSpec/ExampleLength:
-  Max: 15
-
-RSpec/NestedGroups:
-  Max: 6
-
-Style/StringLiterals:
-  EnforcedStyle: single_quotes
+  Enabled: false
