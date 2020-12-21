@@ -66,13 +66,7 @@ module ApplicationHelper
   end
 
   def currency_options
-    options = [%w[Euro EUR]]
-    options << ['British Pound', 'GBP'] unless search_date_in_future_month?
-    options
-  end
-
-  def change_currency_message
-    search_date_in_future_month? ? "for a future date" : "Change currency"
+    [%w[Euro EUR], %w[British\ Pound GBP]]
   end
 
   def download_chapter_pdf_url(section_position, chapter_code)
@@ -109,11 +103,5 @@ module ApplicationHelper
 
   def current_url_without_parameters
     request.base_url + request.path
-  end
-
-  private
-
-  def search_date_in_future_month?
-    @search&.date.date >= Date.today.at_beginning_of_month.next_month
   end
 end
