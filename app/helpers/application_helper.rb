@@ -66,7 +66,7 @@ module ApplicationHelper
   end
 
   def currency_options
-    [%w[Euro EUR], %w[British\ Pound GBP]]
+    [%w[British\ Pound GBP], %w[Euro EUR]]
   end
 
   def download_chapter_pdf_url(section_position, chapter_code)
@@ -74,7 +74,7 @@ module ApplicationHelper
       TariffPdf.chapters.map(&:url)
     end
 
-    currency = @search.attributes['currency'] || 'EUR'
+    currency = @search.attributes['currency'] || TradeTariffFrontend.currency_default
 
     pdf_urls.find do |url|
       url =~ /chapters\/#{currency.downcase}\/#{section_position.to_s.rjust(2, '0')}-#{chapter_code}\.pdf/
@@ -86,7 +86,7 @@ module ApplicationHelper
       TariffPdf.latest.map(&:url)
     end
 
-    currency = @search.attributes['currency'] || 'EUR'
+    currency = @search.attributes['currency'] || TradeTariffFrontend.currency_default
 
     pdf_urls.find do |url|
       url =~ /#{currency.downcase}\//
