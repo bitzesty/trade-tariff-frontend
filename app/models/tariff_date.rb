@@ -35,7 +35,7 @@ class TariffDate
   end
 
   def date
-    date.presence || TradeTariffFrontend.simulation_date || TariffUpdate.latest_applied_import_date
+    @date.presence || TradeTariffFrontend.simulation_date || TariffUpdate.latest_applied_import_date
   end
 
   def persisted?
