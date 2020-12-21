@@ -1,15 +1,36 @@
 module ServiceHelper
+  def default_title
+    t("title.default", service_name: service_name, service_description: service_description)
+  end
+
+  def goods_nomenclature_title(goods_nomenclature)
+    t(
+      "title.goods_nomenclature",
+      goods_description: goods_nomenclature.to_s,
+      service_name: service_name,
+    )
+  end
+
+  def commodity_title(commodity)
+    t(
+      "title.commodity.#{service_choice}",
+      commodity_description: commodity.to_s,
+      commodity_code: commodity.code,
+      service_name: service_name,
+    )
+  end
+
   def trade_tariff_heading
-    t("trade_tariff_heading")[service_choice.to_sym]
+    t("trade_tariff_heading.#{service_choice}")
   end
 
   # TODO: Remove the uk-old case when we switch to the new UK version
   def switch_service_link
     case service_choice
-    when "uk-old" then link_to(t("trade_tariff_heading")[:xi], "/xi#{current_path}")
-    when "uk" then link_to(t("trade_tariff_heading")[:xi], "/xi#{current_path}")
+    when "uk-old" then link_to(t("trade_tariff_heading.xi"), "/xi#{current_path}")
+    when "uk" then link_to(t("trade_tariff_heading.xi"), "/xi#{current_path}")
     else
-      link_to(t("trade_tariff_heading")["uk-old".to_sym], current_path)
+      link_to(t("trade_tariff_heading.uk-old"), current_path)
     end
   end
 
@@ -24,6 +45,14 @@ module ServiceHelper
   end
 
 private
+
+  def service_name
+    t("title.service_name.#{service_choice}")
+  end
+
+  def service_description
+    t('title.service_description')
+  end
 
   def service_choice
     TradeTariffFrontend::ServiceChooser.service_choice ||

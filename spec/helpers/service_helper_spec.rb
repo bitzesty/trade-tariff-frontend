@@ -5,7 +5,65 @@ describe ServiceHelper, type: :helper do
     allow(TradeTariffFrontend::ServiceChooser).to receive(:service_choice).and_return(choice)
   end
 
-  describe '.trade_tariff_heading' do
+  describe '.default_title' do
+    context 'when the selected service choice is xi' do
+      let(:choice) { 'xi' }
+
+      it 'returns the title for the current service choice' do
+        expect(helper.default_title).to eq('The Northern Ireland (EU) Tariff: Look up commodity codes, import duty, VAT and controls - GOV.UK - GOV.UK')
+      end
+    end
+
+    context 'when the selected service choice is nil' do
+      let(:choice) { nil }
+
+      it 'returns the title for the current service choice' do
+        expect(helper.default_title).to eq('The Online Trade Tariff: Look up commodity codes, import duty, VAT and controls - GOV.UK - GOV.UK')
+      end
+    end
+  end
+
+  describe '.goods_nomenclature_title' do
+    let(:goods_nomenclature) { double(to_s: 'Live horses, asses, mules and hinnies') }
+
+    context 'when the selected service choice is xi' do
+      let(:choice) { 'xi' }
+
+      it 'returns the correct title for the current goods nomenclature' do
+        expect(helper.goods_nomenclature_title(goods_nomenclature)).to eq('Live horses, asses, mules and hinnies - The Northern Ireland (EU) Tariff - GOV.UK')
+      end
+    end
+
+    context 'when the selected service choice is nil' do
+      let(:choice) { nil }
+
+      it 'returns the correct title for the current goods nomenclature' do
+        expect(helper.goods_nomenclature_title(goods_nomenclature)).to eq('Live horses, asses, mules and hinnies - The Online Trade Tariff - GOV.UK')
+      end
+    end
+  end
+
+  describe '.commodity_title' do
+    let(:commodity) { double(to_s: 'Pure-bred breeding animals', code: '0101300000') }
+
+    context 'when the selected service choice is xi' do
+      let(:choice) { 'xi' }
+
+      it 'returns the correct title for the current goods nomenclature' do
+        expect(helper.commodity_title(commodity)).to eq('Commodity code 0101300000: Pure-bred breeding animals - The Northern Ireland (EU) Tariff - GOV.UK')
+      end
+    end
+
+    context 'when the selected service choice is nil' do
+      let(:choice) { nil }
+
+      it 'returns the correct title for the current goods nomenclature' do
+        expect(helper.commodity_title(commodity)).to eq('Commodity code 0101300000: Pure-bred breeding animals - The Online Trade Tariff - GOV.UK')
+      end
+    end
+  end
+
+  describe ".trade_tariff_heading" do
     context 'when the selected service choice is uk-old' do
       let(:choice) { 'uk-old' }
 

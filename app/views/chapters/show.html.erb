@@ -1,4 +1,4 @@
-<% content_for :title, "#{@chapter} - Trade Tariff - GOV.UK" %>
+<% content_for :title, goods_nomenclature_title(@chapter) %>
 <% content_for :head do %>
   <meta name="description" content="<%= @chapter  %>">
   <link rel='alternate' type='application/json' href='<%= chapter_url(@chapter, format: :json) %>' title='Chapter information page in JSON format' />
