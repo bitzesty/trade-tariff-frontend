@@ -135,24 +135,6 @@ describe SearchController, "GET to #search", type: :controller do
           it { should redirect_to(chapter_path("01", year: year, month: month, day: day)) }
         end
 
-        context 'valid future date time param(as_of) provided and currency is forced to EUR' do
-          let(:year)    { now.year + 1 }
-          let(:month)   { now.month }
-          let(:day)     { now.day }
-
-          before(:each) do
-            @request.env['HTTP_REFERER'] = "/chapters/01"
-
-            post :search, params: {
-              as_of: "#{year}-#{month}-#{day}"
-            }
-          end
-
-          it { should respond_with(:redirect) }
-          it { expect(assigns(:search)).to be_a(Search) }
-          it { should redirect_to(chapter_path("01", currency: 'EUR', year: year, month: month, day: day)) }
-        end
-
         context 'invalid date param provided' do
           context 'date param is a string' do
             before(:each) do
