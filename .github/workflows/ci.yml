@@ -61,7 +61,9 @@ jobs:
           CF_ENDPOINT: "api.london.cloud.service.gov.uk"
           CF_SPACE: development
           CF_APP: "tariff-frontend-dev"
-          CF_APP_WORKER: "tariff-frontend-worker-dev"
+          CF_BACKEND_APP: "tariff-backend-dev"
+          CF_BACKEND_APP_XI: "tariff-xi-backend-dev"
+          CF_BACKEND_APP_UK: "tariff-uk-backend-dev"
           CF_USER: ${{ secrets.CF_USER }}
           CF_PASSWORD: ${{ secrets.CF_PASSWORD }}
           CF_ORG: ${{ secrets.CF_ORG }}
@@ -69,8 +71,8 @@ jobs:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
           HEALTHCHECK_URL: ${{ secrets.HEALTHCHECK_URL }}
         run: |
-          curl -v -L -o cf-cli_amd64.deb 'https://cli.run.pivotal.io/stable?release=debian64&source=github'
-          sudo dpkg -i cf-cli_amd64.deb
+          curl -L -o cf.deb 'https://packages.cloudfoundry.org/stable?release=debian64&version=7.2.0&source=github-rel'
+          sudo dpkg -i cf.deb
           cf -v
           cf add-plugin-repo CF-Community https://plugins.cloudfoundry.org
           cf install-plugin blue-green-deploy -r CF-Community -f
@@ -102,7 +104,9 @@ jobs:
           CF_ENDPOINT: "api.london.cloud.service.gov.uk"
           CF_SPACE: staging
           CF_APP: "tariff-frontend-staging"
-          CF_APP_WORKER: "tariff-frontend-worker-staging"
+          CF_BACKEND_APP: "tariff-backend-staging"
+          CF_BACKEND_APP_XI: "tariff-xi-backend-staging"
+          CF_BACKEND_APP_UK: "tariff-uk-backend-staging"
           CF_USER: ${{ secrets.CF_USER }}
           CF_PASSWORD: ${{ secrets.CF_PASSWORD }}
           CF_ORG: ${{ secrets.CF_ORG }}
@@ -110,8 +114,8 @@ jobs:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
           HEALTHCHECK_URL: ${{ secrets.HEALTHCHECK_URL }}
         run: |
-          curl -v -L -o cf-cli_amd64.deb 'https://cli.run.pivotal.io/stable?release=debian64&source=github'
-          sudo dpkg -i cf-cli_amd64.deb
+          curl -L -o cf.deb 'https://packages.cloudfoundry.org/stable?release=debian64&version=7.2.0&source=github-rel'
+          sudo dpkg -i cf.deb
           cf -v
           cf add-plugin-repo CF-Community https://plugins.cloudfoundry.org
           cf install-plugin blue-green-deploy -r CF-Community -f
