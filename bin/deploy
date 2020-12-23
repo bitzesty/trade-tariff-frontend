@@ -44,8 +44,7 @@ export PRIVATE_APP_UK=`CF_APP=$CF_APP ruby -e 'puts ENV["CF_APP"].gsub("frontend
 
 cf add-network-policy $CF_APP --destination-app $PRIVATE_APP    --protocol tcp --port 8080
 cf add-network-policy $CF_APP --destination-app $PRIVATE_APP_XI --protocol tcp --port 8080
-# TODO: Roll out UK service in all environments
-# cf add-network-policy $CF_APP --destination-app $PRIVATE_APP_UK --protocol tcp --port 8080
+cf add-network-policy $CF_APP --destination-app $PRIVATE_APP_UK --protocol tcp --port 8080
 
 # Attach autoscaling policy
 cf attach-autoscaling-policy $CF_APP config/autoscaling/"$CF_SPACE"-policy.json
