@@ -1,55 +1,61 @@
 #!/usr/bin/env bash
-set -e
 
-# Fetch deployed revision
-export GIT_OLD_REVISION=`curl "https://$CF_APP.$HEALTHCHECK_URL" | grep -o -w -E '[[:alnum:]]{7}'`
+[[ "$TRACE" ]] && set -o xtrace
+set -o errexit
+set -o nounset
+set -o pipefail
+set -o noclobber
 
-# Log the new revision
-export GIT_REVISION=`git rev-parse --short HEAD`
-echo $GIT_REVISION > REVISION
+cf login -a "$CF_ENDPOINT" -u "$CF_USER" -p "$CF_PASSWORD" -o "$CF_ORG" -s "$CF_SPACE"
 
-export GIT_MESSAGE=`git log --oneline $GIT_OLD_REVISION..$GIT_REVISION`
-
-# Check CF connectivity
-cf login -a $CF_ENDPOINT -u $CF_USER -p "$CF_PASSWORD" -o $CF_ORG -s $CF_SPACE
-cf apps
-
-# Notify Slack deployment started
-curl -X POST \
---data-urlencode 'payload={"text": "'"Deploying $CF_APP.\n${GIT_MESSAGE}"'", "channel": "'"#$SLACK_CHANNEL"'", "username": "cf-deploy", "icon_emoji": ":cloud:", "fields": [{"title": "ENV", "value": "'"$CF_SPACE"'", "short": true}, {"title": "SHA1", "value": "'"<https://github.com/bitzesty/trade-tariff-frontend/compare/$GIT_OLD_REVISION...$GIT_REVISION|$GIT_REVISION>"'", "short": true}]}' \
-$SLACK_WEBHOOK
-
-# Pin ruby buildpack
+export GIT_OLD_REVISION=$(cf ssh $CF_APP -c 'cat app/REVISION')
+export GIT_NEW_REVISION=$(git rev-parse --short HEAD)
 export CF_BUILDPACK="https://github.com/cloudfoundry/ruby-buildpack.git#v1.8.24"
 
-# Deploy
-cf create-app-manifest $CF_APP
+echo $GIT_NEW_REVISION >REVISION
 
-# "patch" the manifest so it has "buildpack", not "buildpacks":
-CF_BUILDPACK=$CF_BUILDPACK ruby -ryaml -e 'm = YAML.load(STDIN); m["applications"].map{ |x| x["buildpack"] = ENV["CF_BUILDPACK"]; x.delete("buildpacks") }; puts YAML.dump(m)' \
-  < "$CF_APP"_manifest.yml \
-  > "$CF_APP"_patched_manifest.yml
+# Replace the buildpack of the current api with the build pack specified above
+cat <<HERE >update_buildpack_key.rb
+require 'yaml'
+
+app_manifest = YAML.load(STDIN)
+
+app_manifest["applications"].map do |application|
+  application["buildpack"] = "$CF_BUILDPACK"
+  application.delete("buildpacks")
+end
+
+puts YAML.dump(app_manifest)
+HERE
+
+function notify() {
+  curl -X POST \
+    --data-urlencode 'payload={"text": "'"$1"'", "channel": "'"#$SLACK_CHANNEL"'", "username": "cf-deploy", "icon_emoji": ":cloud:", "fields": [{"title": "ENV", "value": "'"$CF_SPACE"'", "short": true}, {"title": "SHA1", "value": "'"<https://github.com/TransformCore/trade-tariff-backend/compare/$GIT_OLD_REVISION...$GIT_NEW_REVISION|$GIT_NEW_REVISION>"'", "short": true}]}' \
+    "$SLACK_WEBHOOK"
+}
+
+function deploy_frontend() {
+  # Fetch existing manifest
+  cf create-app-manifest "$CF_APP"
+
+  # Patch downloaded manifest with specified buildpack
+  ruby update_buildpack_key.rb <"$CF_APP"_manifest.yml >"$CF_APP"_patched_manifest.yml
+
+  # Deploy patched manifest
+  cf blue-green-deploy "$CF_APP" -f "$CF_APP"_patched_manifest.yml --delete-old-apps
+
+  # Attach precreated autoscaling policy
+  cf attach-autoscaling-policy "$CF_APP" config/autoscaling/"$CF_SPACE"-policy.json
+
+  # Enable routing from this frontend to backend applications which are private
+  cf add-network-policy "$CF_APP" "$CF_BACKEND_APP" --protocol tcp --port 8080
+  cf add-network-policy "$CF_APP" "$CF_BACKEND_APP_XI" --protocol tcp --port 8080
+  cf add-network-policy "$CF_APP" "$CF_BACKEND_APP_UK"  --protocol tcp --port 8080
+}
 
 
-cf blue-green-deploy $CF_APP -f "$CF_APP"_patched_manifest.yml --delete-old-apps
+notify "Deploying the frontend ${CF_APP}"
 
-# Create network policy for fronted app
-# https://docs.cloud.service.gov.uk/deploying_apps.html#deploying-private-apps
-# $PRIVATE_APP* - backend apps
-# $PUBLIC_APP - frontend app
+deploy_frontend
 
-export PRIVATE_APP=`CF_APP=$CF_APP ruby -e 'puts ENV["CF_APP"].gsub("frontend", "backend")'`
-export PRIVATE_APP_XI=`CF_APP=$CF_APP ruby -e 'puts ENV["CF_APP"].gsub("frontend", "xi-backend")'`
-export PRIVATE_APP_UK=`CF_APP=$CF_APP ruby -e 'puts ENV["CF_APP"].gsub("frontend", "uk-backend")'`
-
-cf add-network-policy $CF_APP --destination-app $PRIVATE_APP    --protocol tcp --port 8080
-cf add-network-policy $CF_APP --destination-app $PRIVATE_APP_XI --protocol tcp --port 8080
-cf add-network-policy $CF_APP --destination-app $PRIVATE_APP_UK --protocol tcp --port 8080
-
-# Attach autoscaling policy
-cf attach-autoscaling-policy $CF_APP config/autoscaling/"$CF_SPACE"-policy.json
-
-# Notify Slack deployment finished
-curl -X POST \
---data-urlencode 'payload={"text": "'"Deployment finished for $CF_APP"'", "channel": "'"#$SLACK_CHANNEL"'", "username": "cf-deploy", "icon_emoji": ":cloud:", "fields": [{"title": "ENV", "value": "'"$CF_SPACE"'", "short": true}, {"title": "SHA1", "value": "'"<https://github.com/bitzesty/trade-tariff-frontend/compare/$GIT_OLD_REVISION...$GIT_REVISION|$GIT_REVISION>"'", "short": true}]}' \
-$SLACK_WEBHOOK
+notify "Deployed the frontend ${CF_APP}"
