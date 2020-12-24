@@ -40,6 +40,6 @@ class LegalAct
   private
 
   def national_data_separator
-    0xA0.chr('UTF-8')
+    '|'
   end
 end
