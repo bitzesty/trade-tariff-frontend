@@ -8,17 +8,17 @@ class LegalAct
 
   def national_public_id
     return nil unless has_national_data?
-    information_text&.split('|')&.first
+    information_text&.split(national_data_separator)&.fetch(1)
   end
 
   def national_url
     return nil unless has_national_data?
-    information_text&.split('|')&.fetch(1)
+    information_text&.split(national_data_separator)&.last
   end
 
   def national_information
     return nil unless has_national_data?
-    information_text&.split('|')&.last
+    information_text&.split(national_data_separator)&.first
   end
 
   def validity_start_date=(date)
@@ -33,9 +33,13 @@ class LegalAct
     regulation_code.tr("/", "_")
   end
 
+  def has_national_data?
+    (information_text&.split(national_data_separator)&.length || 0) == 3
+  end
+
   private
 
-  def has_national_data?
-    (information_text&.split('|')&.length || 0) == 3
+  def national_data_separator
+    0xA0.chr('UTF-8')
   end
 end

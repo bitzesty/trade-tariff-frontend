@@ -52,7 +52,7 @@
 
   <% if TradeTariffFrontend.regulations_enabled? && TradeTariffFrontend.uk_regulations_enabled? %>
     <td class="numerical">
-      <% if measure.legal_acts.present? %>
+      <% if measure.legal_acts.present? && measure.legal_acts.first.has_national_data? %>
         <%= link_to measure.legal_acts.first.national_public_id, "#", class: 'reference', 'data-popup-ref' => "#{measure.id}-regulations", "aria-label": "Legal base: #{measure.legal_acts.first.national_public_id}. Click to open a dialog with all the legal bases for this measure", role: "button" %>
       <% end %>
     </td>
