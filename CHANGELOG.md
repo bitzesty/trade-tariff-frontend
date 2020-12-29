@@ -1,10 +1,118 @@
 # Change Log
 
-## [February 18, 2018]
+## [December 20, 2019](https://github.com/bitzesty/trade-tariff-frontend/compare/b93b87ddf6df3bc00daed4d52dd122433a1cd00d...0ac45a6dce27477da8add5671d3a84a49e032517)
+
+### Added
+- Minor optimisations for JSONAPI parses
+- Improve search results for exact and fuzzy search
+- Add footnotes search
+- Add cross domain event tracking
+- Improve errors handling
+- Add search results pagination
+- Minor CSS tweaks
 
 ### Changed
+- Move API documentation link to "Related information" section in page footer
+- Use bootsnap instead of bootscale
+- Update additional codes search
+- Update google analytics token
+- Fix query string forwarding
+- Expose search api (forwarded to backend)
+- Update puma to 3.12.2
+- Redirect to v2 bu default
 
-- Update `ruby` version to 2.5.0
+### Removed
+- Remove simplecov-rcov
+- Hide search bar for a-z index and exchange rates
+
+
+## [June 14, 2019](https://github.com/bitzesty/trade-tariff-frontend/compare/8769ff1635cdc769445b78a434eb1e3b9d601e68...c870a6da3ef9c4724f7d62fca752801313c086c2)
+
+### Added
+- Add env variable to hide legal base column
+- Add IP and Auth locking
+- Add API v1 routes
+- Add link to API documentation to footer
+- Use new API v2
+- Add `Cache-Control` header to all forwarded API calls
+- Add scout_apm
+- Track custom events with google analytics
+- Add faraday
+- Add quota search
+- Use `api` prefix to V1 and V2 routes
+
+### Changed
+- Upgrade ruby to 2.6.2
+- Replace route `v1/commodities/codes` with `v1/(commodities)/goods_nomenclature`
+- Replace route `v1/(commodities)/goods_nomenclature` with `v1/goods_nomenclature`
+- Increasing HTTParty timeout
+- Switch to blue-green-deploy from autopilot
+- Switch to new JSONAPI parser
+- Redirect v1 quota/search to v2
+
+### Removed
+- Remove currency param that no longer applies
+- Hide BTI link if regs are not enabled
+- Remove "update" endpoints from proxy-able API methods
+- Remove rack-timeout gem
+- Remove newrelic
+- Remove HTTParty
+- Remove heading code from commodity tree
+- Remove requirement for `.json` extension on API calls
+
+
+## [February 1, 2019](https://github.com/bitzesty/trade-tariff-frontend/compare/7ffe0c3afb012fa98fc25d257901c35f1746b16a...c5115a46acd5662224e16bf18deae4b170660ddc)
+
+
+### Added
+- Use redis store for caching
+- Use paas redis service
+- GitlabCI integration
+- Add env variable to disable/enable currency picker
+- Displaying links for chapter guidance and discussion forum
+- Display duty_expression for measure condition
+- Add govuk link and run autocorrect
+
+### Changed
+- Make footnote code as a link for popup for single footnote
+- Extra information on commodity page
+- Minor CSS tweaks
+- Select unique duty expressions
+- Display 10 or 8 numbers for commodity codes
+- Fix geographical areas ordering
+- Making all pages wider
+- Upgrade rails to 5.1.6.1
+- Upgrade ruby to 2.5.3
+- Fix CORS
+
+### Removed
+- Remove “dalli” gem
+- Remove CircleCI integration
+
+
+## [November 6, 2018](https://github.com/bitzesty/trade-tariff-frontend/compare/7ffe0c3afb012fa98fc25d257901c35f1746b16a...c5115a46acd5662224e16bf18deae4b170660ddc)
+
+### Added
+- Add chapter and section notes for non-declarable headings
+- Render footnotes from API payload
+- Add exchange rates page
+- Add a link to the forum
+- New 500 error page
+- Add browserconfig.xml
+- Add manifest file for DIT jenkins integration
+
+### Changed
+- Upgrade ruby to 2.5.0
+- Change chapter notes position
+- Moving additional code info from modal to inline in Measure column
+- Minor CSS tweaks
+- Displaying all footnotes, even the ones not direclty associated with declarables
+- Upgrade rails to 5.1.5
+- Update copy on ECO footnote notice
+
+### Removed
+- Hide duty expression ID = '37' (NIHIL)
+
 
 ## [January 18, 2018]
 
