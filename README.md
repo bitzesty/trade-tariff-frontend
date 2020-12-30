@@ -1,6 +1,6 @@
 # Trade Tariff Frontend
 
-__Now maintained at https://github.com/bitzesty/trade-tariff-frontend__
+Now maintained by HMRC
 
 https://www.trade-tariff.service.gov.uk/trade-tariff/sections
 
